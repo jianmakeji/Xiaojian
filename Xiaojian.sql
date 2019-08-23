@@ -1,5 +1,5 @@
 ﻿# Host: 192.168.3.110  (Version 5.6.28-log)
-# Date: 2019-08-23 16:29:02
+# Date: 2019-08-23 16:49:24
 # Generator: MySQL-Front 6.0  (Build 2.25)
 
 
@@ -54,7 +54,8 @@ CREATE TABLE `course_choose` (
   `courseBId` int(11) DEFAULT NULL,
   `classId` int(11) NOT NULL DEFAULT '0' COMMENT '班级ID',
   `createAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
+  PRIMARY KEY (`Id`),
+  KEY `shopId` (`shopId`,`teacherId`,`courseAId`,`courseBId`,`classId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 #
@@ -70,7 +71,8 @@ CREATE TABLE `course_student` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `courseId` int(11) DEFAULT NULL,
   `studentId` int(11) DEFAULT NULL,
-  PRIMARY KEY (`Id`)
+  PRIMARY KEY (`Id`),
+  KEY `courseId` (`courseId`,`studentId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 #
@@ -137,7 +139,8 @@ CREATE TABLE `user_role` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(11) NOT NULL DEFAULT '0',
   `roleId` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`Id`)
+  PRIMARY KEY (`Id`),
+  KEY `userId` (`userId`,`roleId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 #
