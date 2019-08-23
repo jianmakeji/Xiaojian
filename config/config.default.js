@@ -22,7 +22,7 @@ module.exports = appInfo => {
   const userConfig = {
     // myAppName: 'egg',
   };
-
+/*
   config.sequelize = {
     dialect: 'mysql',
     host: '192.168.3.110',
@@ -47,7 +47,7 @@ module.exports = appInfo => {
       idle: 10000
     },
   };
-
+*/
   config.security = {
     csrf:{
       enable:false,
