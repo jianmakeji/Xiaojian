@@ -1,0 +1,6 @@
+.test{
+    width: 400px;
+    height: 300px;
+    background:linear-gradient(to right, #FF8009, #FFC837) !important;
+    color:red;
+}
