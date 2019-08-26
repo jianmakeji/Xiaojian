@@ -1,6 +1,71 @@
+[v-cloak]{
+    display: none;
+}
+
 .test{
     width: 400px;
     height: 300px;
     background:linear-gradient(to right, #FF8009, #FFC837) !important;
     color:red;
+}
+
+.login{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 500px;
+    height: 330px;
+    margin: 200px auto;
+    padding: 40px 60px;
+    background: #fff;
+    border: solid 2px #F2F2F2;
+}
+
+.login .username{
+    margin-top: 20px;
+}
+.login .username .ivu-icon-ios-contact{
+    font-size: 26px;
+    color:#FFC837;
+}
+
+.login .password{
+    margin-top: 20px;
+}
+.login .password .ivu-icon-ios-lock{
+    font-size: 26px;
+    color:#FFC837;
+}
+
+.login .opts{
+    margin-top: 20px;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.login .opts  .ivu-checkbox-inner{
+    border-color: #FFC837;
+}
+.login .opts .ivu-checkbox-checked .ivu-checkbox-inner {
+    border-color: #FFC837;
+    background-color: #FFC837;
+}
+
+.login .opts .forgetPwd{
+    font-size: 16px;
+}
+
+.login .submitBtn{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.login .submitBtn .submit{
+    width: 200px;
+    font-size: 16px;
+    color: #fff;
+    border: solid 1px #FFC837;
+    background: #FFC837;
 }
