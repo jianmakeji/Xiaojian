@@ -2,7 +2,7 @@
 
 module.exports = app => {
 
-  const { STRING, INTEGER, DATE } = app.Sequelize;
+  const { STRING, INTEGER, DATE, BOOLEAN } = app.Sequelize;
 
   const Student = app.model.define('student', {
     Id: {
@@ -11,10 +11,30 @@ module.exports = app => {
       primaryKey: true,
       autoIncrement: true
     },
+    shopId: {
+      type: INTEGER(11),
+      allowNull: false,
+    },
     studentName: {
       type: STRING(30),
       allowNull: false,
       defaultValue: '0',
+    },
+    age: {
+      type: INTEGER(11),
+      allowNull: true,
+    },
+    gender: {
+      type: BOOLEAN,
+      allowNull: true,
+    },
+    health: {
+      type: BOOLEAN,
+      allowNull: true,
+    },
+    interactiveCourse: {
+      type: BOOLEAN,
+      allowNull: true,
     },
     createAt: {
       type: DATE,
