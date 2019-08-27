@@ -36,6 +36,10 @@ module.exports = app => {
       type: BOOLEAN,
       allowNull: true,
     },
+    integral:{
+      type: INTEGER(11),
+      allowNull: true,
+    },
     createAt: {
       type: DATE,
       allowNull: false,

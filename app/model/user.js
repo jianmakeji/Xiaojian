@@ -34,6 +34,23 @@ module.exports = app => {
       type: INTEGER,
       allowNull: true
     },
+    age: {
+      type: INTEGER,
+      allowNull: true
+    },
+    gender: {
+      type: BOOLEAN,
+      allowNull: true
+    },
+    idNum: {
+      type: STRING(10),
+      allowNull: false,
+      defaultValue: ''
+    },
+    jobTitle: {
+      type: INTEGER,
+      allowNull: true
+    },
     createAt: {
       type: DATE,
       allowNull: false,

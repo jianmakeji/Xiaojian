@@ -11,13 +11,10 @@ module.exports = {
   },
 
 
-  basePath: path.join(__dirname, '../public/newsImages/'),
-  imagePath: 'images',
+  basePath: path.join(__dirname, '../public/sysImages/'),
 
-  attachmentPath: 'attachment/',
-  productPath: 'product/',
-  judgesPath: 'judges/',
-  newsPath: 'news/',
+  coursePath: 'course/',
+  workerPath: 'worker/',
   othersPath: 'others/',
 
   cryptoPwd:(password)=>{
