@@ -17,32 +17,38 @@
 	</head>
 	<body>
     <div class="index" v-cloak>
-
-		<!-- 左侧菜单 -->
-		{% block left %}
-            <div class="left">
-                <img class="logo" src="../public/images/logo-high.png">
-                <div class="menuBtns">
-                    <i-button class="menuBtn active" shape="circle" @click="menuChange(0)">店铺信息管理</i-button>
-                    <i-button class="menuBtn" shape="circle" @click="menuChange(1)">学生用户信息管理</i-button>
-                    <i-button class="menuBtn" shape="circle" @click="menuChange(2)">课程内容管理</i-button>
+        <div class="container">
+            <!-- 左侧菜单 -->
+    		{% block left %}
+                <div class="left">
+                    <img class="logo" src="/public/images/logo-high.png">
+                    <div class="menuBtns">
+                        <i-button class="menuBtn active" shape="circle" @click="menuChange(0)">店铺信息管理</i-button>
+                        <i-button class="menuBtn" shape="circle" @click="menuChange(1)">学生用户信息管理</i-button>
+                        <i-button class="menuBtn" shape="circle" @click="menuChange(2)">课程内容管理</i-button>
+                    </div>
                 </div>
-            </div>
-		{% endblock %}
+    		{% endblock %}
 
-		<!-- 内容 -->
-		{% block right %}
+    		<!-- 内容 -->
+    		{% block right %}
+                    {% block headMenu %}
 
-		{% endblock %}
+            		{% endblock %}
 
-        {% block headMenu %}
+    		{% endblock %}
 
-		{% endblock %}
 
-		<!-- 底部 -->
-		{% block footer %}
+            {% block models %}
 
-		{% endblock %}
+    		{% endblock %}
+
+    		<!-- 底部 -->
+    		{% block footer %}
+
+    		{% endblock %}
+        </div>
+
 
 	</div>
 	<!-- js文件引用 -->
