@@ -3,13 +3,15 @@
 }
 
 .courseManage{
-    max-width: 1920px;
+    /* max-width: 1920px;
+    min-width: 1600px; */
+    min-height:100vh;
     display: flex;
     flex-direction: row;
 }
 
 .left{
-    width: 300px;
+    width: 15%;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -42,4 +44,636 @@
     font-size: 18px;
     border: solid 1px #fff;
     background: #fff;
+}
+
+
+.right{
+    width: 85%;
+    height: 100vh;
+    max-height: 100vh;
+    background: #fff;
+}
+.right .headMenu{
+    width: 90%;
+    height: 60px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0px;
+}
+.right .headMenu .leftTabs{
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 80px;
+}
+.right .headMenu .leftTabs .tabsBtn{
+    font-size: 17px;
+    color: #656565;
+    border-bottom: none;
+}
+.right .headMenu .leftTabs .tabsBtn.active{
+    font-size: 17px;
+    color: #FFC837;
+    border-bottom: solid;
+}
+.right .headMenu .rightUserInfo{
+    margin-right: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .headMenu .rightUserInfo .headImg{
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+}
+.right .headMenu .rightUserInfo .username{
+    font-size: 16px;
+    color: #656565;
+    letter-spacing: 1px;
+}
+
+/* *************** 课程管理选项 ***************/
+/* 店铺筛选 */
+.right .filtrMenu{
+    width: 90%;
+    margin: 0 5%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft .ivu-select-selection{
+    border: 2px solid #FFC837;
+}
+.right .filtrMenu .filtrLeft .storeInfo{
+    /* margin-left: 50px; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft .storeInfo label{
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+/* 时间筛选 */
+.right .filtrMenu .filtrLeft .dateInfo{
+    margin-left: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft .dateInfo label{
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.right .filtrMenu .filtrRight{
+
+}
+.right .filtrMenu .filtrRight .editBtn,
+.right .filtrMenu .filtrRight .saveBtn,
+.right .filtrMenu .filtrRight .uploadBtn{
+    color: #fff;
+    background:  #FFC837;
+}
+/* *************** 课程详情 **************** */
+.right .box{
+    width: 90%;
+    height: 700px;
+    margin: 0 5%;
+    margin-top: 20px;
+}
+.right .courseContainer{
+    width: 100%;
+    height: 800px;
+    border-radius: 15px;
+    border:solid 2px #F3F3F3;
+}
+
+.right .courseContainer .headView{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+/* 八月 */
+.right .courseContainer .monthImg{
+    width: 10%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.right .courseContainer .monthImg .text{
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    color:#fff;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    background: #FFC837;
+}
+/* 周一至周五 */
+.right .courseContainer .weekTime{
+    width: 90%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: space-around;
+}
+.right .courseContainer .weekTime div{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+}
+.right .courseContainer .weekTime .title{
+    font-size: 16px;
+    font-weight: bold;
+    color: #999999;
+}
+.right .courseContainer .weekTime .time{
+    color: #CBCBCB;
+}
+
+/* 课程内容显示 */
+.right .courseContainer .contentView{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .courseContainer .timeView{
+    width: 10%;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.right .courseContainer .timeView div{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+}
+.right .courseContainer .timeView .title{
+    font-size: 16px;
+    font-weight: bold;
+    color: #999999;
+}
+.right .courseContainer .timeView .time{
+    color: #CBCBCB;
+}
+/* 课程表 */
+.right .courseContainer .courseView{
+    width: 90%;
+    height: 700px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.right .courseContainer .courseView .weekDay{
+    width: 14%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.right .courseContainer .courseView .weekDay .courseTime{
+    width: 100%;
+    height: 160px;
+    border: solid 1px #E6E6E6;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.right .courseContainer .courseView .weekDay .courseTime .courseImgs{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.right .courseContainer .courseView .weekDay .courseTime .courseImgs img{
+    width: 45%;
+    height: 60px;
+    cursor: pointer;
+}
+.right .courseContainer .courseView .weekDay .courseTime .courseNames{
+    width: 100%;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.right .courseContainer .courseView .weekDay .courseTime .courseNames span{
+    width: 50%;
+    height: 20px;
+    font-size: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+.right .courseContainer .courseView .weekDay .courseTime .teacherName{
+    width: 100%;
+    height: 20px;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    color: #999999;
+    cursor: pointer;
+}
+.right .courseContainer .courseView .weekDay .courseTime .students{
+    width: 100%;
+    text-align: center;
+}
+.right .courseContainer .courseView .weekDay .courseTime .students .studentListBtn{
+    height: 32px;
+    margin: 0 auto;
+    color: #fff;
+    background: #FFC837;
+}
+
+
+/* **************基础选课右侧弹出框*************** */
+.mainCourseModel{
+    width: 400px;
+    height: 93vh;
+    position: fixed;
+    bottom: 0;
+    right: -400px;
+    background: #fff;
+    border: solid 2px #FFC837;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: right 1s;
+    overflow: auto;
+}
+.mainCourseModel.active{
+    width: 400px;
+    height: 93vh;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: right 1s;
+    overflow: auto;
+}
+.mainCourseModel .mianCourseTitle{
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #656565;
+}
+.mainCourseModel .mainCourseSearch{
+    width: 80%;
+}
+.mainCourseModel .mainCourseSearch .ivu-input{
+    border: 1px solid #FFC837;
+}
+.mainCourseModel .mianCourseTypes{
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    background: #CCCCCC;
+}
+.mainCourseModel .mianCourseTypes div{
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    text-align: center;
+    color: #fff;
+    background: #CCCCCC;
+    cursor: pointer;
+}
+.mainCourseModel .mianCourseTypes div.active{
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    text-align: center;
+    color: #fff;
+    background: #FFC837;
+}
+.mainCourseModel .mainCourseResultList{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:flex-start;
+}
+.mainCourseModel .mainCourseResultList .mainCourseItem{
+    width: 100%;
+    height: 220px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: solid 2px #FFC837;
+}
+.mainCourseModel .mainCourseResultList .mainCourseItem .mainCourseImg{
+    width: 130px;
+    height: 180px;
+}
+.mainCourseModel .mainCourseResultList .mainCourseItem .mainCourseInfo{
+    width: 150px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.mainCourseModel .mainCourseResultList .mainCourseItem .mainCourseInfo .title{
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    color: #656565;
+}
+.mainCourseModel .mainCourseResultList .mainCourseItem .mainCourseInfo .des{
+    width: 100%;
+    height: 120px;
+    text-indent: 2em;
+    font-size: 10px;
+    color: #999999;
+    overflow:hidden;
+    text-overflow: ellipsis;
+}
+.mainCourseModel .mainCourseResultList .mainCourseItem .mainCourseInfo .submit{
+    width:80%;
+    background: #FFC837;
+    color: #fff;
+}
+
+/* **************运动课程选课中心*************** */
+.sportCourseModel{
+    width: 400px;
+    height: 93vh;
+    position: fixed;
+    bottom: 0;
+    right: -400px;
+    background: #fff;
+    border: solid 2px #FFC837;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: right 1s;
+    overflow: auto;
+}
+.sportCourseModel.active{
+    width: 400px;
+    height: 93vh;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: right 1s;
+    overflow: auto;
+}
+.sportCourseModel .sportCourseTitle{
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #656565;
+}
+.sportCourseModel .sportCourseSearch{
+    width: 80%;
+}
+.sportCourseModel .sportCourseSearch .ivu-input{
+    border: 1px solid #FFC837;
+}
+.sportCourseModel .sportCourseTypes{
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    background: #CCCCCC;
+}
+.sportCourseModel .sportCourseTypes div{
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    text-align: center;
+    color: #fff;
+    background: #CCCCCC;
+    cursor: pointer;
+}
+.sportCourseModel .sportCourseTypes div.active{
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    text-align: center;
+    color: #fff;
+    background: #FFC837;
+}
+.sportCourseModel .sportCourseResultList{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:flex-start;
+}
+.sportCourseModel .sportCourseResultList .sportCourseItem{
+    width: 100%;
+    height: 220px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: solid 2px #FFC837;
+}
+.sportCourseModel .sportCourseResultList .sportCourseItem .sportCourseImg{
+    width: 130px;
+    height: 180px;
+}
+.sportCourseModel .sportCourseResultList .sportCourseItem .sportCourseInfo{
+    width: 150px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.sportCourseModel .sportCourseResultList .sportCourseItem .sportCourseInfo .title{
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    color: #656565;
+}
+.sportCourseModel .sportCourseResultList .sportCourseItem .sportCourseInfo .des{
+    width: 100%;
+    height: 120px;
+    text-indent: 2em;
+    font-size: 10px;
+    color: #999999;
+    overflow:hidden;
+    text-overflow: ellipsis;
+}
+.sportCourseModel .sportCourseResultList .sportCourseItem .sportCourseInfo .submit{
+    width:80%;
+    background: #FFC837;
+    color: #fff;
+}
+
+/* **************教师选择中心*************** */
+.teacherCourseModel{
+    width: 400px;
+    height: 93vh;
+    position: fixed;
+    bottom: 0;
+    right: -400px;
+    background: #fff;
+    border: solid 2px #FFC837;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: right 1s;
+    overflow: auto;
+}
+.teacherCourseModel.active{
+    width: 400px;
+    height: 93vh;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: right 1s;
+    overflow: auto;
+}
+.teacherCourseModel .tearcherCourseTitle{
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #656565;
+}
+.teacherCourseModel .teacherCourseSearch{
+    width: 80%;
+}
+.teacherCourseModel .teacherCourseSearch .ivu-input{
+    border: 1px solid #FFC837;
+}
+.teacherCourseModel .teacherCourseTypes{
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    background: #CCCCCC;
+}
+.teacherCourseModel .teacherCourseTypes div{
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    text-align: center;
+    color: #fff;
+    background: #CCCCCC;
+    cursor: pointer;
+}
+.teacherCourseModel .teacherCourseTypes div.active{
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    text-align: center;
+    color: #fff;
+    background: #FFC837;
+}
+.teacherCourseModel .teacherCourseResultList{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:flex-start;
+}
+.teacherCourseModel .teacherCourseResultList .teacherCourseItem{
+    width: 100%;
+    height: 220px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: solid 2px #FFC837;
+}
+.teacherCourseModel .teacherCourseResultList .teacherCourseItem .teacherCourseImg{
+    width: 130px;
+    height: 180px;
+    border-radius: 8px;
+}
+.teacherCourseModel .teacherCourseResultList .teacherCourseItem .teacherCourseInfo{
+    width: 150px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.teacherCourseModel .teacherCourseResultList .teacherCourseItem .teacherCourseInfo .title{
+    font-size: 16px;
+    color: #999999;
+}
+.teacherCourseModel .teacherCourseResultList .teacherCourseItem .teacherCourseInfo .des{
+    width: 100%;
+    height: 70px;
+    font-size: 10px;
+    color: #999999;
+    display: flex;
+    flex-direction: column;
+}
+.teacherCourseModel .teacherCourseResultList .teacherCourseItem .teacherCourseInfo .selectNum{
+    width: 100%;
+    height: 20px;
+    font-size: 10px;
+    color: #999999;
+}
+.teacherCourseModel .teacherCourseResultList .teacherCourseItem .teacherCourseInfo .submit{
+    width:80%;
+    background: #FFC837;
+    color: #fff;
 }
