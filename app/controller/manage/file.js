@@ -43,7 +43,7 @@ class FileController extends BaseController {
           const target = path.join(fileTagget, filename);
           const writeStream = fs.createWriteStream(target);
           await awaitWriteStream(stream.pipe(writeStream));
-          result.url = ctx.helper.baseUrl + fileTagget.replace(ctx.helper.basePath,'') + '/' + filename;
+          result.url = ctx.helper.baseUrl + path.join(fileTagget.replace(ctx.helper.basePath,''), filename);
           result.fileName = filename;
         } catch (err) {
             //如果出现错误，关闭管道
