@@ -37,8 +37,10 @@ class FileController extends BaseController {
           status:200
         };
 
+        const stream = await ctx.getFileStream();
+
         try {
-          const stream = await ctx.getFileStream();
+
           const filename = ctx.helper.randomString(8) + path.extname(stream.filename);
           const target = path.join(fileTagget, filename);
           const writeStream = fs.createWriteStream(target);
@@ -77,8 +79,9 @@ class FileController extends BaseController {
           status:200
         };
 
+        const stream = await ctx.getFileStream();
         try {
-          const stream = await ctx.getFileStream();
+
           const filename = ctx.helper.randomString(8) + path.extname(stream.filename);
           const target = path.join(fileTagget, filename);
           const writeStream = fs.createWriteStream(target);
