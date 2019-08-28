@@ -13,7 +13,7 @@ module.exports = app => {
   router.post('/login',app.passport.authenticate('local', {
        successReturnToOrRedirect : '/roleIndex',successFlash: true,
        failureRedirect: '/relogin',failureFlash: true }));
-       
+
   router.post('/manage/user/createStudent',controller.manage.user.createStudentUser);
   router.post('/manage/user/createTeacher',controller.manage.user.createTeacherUser);
   router.post('/manage/user/createManager',controller.manage.user.createManagerUser);
@@ -25,5 +25,8 @@ module.exports = app => {
 
   router.get('/manage/courseManage', controller.manage.manage.courseManage);
 
+  router.get('/manage/personalManage', controller.manage.manage.personalManage);
+  router.get('/manage/editStoreUser', controller.manage.manage.editStoreUser);
+  router.get('/manage/userRecord', controller.manage.manage.userRecord);
 
 };

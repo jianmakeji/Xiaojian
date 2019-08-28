@@ -1,0 +1,37 @@
+/* 店铺筛选 */
+.right .filtrMenu{
+    width: 90%;
+    margin: 0 5%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft .ivu-select-selection{
+    border: 2px solid #FFC837;
+}
+.right .filtrMenu .filtrLeft .storeInfo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft .storeInfo label{
+    font-size: 15px;
+    margin-right: 10px;
+    letter-spacing: 1px;
+}
+/* 人员查找 */
+.right .filtrMenu .filtrLeft .userSearch{
+    margin-left: 20px;
+}
+.right .filtrMenu .filtrLeft .userSearchInput .ivu-input{
+    border: 2px solid #FFC837;
+}

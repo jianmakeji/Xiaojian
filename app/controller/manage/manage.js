@@ -17,6 +17,24 @@ class ManageController extends Controller {
         user : ctx.user
       });
   }
+  async personalManage(){
+      const ctx = this.ctx;
+      await ctx.render('manage/personalManage.html', {
+        user : ctx.user
+      });
+  }
+  async editStoreUser(){
+      const ctx = this.ctx;
+      await ctx.render('manage/editStoreUser.html', {
+        user : ctx.user
+      });
+  }
+  async userRecord(){
+      const ctx = this.ctx;
+      await ctx.render('manage/userRecord.html', {
+        user : ctx.user
+      });
+  }
 }
 
 module.exports = ManageController;

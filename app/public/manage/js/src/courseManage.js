@@ -1,5 +1,5 @@
-var courseManage = new Vue({
-    el:".courseManage",
+var index = new Vue({
+    el:".index",
     data(){
         return{
             storeId:"1",
