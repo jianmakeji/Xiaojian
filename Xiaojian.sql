@@ -1,5 +1,5 @@
 ﻿# Host: 192.168.3.110  (Version 5.6.28-log)
-# Date: 2019-08-26 17:00:10
+# Date: 2019-08-28 15:04:02
 # Generator: MySQL-Front 6.0  (Build 2.25)
 
 
@@ -12,7 +12,8 @@ CREATE TABLE `course` (
   `courseName` varchar(60) NOT NULL DEFAULT '',
   `courseAbstract` varchar(255) DEFAULT NULL,
   `h5Address` varchar(100) DEFAULT NULL,
-  `courseThumb` varchar(80) DEFAULT NULL,
+  `courseThumbA` varchar(80) DEFAULT NULL,
+  `courseThumbB` varchar(80) DEFAULT NULL,
   `courseType` tinyint(3) NOT NULL DEFAULT '0' COMMENT '0:基础课程 1：辅助课程 2：体育课程',
   `courseSubType` smallint(6) DEFAULT NULL COMMENT '0:成语故事 1：儿童诗歌 2：常识 3：美术 4：篮球',
   `createAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -36,6 +37,7 @@ CREATE TABLE `course_choose` (
   `teacherId` int(11) NOT NULL DEFAULT '0',
   `courseAId` int(11) DEFAULT NULL,
   `courseBId` int(11) DEFAULT NULL,
+  `courseDate` date DEFAULT NULL,
   `xclassId` int(11) NOT NULL DEFAULT '0' COMMENT '班级ID',
   `createAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`),
@@ -73,7 +75,7 @@ CREATE TABLE `shop` (
   `shopName` varchar(60) NOT NULL DEFAULT '',
   `createAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "shop"
@@ -87,7 +89,13 @@ INSERT INTO `shop` VALUES (1,'A店','2019-08-26 11:56:39'),(2,'B店','2019-08-26
 
 CREATE TABLE `student` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `shopId` int(11) NOT NULL DEFAULT '0',
   `studentName` varchar(30) NOT NULL DEFAULT '',
+  `age` smallint(6) DEFAULT NULL,
+  `gender` tinyint(1) DEFAULT NULL,
+  `health` tinyint(1) DEFAULT NULL,
+  `interactiveCourse` tinyint(1) DEFAULT NULL,
+  `integral` int(11) DEFAULT NULL,
   `createAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updateAt` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`)
@@ -107,17 +115,21 @@ CREATE TABLE `user` (
   `username` varchar(30) NOT NULL DEFAULT '',
   `password` varchar(60) NOT NULL DEFAULT '',
   `shopId` int(11) NOT NULL DEFAULT '0',
+  `age` smallint(6) DEFAULT NULL,
+  `gender` tinyint(3) DEFAULT NULL,
+  `idNum` varchar(10) DEFAULT NULL,
   `realname` varchar(20) DEFAULT NULL,
+  `jobTitle` smallint(6) DEFAULT NULL,
   `createAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updateAt` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "user"
 #
 
-INSERT INTO `user` VALUES (1,'cidic','',1,'张老师','2019-08-26 11:58:04',NULL),(2,'admin','',0,'管理员','2019-08-26 11:58:29',NULL);
+INSERT INTO `user` VALUES (1,'cidic','',1,NULL,NULL,NULL,'张老师',NULL,'2019-08-26 11:58:04',NULL),(2,'admin','',0,NULL,NULL,NULL,'管理员',NULL,'2019-08-26 11:58:29',NULL),(3,'','684743c2a261edf2cac2ed0a9b684bcd69b4c04e',0,NULL,NULL,'',NULL,NULL,'2019-08-28 14:01:25','2019-08-28 14:01:25');
 
 #
 # Structure for table "user_role"
@@ -129,13 +141,13 @@ CREATE TABLE `user_role` (
   `roleId` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`Id`),
   KEY `userId` (`userId`,`roleId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "user_role"
 #
 
-INSERT INTO `user_role` VALUES (1,1,2),(2,2,1);
+INSERT INTO `user_role` VALUES (1,1,2),(2,2,1),(3,3,3);
 
 #
 # Structure for table "xclass"

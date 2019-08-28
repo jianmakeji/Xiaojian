@@ -17,6 +17,8 @@ module.exports = app => {
   router.post('/manage/user/createStudent',controller.manage.user.createStudentUser);
   router.post('/manage/user/createTeacher',controller.manage.user.createTeacherUser);
   router.post('/manage/user/createManager',controller.manage.user.createManagerUser);
+  router.post('/manage/file/uploadFile/:fileType', controller.manage.file.uploadFile);
+  router.post('/manage/file/uploadZipFile', controller.manage.file.uploadZipFile);
 
   router.resources('/manage/user',  controller.manage.user);
   router.resources('/manage/course',  controller.manage.course);
