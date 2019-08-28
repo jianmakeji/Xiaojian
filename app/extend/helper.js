@@ -10,14 +10,14 @@ module.exports = {
     return parseInt(string) || 0;
   },
 
-
+  baseUrl: '/public/sysImages/',
   basePath: path.join(__dirname, '../public/sysImages/'),
 
   coursePath: 'course/',
   workerPath: 'worker/',
   othersPath: 'others/',
   h5Path: 'h5/',
-  
+
   cryptoPwd:(password)=>{
     const prefix = '1663er%^h#$61';
     var sha1 = crypto.createHash('sha1');
