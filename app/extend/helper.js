@@ -16,7 +16,8 @@ module.exports = {
   coursePath: 'course/',
   workerPath: 'worker/',
   othersPath: 'others/',
-
+  h5Path: 'h5/',
+  
   cryptoPwd:(password)=>{
     const prefix = '1663er%^h#$61';
     var sha1 = crypto.createHash('sha1');
