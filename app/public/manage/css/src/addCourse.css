@@ -8,3 +8,8 @@
     color: #FFC837;
     letter-spacing: 2px;
 }
+.right .formView{
+    width: 60%;
+    margin-top: 20px;
+    margin-left: 5%;
+}
