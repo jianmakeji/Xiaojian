@@ -34,18 +34,40 @@ class UsersController extends BaseController{
     }
   }
 
-  async createUser() {
+  async createStudentUser() {
     const ctx = this.ctx;
     try{
       let data = ctx.request.body;
-      if (data.captchaText.toLowerCase() != this.ctx.session.captcha){
-        super.failure(ctx.__('verificationCodeError'));
-      }
-      else{
-        const user = await ctx.service.user.createUser(data);
-        super.success(ctx.__('createdSuccess'));
-      }
+      const user = await ctx.service.user.createUser(data, 3);
+      super.success(ctx.__('createdSuccess'));
+    }
+    catch(e){
+      console.log(e);
+      ctx.logger.error(e.message);
+      super.failure(e.message);
+    }
+  }
 
+  async createTeacherUser() {
+    const ctx = this.ctx;
+    try{
+      let data = ctx.request.body;
+      const user = await ctx.service.user.createUser(data, 2);
+      super.success(ctx.__('createdSuccess'));
+    }
+    catch(e){
+      console.log(e);
+      ctx.logger.error(e.message);
+      super.failure(e.message);
+    }
+  }
+
+  async createManagerUser() {
+    const ctx = this.ctx;
+    try{
+      let data = ctx.request.body;
+      const user = await ctx.service.user.createUser(data, 1);
+      super.success(ctx.__('createdSuccess'));
     }
     catch(e){
       console.log(e);

@@ -11,12 +11,6 @@ class ManageController extends Controller {
       });
   }
 
-  async login(){
-      const ctx = this.ctx;
-      await ctx.render('manage/login.html', {
-        user : ctx.user
-      });
-  }
   async courseManage(){
       const ctx = this.ctx;
       await ctx.render('manage/courseManage.html', {

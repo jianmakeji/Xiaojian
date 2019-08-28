@@ -23,81 +23,24 @@ class User extends Service {
     return user;
   }
 
-  async createUser(user) {
+  async createUser(user,role) {
     const ctx = this.ctx;
-    if (user.mobileOrEmail == 1){
-      if (user.mobile == '' || user.mobile == null) {
-        throw new Error(ctx.__('mobileNotEmpty'));
-      } else {
-        const userObj = await this.ctx.model.User.findUserByMobile(user.mobile);
-        if (userObj) {
-          throw new Error(ctx.__('userExist'));
-        } else {
-          //判断短信验证码是否正确
-          let curDate = new Date();
-          let preDate = moment(new Date(curDate.getTime() - 30 * 60 * 1000)).format('YYYY-MM-DD HH:mm:ss');
-          let smsObject = await this.ctx.model.SmsMessage.vertifyCode({
-            mobile: user.mobile,
-            code: user.smsCode
-          });
-          if (smsObject) {
-            if (smsObject.createAt > preDate) {
-              let transaction;
-              try {
-                transaction = await this.ctx.model.transaction();
-                const helper = this.ctx.helper;
-                user.password = helper.cryptoPwd(helper.cryptoPwd(user.password));
-                user.activeCode = UUID.v1();
-                user.activesign = 1;
-                const createUserObj = await this.ctx.model.User.createUser(user, transaction);
-                await this.ctx.model.UserRole.creteUserRole(createUserObj.Id, 3, transaction);
-                await transaction.commit();
 
-                return createUserObj;
-              } catch (e) {
-                this.ctx.logger.error(e.message);
-                await transaction.rollback();
-                return false;
-              }
-            } else {
-              throw new Error(ctx.__('mobileVertifyfailure'));
-            }
-          } else {
-            throw new Error(ctx.__('mobileVertifyIsNotCorrect'));
-          }
-        }
-      }
-    }
-    else{
-      if (user.email == '' || user.email == null) {
-        throw new Error(ctx.__('noEmail'));
-      } else {
-        const userObj = await this.ctx.model.User.findUserByEmail(user.email);
-        if (userObj){
-          throw new Error(ctx.__('userExist'));
-        }
-        else{
-          let transaction;
-          try {
-            transaction = await this.ctx.model.transaction();
-            const helper = this.ctx.helper;
-            user.password = helper.cryptoPwd(helper.cryptoPwd(user.password));
-            user.activeCode =  UUID.v1();
-            const createUserObj = await this.ctx.model.User.createUser(user,transaction);
-            await this.ctx.model.UserRole.creteUserRole(createUserObj.Id, 3, transaction);
-            await this.ctx.service.emailService.sendActiveEmail(user.email, user.activeCode);
-            await transaction.commit();
-            return createUserObj;
-          } catch (e) {
-            console.log(e);
-            this.ctx.logger.error(e.message);
-            await transaction.rollback();
-            return false;
-          }
-        }
-      }
-    }
+    let transaction;
+    try {
+      transaction = await this.ctx.model.transaction();
+      const helper = this.ctx.helper;
+      user.password = helper.cryptoPwd(helper.cryptoPwd(user.password));
+      const createUserObj = await this.ctx.model.User.createUser(user, transaction);
+      await this.ctx.model.UserRole.creteUserRole(createUserObj.Id, role, transaction);
+      await transaction.commit();
 
+      return createUserObj;
+    } catch (e) {
+      this.ctx.logger.error(e.message);
+      await transaction.rollback();
+      return false;
+    }
   }
 
   async update({
@@ -142,7 +85,7 @@ class User extends Service {
     }
   }
 
-  async updateValidByUserId(userId,valid){
+  async updateValidByUserId(userId, valid) {
     await this.ctx.model.User.updateValidByUserId(userId, valid);
   }
 
@@ -196,14 +139,13 @@ class User extends Service {
     }
   }
 
-  async getBackPwdWithEmail(email){
-    try{
-        const activeCode =  UUID.v1();
-        await this.ctx.model.User.updateUserActiveCodeByEmail(email, activeCode);
-        await this.ctx.service.emailService.sendBackPwdEmail(email, activeCode);
-        return true;
-    }
-    catch(e){
+  async getBackPwdWithEmail(email) {
+    try {
+      const activeCode = UUID.v1();
+      await this.ctx.model.User.updateUserActiveCodeByEmail(email, activeCode);
+      await this.ctx.service.emailService.sendBackPwdEmail(email, activeCode);
+      return true;
+    } catch (e) {
       return false;
     }
   }
