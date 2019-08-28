@@ -24,12 +24,12 @@ function getJsonFiles(jsonPath){
 
 module.exports.getH5Url = (folderName, helper, filename) => {
 
-    let h5Dir = path.join(helper.h5Path, folderName + path.sep);
+    let h5Dir = path.join(helper.basePath, helper.h5Path, folderName + path.sep);
 
     let pathExist = fs.existsSync(h5Dir);
 
     if (pathExist){
-        let ziprarPath = helper.h5Path + filename;
+        let ziprarPath = helper.basePath + helper.h5Path + filename;
         var zip = new AdmZip(ziprarPath);
         zip.extractAllTo(h5Dir, true);
         if(fs.existsSync(ziprarPath)){
