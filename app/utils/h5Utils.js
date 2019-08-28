@@ -29,7 +29,7 @@ module.exports.getH5Url = (folderName, helper, filename) => {
     let pathExist = fs.existsSync(h5Dir);
 
     if (pathExist){
-        let ziprarPath = h5Dir + filename;
+        let ziprarPath = helper.h5Path + filename;
         var zip = new AdmZip(ziprarPath);
         zip.extractAllTo(h5Dir, true);
         if(fs.existsSync(ziprarPath)){
