@@ -97,7 +97,6 @@ module.exports = appInfo => {
     ],
     maxFileSize: 0.3 * 1024 * 1024 * 1024,
   };
-
   return {
     ...config,
     ...userConfig,
