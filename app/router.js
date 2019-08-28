@@ -28,5 +28,10 @@ module.exports = app => {
   router.get('/manage/personalManage', controller.manage.manage.personalManage);
   router.get('/manage/editStoreUser', controller.manage.manage.editStoreUser);
   router.get('/manage/userRecord', controller.manage.manage.userRecord);
-
+  router.get('/manage/existUsers', controller.manage.manage.existUsers);
+  router.get('/manage/storeMonitor', controller.manage.manage.storeMonitor);
+  router.get('/manage/monitorDetail', controller.manage.manage.monitorDetail);
+  router.get('/manage/studentManage', controller.manage.manage.studentManage);
+  router.get('/manage/courseContentManage', controller.manage.manage.courseContentManage);
+  router.get('/manage/addCourse', controller.manage.manage.addCourse);
 };

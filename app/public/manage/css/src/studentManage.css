@@ -1,28 +1,15 @@
-
-/* ************子菜单选项:用户记录。现存用户。店铺监控**************** */
-.right .subMenu{
+.right .headMenu .leftTabs {
     width: 400px;
-    margin-left: 5%;
-    margin-top: 20px;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    justify-content:flex-start;
+    margin-left: 0px;
 }
-.right .subMenu .subMenuBtn{
-    background: #CCCCCC;
-    color: #fff;
-    letter-spacing: 2px;
-}
-.right .subMenu .subMenuBtn.active{
-    background: #FFC837;
-    border-color: #FFC837;
-    letter-spacing: 2px;
-}
-.right .subMenu .line{
-    width: 4px;
-    height: 20px;
-    background: #FFC837;
+.right .headMenu .leftTabs p{
+    font-size: 17px;
+    color: #FFC837;
+    border-bottom: solid 2px #FFC837;
+    cursor: pointer;
 }
 /* 店铺筛选 */
 .right .filtrMenu{
@@ -60,6 +47,10 @@
 }
 .right .filtrMenu .filtrLeft .userSearchInput .ivu-input{
     border: 1px solid #FFC837;
+}
+.right .filtrMenu .filtrRight .addStudent{
+    background: #FFC837;
+    border-color: #FFC837;
 }
 
 /* **********table数据列表************** */

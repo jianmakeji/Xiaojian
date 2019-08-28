@@ -46,9 +46,15 @@ var index = new Vue({
     },
     methods:{
         menuChange(value){
-            console.log(typeof value);
-            $(".menuBtns").children('.active').removeClass('active');
-            $(".menuBtns").children().eq(value).addClass('active');
+            switch (value) {
+                case 1:
+                    window.location.href = "/manage/studentManage";
+                    break;
+                case 2:
+                    window.location.href = "/manage/courseContentManage";
+                    break;
+                default:
+            }
         },
         storeChange(value){
             console.log(value);
@@ -103,6 +109,7 @@ var index = new Vue({
         },
     },
     created(){
-
+        $(".menuBtns").children('.active').removeClass('active');
+        $(".menuBtns").children().eq(0).addClass('active');
     }
 })

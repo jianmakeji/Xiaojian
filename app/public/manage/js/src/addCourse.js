@@ -2,20 +2,18 @@ var index = new Vue({
     el:".index",
     data(){
         return{
-            storeId:"",
-            storeData:[
-                {value: '1',label: '店铺A'},
-                {value: '2',label: '店铺B'}
+            courseTypeId:"",
+            courseTypeData:[
+                {value: '1',label: '儿童诗歌'},
+                {value: '2',label: '成语故事'},
+                {value: '2',label: '辅助课程'}
             ],
+            searchCourseTypeValue:"",
 
-            searchPersonalValue:""
         }
     },
     methods:{
         menuChange(value){
-            console.log(typeof value);
-            $(".menuBtns").children('.active').removeClass('active');
-            $(".menuBtns").children().eq(value).addClass('active');
             switch (value) {
                 case 0:
                     window.location.href = "/manage/courseManage";
@@ -28,19 +26,10 @@ var index = new Vue({
                     break;
                 default:
             }
-        },
-        storeChange(){
-
-        },
-        searchPersonalEvent(){
-
-        },
-        editStoreUser(userId){
-            console.log("编辑用户Id");
-            window.location.href = "/manage/editStoreUser";
         }
     },
     created(){
-
+        $(".menuBtns").children('.active').removeClass('active');
+        $(".menuBtns").children().eq(2).addClass('active');
     }
 })

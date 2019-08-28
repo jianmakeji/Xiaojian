@@ -62,14 +62,36 @@
     border: 1px solid #FFC837;
 }
 
-/* **********table数据列表************** */
-.right .tableView{
+/* ****************店铺监控详情****************** */
+.right .monitorDetailView{
     width: 90%;
-    margin: 0 5%;
     margin-top: 20px;
+    margin-left: 5%;
 }
-.right .page{
+.right .monitorDetailView .opts{
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .monitorDetailView .opts .time{
+    color: #FFC837;
+    font-size: 20px;
+}
+.right .monitorDetailView .opts .checkHistoryBtn{
+    background: #FFC837;
+    border-color: #FFC837;
+    letter-spacing: 2px;
+}
+.right .monitorDetailView .monitorDetail{
     width: 100%;
-    margin-top: 20px;
+    height: auto;
     text-align: center;
+    margin-top: 60px;
+}
+.right .monitorDetailView .monitorDetail img{
+    width: 1000px;
+    height: 600px;
+    border-radius: 40px;
 }

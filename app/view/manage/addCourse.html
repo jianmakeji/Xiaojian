@@ -1,0 +1,35 @@
+{% extends "manage/parent.html" %}
+
+{% block cssfolder %}
+<link rel="stylesheet" href="../public/manage/css/lib/iview.css">
+<link rel="stylesheet" href="../public/manage/css/src/basic.css">
+<link rel="stylesheet" href="../public/manage/css/src/addCourse.css">
+{% endblock %}
+
+
+{% block right %}
+<div class="right">
+    {% block headMenu %}
+        <div class="headMenu">
+            <div class="leftTabs">
+
+            </div>
+            <div class="rightUserInfo">
+                <img class="headImg" src="../public/images/user.png">
+                <span class="username">skhdbsb</span>
+            </div>
+        </div>
+    {% endblock %}
+
+    <!-- 添加课程 -->
+    <p class="title">添加课程</p>
+    <!-- 添加课程 end -->
+</div>
+{% endblock %}
+
+{% block jsfolder %}
+	<script type="text/javascript" src="../public/manage/js/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="../public/manage/js/lib/vue.min.js"></script>
+	<script type="text/javascript" src="../public/manage/js/lib/iview.min.js"></script>
+	<script type="text/javascript" src="../public/manage/js/src/addCourse.js"></script>
+{% endblock %}

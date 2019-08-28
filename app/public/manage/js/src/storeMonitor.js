@@ -7,8 +7,7 @@ var index = new Vue({
                 {value: '1',label: '店铺A'},
                 {value: '2',label: '店铺B'}
             ],
-
-            searchPersonalValue:""
+            searchValue:"",
         }
     },
     methods:{
@@ -32,12 +31,11 @@ var index = new Vue({
         storeChange(){
 
         },
-        searchPersonalEvent(){
+        searchEvent(){
 
         },
-        editStoreUser(userId){
-            console.log("编辑用户Id");
-            window.location.href = "/manage/editStoreUser";
+        checkMonitorEvent(){
+            window.location.href = "/manage/monitorDetail";
         }
     },
     created(){

@@ -60,15 +60,9 @@ var index = new Vue({
     },
     methods:{
         menuChange(value){
-            console.log(typeof value);
-            $(".menuBtns").children('.active').removeClass('active');
-            $(".menuBtns").children().eq(value).addClass('active');
             switch (value) {
                 case 0:
                     window.location.href = "/manage/courseManage";
-                    break;
-                case 1:
-                    window.location.href = "/manage/studentManage";
                     break;
                 case 2:
                     window.location.href = "/manage/courseContentManage";
@@ -91,6 +85,7 @@ var index = new Vue({
         }
     },
     created(){
-
+        $(".menuBtns").children('.active').removeClass('active');
+        $(".menuBtns").children().eq(1).addClass('active');
     }
 })

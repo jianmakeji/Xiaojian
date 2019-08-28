@@ -3,7 +3,7 @@
 {% block cssfolder %}
 <link rel="stylesheet" href="../public/manage/css/lib/iview.css">
 <link rel="stylesheet" href="../public/manage/css/src/basic.css">
-<link rel="stylesheet" href="../public/manage/css/src/existUsers.css">
+<link rel="stylesheet" href="../public/manage/css/src/storeMonitor.css">
 {% endblock %}
 
 
@@ -25,11 +25,11 @@
 
     <!-- 子菜单选项 -->
     <div class="subMenu">
-        <i-button class="subMenuBtn active" type="warning">用户记录</i-button>
+        <i-button class="subMenuBtn" type="default" to="/manage/userRecord">用户记录</i-button>
         <span class="line"></span>
         <i-button class="subMenuBtn" type="default" to="/manage/existUsers">现存用户</i-button>
         <span class="line"></span>
-        <i-button class="subMenuBtn" type="default" to="/manage/storeMonitor">店铺监控</i-button>
+        <i-button class="subMenuBtn active" type="warning">店铺监控</i-button>
     </div>
     <!-- 子菜单选项 end -->
 
@@ -43,18 +43,30 @@
                 </i-select>
             </div>
             <div class="userSearch">
-                <i-input class="userSearchInput" v-model="searchPersonalValue" placeholder="输入搜索内容" search @on-search="searchPersonalEvent"></i-input>
+                <i-input class="userSearchInput" v-model="searchValue" placeholder="输入搜索内容" search @on-search="searchEvent"></i-input>
             </div>
         </div>
     </div>
     <!-- 店铺筛选 end -->
 
-    <!-- table数据列表 -->
-    <div class="tableView">
-        <i-table border :columns="columns" :data="tableData"></i-table>
-        <page class="page" :total="100" show-total show-elevator></page>
+    <!-- 店铺监控列表 -->
+    <div class="monitorView">
+        <p class="time">2019.08.12 15:55</p>
+        <ul class="monitorListUL">
+            <row>
+                <i-col :xs="24" :sm="12" :md="12" :lg="12" v-for="(item,index) in [1,2,3,4]">
+                    <li class="monitorItem">
+                        <img class="monitorImg" src="../public/images/3.png" alt="">
+                        <div class="monitorInfo">
+                            <div class="area">A区</div>
+                            <i-button type="warning" @click="checkMonitorEvent">查看</i-button>
+                        </div>
+                    </li>
+                <i-col>
+            </row>
+        </ul>
     </div>
-    <!-- table数据列表 end -->
+    <!-- 店铺监控列表 end -->
 </div>
 {% endblock %}
 
@@ -62,5 +74,5 @@
 	<script type="text/javascript" src="../public/manage/js/lib/jquery.min.js"></script>
     <script type="text/javascript" src="../public/manage/js/lib/vue.min.js"></script>
 	<script type="text/javascript" src="../public/manage/js/lib/iview.min.js"></script>
-	<script type="text/javascript" src="../public/manage/js/src/existUsers.js"></script>
+	<script type="text/javascript" src="../public/manage/js/src/storeMonitor.js"></script>
 {% endblock %}
