@@ -71,6 +71,7 @@ var index = new Vue({
                         that.$Notice.success({title:'上传成功！'});
                         that.imgUrl_1 = res.url;
                         that.formItem.courseThumbA = res.url;
+                        that.fileName_1 = files.target.files[0].name;
                     }else if(res.status == 500){
                         that.$Notice.error({title: "上传出错"});
                     }else if(res.status == 999){
@@ -106,6 +107,7 @@ var index = new Vue({
                         that.$Notice.success({title:'上传成功！'});
                         that.imgUrl_2 = res.url;
                         that.formItem.courseThumbB = res.url;
+                        that.fileName_2 = files.target.files[0].name;
                     }else if(res.status == 500){
                         that.$Notice.error({title: "上传出错"});
                     }else if(res.status == 999){
@@ -152,10 +154,37 @@ var index = new Vue({
                 }
             })
         },
-        courseTypeChange(){
-
+        courseTypeChange(courseTypeId){
+            this.formItem.courseType = courseTypeId;
         },
-        courseSubTypeChange(){
+        courseSubTypeChange(courseSubTypeId){
+            this.formItem.courseSubType = courseSubTypeId;
+        },
+        submitCourse(){
+            let notNullData = true;
+            for (var key in this.formItem) {
+                if (this.formItem[key] == "" ) {
+                    notNullData = false;
+                }
+            }
+            if (notNullData) {
+                $.ajax({
+                    url: config.ajaxUrls.createCourse,
+                    type: 'POST',
+                    data: this.formItem
+                })
+                .done(function(res) {
+                    console.log("success",res);
+                })
+                .fail(function(err) {
+                    console.log("error",err);
+                })
+
+            } else {
+                this.$Message.error('请填入完整信息！');
+            }
+        },
+        cancelCourse(){
 
         }
     },
@@ -166,39 +195,13 @@ var index = new Vue({
 })
 
 $(document).ready(function() {
+    $('#thumba_upload_btn').click(function(){
+        $('#thumba_upload_input').click();
+    });
+    $('#thumbb_upload_btn').click(function(){
+        $('#thumbb_upload_input').click();
+    });
     $('#h5_upload_ZIP_btn').click(function(){
         $('#h5_upload_ZIP_input').click();
     });
 });
-
-
-/**
- * 文件名编码
- */
-function random_string(len) {
-	len = len || 32;
-	var chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
-	var maxPos = chars.length;
-	var pwd = '';
-	for(let i = 0; i < len; i++) {
-		pwd += chars.charAt(Math.floor(Math.random() * maxPos));
-	}
-	return pwd;
-}
-
-function get_suffix(filename) {
-	let pos = filename.lastIndexOf('.');
-	let suffix = '';
-	if(pos != -1) {
-		suffix = filename.substring(pos);
-	}
-	return suffix;
-}
-
-function calculate_object_name(filename) {
-
-	let suffix = get_suffix(filename);
-	let g_object_name = random_string(10) + suffix;
-
-    return g_object_name;
-}

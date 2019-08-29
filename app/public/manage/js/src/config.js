@@ -25,6 +25,7 @@ var config = {
     },
     ajaxUrls:{
         // 课程上传
+        createCourse:"/manage/course/createCourse",
         uploadFile:'/manage/file/uploadFile/:fileType',
         uploadZipFile:'/manage/file/uploadZipFile',
     },

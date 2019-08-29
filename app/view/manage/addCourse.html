@@ -33,15 +33,20 @@
                     <i-input type="textarea" v-model="formItem.courseAbstract" placeholder="请输入课程简介"></i-input>
                 </form-item>
                 <form-item label="缩略图(纵置)">
-                    <img v-show="imgUrl_1.length" :src="imgUrl_1" style="width:120px;height:169px;margin-bottom:10px;">
+                    <label>请上传纵置png或jpg格式图片</label><br/>
+                    <img v-show="imgUrl_1.length" :src="imgUrl_1" style="width:80px;height:90px;margin-bottom:10px;">
                     <br v-show="imgUrl_1.length">
-                    <input type="file" @change="doUpload_1" ref="inputFile" accept="image/*"/>
+                    <i-button icon="ios-image" id="thumba_upload_btn">缩略图</i-button>
+                    <input type="file" @change="doUpload_1" id="thumba_upload_input" ref="inputFile" accept="image/*" style="display:none;"/>
+                    <p v-text="fileName_1"></p>
                     <i-progress :percent="progressPercent_1" /><span v-text="progressPercent_1 + '%'"></span>
                 </form-item>
                 <form-item label="缩略图(横置)">
-                    <img v-show="imgUrl_2.length" :src="imgUrl_2" style="width:169px;height:120px;margin-bottom:10px;">
+                    <label>请上传横置png或jpg格式图片</label><br/>
+                    <img v-show="imgUrl_2.length" :src="imgUrl_2" style="width:110px;height:70px;margin-bottom:10px;">
                     <br v-show="imgUrl_2.length">
-                    <input type="file" @change="doUpload_2" ref="inputFile" accept="image/*"/>
+                    <i-button icon="ios-image" id="thumbb_upload_btn">缩略图</i-button>
+                    <input type="file" @change="doUpload_2" id="thumbb_upload_input" ref="inputFile" accept="image/*" style="display:none;"/>
                     <i-progress :percent="progressPercent_2" /><span v-text="progressPercent_2 + '%'"></span>
                 </form-item>
                 <form-item label="课程文件">
@@ -63,8 +68,8 @@
                 </form-item>
 
                 <form-item>
-                    <i-button type="primary" @click="">提交</i-button>
-                    <i-button type="primary" @click="">取消</i-button>
+                    <i-button type="primary" @click="submitCourse">提交</i-button>
+                    <i-button type="primary" @click="cancelCourse">取消</i-button>
                 </form-item>
 
         </i-form>
