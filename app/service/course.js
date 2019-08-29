@@ -44,7 +44,7 @@ class Course extends Service {
     limit = 10,
     courseName = '',
   }) {
-    return this.ctx.model.Course.listCourse({
+    return this.ctx.model.Course.listByCourseName({
       offset,
       limit,
       courseName
