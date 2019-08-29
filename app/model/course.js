@@ -68,16 +68,21 @@ module.exports = app => {
 
   };
 
-  Course.listCourse = async function ({ offset = 0, limit = 10 }) {
-    return this.findAndCountAll({
+  Course.listCourse = async function ({ offset = 0, limit = 10, courseSubType = 0 }) {
+    let condition = {
       offset,
       limit,
       order: [[ 'createAt', 'desc' ], [ 'Id', 'desc' ]],
-      include:[
-        {model:app.model.Role,as:'role'},
+      where:{
 
-      ]
-    });
+      }
+    };
+
+    if (courseSubType > 0){
+      condition.where.courseSubType = courseSubType;
+    }
+
+    return this.findAndCountAll(condition);
   }
 
   Course.findCourseById = async function (id) {
@@ -108,6 +113,25 @@ module.exports = app => {
     return course.destroy({
       transaction:transaction
     });
+  }
+
+  Course.listByCourseName = async function ({ offset = 0, limit = 10, courseName = '' }) {
+    let condition = {
+      offset,
+      limit,
+      order: [[ 'createAt', 'desc' ], [ 'Id', 'desc' ]],
+      where:{
+
+      }
+    };
+
+    if (courseName != null && courseName != ''){
+      condition.where.courseName = {
+        [app.Sequelize.Op.like]: '%'+courseName+'%',
+      };
+    }
+
+    return this.findAndCountAll(condition);
   }
 
   return Course;

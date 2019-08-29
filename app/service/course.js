@@ -4,11 +4,13 @@ class Course extends Service {
 
   async list({
     offset = 0,
-    limit = 10
+    limit = 10,
+    courseSubType = 0,
   }) {
     return this.ctx.model.Course.listCourse({
       offset,
-      limit
+      limit,
+      courseSubType
     });
   }
 
@@ -35,6 +37,18 @@ class Course extends Service {
   async del(id) {
     return this.ctx.model.Course.delCourseById(id);
 
+  }
+
+  async listByCourseName({
+    offset = 0,
+    limit = 10,
+    courseName = '',
+  }) {
+    return this.ctx.model.Course.listCourse({
+      offset,
+      limit,
+      courseName
+    });
   }
 }
 

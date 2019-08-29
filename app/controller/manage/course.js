@@ -9,6 +9,7 @@ class CourseController extends BaseController{
     const query = {
       limit: ctx.helper.parseInt(ctx.query.limit),
       offset: ctx.helper.parseInt(ctx.query.offset),
+      courseSubType:ctx.helper.parseInt(ctx.query.courseSubType),
     };
 
     try{
@@ -81,6 +82,23 @@ class CourseController extends BaseController{
     }
   }
 
+  async searchByCourseName() {
+    const ctx = this.ctx;
+    const query = {
+      limit: ctx.helper.parseInt(ctx.query.limit),
+      offset: ctx.helper.parseInt(ctx.query.offset),
+      courseName:ctx.query.courseName,
+    };
+
+    try{
+      const result = await ctx.service.course.list(query);
+      super.success(result);
+    }
+    catch(e){
+      ctx.logger.error(e.message);
+      super.failure(e.message);
+    }
+  }
 }
 
 module.exports = CourseController;
