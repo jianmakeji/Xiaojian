@@ -78,7 +78,7 @@ module.exports = app => {
       }
     };
 
-    if (courseSubType > 0){
+    if (courseSubType < 0){
       condition.where.courseSubType = courseSubType;
     }
 
