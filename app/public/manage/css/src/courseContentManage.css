@@ -71,6 +71,7 @@
     width: 240px;
     height: 150px;
     border-radius: 10px;
+    border: solid 1px #FFC837;
 }
 .right .courseList .courseItem .courseName{
     font-size: 17px;
@@ -86,7 +87,10 @@
 }
 .right .courseList .courseItem .opts .editCourse{
     margin-right: 20px;
+    background: #FFC837;
+    border-color: #FFC837;
 }
 .right .courseList .page{
     margin-top: 10px;
+    text-align: center;
 }
