@@ -48,7 +48,7 @@ module.exports.getH5Url = (folderName, helper, filename) => {
     }
 
     if(indexPath != ''){
-      return helper.h5Path + indexPath.replace(helper.basePath,'');
+      return indexPath.replace(helper.basePath,'');
     }
     else{
       return indexPath;
