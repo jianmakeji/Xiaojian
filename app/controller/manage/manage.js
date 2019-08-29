@@ -67,8 +67,14 @@ class ManageController extends Controller {
   }
   async addCourse(){
       const ctx = this.ctx;
+      let id = ctx.helper.parseInt(ctx.params.id)
+      let course;
+      if(id != 0){
+        course = await ctx.service.course.find(id);
+      }
       await ctx.render('manage/addCourse.html', {
-        user : ctx.user
+        user : ctx.user,
+        course: course,
       });
   }
 }
