@@ -13,3 +13,8 @@
     margin-top: 20px;
     margin-left: 5%;
 }
+.right .formView .progressView .ivu-progress-show-info .ivu-progress-outer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

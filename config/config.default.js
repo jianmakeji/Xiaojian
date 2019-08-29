@@ -97,16 +97,6 @@ module.exports = appInfo => {
     ],
     maxFileSize: 0.3 * 1024 * 1024 * 1024,
   };
-
-  config.bodyParser = {
-    jsonLimit: '50mb',
-    formLimit: '50mb',
-  };
-
-  config.multipart = {
-    mode: 'file',
-    fileSize:1048576000,
-  };
   return {
     ...config,
     ...userConfig,
