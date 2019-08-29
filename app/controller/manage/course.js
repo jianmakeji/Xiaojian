@@ -53,9 +53,10 @@ class CourseController extends BaseController{
   async update() {
     const ctx = this.ctx;
     const id = ctx.params.id;
-    
+    const updates = ctx.request.body;
+
     try{
-      await ctx.service.course.update({ id, ctx.request.body });
+      await ctx.service.course.update({ id, updates });
       super.success(ctx.__('updateSuccessful'));
     }
     catch(e){
