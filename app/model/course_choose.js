@@ -42,6 +42,13 @@ module.exports = app => {
       allowNull: false,
       defaultValue: '0',
     },
+    courseDate: {
+      type: DATE,
+      allowNull: false,
+      get() {
+          return moment(this.getDataValue('courseDate')).format('YYYY-MM-DD');
+      }
+    },
     createAt: {
       type: DATE,
       allowNull: false,

@@ -38,7 +38,7 @@ class CourseController extends BaseController{
     try{
       let data = ctx.request.body;
 
-        const user = await ctx.service.course.createUser(data);
+        const user = await ctx.service.course.createCourse(data);
         super.success(ctx.__('createdSuccess'));
 
     }
