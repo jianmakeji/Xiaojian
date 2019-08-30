@@ -21,6 +21,8 @@ module.exports = app => {
   router.post('/manage/file/uploadZipFile', controller.manage.file.uploadZipFile);
   router.post('/manage/course/createCourse', controller.manage.course.createCourse);
   router.get('/manage/course/searchByCourseName', controller.manage.course.searchByCourseName);
+  router.get('/manage/course/listAllCourseByType', controller.manage.course.listAllCourseByType);
+  router.get('/manage/courseChoose/listCourseByDate', controller.manage.courseChoose.listCourseByDate);
 
   router.resources('/manage/user',  controller.manage.user);
   router.resources('/manage/course',  controller.manage.course);

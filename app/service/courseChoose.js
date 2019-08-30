@@ -37,6 +37,15 @@ class CourseChoose extends Service {
 
   }
 
+  async listCourseByDate({
+    shopId = 0,
+    courseDate = '2019-01-07'
+  }) {
+    return this.ctx.model.CourseChoose.listCourseByDate({
+      shopId,
+      courseDate
+    });
+  }
 }
 
 module.exports = CourseChoose;

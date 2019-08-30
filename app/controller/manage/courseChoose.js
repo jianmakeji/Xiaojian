@@ -81,6 +81,21 @@ class CourseChooseController extends BaseController{
     }
   }
 
+  async listCourseByDate() {
+    const ctx = this.ctx;
+    const query = {
+      shopId: ctx.helper.parseInt(ctx.query.shopId),
+      courseDate: ctx.query.courseDate,
+    };
+    try{
+      await ctx.service.courseChoose.listCourseByDate(query);
+      super.success(ctx.__('deletedSuccessful'));
+    }
+    catch(e){
+      ctx.logger.error(e.message);
+      super.failure(e.message);
+    }
+  }
 }
 
 module.exports = CourseChooseController;

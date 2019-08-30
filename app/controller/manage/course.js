@@ -96,6 +96,23 @@ class CourseController extends BaseController{
       super.failure(e.message);
     }
   }
+
+  async listAllCourseByType() {
+    const ctx = this.ctx;
+    const query = {
+      courseType: ctx.helper.parseInt(ctx.query.courseType),
+      courseSubType: ctx.helper.parseInt(ctx.query.courseSubType)
+    };
+
+    try{
+      const result = await ctx.service.course.listByCourseName(query);
+      super.success(result);
+    }
+    catch(e){
+      ctx.logger.error(e.message);
+      super.failure(e.message);
+    }
+  }
 }
 
 module.exports = CourseController;

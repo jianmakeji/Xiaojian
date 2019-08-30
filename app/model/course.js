@@ -85,6 +85,27 @@ module.exports = app => {
     return this.findAndCountAll(condition);
   }
 
+  Course.listAllCourseByType = async function ({ courseType = 0, courseSubType = 0 }) {
+    let condition = {
+      offset,
+      limit,
+      order: [[ 'createAt', 'desc' ], [ 'Id', 'desc' ]],
+      where:{
+
+      }
+    };
+
+    if (courseSubType > 0){
+      condition.where.courseSubType = courseSubType;
+    }
+
+    if (courseType > 0){
+      condition.where.courseType = courseType;
+    }
+
+    return this.findAndCountAll(condition);
+  }
+
   Course.findCourseById = async function (id) {
     const course = await this.findByPk(id);
     if (!course) {

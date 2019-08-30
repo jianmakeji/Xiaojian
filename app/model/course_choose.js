@@ -75,9 +75,36 @@ module.exports = app => {
       offset,
       limit,
       order: [[ 'createAt', 'desc' ], [ 'Id', 'desc' ]],
-      include:[
-        {model:app.model.Role,as:'role'},
 
+    });
+  }
+
+  CourseChoose.listCourseByDate = async function ({ shopId = 0, courseDate = '2019-01-07' }) {
+    let startTime = new Date(courseDate);
+    let endTempTime = startTime.setDate(startTime.getDate() + 7);
+    let endTime = new Date(endTempTime);
+
+    return this.findAll({
+      order: [[ 'createAt', 'desc' ], [ 'Id', 'desc' ]],
+      where:{
+        shopId:shopId,
+        courseDate:{
+          [Op.between]: [courseDate, endTime.toLocalDateString()],
+        }
+      }
+      include:[
+        {
+          model:app.model.Course,as:'courseA'
+        },
+        {
+          model:app.model.Course,as:'courseB'
+        },
+        {
+          model:app.model.Xclass,as:'xclass'
+        },
+        {
+          model:app.model.User,as:'teacher'
+        },
       ]
     });
   }

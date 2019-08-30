@@ -50,6 +50,16 @@ class Course extends Service {
       courseName
     });
   }
+
+  async listAllCourseByType({
+    courseType = 0,
+    courseSubType = 0,
+  }) {
+    return this.ctx.model.Course.listAllCourseByType({
+      courseType,
+      courseSubType,
+    });
+  }
 }
 
 module.exports = Course;
