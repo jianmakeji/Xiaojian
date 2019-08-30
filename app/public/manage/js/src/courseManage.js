@@ -112,6 +112,25 @@ String.prototype.weekIndexInMonth = function () {
     return weekIndex;
 };
 
+//某月有几周
+String.prototype.weekInMonthCount = function () {
+    var date = new Date((new Date(this).setDate(1)) || (new Date()).setDate(1));
+    var firstWeekDate = 1;// 默认第一周是本月1号  为了模拟本月1号是否为本月第1周的判断
+    if (date.getDay() === 1) { // 判断1号是周一
+        firstWeekDate = 1;
+    } else if (date.getDay() === 0) { // 判断1号是周日
+        firstWeekDate = 0;
+    } else { // 判断1号是周二至周六之间
+        firstWeekDate = 8 - date.getDay() + 1;
+    }
+    date.setMonth(date.getMonth()+1);
+    date.setDate(0);
+    var monthHasDays = date.getDate();// 本月天数
+    monthHasDays = date.getDate() - firstWeekDate + 1;
+    var hasWeek = Math.ceil(monthHasDays/7); // 计算本月有几周
+    return hasWeek;
+};
+
 // 获取周的区间
 String.prototype.getWeekRange = function () {
     var nowDate = new Date(this.trim() != '' ? this : new Date()),
@@ -140,6 +159,15 @@ String.prototype.getWeekRange = function () {
     return [dateFormat(weekStart, 'yyyy/MM/dd'), dateFormat(weekEnd, 'yyyy/MM/dd')];
 }
 
+function parserDate(date) {
+    var t = Date.parse(date);
+    if (!isNaN(t)) {
+        return new Date(Date.parse(date.replace(/-/g, "/")));
+    } else {
+        return new Date();
+    }
+};
+
 
 var index = new Vue({
     el:".index",
@@ -149,46 +177,90 @@ var index = new Vue({
             storeData:config.globalData.storeData,
             year:"",
             month:"",
-            week:"",
+            week:"1",
+            dateData:config.globalData.dateData,          //每个星期的星期数
+            dayData:config.globalData.dayData,            //每个月的日期数
+            monthHasDays:0,
+            firstWeekDate:0,
+            aWeekDateArr:[],
             yearData:config.globalData.yearData,
             monthData:config.globalData.monthData,
-            weekData:config.globalData.weekData,
+            weekData:config.globalData.weekData.slice(0,(new Date()).pattern("yyyy-MM-dd").weekInMonthCount()),
+
+            // 当最后一周包含下个月的日期处理数据
+            bothMonthDayArr:[],
 
             // 主要课程数据
             searchMainCourseValue:"",
-
+            mainModelActive:false,
+            subTypeAllIsActive:true,
+            subTypeStoryIsActive:false,
+            subTypeSongIsActive:false,
+            mainCourseDate:[],
             // 次要课程数据
             // 运动课程数据
             searchSportCourseValue:"",
+            sportModelActive:false,
 
             // 教师选择中心数据
-            searchTeacherourseValue:""
+            searchTeacherourseValue:"",
+            teacherModelActive:false,
         }
     },
     methods:{
-        initData(){
-            let nowDate = new Date();
-            // console.log(nowDate.pattern("yyyy-M-dd"));
-            // console.log(nowDate.pattern("yyyy-MM-dd").weekIndexInMonth());
-            this.year = nowDate.pattern("yyyy");
-            this.month = nowDate.getMonth().toString();
+        initDate(date){
 
-            console.log();;
-            if(nowDate.pattern("yyyy-MM-dd").weekIndexInMonth().toString() == "-1"){
-                let newDate = "";
-                if(nowDate.getMonth() + 1 < 10 ){
-                    newDate = nowDate.getYear() + "-0" + newDate.getMonth() + "-" +  lastTime(nowDate.getYear(),nowDate.getMonth()+1).split(" ")[0].split("-")[2]);
-                    console.log(newDate);
-                }else{
-                    10
+            this.year = date.pattern("yyyy");
+            this.month = (date.getMonth() + 1).toString();
+            if (this.month < 10) {
+                this.month = "0" + this.month;
+            }
+            // 该月对应天数
+            let monthHasDays = new Date();
+            monthHasDays.setMonth(monthHasDays.getMonth()+1);
+            monthHasDays.setDate(0);
+            this.monthHasDays = monthHasDays.getDate();
+
+            // 该月第一周周一日期
+            for (var i = 1; i < this.monthHasDays; i++) {
+                let virtualDate = (date.pattern("yyyy") + "-" +  (date.getMonth() + 1) + "-" + i).toString();
+                if (parserDate(virtualDate).getDay() == 1) {
+                    this.aWeekDateArr = parserDate(virtualDate).pattern("yyyy-MM-dd").split("-");
+                    for (var i = 0; i < this.aWeekDateArr.length; i++) {
+                        this.aWeekDateArr[i] = parseInt(this.aWeekDateArr[i]);
+                        this.firstWeekDate = parseInt(this.aWeekDateArr[2])
+                    }
+                    break;
                 }
             }
 
-            // console.log(nowDate.getMonth());
-            // this.week = nowDate.pattern("yyyy-MM-dd").weekIndexInMonth().toString();
 
-            // console.log(nowDate.pattern("yyyy-MM-dd").getWeekRange());
-
+        },
+        getMainCourseData(courseSubTypeId){
+            let that = this;
+            this.$Loading.start();
+            $.ajax({
+                url: config.ajaxUrls.listAllCourseByType,
+                type: 'GET',
+                data: {
+                    courseType:1,
+                    courseSubType:courseSubTypeId
+                }
+            })
+            .done(function(res) {
+                if (res.status == 200) {
+                    console.log(res);
+                    that.$Loading.finish();
+                    that.mainCourseDate = res.data.rows;
+                } else {
+                    that.$Loading.error();
+                    that.$Message.error(res.data);
+                }
+            })
+            .fail(function(err) {
+                that.$Loading.error();
+                that.$Message.error(err);
+            })
         },
         menuChange(value){
             switch (value) {
@@ -202,25 +274,72 @@ var index = new Vue({
             }
         },
         storeChange(value){
-            console.log(value);
+            // console.log(value);
         },
-        yearChange(value){
 
+        // 课程时间选择
+        yearChange(yearValue){
+            this.year = yearValue;
+            this.month = "01";
+            this.week = "1";
+            let virtualDate = (this.year + "-" +  this.month + "-1").toString();
+            this.initDate(parserDate(virtualDate));
         },
-        monthChange(value){
+        monthChange(monthNum){
+            this.week = "1";
+            let virtualDate = (this.year + "-" +  monthNum + "-1").toString();
+            this.initDate(parserDate(virtualDate));
+        },
+        weekChange(weekNum){
+            // 改变aWeekDateArr数组
+            this.aWeekDateArr[2] = this.firstWeekDate + (parseInt(weekNum) - 1) * 7;
 
+            // 判断该星期中是否包含下个月的日期
+            for (let i = 0; i < 7; i++) {
+                if (this.aWeekDateArr[2] + i > this.monthHasDays) {
+                    this.bothMonthDayArr[i] = this.aWeekDateArr[2] + i - this.monthHasDays;
+                }else{
+                    this.bothMonthDayArr[i] = "";
+                }
+            }
         },
-        weekChange(value){
 
-        },
         // 主要课程事件
-        changeMainCourse(courseId){
-            console.log("打开主要课程Model");
-            $('.mainCourseModel').addClass('active');
+        changeMainCourse(year,month,day,time){
+            console.log("打开主要课程Model",year,month,day,time);
+            this.mainModelActive = true;
+            this.sportModelActive = false;
+            this.teacherModelActive = false;
+
+            // 获取基础课程数据
+            this.getMainCourseData(0);
         },
-        closeMainCouseModel(){
-            console.log("关闭主要课程Model");
-            $(".mainCourseModel").removeClass('active');
+        courseSubTypeChange(courseSubTypeId){
+            switch (courseSubTypeId) {
+                case 0:
+                    this.subTypeAllIsActive = true;
+                    this.subTypeStoryIsActive = false;
+                    this.subTypeSongIsActive = false;
+                    break;
+                case 1:
+                    this.subTypeAllIsActive = false;
+                    this.subTypeStoryIsActive = true;
+                    this.subTypeSongIsActive = false;
+                    break;
+                case 2:
+                    this.subTypeAllIsActive = false;
+                    this.subTypeStoryIsActive = false;
+                    this.subTypeSongIsActive = true;
+                    break;
+                default:
+                    return
+            }
+            // 获取基础课程数据
+            this.getMainCourseData(courseSubTypeId);
+        },
+        closeMainCouseModel(index){
+            console.log("关闭主要课程Model",index);
+            this.mainModelActive = false;
         },
         searchMainCourseEvent(){
             console.log("点击了主要课程搜索");
@@ -230,32 +349,37 @@ var index = new Vue({
         // 运动课程事件
         changeSportCourse(courseId){
             console.log("打开运动课程Model");
-            $('.sportCourseModel').addClass('active');
+            this.mainModelActive = false;
+            this.sportModelActive = true;
+            this.teacherModelActive = false;
         },
         searchSportCourseEvent(){
             console.log("点击了主要课程搜索");
         },
         closeSportCouseModel(){
             console.log("关闭运动课程Model");
-            $(".sportCourseModel").removeClass('active');
+            this.sportModelActive = false;
         },
 
         // 教师选择中心事件
         changeTeacher(coursId){
             console.log("打开教师选择中心Model");
-            $('.teacherCourseModel').addClass('active');
+            this.mainModelActive = false;
+            this.sportModelActive = false;
+            this.teacherModelActive = true;
         },
         searchTeacherCourseEvent(){
             console.log("点击了教师搜索");
         },
         closeteacherCouseModel(){
             console.log("关闭教师选择中心Model");
-            $('.teacherCourseModel').removeClass('active');
+            this.teacherModelActive = false;
         },
     },
     created(){
         $(".menuBtns").children('.active').removeClass('active');
         $(".menuBtns").children().eq(0).addClass('active');
-        this.initData();
+        let date = new Date();
+        this.initDate(date);
     }
 })

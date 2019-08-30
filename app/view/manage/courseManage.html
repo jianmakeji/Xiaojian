@@ -45,8 +45,8 @@
             </div>
         </div>
         <div class="filtrRight">
-            <i-button class="editBtn">编辑</i-button>
-            <i-button class="saveBtn">保存</i-button>
+            <!-- <i-button class="editBtn">编辑</i-button>
+            <i-button class="saveBtn">保存</i-button> -->
             <i-button class="uploadBtn">上传</i-button>
         </div>
     </div>
@@ -61,33 +61,11 @@
                 </div>
                 <!-- 一周日期标题 -->
                 <div class="weekTime">
-                    <div class="Mon">
-                        <label class="title">周一</label>
-                        <label class="time">08 / 04</label>
-                    </div>
-                    <div class="Tues">
-                        <label class="title">周二</label>
-                        <label class="time">08 / 04</label>
-                    </div>
-                    <div class="Wed">
-                        <label class="title">周三</label>
-                        <label class="time">08 / 04</label>
-                    </div>
-                    <div class="Thur">
-                        <label class="title">周四</label>
-                        <label class="time">08 / 04</label>
-                    </div>
-                    <div class="Fri">
-                        <label class="title">周五</label>
-                        <label class="time">08 / 04</label>
-                    </div>
-                    <div class="Sat">
-                        <label class="title">周六</label>
-                        <label class="time">08 / 04</label>
-                    </div>
-                    <div class="Sun">
-                        <label class="title">周日</label>
-                        <label class="time">08 / 04</label>
+
+                    <div class="Mon" v-for="(item,index) in dateData">
+                        <label class="title" v-text="dateData[index]"></label>
+                        <label v-if="dayData[aWeekDateArr[2] + index] <= monthHasDays" class="time" v-text="aWeekDateArr[1] + '/' + dayData[aWeekDateArr[2] + index]"></label>
+                        <label v-else class="time" v-text="aWeekDateArr[1] + 1 + '/' + bothMonthDayArr[index]"></label>
                     </div>
                 </div>
             </div>
@@ -115,14 +93,28 @@
                     </div>
                 </div>
                 <div class="courseView">
-                    <div class="weekDay">
-                        <div class="courseTime">
+                    <!-- 周一至周日 -->
+                    <div class="weekDay" v-for="weekItem in [0,1,2,3,4,5,6]">
+                        <!-- 一到四节课 -->
+                        <div class="courseTime" v-for="timeItem in [1,2,3,4]">
                             <div class="courseImgs">
-                                <img class="mainCourseImg" src="../public/images/1.png" @click="changeMainCourse(1)" title="编辑基础课程">
+                                <img v-if="dayData[aWeekDateArr[2] + weekItem] <= monthHasDays" class="mainCourseImg" src="../public/images/1.png" @click="changeMainCourse(year,month,dayData[aWeekDateArr[2] + weekItem],timeItem)" title="编辑基础课程">
+                                <img v-else class="mainCourseImg" src="../public/images/1.png" @click="changeMainCourse(year,(aWeekDateArr[1] + 1),bothMonthDayArr[weekItem],timeItem)" title="编辑基础课程">
                                 <img class="otherCourseImg" src="../public/images/2.png" @click="changeSportCourse(1)"title="编辑运动课程">
                             </div>
                             <div class="courseNames">
-                                <span class="mainCourseName" @click="changeMainCourse(1)" title="编辑基础课程">《咏鹅》</span>
+
+
+                                <span v-if="dayData[aWeekDateArr[2] + weekItem] <= monthHasDays" class="mainCourseName" @click="changeMainCourse(year,month,dayData[aWeekDateArr[2] + weekItem],timeItem)" title="编辑基础课程" v-text="year + '-' + aWeekDateArr[1] + '-' + dayData[aWeekDateArr[2] + weekItem] + '-' + timeItem"></span>
+
+
+
+
+                                <span v-else class="mainCourseName" @click="changeMainCourse(year,(aWeekDateArr[1] + 1),bothMonthDayArr[weekItem],timeItem)" title="编辑基础课程" v-text="year + '-' + (aWeekDateArr[1] + 1) + '-' + bothMonthDayArr[weekItem] + '-' + timeItem"></span>
+
+
+
+
                                 <span class="otherCourseName" @click="changeSportCourse(1)" title="编辑运动课程">《篮球》</span>
                             </div>
                             <div class="teacherName" @click="changeTeacher(1)" title="编辑老师">
@@ -132,7 +124,7 @@
                                 <i-button class="studentListBtn" @click="">学生名单</i-button>
                             </div>
                         </div>
-                        <div class="courseTime">
+                        <!-- <div class="courseTime">
                             asdfasd
                         </div>
                         <div class="courseTime">
@@ -140,11 +132,11 @@
                         </div>
                         <div class="courseTime">
                             asdfasd
-                        </div>
+                        </div> -->
                     </div>
 
 
-                    <div class="weekDay">
+                    <!-- <div class="weekDay">
                         <div class="courseTime">
                             asdfasd
                         </div>
@@ -227,7 +219,7 @@
                         <div class="courseTime">
                             asdfasd
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -239,23 +231,21 @@
 
 {% block models %}
     <!-- 基础选课右侧弹出框 -->
-    <div class="mainCourseModel">
+    <div class="mainCourseModel" :class="{active:mainModelActive}">
         <p class="mianCourseTitle">基础课程选课中心</p>
         <i-input class="mainCourseSearch" v-model="searchMainCourseValue" placeholder="搜索" search @on-search="searchMainCourseEvent"></i-input>
         <div class="mianCourseTypes">
-            <div class="all active">全部</div>
-            <div class="idiomStory">成语故事</div>
-            <div class="childSong">儿童诗歌</div>
+            <div class="all" :class="{active:subTypeAllIsActive}" @click="courseSubTypeChange(0)">全部</div>
+            <div class="idiomStory" :class="{active:subTypeStoryIsActive}" @click="courseSubTypeChange(1)">成语故事</div>
+            <div class="childSong" :class="{active:subTypeSongIsActive}" @click="courseSubTypeChange(2)">儿童诗歌</div>
         </div>
         <div class="mainCourseResultList">
-            <div class="mainCourseItem">
-                <img class="mainCourseImg" src="../public/images/1.png" alt="">
+            <div class="mainCourseItem" v-for="(item,index) in mainCourseDate">
+                <img class="mainCourseImg" :src="item.courseThumbA ? item.courseThumbA : '../public/images/1.png'" alt="">
                 <div class="mainCourseInfo">
-                    <p class="title">基础课程：《咏鹅》</p>
-                    <div class="des">
-                        简鹅岁篇的介写先声：的声《响一夺咏周美首人鹅，五，》“日又是言鹅通初古过！唐“鹅诗诗曲！。鹅这人项！”首骆”与写诗宾“向王开出简鹅岁篇的介写先声：的声《响一夺咏周美首人鹅，五，》“日又是言鹅通初古过！唐“鹅诗诗曲！。鹅这人项！”首骆”与写诗宾“向王开出简鹅岁篇的介写先声：的声《响一夺咏周美首人鹅，五，》“日又是言鹅通初古过！唐“鹅诗诗曲！。鹅这人项！”首骆”与写诗宾“向王开出
-                    </div>
-                    <i-button class="submit" @click="closeMainCouseModel">确认选择</i-button>
+                    <p class="title" v-text="item.courseName"></p>
+                    <div class="des" v-text="item.courseAbstract"></div>
+                    <i-button class="submit" @click="closeMainCouseModel(index)">确认选择</i-button>
                 </div>
             </div>
         </div>
@@ -263,7 +253,7 @@
     <!-- 基础选课右侧弹出框 end -->
 
     <!-- 辅助选课右侧弹出框 -->
-    <div class="sportCourseModel">
+    <div class="sportCourseModel" :class="{active:sportModelActive}">
         <p class="sportCourseTitle">运动课程选课中心</p>
         <i-input class="sportCourseSearch" v-model="searchSportCourseValue" placeholder="搜索" search @on-search="searchSportCourseEvent"></i-input>
         <div class="sportCourseTypes">
@@ -286,7 +276,7 @@
     <!-- 辅助选课右侧弹出框 end -->
 
     <!-- 教师选择中心右侧弹出框 -->
-    <div class="teacherCourseModel">
+    <div class="teacherCourseModel" :class="{active:teacherModelActive}">
         <p class="tearcherCourseTitle">教师选择中心</p>
         <i-input class="teacherCourseSearch" v-model="searchTeacherourseValue" placeholder="搜索" search @on-search="searchTeacherCourseEvent"></i-input>
         <div class="teacherCourseTypes">

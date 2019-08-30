@@ -2,6 +2,7 @@ var index = new Vue({
     el:".index",
     data(){
         return{
+            courseId:0,
             // 上传参数对象
             formItem:{
                 courseName:"",
@@ -14,8 +15,18 @@ var index = new Vue({
             },
 
             // 课程类别和标签数据
-            courseTypeData:config.globalData.courseTypeData,
-            courseSubTypeData:config.globalData.courseSubTypeData,
+            courseTypeData:[
+                {value: '1',label: '基础课程'},
+                {value: '2',label: '辅导课程'},
+                {value: '3',label: '运动课程'}
+            ],
+            courseSubTypeData:[
+                {value: '1',label: '成语故事'},
+                {value: '2',label: '儿童诗歌'},
+                {value: '3',label: '常识'},
+                {value: '4',label: '美术'},
+                {value: '5',label: '篮球'}
+            ],
 
             // 缩略图和h5临时变量
             fileName_1:"",
@@ -48,7 +59,7 @@ var index = new Vue({
             this.progressPercent_1 = 0;
             let that = this;
             let file = files.target.files[0];
-            this.$Notice.success({title:'上传中···'});
+            this.$Message.loading('上传中···');
             let formdata = new FormData();
             formdata.append('head', file);
             $.ajax({
@@ -68,14 +79,12 @@ var index = new Vue({
                 },
                 success(res){
                     if(res.status == 200){
-                        that.$Notice.success({title:'上传成功！'});
+                        that.$Message.success("上传成功！");
                         that.imgUrl_1 = res.url;
                         that.formItem.courseThumbA = res.url;
                         that.fileName_1 = files.target.files[0].name;
-                    }else if(res.status == 500){
-                        that.$Notice.error({title: "上传出错"});
-                    }else if(res.status == 999){
-                        that.$Notice.error({title:res.data.message});
+                    }else{
+                        that.$Message.error(res.data.message);
                     }
                 }
             })
@@ -84,7 +93,7 @@ var index = new Vue({
             this.progressPercent_2 = 0;
             let that = this;
             let file = files.target.files[0];
-            this.$Notice.success({title:'上传中···'});
+            this.$Message.loading("上传中···");
             let formdata = new FormData();
             formdata.append('head', file);
             $.ajax({
@@ -104,14 +113,12 @@ var index = new Vue({
                 },
                 success(res){
                     if(res.status == 200){
-                        that.$Notice.success({title:'上传成功！'});
+                        that.$Message.success("上传成功！");
                         that.imgUrl_2 = res.url;
                         that.formItem.courseThumbB = res.url;
                         that.fileName_2 = files.target.files[0].name;
-                    }else if(res.status == 500){
-                        that.$Notice.error({title: "上传出错"});
-                    }else if(res.status == 999){
-                        that.$Notice.error({title:res.data.message});
+                    }else{
+                        that.$Message.error(res.data.message);
                     }
                 }
             })
@@ -121,7 +128,7 @@ var index = new Vue({
             let that = this;
             let file = files.target.files[0];
             let fileTrueName = files.target.files[0].name;
-            this.$Notice.success({title:'上传中···'});
+            this.$Message.loading("上传中···");
 
             let formdata = new FormData();
             formdata.append('head', file);
@@ -141,15 +148,12 @@ var index = new Vue({
                     return xhr;
                 },
                 success(res){
-                    console.log(res);
                     if(res.status == 200){
-                        that.$Notice.success({title:'上传成功！'});
+                        that.$Message.success("上传成功！");
                         that.formItem.h5Address = res.url;
                         that.attachFileName = files.target.files[0].name;
-                    }else if(res.status == 500){
-                        that.$Notice.error({title: that.locale ? "上传出错" : "Operation failed!"});
-                    }else if(res.status == 999){
-                        that.$Notice.error({title:res.data.message});
+                    }else{
+                        that.$Message.error(res.data.message);
                     }
                 }
             })
@@ -161,6 +165,8 @@ var index = new Vue({
             this.formItem.courseSubType = courseSubTypeId;
         },
         submitCourse(){
+            let that = this;
+            this.$Loading.start();
             let notNullData = true;
             for (var key in this.formItem) {
                 if (this.formItem[key] == "" ) {
@@ -168,29 +174,110 @@ var index = new Vue({
                 }
             }
             if (notNullData) {
-                $.ajax({
-                    url: config.ajaxUrls.createCourse,
-                    type: 'POST',
-                    data: this.formItem
-                })
-                .done(function(res) {
-                    console.log("success",res);
-                })
-                .fail(function(err) {
-                    console.log("error",err);
-                })
+                if (parseInt(this.courseId)) {
+                    // *********************
+                    // 更新课程
+                    // *********************
+                    $.ajax({
+                        url: config.ajaxUrls.updateCourseByCourseId.replace(":courseId",that.courseId),
+                        type: 'PUT',
+                        data: this.formItem
+                    })
+                    .done(function(res) {
+                        if (res.status == 200) {
+                            that.$Loading.finish();
+                            that.$Message.success({
+                                content:res.data,
+                                duration:1.5,
+                                onClose(){
+                                    window.location.href = "/manage/courseContentManage";
+                                }
+                            });
+                        } else {
+                            that.$Loading.error();
+                            that.$Message.error(res.data);
+                        }
+                    })
+                    .fail(function(err) {
+                        that.$Loading.error();
+                        that.$Message.error(err.data);
+                    })
+                } else {
+                    // *********************
+                    // 新建课程
+                    // *********************
+                    $.ajax({
+                        url: config.ajaxUrls.createCourse,
+                        type: 'POST',
+                        data: this.formItem
+                    })
+                    .done(function(res) {
+                        if (res.status == 200) {
+                            that.$Loading.finish();
+                            that.$Message.success({
+                                content:res.data,
+                                duration:1.5,
+                                onClose(){
+                                    window.location.href = "/manage/courseContentManage";
+                                }
+                            });
+                        } else {
+                            that.$Loading.error();
+                            that.$Message.error(res.data);
+                        }
+                    })
+                    .fail(function(err) {
+                        that.$Loading.error();
+                        that.$Message.error(err.data);
+                    })
+                }
 
             } else {
+                this.$Loading.error();
                 this.$Message.error('请填入完整信息！');
             }
         },
         cancelCourse(){
-
+            window.location = document.referrer;
         }
     },
     created(){
+        let that = this;
         $(".menuBtns").children('.active').removeClass('active');
         $(".menuBtns").children().eq(2).addClass('active');
+
+        this.courseId = window.location.search.split("courseId=")[1];
+
+        if (parseInt(this.courseId)) {          //修改
+            that.$Loading.start();
+            $.ajax({
+                url: config.ajaxUrls.getCourseByCourseId.replace(":courseId",this.courseId),
+                type: 'GET',
+            })
+            .done(function(res) {
+                if (res.status == 200) {
+                    that.$Loading.finish();
+                    that.formItem = res.data;
+                    that.imgUrl_1 = res.data.courseThumbA;
+                    that.progressPercent_1 = 100;
+                    that.imgUrl_2 = res.data.courseThumbB;
+                    that.progressPercent_2 = 100;
+                    that.attachFilePercent = 100;
+                    that.formItem.courseType = res.data.courseType.toString();
+                    that.formItem.courseSubType = res.data.courseSubType.toString();
+                } else {
+                    that.$Loading.error();
+                    that.$Message.error(res.data);
+                }
+            })
+            .fail(function() {
+                that.$Loading.error();
+                that.$Message.error(err);
+            })
+
+        } else {                                //新建
+
+        }
     }
 })
 
