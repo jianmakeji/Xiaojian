@@ -87,8 +87,6 @@ module.exports = app => {
 
   Course.listAllCourseByType = async function ({ courseType = 0, courseSubType = 0 }) {
     let condition = {
-      offset,
-      limit,
       order: [[ 'createAt', 'desc' ], [ 'Id', 'desc' ]],
       where:{
 
