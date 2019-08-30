@@ -173,8 +173,8 @@ var index = new Vue({
     el:".index",
     data(){
         return{
-            storeId:"1",
-            storeData:config.globalData.storeData,
+            shopId:"1",
+            stopData:config.globalData.storeData,
             year:"",
             month:"",
             week:"1",
@@ -193,18 +193,24 @@ var index = new Vue({
             // 主要课程数据
             searchMainCourseValue:"",
             mainModelActive:false,
-            subTypeAllIsActive:true,
+            subTypeMainAllIsActive:true,
             subTypeStoryIsActive:false,
             subTypeSongIsActive:false,
             mainCourseDate:[],
+            dateInfo:"",            //记录是那个课程点击的选课弹出层
             // 次要课程数据
             // 运动课程数据
+            sportCourseDate:[],
+            subTypeSportAllIsActive:true,
+            subTypeBasketballIsActive:false,
             searchSportCourseValue:"",
             sportModelActive:false,
 
             // 教师选择中心数据
             searchTeacherourseValue:"",
             teacherModelActive:false,
+            bigMap:new Map(),
+            smallMap:new Map(),
         }
     },
     methods:{
@@ -236,32 +242,6 @@ var index = new Vue({
 
 
         },
-        getMainCourseData(courseSubTypeId){
-            let that = this;
-            this.$Loading.start();
-            $.ajax({
-                url: config.ajaxUrls.listAllCourseByType,
-                type: 'GET',
-                data: {
-                    courseType:1,
-                    courseSubType:courseSubTypeId
-                }
-            })
-            .done(function(res) {
-                if (res.status == 200) {
-                    console.log(res);
-                    that.$Loading.finish();
-                    that.mainCourseDate = res.data.rows;
-                } else {
-                    that.$Loading.error();
-                    that.$Message.error(res.data);
-                }
-            })
-            .fail(function(err) {
-                that.$Loading.error();
-                that.$Message.error(err);
-            })
-        },
         menuChange(value){
             switch (value) {
                 case 1:
@@ -273,8 +253,8 @@ var index = new Vue({
                 default:
             }
         },
-        storeChange(value){
-            // console.log(value);
+        stopChange(shopId){
+            this.shopId = shopId
         },
 
         // 课程时间选择
@@ -297,37 +277,71 @@ var index = new Vue({
             // 判断该星期中是否包含下个月的日期
             for (let i = 0; i < 7; i++) {
                 if (this.aWeekDateArr[2] + i > this.monthHasDays) {
-                    this.bothMonthDayArr[i] = this.aWeekDateArr[2] + i - this.monthHasDays;
+                    this.bothMonthDayArr[i] =  this.aWeekDateArr[2] + i - this.monthHasDays;
                 }else{
                     this.bothMonthDayArr[i] = "";
                 }
             }
         },
-
-        // 主要课程事件
+        // ******************************************************************
+        // 基础课程事件
+        // ******************************************************************
+        getMainCourseData(courseSubTypeId){
+            let that = this;
+            this.$Loading.start();
+            $.ajax({
+                url: config.ajaxUrls.listAllCourseByType,
+                type: 'GET',
+                data: {
+                    courseType:1,
+                    courseSubType:courseSubTypeId
+                }
+            })
+            .done(function(res) {
+                if (res.status == 200) {
+                    that.$Loading.finish();
+                    that.mainCourseDate = res.data.rows;
+                } else {
+                    that.$Loading.error();
+                    that.$Message.error(res.data);
+                }
+            })
+            .fail(function(err) {
+                that.$Loading.error();
+                that.$Message.error(err);
+            })
+        },
+        // 点击弹出基础课程选择框
         changeMainCourse(year,month,day,time){
-            console.log("打开主要课程Model",year,month,day,time);
             this.mainModelActive = true;
             this.sportModelActive = false;
             this.teacherModelActive = false;
-
+            if (typeof month == "number") {
+                month = "0" + month.toString()
+            }
+            if (typeof day == "number") {
+                day = "0" + day.toString()
+            }
+            this.dateInfo = year + "-" + month + "-" + day + "#" + time;
             // 获取基础课程数据
             this.getMainCourseData(0);
         },
-        courseSubTypeChange(courseSubTypeId){
+
+        // 筛选基础课程的子类别
+        mainCourseSubTypeChange(courseSubTypeId){
             switch (courseSubTypeId) {
                 case 0:
-                    this.subTypeAllIsActive = true;
+                    this.subTypeMainAllIsActive = true;
                     this.subTypeStoryIsActive = false;
                     this.subTypeSongIsActive = false;
                     break;
                 case 1:
-                    this.subTypeAllIsActive = false;
+                    this.subTypeMainAllIsActive = false;
                     this.subTypeStoryIsActive = true;
                     this.subTypeSongIsActive = false;
                     break;
                 case 2:
-                    this.subTypeAllIsActive = false;
+                    this.subTypeMainAllIsActive = false;
                     this.subTypeStoryIsActive = false;
                     this.subTypeSongIsActive = true;
                     break;
@@ -337,27 +351,131 @@ var index = new Vue({
             // 获取基础课程数据
             this.getMainCourseData(courseSubTypeId);
         },
-        closeMainCouseModel(index){
-            console.log("关闭主要课程Model",index);
+        // 点击确认基础课程选择
+        chooseTheMainCourse(index){
+            let indexData = this.mainCourseDate[index];
+
+            // map的键  20190805
+            let mapKeyText = this.dateInfo.split("#")[0].split("-").join("");
+
+            console.log(this.dateInfo.split("#")[0].split("-"));
+
+            if(this.bigMap.has(mapKeyText)){
+                this.bigMap.get(mapKeyText)
+                .set("shopId",this.shopId)
+                .set("courseAId",indexData.Id)
+                .set("courseDate",this.dateInfo.split("#")[0])
+                .set("courseNumber",this.dateInfo.split("#")[1]);
+            }else{
+                let smallMap = new Map();
+                smallMap.set("shopId",this.shopId)
+                .set("courseAId",indexData.Id)
+                .set("courseDate",this.dateInfo.split("#")[0])
+                .set("courseNumber",this.dateInfo.split("#")[1]);
+
+                this.bigMap.set(mapKeyText,smallMap);
+            }
+            console.log(this.bigMap);
             this.mainModelActive = false;
+
         },
+        // 搜索基础课程筛选
         searchMainCourseEvent(){
             console.log("点击了主要课程搜索");
         },
-        // 次要课程事件
 
+        // ******************************************************************
+        // 次要课程事件
+        // ******************************************************************
+
+        // ******************************************************************
         // 运动课程事件
-        changeSportCourse(courseId){
-            console.log("打开运动课程Model");
+        // ******************************************************************
+
+        getSportCourseData(courseSubTypeId){
+            let that = this;
+            this.$Loading.start();
+            $.ajax({
+                url: config.ajaxUrls.listAllCourseByType,
+                type: 'GET',
+                data: {
+                    courseType:3,
+                    courseSubType:courseSubTypeId
+                }
+            })
+            .done(function(res) {
+                if (res.status == 200) {
+                    console.log(res);
+                    that.$Loading.finish();
+                    that.sportCourseDate = res.data.rows;
+                } else {
+                    that.$Loading.error();
+                    that.$Message.error(res.data);
+                }
+            })
+            .fail(function(err) {
+                that.$Loading.error();
+                that.$Message.error(err);
+            })
+        },
+        changeSportCourse(year,month,day,time){
             this.mainModelActive = false;
             this.sportModelActive = true;
             this.teacherModelActive = false;
+
+            if (typeof month == "number") {
+                month = "0" + month.toString()
+            }
+            if (typeof day == "number") {
+                day = "0" + day.toString()
+            }
+            this.dateInfo = year + "-" + month + "-" + day + "#" + time;
+            // 获取基础课程数据
+            this.getSportCourseData(0);
         },
         searchSportCourseEvent(){
             console.log("点击了主要课程搜索");
         },
-        closeSportCouseModel(){
-            console.log("关闭运动课程Model");
+        // 筛选基础课程的子类别
+        sportCourseSubTypeChange(courseSubTypeId){
+            console.log(courseSubTypeId);
+            switch (courseSubTypeId) {
+                case 0:
+                    this.subTypeSportAllIsActive = true;
+                    this.subTypeBasketballIsActive = false;
+                    break;
+                case 5:
+                    this.subTypeSportAllIsActive = false;
+                    this.subTypeBasketballIsActive = true;
+                    break;
+                default:
+                    return
+            }
+            // 获取基础课程数据
+            this.getSportCourseData(courseSubTypeId);
+        },
+        chooseTheSportCourse(index){
+            let indexData = this.sportCourseDate[index];
+
+            // map的键  20190805
+            let mapKeyText = this.dateInfo.split("#")[0].split("-").join("");
+
+            if(this.bigMap.has(mapKeyText)){
+                this.bigMap.get(mapKeyText)
+                .set("shopId",this.shopId)
+                .set("courseBId",indexData.Id)
+                .set("courseDate",this.dateInfo.split("#")[0])
+                .set("courseNumber",this.dateInfo.split("#")[1]);
+            }else{
+                let smallMap = new Map();
+                smallMap.set("shopId",this.shopId)
+                .set("courseBId",indexData.Id)
+                .set("courseDate",this.dateInfo.split("#")[0])
+                .set("courseNumber",this.dateInfo.split("#")[1]);
+
+                this.bigMap.set(mapKeyText,smallMap);
+            }
+            console.log(this.bigMap);
             this.sportModelActive = false;
         },
 
