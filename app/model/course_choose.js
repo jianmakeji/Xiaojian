@@ -62,8 +62,8 @@ module.exports = app => {
   });
 
   CourseChoose.associate = function() {
-    app.model.CourseChoose.hasOne(app.model.Course,{sourceKey:'courseAId',foreignKey: 'Id'});
-    app.model.CourseChoose.hasOne(app.model.Course,{sourceKey:'courseBId',foreignKey: 'Id'});
+    app.model.CourseChoose.hasOne(app.model.Course,{sourceKey:'courseAId',foreignKey: 'Id',as:'courseA'});
+    app.model.CourseChoose.hasOne(app.model.Course,{sourceKey:'courseBId',foreignKey: 'Id',as:'courseB'});
     app.model.CourseChoose.hasOne(app.model.User,{sourceKey:'teacherId',foreignKey: 'Id'});
     app.model.CourseChoose.hasOne(app.model.Xclass,{sourceKey:'xclassId',foreignKey: 'Id'});
 
