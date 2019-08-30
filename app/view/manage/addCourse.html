@@ -26,6 +26,7 @@
 
     <div class="formView">
         <i-form :label-width="130" ref="formItem" :model="formItem">
+            <p v-text="{{course.Id}}"></p>
                 <form-item label="课程名称">
                     <i-input v-model="formItem.courseName" placeholder="请输入课程名称"></i-input>
                 </form-item>
@@ -47,6 +48,7 @@
                     <br v-show="imgUrl_2.length">
                     <i-button icon="ios-image" id="thumbb_upload_btn">缩略图</i-button>
                     <input type="file" @change="doUpload_2" id="thumbb_upload_input" ref="inputFile" accept="image/*" style="display:none;"/>
+                    <p v-text="fileName_2"></p>
                     <i-progress :percent="progressPercent_2" /><span v-text="progressPercent_2 + '%'"></span>
                 </form-item>
                 <form-item label="课程文件">
