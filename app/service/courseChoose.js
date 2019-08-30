@@ -18,8 +18,20 @@ class CourseChoose extends Service {
     return user;
   }
 
-  async createCourseChoose(courseChoose) {
-    return this.ctx.model.CourseChoose.createCourseChoose(courseChoose);
+  async createCourseChoose(courseChooseArray) {
+    let transaction;
+    try {
+      transaction = await this.ctx.model.transaction();
+      for(let courseChoose of courseChooseArray){
+        this.ctx.model.CourseChoose.createCourseChoose(courseChoose,transaction);
+      }
+      await transaction.commit();
+
+      return true
+    } catch (e) {
+      await transaction.rollback();
+      return false
+    }
   }
 
   async update({

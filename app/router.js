@@ -23,6 +23,7 @@ module.exports = app => {
   router.get('/manage/course/searchByCourseName', controller.manage.course.searchByCourseName);
   router.get('/manage/course/listAllCourseByType', controller.manage.course.listAllCourseByType);
   router.get('/manage/courseChoose/listCourseByDate', controller.manage.courseChoose.listCourseByDate);
+  router.post('/manage/courseChoose/createCourseChoose', controller.manage.courseChoose.createCourseChoose);
 
   router.resources('/manage/user',  controller.manage.user);
   router.resources('/manage/course',  controller.manage.course);

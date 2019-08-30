@@ -91,7 +91,7 @@ module.exports = app => {
         courseDate:{
           [Op.between]: [courseDate, endTime.toLocalDateString()],
         }
-      }
+      },
       include:[
         {
           model:app.model.Course,as:'courseA'
@@ -121,8 +121,10 @@ module.exports = app => {
     return user;
   }
 
-  CourseChoose.createCourseChoose = async function (user) {
-    return this.create(user);
+  CourseChoose.createCourseChoose = async function (courseChoose,transaction) {
+    return this.create(courseChoose,{
+      transaction:transaction
+    });
   }
 
   CourseChoose.updateCourseChoose = async function ({ id, updates }) {

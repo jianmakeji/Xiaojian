@@ -33,13 +33,12 @@ class CourseChooseController extends BaseController{
     }
   }
 
-  async createCourse() {
+  async createCourseChoose() {
     const ctx = this.ctx;
     try{
-      let data = ctx.request.body;
-
-        const user = await ctx.service.courseChoose.createCourseChoose(data);
-        super.success(ctx.__('createdSuccess'));
+      let courseChooseArray = ctx.request.body;
+      const result = await ctx.service.courseChoose.createCourseChoose(data);
+      super.success(ctx.__('createdSuccess'));
 
     }
     catch(e){
