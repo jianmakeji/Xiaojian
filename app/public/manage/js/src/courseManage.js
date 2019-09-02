@@ -207,16 +207,42 @@ var index = new Vue({
             sportModelActive:false,
 
             // 教师选择中心数据
+            teacherCourseDate:[1,2],
             searchTeacherourseValue:"",
             teacherModelActive:false,
             bigMap:new Map(),
             smallMap:new Map(),
 
+            // 数据二位数组
+            dataSourse:new Array(),
+            weekIndex:0,
+            timeIndex:0
+
         }
     },
     methods:{
+        initDataSourse(){
+            for(let i = 0;i < 7;i++){
+                this.dataSourse[i] = new Array();
+                for (let j = 0; j < 4; j++) {
+                    this.dataSourse[i][j] = {
+                        courseThumbA:"",
+                        courseTitleA:"",
+                        courseThumbB:"",
+                        courseTitleB:"",
+                        shopId:"",
+                        courseNumber:"",
+                        teacherName:"asdfasd",
+                        teacherId:"",
+                        courseAId:"",
+                        courseBId:"",
+                        courseDate:"",
+                        xclasssId:"",
+                    };
+                }
+            }
+        },
         initDate(date){
-
             this.year = date.pattern("yyyy");
             this.month = (date.getMonth() + 1).toString();
             if (this.month < 10) {
@@ -233,12 +259,10 @@ var index = new Vue({
                 let virtualDate = (date.pattern("yyyy") + "-" +  (date.getMonth() + 1) + "-" + i).toString();
                 if (parserDate(virtualDate).getDay() == 1) {
                     this.aWeekDateArr = parserDate(virtualDate).pattern("yyyy-MM-dd").split("-");
-                    console.log(this.aWeekDateArr);
                     for (var i = 0; i < this.aWeekDateArr.length; i++) {
                         this.aWeekDateArr[i] = parseInt(this.aWeekDateArr[i]);
                         this.firstWeekDate = parseInt(this.aWeekDateArr[2])
                     }
-                    console.log(this.aWeekDateArr);
                     break;
                 }
             }
@@ -301,6 +325,7 @@ var index = new Vue({
                 }
             })
             .done(function(res) {
+                console.log(res);
                 if (res.status == 200) {
                     that.$Loading.finish();
                     that.mainCourseDate = res.data.rows;
@@ -315,17 +340,27 @@ var index = new Vue({
             })
         },
         // 点击弹出基础课程选择框
-        changeMainCourse(year,month,day,time){
+        // 输入的日期数据有可能存在number类型    0 0 "2019" "09" "02" 1
+        changeMainCourse(weekIndex,timeIndex,year,month,day,time){
+
             this.mainModelActive = true;
             this.sportModelActive = false;
             this.teacherModelActive = false;
+
+            // 记录点击的坐标轴位置
+            this.weekIndex = weekIndex;
+            this.timeIndex = timeIndex;
+
+
+            // 将日期字符串规范化
             if (typeof month == "number" && month < 10) {
-                month = "0" + month.toString()
+                month = "0" + month.toString();
             }
             if (typeof day == "number" && day < 10 ) {
-                day = "0" + day.toString()
+                day = "0" + day.toString();
             }
             this.dateInfo = year + "-" + month + "-" + day + "#" + time;
+
             // 获取基础课程数据
             this.getMainCourseData(0);
         },
@@ -357,26 +392,37 @@ var index = new Vue({
         // 点击确认基础课程选择
         chooseTheMainCourse(index){
             let indexData = this.mainCourseDate[index];
-
-            // map的键  20190805
             let mapKeyText = this.dateInfo.split("#")[0].split("-").join("");
 
-            if(this.bigMap.has(mapKeyText)){
-                this.bigMap.get(mapKeyText)
-                .set("shopId",this.shopId)
-                .set("courseAId",indexData.Id)
-                .set("courseDate",this.dateInfo.split("#")[0])
-                .set("courseNumber",this.dateInfo.split("#")[1]);
-            }else{
-                let smallMap = new Map();
-                smallMap.set("shopId",this.shopId)
-                .set("courseAId",indexData.Id)
-                .set("courseDate",this.dateInfo.split("#")[0])
-                .set("courseNumber",this.dateInfo.split("#")[1]);
+            this.dataSourse[this.weekIndex][this.timeIndex].courseThumbA = indexData.courseThumbA;
+            this.dataSourse[this.weekIndex][this.timeIndex].courseTitleA = indexData.courseName;
+            this.dataSourse[this.weekIndex][this.timeIndex].shopId = this.shopId;
+            this.dataSourse[this.weekIndex][this.timeIndex].courseAId = indexData.Id;
+            this.dataSourse[this.weekIndex][this.timeIndex].courseDate = this.dateInfo.split("#")[0];
+            this.dataSourse[this.weekIndex][this.timeIndex].courseNumber = this.dateInfo.split("#")[1];
 
-                this.bigMap.set(mapKeyText,smallMap);
-            }
-            console.log(this.bigMap.get('20190902').get('courseAId'));
+
+            this.dataSourse[this.weekIndex][this.timeIndex].xclasssId = "1";
+
+            // map的键  20190805
+            // let mapKeyText = this.dateInfo.split("#")[0].split("-").join("");
+            //
+            // if(this.bigMap.has(mapKeyText)){
+            //     this.bigMap.get(mapKeyText)
+            //     .set("shopId",this.shopId)
+            //     .set("courseAId",indexData.Id)
+            //     .set("courseDate",this.dateInfo.split("#")[0])
+            //     .set("courseNumber",this.dateInfo.split("#")[1]);
+            // }else{
+            //     let smallMap = new Map();
+            //     smallMap.set("shopId",this.shopId)
+            //     .set("courseAId",indexData.Id)
+            //     .set("courseDate",this.dateInfo.split("#")[0])
+            //     .set("courseNumber",this.dateInfo.split("#")[1]);
+            //
+            //     this.bigMap.set(mapKeyText,smallMap);
+            // }
+            // console.log(this.bigMap.get('20190902').get('courseAId'));
             this.mainModelActive = false;
 
         },
@@ -406,7 +452,6 @@ var index = new Vue({
             })
             .done(function(res) {
                 if (res.status == 200) {
-                    console.log(res);
                     that.$Loading.finish();
                     that.sportCourseDate = res.data.rows;
                 } else {
@@ -419,16 +464,20 @@ var index = new Vue({
                 that.$Message.error(err);
             })
         },
-        changeSportCourse(year,month,day,time){
+        changeSportCourse(weekIndex,timeIndex,year,month,day,time){
             this.mainModelActive = false;
             this.sportModelActive = true;
             this.teacherModelActive = false;
 
+            // 记录点击的坐标轴位置
+            this.weekIndex = weekIndex;
+            this.timeIndex = timeIndex;
+
             if (typeof month == "number" && month < 10) {
-                month = "0" + month.toString()
+                month = "0" + month.toString();
             }
             if (typeof day == "number" && day < 10 ) {
-                day = "0" + day.toString()
+                day = "0" + day.toString();
             }
             this.dateInfo = year + "-" + month + "-" + day + "#" + time;
             // 获取基础课程数据
@@ -456,74 +505,120 @@ var index = new Vue({
         },
         chooseTheSportCourse(index){
             let indexData = this.sportCourseDate[index];
-
-            // map的键  20190805
             let mapKeyText = this.dateInfo.split("#")[0].split("-").join("");
 
-            if(this.bigMap.has(mapKeyText)){
-                this.bigMap.get(mapKeyText)
-                .set("shopId",this.shopId)
-                .set("courseBId",indexData.Id)
-                .set("courseDate",this.dateInfo.split("#")[0])
-                .set("courseNumber",this.dateInfo.split("#")[1]);
-            }else{
-                let smallMap = new Map();
-                smallMap.set("shopId",this.shopId)
-                .set("courseBId",indexData.Id)
-                .set("courseDate",this.dateInfo.split("#")[0])
-                .set("courseNumber",this.dateInfo.split("#")[1]);
+            this.dataSourse[this.weekIndex][this.timeIndex].courseThumbB = indexData.courseThumbA;
+            this.dataSourse[this.weekIndex][this.timeIndex].courseTitleB = indexData.courseName;
+            this.dataSourse[this.weekIndex][this.timeIndex].shopId = this.shopId;
+            this.dataSourse[this.weekIndex][this.timeIndex].courseBId = indexData.Id;
+            this.dataSourse[this.weekIndex][this.timeIndex].courseDate = this.dateInfo.split("#")[0];
+            this.dataSourse[this.weekIndex][this.timeIndex].courseNumber = this.dateInfo.split("#")[1];
 
-                this.bigMap.set(mapKeyText,smallMap);
-            }
             this.sportModelActive = false;
         },
 
         // ***************************************
         // 教师选择中心事件
         // **************************************
-        changeTeacher(year,month,day,time){
+        getTeacherData(index){
+
+        },
+        changeTeacher(weekIndex,timeIndex,year,month,day,time){
             this.mainModelActive = false;
             this.sportModelActive = false;
             this.teacherModelActive = true;
+
+            console.log(weekIndex);
+
+            // 记录点击的坐标轴位置
+            this.weekIndex = weekIndex;
+            this.timeIndex = timeIndex;
+
             if (typeof month == "number" && month < 10) {
-                month = "0" + month.toString()
+                month = "0" + month.toString();
             }
             if (typeof day == "number" && day < 10 ) {
-                day = "0" + day.toString()
+                day = "0" + day.toString();
             }
             this.dateInfo = year + "-" + month + "-" + day + "#" + time;
             // 获取基础课程数据
-            // this.getTeacherData(0);
+            this.getTeacherData(0);
         },
         searchTeacherCourseEvent(){
             console.log("点击了教师搜索");
         },
-        chooseTheTeacherCourse(teacherId){
-            // map的键  20190805
-            let mapKeyText = this.dateInfo.split("#")[0].split("-").join("");
+        chooseTheTeacherCourse(index){
 
-            if(this.bigMap.has(mapKeyText)){
-                this.bigMap.get(mapKeyText)
-                .set("teacherId",teacherId);
-            }else{
-                let smallMap = new Map();
-                smallMap.set("teacherId",teacherId);
+            this.dataSourse[this.weekIndex][this.timeIndex].teacherId = index + 1;
+            this.dataSourse[this.weekIndex][this.timeIndex].teacherName = "李少华";
 
-                this.bigMap.set(mapKeyText,smallMap);
-            }
-            console.log(this.bigMap);
             this.teacherModelActive = false;
         },
 
         // 上传所有课程选择
         submitCourseChoose(){
-            let xclasssId = 1;
+            // 预留 xclassId
+            // let xclasssId = 1;
+            console.log(this.dataSourse.length);
+            // courseThumbA:"",
+            // courseTitleA:"",
+            // courseThumbB:"",
+            // courseTitleB:"",
+            // shopId:"",
+            // courseNumber:"",
+            // teacherName:"asdfasd",
+            // teacherId:"",
+            // courseAId:"",
+            // courseBId:"",
+            // courseDate:"",
+            // xclasssId:"",
+            function unique(array) {
+                return Array.from(new Set(array));
+            }
+            let copyDataSourse = new Array();
+            let aoData = new Array();
+            copyDataSourse = this.dataSourse;
+            for (let i = 0; i < copyDataSourse.length; i++) {
+                for (let j = 0; j < copyDataSourse[i].length; j++) {
+                    let dataSourseItem = copyDataSourse[i][j];
+                    if (dataSourseItem.shopId == "" && dataSourseItem.courseNumber == "" && dataSourseItem.teacherId == "" && dataSourseItem.courseAId == "" && dataSourseItem.courseBId == "" && dataSourseItem.courseDate == "" && dataSourseItem.xclasssId == "") {
+                        copyDataSourse[i][j] = "";
+                    }
+                }
+            }
+            for (let i = 0; i < copyDataSourse.length; i++) {
+                for (let j = 0; j < copyDataSourse[i].length; j++) {
+                    console.log(copyDataSourse[i][j]);
+                    if( copyDataSourse[i][j] != ""){
+                        aoData.push(copyDataSourse[i][j]);
+                    }
+                }
+            }
+            console.log(JSON.stringify(aoData));
+
+            let that = this;
+            $.ajax({
+                url: config.ajaxUrls.createCourseChoose,
+                type: 'POST',
+                data: JSON.stringify( aoData )
+            })
+            .done(function(res) {
+                console.log("success",res);
+            })
+            .fail(function() {
+                console.log("error");
+            })
+            .always(function() {
+                console.log("complete");
+            });
+
         }
     },
     created(){
         $(".menuBtns").children('.active').removeClass('active');
         $(".menuBtns").children().eq(0).addClass('active');
         let date = new Date();
+        this.initDataSourse();
         this.initDate(date);
     }
 })
