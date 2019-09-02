@@ -23,12 +23,13 @@ class CourseChoose extends Service {
     try {
       transaction = await this.ctx.model.transaction();
       for(let courseChoose of courseChooseArray){
-        this.ctx.model.CourseChoose.createCourseChoose(courseChoose,transaction);
+        await this.ctx.model.CourseChoose.createCourseChoose(courseChoose,transaction);
       }
       await transaction.commit();
 
       return true
     } catch (e) {
+      console.log(e);
       await transaction.rollback();
       return false
     }
