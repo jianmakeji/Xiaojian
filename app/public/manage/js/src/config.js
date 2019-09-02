@@ -61,6 +61,7 @@ var config = {
     ajaxUrls:{
         // courseManage
         listAllCourseByType:'/manage/course/listAllCourseByType',
+        createCourseChoose:'/manage/courseChoose/createCourseChoose',
 
         // courseContentManage
         getCourseByCourseSubType:"/manage/course",
