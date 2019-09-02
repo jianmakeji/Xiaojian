@@ -47,7 +47,7 @@
         <div class="filtrRight">
             <!-- <i-button class="editBtn">编辑</i-button>
             <i-button class="saveBtn">保存</i-button> -->
-            <i-button class="uploadBtn">上传</i-button>
+            <i-button class="uploadBtn" @click="submitCourseChoose">上传</i-button>
         </div>
     </div>
     <!-- 课程管理选项 -->
@@ -97,6 +97,7 @@
                     <div class="weekDay" v-for="weekItem in [0,1,2,3,4,5,6]">
                         <!-- 一到四节课 -->
                         <div class="courseTime" v-for="timeItem in [1,2,3,4]">
+                            <!-- <div v-text=""></div> -->
                             <div class="courseImgs">
                                 <!-- 基础课程图片 -->
                                 <img v-if="dayData[aWeekDateArr[2] + weekItem] <= monthHasDays" class="mainCourseImg" :src="timeItem.courseThumbA?timeItem.courseThumbA:'../public/images/1.png'" @click="changeMainCourse(year,month,dayData[aWeekDateArr[2] + weekItem],timeItem)" title="编辑基础课程">
@@ -118,9 +119,8 @@
                                 <span v-if="dayData[aWeekDateArr[2] + weekItem] <= monthHasDays" class="otherCourseName" @click="changeSportCourse(year,month,dayData[aWeekDateArr[2] + weekItem],timeItem)" title="编辑运动课程" v-text="year + '-' + aWeekDateArr[1] + '-' + dayData[aWeekDateArr[2] + weekItem] + '-' + timeItem"></span>
                                 <span v-else class="otherCourseName" @click="changeSportCourse(year,(aWeekDateArr[1] + 1),bothMonthDayArr[weekItem],timeItem)" title="编辑运动课程" v-text="year + '-' + (aWeekDateArr[1] + 1) + '-' + bothMonthDayArr[weekItem] + '-' + timeItem"></span>
                             </div>
-                            <div class="teacherName" @click="changeTeacher(1)" title="编辑老师">
-                                授课老师：李小华
-                            </div>
+                            <div v-if="dayData[aWeekDateArr[2] + weekItem] <= monthHasDays" class="teacherName" @click="changeTeacher(year,month,dayData[aWeekDateArr[2] + weekItem],timeItem)" title="编辑老师">授课老师：李小华</div>
+                            <div v-else class="teacherName" @click="changeTeacher(year,(aWeekDateArr[1] + 1),bothMonthDayArr[weekItem],timeItem)" title="编辑老师">授课老师：李小华</div>
                             <div class="students">
                                 <i-button class="studentListBtn" @click="">学生名单</i-button>
                             </div>
@@ -199,7 +199,7 @@
                     <div class="selectNum">
                         已选次数：20次
                     </div>
-                    <i-button class="submit" @click="closeteacherCouseModel">确认选择</i-button>
+                    <i-button class="submit" @click="chooseTheTeacherCourse(1)">确认选择</i-button>
                 </div>
             </div>
         </div>

@@ -211,6 +211,7 @@ var index = new Vue({
             teacherModelActive:false,
             bigMap:new Map(),
             smallMap:new Map(),
+
         }
     },
     methods:{
@@ -232,10 +233,12 @@ var index = new Vue({
                 let virtualDate = (date.pattern("yyyy") + "-" +  (date.getMonth() + 1) + "-" + i).toString();
                 if (parserDate(virtualDate).getDay() == 1) {
                     this.aWeekDateArr = parserDate(virtualDate).pattern("yyyy-MM-dd").split("-");
+                    console.log(this.aWeekDateArr);
                     for (var i = 0; i < this.aWeekDateArr.length; i++) {
                         this.aWeekDateArr[i] = parseInt(this.aWeekDateArr[i]);
                         this.firstWeekDate = parseInt(this.aWeekDateArr[2])
                     }
+                    console.log(this.aWeekDateArr);
                     break;
                 }
             }
@@ -316,10 +319,10 @@ var index = new Vue({
             this.mainModelActive = true;
             this.sportModelActive = false;
             this.teacherModelActive = false;
-            if (typeof month == "number") {
+            if (typeof month == "number" && month < 10) {
                 month = "0" + month.toString()
             }
-            if (typeof day == "number") {
+            if (typeof day == "number" && day < 10 ) {
                 day = "0" + day.toString()
             }
             this.dateInfo = year + "-" + month + "-" + day + "#" + time;
@@ -358,8 +361,6 @@ var index = new Vue({
             // map的键  20190805
             let mapKeyText = this.dateInfo.split("#")[0].split("-").join("");
 
-            console.log(this.dateInfo.split("#")[0].split("-"));
-
             if(this.bigMap.has(mapKeyText)){
                 this.bigMap.get(mapKeyText)
                 .set("shopId",this.shopId)
@@ -375,7 +376,7 @@ var index = new Vue({
 
                 this.bigMap.set(mapKeyText,smallMap);
             }
-            console.log(this.bigMap);
+            console.log(this.bigMap.get('20190902').get('courseAId'));
             this.mainModelActive = false;
 
         },
@@ -423,10 +424,10 @@ var index = new Vue({
             this.sportModelActive = true;
             this.teacherModelActive = false;
 
-            if (typeof month == "number") {
+            if (typeof month == "number" && month < 10) {
                 month = "0" + month.toString()
             }
-            if (typeof day == "number") {
+            if (typeof day == "number" && day < 10 ) {
                 day = "0" + day.toString()
             }
             this.dateInfo = year + "-" + month + "-" + day + "#" + time;
@@ -438,7 +439,6 @@ var index = new Vue({
         },
         // 筛选基础课程的子类别
         sportCourseSubTypeChange(courseSubTypeId){
-            console.log(courseSubTypeId);
             switch (courseSubTypeId) {
                 case 0:
                     this.subTypeSportAllIsActive = true;
@@ -475,24 +475,50 @@ var index = new Vue({
 
                 this.bigMap.set(mapKeyText,smallMap);
             }
-            console.log(this.bigMap);
             this.sportModelActive = false;
         },
 
+        // ***************************************
         // 教师选择中心事件
-        changeTeacher(coursId){
-            console.log("打开教师选择中心Model");
+        // **************************************
+        changeTeacher(year,month,day,time){
             this.mainModelActive = false;
             this.sportModelActive = false;
             this.teacherModelActive = true;
+            if (typeof month == "number" && month < 10) {
+                month = "0" + month.toString()
+            }
+            if (typeof day == "number" && day < 10 ) {
+                day = "0" + day.toString()
+            }
+            this.dateInfo = year + "-" + month + "-" + day + "#" + time;
+            // 获取基础课程数据
+            // this.getTeacherData(0);
         },
         searchTeacherCourseEvent(){
             console.log("点击了教师搜索");
         },
-        closeteacherCouseModel(){
-            console.log("关闭教师选择中心Model");
+        chooseTheTeacherCourse(teacherId){
+            // map的键  20190805
+            let mapKeyText = this.dateInfo.split("#")[0].split("-").join("");
+
+            if(this.bigMap.has(mapKeyText)){
+                this.bigMap.get(mapKeyText)
+                .set("teacherId",teacherId);
+            }else{
+                let smallMap = new Map();
+                smallMap.set("teacherId",teacherId);
+
+                this.bigMap.set(mapKeyText,smallMap);
+            }
+            console.log(this.bigMap);
             this.teacherModelActive = false;
         },
+
+        // 上传所有课程选择
+        submitCourseChoose(){
+            let xclasssId = 1;
+        }
     },
     created(){
         $(".menuBtns").children('.active').removeClass('active');
