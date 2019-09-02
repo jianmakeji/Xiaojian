@@ -37,7 +37,9 @@ class CourseChooseController extends BaseController{
     const ctx = this.ctx;
     try{
       let courseChooseArray = ctx.request.body;
-      const result = await ctx.service.courseChoose.createCourseChoose(data);
+      let data = JSON.parse(courseChooseArray);
+      console.log(data.length);
+      const result = await ctx.service.courseChoose.createCourseChoose(courseChooseArray);
       super.success(ctx.__('createdSuccess'));
 
     }
