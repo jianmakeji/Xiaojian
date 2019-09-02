@@ -170,7 +170,7 @@ module.exports = app => {
           as: 'shop'
         }
       ],
-      attributes: ['Id', 'username', 'password']
+      attributes: ['Id', 'username', 'password','shopId','age','gender','realname','jobTitle']
     });
   }
 
