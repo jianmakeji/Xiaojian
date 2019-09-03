@@ -64,10 +64,8 @@ module.exports = app => {
   CourseChoose.associate = function() {
     app.model.CourseChoose.hasOne(app.model.Course,{sourceKey:'courseAId',foreignKey: 'Id',as:'courseA'});
     app.model.CourseChoose.hasOne(app.model.Course,{sourceKey:'courseBId',foreignKey: 'Id',as:'courseB'});
-    app.model.CourseChoose.hasOne(app.model.User,{sourceKey:'teacherId',foreignKey: 'Id'});
-    app.model.CourseChoose.hasOne(app.model.Xclass,{sourceKey:'xclassId',foreignKey: 'Id'});
-
-
+    app.model.CourseChoose.hasOne(app.model.User,{sourceKey:'teacherId',foreignKey: 'Id', as:'teacher'});
+    app.model.CourseChoose.hasOne(app.model.Xclass,{sourceKey:'xclassId',foreignKey: 'Id', as:'xclass'});
   };
 
   CourseChoose.listCourseChoose = async function ({ offset = 0, limit = 10 }) {
@@ -75,7 +73,20 @@ module.exports = app => {
       offset,
       limit,
       order: [[ 'createAt', 'desc' ], [ 'Id', 'desc' ]],
-
+      include:[
+        {
+          model:app.model.Course,as:'courseA'
+        },
+        {
+          model:app.model.Course,as:'courseB'
+        },
+        {
+          model:app.model.Xclass,as:'xclass'
+        },
+        {
+          model:app.model.User,as:'teacher'
+        },
+      ]
     });
   }
 
