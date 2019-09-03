@@ -97,7 +97,6 @@ class CourseChooseController extends BaseController{
 
   async updateCourseByDate() {
     const ctx = this.ctx;
-    const ctx = this.ctx;
     try{
       let updateCourseChooseData = ctx.request.body;
       const result = await ctx.service.courseChoose.updateCourseByDate(updateCourseChooseData);
