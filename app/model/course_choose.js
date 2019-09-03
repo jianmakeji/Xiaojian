@@ -156,7 +156,7 @@ module.exports = app => {
     });
   }
 
-  CourseChoose.deleteCourseChoose = async function (date, shopId, transaction) {
+  CourseChoose.deleteCourseChoose = async function (courseDate, shopId, transaction) {
     let startTime = new Date(courseDate);
     let endTempTime = startTime.setDate(startTime.getDate() + 7);
     let endTime = new Date(endTempTime);
