@@ -52,8 +52,7 @@ class CourseChooseController extends BaseController{
     const ctx = this.ctx;
     const id = ctx.params.id;
     const updates = {
-      mobile: ctx.request.body.mobile,
-      email: ctx.request.body.email,
+
     };
 
     try{
@@ -91,6 +90,22 @@ class CourseChooseController extends BaseController{
       super.success(result);
     }
     catch(e){
+      ctx.logger.error(e.message);
+      super.failure(e.message);
+    }
+  }
+
+  async updateCourseByDate() {
+    const ctx = this.ctx;
+    const ctx = this.ctx;
+    try{
+      let courseChooseArray = ctx.request.body;
+      const result = await ctx.service.courseChoose.createCourseChoose(courseChooseArray);
+      super.success(ctx.__('createdSuccess'));
+
+    }
+    catch(e){
+      console.log(e);
       ctx.logger.error(e.message);
       super.failure(e.message);
     }

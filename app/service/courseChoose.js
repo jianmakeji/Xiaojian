@@ -59,6 +59,25 @@ class CourseChoose extends Service {
       courseDate
     });
   }
+
+  async updateCourseByDate(updateCourseByDate) {
+    let transaction;
+    try {
+      transaction = await this.ctx.model.transaction();
+      await this.ctx.model.CourseChoose.deleteCourseChoose(updateCourseByDate.courseDate, updateCourseByDate.shopId, transaction);
+      for(let courseChoose of updateCourseByDate.data){
+        await this.ctx.model.CourseChoose.createCourseChoose(courseChoose,transaction);
+      }
+      await transaction.commit();
+
+      return true
+    } catch (e) {
+      console.log(e);
+      await transaction.rollback();
+      return false
+    }
+
+  }
 }
 
 module.exports = CourseChoose;
