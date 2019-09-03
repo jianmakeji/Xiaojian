@@ -161,7 +161,7 @@ module.exports = app => {
     let endTempTime = startTime.setDate(startTime.getDate() + 7);
     let endTime = new Date(endTempTime);
 
-    return this.destroy(courseChoose,{
+    return this.destroy({
       transaction:transaction,
       where:{
         shopId:shopId,
