@@ -32,15 +32,15 @@ var config = {
         ],
         // 月份
         monthData:[
-            {value: '01',label: '1月'},
-            {value: '02',label: '2月'},
-            {value: '03',label: '3月'},
-            {value: '04',label: '4月'},
-            {value: '05',label: '5月'},
-            {value: '06',label: '6月'},
-            {value: '07',label: '7月'},
-            {value: '08',label: '8月'},
-            {value: '09',label: '9月'},
+            {value: '1',label: '1月'},
+            {value: '2',label: '2月'},
+            {value: '3',label: '3月'},
+            {value: '4',label: '4月'},
+            {value: '5',label: '5月'},
+            {value: '6',label: '6月'},
+            {value: '7',label: '7月'},
+            {value: '8',label: '8月'},
+            {value: '9',label: '9月'},
             {value: '10',label: '10月'},
             {value: '11',label: '11月'},
             {value: '12',label: '12月'}
@@ -61,7 +61,9 @@ var config = {
     ajaxUrls:{
         // courseManage
         listAllCourseByType:'/manage/course/listAllCourseByType',
+        listCourseByDate:'/manage/courseChoose/listCourseByDate',
         createCourseChoose:'/manage/courseChoose/createCourseChoose',
+        updateCourseByDate:'/manage/courseChoose/updateCourseByDate',
 
         // courseContentManage
         getCourseByCourseSubType:"/manage/course",

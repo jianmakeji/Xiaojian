@@ -32,86 +32,6 @@ Date.prototype.pattern=function(fmt) {
     return fmt;
 }
 
-function lastTime(year,month){
-    if(month.length <=1){
-        var month = "0"+month;
-    }
-    var  day = new Date(year,month,0);  
-    var lastdate = year + '-' + month + '-' + day.getDate();
-    var lastTime = lastdate + " 23:59:59";
-    return lastTime;
- }
-
-function dateFormat (date, format) {
-    if ((date+'').match('-')) {
-        date=date.replace(new RegExp(/-/gm) ,"/");
-    }
-    date = new Date(date);
-    var map = {
-        "M": date.getMonth() + 1, //月份
-        "d": date.getDate(), //日
-        "h": date.getHours(), //小时
-        "m": date.getMinutes(), //分
-        "s": date.getSeconds(), //秒
-        "q": Math.floor((date.getMonth() + 3) / 3), //季度
-        "S": date.getMilliseconds() //毫秒
-    };
-
-
-    format = format.replace(/([yMdhmsqS])+/g, function(all, t){
-        var v = map[t];
-        if(v !== undefined){
-            if(all.length > 1){
-                v = '0' + v;
-                v = v.substr(v.length-2);
-            }
-            return v;
-        }
-        else if(t === 'y'){
-            return (date.getFullYear() + '').substr(4 - all.length);
-        }
-        return all;
-    });
-    return format;
-}
-
-// 获取今天是本月第几周
-String.prototype.weekIndexInMonth = function () {
-    var date = new Date(this.trim() != '' ? this : new Date());
-    var dateStart = new Date((new Date(this.trim() != '' ? this : new Date()).setDate(1))); // 本月初
-    var firstWeek = 1;
-    if (dateStart.getDay() === 1) {
-        firstWeek = 1;
-    } else if (dateStart.getDay() === 0) {
-        firstWeek = 8 - 7 + 1;
-    } else {
-        firstWeek = 8 - dateStart.getDay() + 1;
-    }
-    var weekIndex = 1;
-    var c = date.getDate();
-    if (date.getDay() === 1 && date.getDate() < 7) {
-        weekIndex = 1;
-    } else if (c < firstWeek ) {
-        weekIndex = -1;
-    } else {
-        if (c < 7) {
-            weekIndex = Math.ceil(c/7);
-        } else {
-            c =  c - firstWeek + 1;
-            if (c%7 === 0) {
-                if (dateStart.getDay() !== 6) {
-                    weekIndex = c/7;
-                } else {
-                    weekIndex = c/7 + 1;
-                }
-            } else {
-                weekIndex = Math.ceil(c/7);
-            }
-        }
-    }
-    return weekIndex;
-};
-
 //某月有几周
 String.prototype.weekInMonthCount = function () {
     var date = new Date((new Date(this).setDate(1)) || (new Date()).setDate(1));
@@ -131,61 +51,32 @@ String.prototype.weekInMonthCount = function () {
     return hasWeek;
 };
 
-// 获取周的区间
-String.prototype.getWeekRange = function () {
-    var nowDate = new Date(this.trim() != '' ? this : new Date()),
-        week = nowDate.getDay(),
-        weekStart,
-        weekEnd,
-        minDiff,
-        maxDiff;
-    if (week !== 0) {
-        minDiff = 1 - week;
-    } else {
-        minDiff = -6;
-    }
-    if (minDiff >= 0) {
-        weekStart = new Date(nowDate.setDate(nowDate.getDate() + minDiff));
-    } else {
-        weekStart = new Date(nowDate.setDate(nowDate.getDate() + minDiff));
-    }
-    nowDate = new Date(this.trim() != '' ? this : new Date()); // 重新赋值，为了取区间结束
-    if (week !== 0) {
-        maxDiff = 7 - week;
-    } else {
-        maxDiff = 0;
-    }
-    weekEnd = new Date(nowDate.setDate(nowDate.getDate() + maxDiff));
-    return [dateFormat(weekStart, 'yyyy/MM/dd'), dateFormat(weekEnd, 'yyyy/MM/dd')];
-}
-
-function parserDate(date) {
-    var t = Date.parse(date);
-    if (!isNaN(t)) {
-        return new Date(Date.parse(date.replace(/-/g, "/")));
-    } else {
-        return new Date();
-    }
-};
-
-
 var index = new Vue({
     el:".index",
     data(){
         return{
             shopId:"1",
             stopData:config.globalData.storeData,
+
+            dateData:config.globalData.dateData,          // 每个星期的星期数
+            dayData:config.globalData.dayData,            // 每个月的日期数据
+            monthHasDays:0,                               // 每个月有多少天
+            // firstWeekDate:0,
+            // aWeekDateArr:[],
+
+            // 修改后数据
+            // 选择下的本周一周数据
+            thisWeekMonthArray:[],
+            thisWeekDayArray:[],
+
+            // 下拉框初始值
             year:"",
             month:"",
             week:"1",
-            dateData:config.globalData.dateData,          //每个星期的星期数
-            dayData:config.globalData.dayData,            //每个月的日期数
-            monthHasDays:0,
-            firstWeekDate:0,
-            aWeekDateArr:[],
+            // 下拉框数据源
             yearData:config.globalData.yearData,
             monthData:config.globalData.monthData,
-            weekData:config.globalData.weekData.slice(0,(new Date()).pattern("yyyy-MM-dd").weekInMonthCount()),
+            weekData:[],
 
             // 当最后一周包含下个月的日期处理数据
             bothMonthDayArr:[],
@@ -216,12 +107,15 @@ var index = new Vue({
             // 数据二位数组
             dataSourse:new Array(),
             weekIndex:0,
-            timeIndex:0
+            timeIndex:0,
 
+            // 根据当前是否有数据，判断是新建还是修改
+            hasData:false
         }
     },
     methods:{
         initDataSourse(){
+            let that = this;
             for(let i = 0;i < 7;i++){
                 this.dataSourse[i] = new Array();
                 for (let j = 0; j < 4; j++) {
@@ -232,7 +126,7 @@ var index = new Vue({
                         courseTitleB:"",
                         shopId:"",
                         courseNumber:"",
-                        teacherName:"asdfasd",
+                        teacherName:"点击选择",
                         teacherId:"",
                         courseAId:"",
                         courseBId:"",
@@ -241,32 +135,98 @@ var index = new Vue({
                     };
                 }
             }
+            $.ajax({
+                url: config.ajaxUrls.listCourseByDate,
+                type: 'GET',
+                data: {
+                    shopId: this.shopId,
+                    courseDate:this.year+ "-" + this.thisWeekMonthArray[0] + "-" + this.thisWeekDayArray[0]
+                }
+            })
+            .done(function(res) {
+                if (res.status == 200) {
+                    let data = res.data;
+                    if (res.data.length == 0 ) {
+                        that.hasData = false;
+                    } else {
+                        that.hasData = true;
+                    }
+                    for (let i = 0; i < data.length; i++) {
+                        // 每一项解析出月日
+                        let courseNumStr = data[i].courseNumber;
+                        let dayStr = data[i].courseDate.split("-")[2];
+
+                        // 遍历日期
+                        for (let dayItem = 0; dayItem < that.thisWeekDayArray.length; dayItem++) {
+
+                            for (let courseItem = 0; courseItem < 4; courseItem++) {
+                                if (courseNumStr == courseItem + 1) {
+                                    if (that.thisWeekDayArray[dayItem] == parseInt(dayStr)) {
+                                        that.dataSourse[dayItem][courseItem].courseAId = data[i].courseA.Id;
+                                        that.dataSourse[dayItem][courseItem].courseThumbA = data[i].courseA.courseThumbB;
+                                        that.dataSourse[dayItem][courseItem].courseTitleA = data[i].courseA.courseName;
+                                        that.dataSourse[dayItem][courseItem].courseBId = data[i].courseB.Id;
+                                        that.dataSourse[dayItem][courseItem].courseThumbB = data[i].courseB.courseThumbB;
+                                        that.dataSourse[dayItem][courseItem].courseTitleB = data[i].courseB.courseName;
+                                        that.dataSourse[dayItem][courseItem].shopId = data[i].shopId;
+                                        that.dataSourse[dayItem][courseItem].courseNumber = data[i].courseNumber;
+                                        that.dataSourse[dayItem][courseItem].teacherName = data[i].teacher.realname;
+                                        that.dataSourse[dayItem][courseItem].teacherId = data[i].teacher.Id;
+                                        that.dataSourse[dayItem][courseItem].courseDate = data[i].courseDate;
+                                        that.dataSourse[dayItem][courseItem].xclasssId = data[i].xclassId;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    console.log(that.dataSourse);
+                    that.$forceUpdate();
+                } else {
+                    that.$Message.error(res.data);
+                }
+            });
         },
+        // 日历操作
         initDate(date){
+            //2020-03-1
+            this.weekData = config.globalData.weekData.slice(0,date.pattern("yyyy-MM-dd").weekInMonthCount());
             this.year = date.pattern("yyyy");
             this.month = (date.getMonth() + 1).toString();
-            if (this.month < 10) {
-                this.month = "0" + this.month;
-            }
+
             // 该月对应天数
             let monthHasDays = new Date();
-            monthHasDays.setMonth(monthHasDays.getMonth()+1);
+            monthHasDays.setMonth(date.getMonth()+1);
             monthHasDays.setDate(0);
             this.monthHasDays = monthHasDays.getDate();
 
-            // 该月第一周周一日期
-            for (var i = 1; i < this.monthHasDays; i++) {
-                let virtualDate = (date.pattern("yyyy") + "-" +  (date.getMonth() + 1) + "-" + i).toString();
-                if (parserDate(virtualDate).getDay() == 1) {
-                    this.aWeekDateArr = parserDate(virtualDate).pattern("yyyy-MM-dd").split("-");
-                    for (var i = 0; i < this.aWeekDateArr.length; i++) {
-                        this.aWeekDateArr[i] = parseInt(this.aWeekDateArr[i]);
-                        this.firstWeekDate = parseInt(this.aWeekDateArr[2])
+            // 装有一周内所以月、日数据的数组[{month:09,day:01}]
+            this.thisWeekMonthArray = [];
+            this.thisWeekDayArray = [];
+            for (var i = 1,j=1; i <= this.monthHasDays; i++) {
+                let virtualDate1 = (date.pattern("yyyy") + "-" +  (date.getMonth() + 1) + "-" + i).toString();
+                if (parserDate(virtualDate1).getDay() == 1) {
+                    if (j == parseInt(this.week)) {
+                        let aa = parserDate(virtualDate1).pattern("yyyy-MM-dd").split("-")
+                        for (let k = 0,z = 1; k < 7; k++) {
+                            if (parseInt(aa[2]) + k > this.monthHasDays) {
+                                if (parseInt(aa[1]) < 12) {
+                                    this.thisWeekMonthArray.push(parseInt(aa[1]) + 1);
+                                    this.thisWeekDayArray.push(z);
+                                    z++;
+                                }else{
+                                    this.thisWeekMonthArray.push("1");
+                                    this.thisWeekDayArray.push(z);
+                                    z++;
+                                }
+                            } else {
+                                this.thisWeekMonthArray.push(parseInt(aa[1]));
+                                this.thisWeekDayArray.push(parseInt(aa[2]) + k);
+                            }
+                        }
                     }
-                    break;
+                    j++;
                 }
             }
-
 
         },
         menuChange(value){
@@ -281,7 +241,10 @@ var index = new Vue({
             }
         },
         stopChange(shopId){
-            this.shopId = shopId
+            this.shopId = shopId;
+            let virtualDate = (this.year + "-" +  this.month + "-1").toString();
+            this.initDate(parserDate(virtualDate));
+            this.initDataSourse();
         },
 
         // 课程时间选择
@@ -291,24 +254,19 @@ var index = new Vue({
             this.week = "1";
             let virtualDate = (this.year + "-" +  this.month + "-1").toString();
             this.initDate(parserDate(virtualDate));
+            this.initDataSourse();
         },
         monthChange(monthNum){
             this.week = "1";
             let virtualDate = (this.year + "-" +  monthNum + "-1").toString();
             this.initDate(parserDate(virtualDate));
+            this.initDataSourse();
         },
         weekChange(weekNum){
-            // 改变aWeekDateArr数组
-            this.aWeekDateArr[2] = this.firstWeekDate + (parseInt(weekNum) - 1) * 7;
-
-            // 判断该星期中是否包含下个月的日期
-            for (let i = 0; i < 7; i++) {
-                if (this.aWeekDateArr[2] + i > this.monthHasDays) {
-                    this.bothMonthDayArr[i] =  this.aWeekDateArr[2] + i - this.monthHasDays;
-                }else{
-                    this.bothMonthDayArr[i] = "";
-                }
-            }
+            this.week = weekNum;
+            let virtualDate = (this.year + "-" +  this.month + "-1").toString();
+            this.initDate(parserDate(virtualDate));
+            this.initDataSourse();
         },
         // ******************************************************************
         // 基础课程事件
@@ -325,7 +283,6 @@ var index = new Vue({
                 }
             })
             .done(function(res) {
-                console.log(res);
                 if (res.status == 200) {
                     that.$Loading.finish();
                     that.mainCourseDate = res.data.rows;
@@ -342,7 +299,7 @@ var index = new Vue({
         // 点击弹出基础课程选择框
         // 输入的日期数据有可能存在number类型    0 0 "2019" "09" "02" 1
         changeMainCourse(weekIndex,timeIndex,year,month,day,time){
-
+            console.log(weekIndex,timeIndex,year,month,day,time);
             this.mainModelActive = true;
             this.sportModelActive = false;
             this.teacherModelActive = false;
@@ -360,7 +317,6 @@ var index = new Vue({
                 day = "0" + day.toString();
             }
             this.dateInfo = year + "-" + month + "-" + day + "#" + time;
-
             // 获取基础课程数据
             this.getMainCourseData(0);
         },
@@ -401,28 +357,7 @@ var index = new Vue({
             this.dataSourse[this.weekIndex][this.timeIndex].courseDate = this.dateInfo.split("#")[0];
             this.dataSourse[this.weekIndex][this.timeIndex].courseNumber = this.dateInfo.split("#")[1];
 
-
             this.dataSourse[this.weekIndex][this.timeIndex].xclasssId = "1";
-
-            // map的键  20190805
-            // let mapKeyText = this.dateInfo.split("#")[0].split("-").join("");
-            //
-            // if(this.bigMap.has(mapKeyText)){
-            //     this.bigMap.get(mapKeyText)
-            //     .set("shopId",this.shopId)
-            //     .set("courseAId",indexData.Id)
-            //     .set("courseDate",this.dateInfo.split("#")[0])
-            //     .set("courseNumber",this.dateInfo.split("#")[1]);
-            // }else{
-            //     let smallMap = new Map();
-            //     smallMap.set("shopId",this.shopId)
-            //     .set("courseAId",indexData.Id)
-            //     .set("courseDate",this.dateInfo.split("#")[0])
-            //     .set("courseNumber",this.dateInfo.split("#")[1]);
-            //
-            //     this.bigMap.set(mapKeyText,smallMap);
-            // }
-            // console.log(this.bigMap.get('20190902').get('courseAId'));
             this.mainModelActive = false;
 
         },
@@ -528,8 +463,6 @@ var index = new Vue({
             this.sportModelActive = false;
             this.teacherModelActive = true;
 
-            console.log(weekIndex);
-
             // 记录点击的坐标轴位置
             this.weekIndex = weekIndex;
             this.timeIndex = timeIndex;
@@ -559,19 +492,8 @@ var index = new Vue({
         submitCourseChoose(){
             // 预留 xclassId
             // let xclasssId = 1;
-            console.log(this.dataSourse.length);
-            // courseThumbA:"",
-            // courseTitleA:"",
-            // courseThumbB:"",
-            // courseTitleB:"",
-            // shopId:"",
-            // courseNumber:"",
-            // teacherName:"asdfasd",
-            // teacherId:"",
-            // courseAId:"",
-            // courseBId:"",
-            // courseDate:"",
-            // xclasssId:"",
+            //
+            // 去重函数
             function unique(array) {
                 return Array.from(new Set(array));
             }
@@ -586,39 +508,87 @@ var index = new Vue({
                     }
                 }
             }
+            let canSubmit = true;
             for (let i = 0; i < copyDataSourse.length; i++) {
                 for (let j = 0; j < copyDataSourse[i].length; j++) {
-                    console.log(copyDataSourse[i][j]);
-                    if( copyDataSourse[i][j] != ""){
-                        aoData.push(copyDataSourse[i][j]);
+                    if( copyDataSourse[i][j] != "" ){
+                        if (copyDataSourse[i][j].courseAId != "" && copyDataSourse[i][j].courseBId != "" && copyDataSourse[i][j].teacherId != "") {
+                            aoData.push(copyDataSourse[i][j]);
+                        }else{
+                            canSubmit = false;
+                            this.$Message.error("内容输入有误，选课时“课程”与“老师”为必填项！")
+                            break;
+                        }
                     }
                 }
             }
-            console.log(JSON.stringify(aoData));
 
             let that = this;
-            $.ajax({
-                url: config.ajaxUrls.createCourseChoose,
-                type: 'POST',
-                data: JSON.stringify( aoData )
-            })
-            .done(function(res) {
-                console.log("success",res);
-            })
-            .fail(function() {
-                console.log("error");
-            })
-            .always(function() {
-                console.log("complete");
-            });
+            this.$Loading.start();
+            if (canSubmit) {
+                if (that.hasData) {
+                    let aoDataStr = {
+                        "shopId":that.shopId,
+                        "courseDate": "'" + that.year + "-" + that.thisWeekMonthArray[0] + "-" + that.thisWeekDayArray[0] + "'",
+                        "data": aoData
+                    };
+                    $.ajax({
+                        url: config.ajaxUrls.updateCourseByDate,
+                        dataType:"json",
+                        contentType:"application/json",
+                        type: 'PUT',
+                        data: JSON.stringify(aoDataStr)
+                    })
+                    .done(function(res) {
+                        if(res.status == 200){
+                            that.$Loading.finish();
+                            that.$Message.success(res.data);
+                            let date = parserDate(that.year + "-" + that.thisWeekMonthArray[0] + "-" + that.thisWeekDayArray[0]);
+                            that.initDate(date);
+                            that.initDataSourse();
+                        }else{
+                            that.$Loading.error();
+                            that.$Message.error(res.data);
+                        }
+                    })
+                    .fail(function(err) {
+                        that.$Loading.error();
+                        that.$Message.success(err.data);
+                    })
+                } else {
+                    $.ajax({
+                        url: config.ajaxUrls.createCourseChoose,
+                        dataType:"json",
+                        contentType:"application/json",
+                        type: 'POST',
+                        data: JSON.stringify( aoData )
+                    })
+                    .done(function(res) {
+                        if(res.status == 200){
+                            that.$Loading.finish();
+                            that.$Message.success(res.data);
+                            let date = parserDate(that.year + "-" + that.thisWeekMonthArray[0] + "-" + that.thisWeekDayArray[0]);
+                            that.initDate(date);
+                            that.initDataSourse();
+                        }else{
+                            that.$Loading.error();
+                            that.$Message.error(res.data);
+                        }
+                    })
+                    .fail(function(err) {
+                        that.$Loading.error();
+                        that.$Message.success(err.data);
+                    })
+                }
 
+            }
         }
     },
     created(){
         $(".menuBtns").children('.active').removeClass('active');
         $(".menuBtns").children().eq(0).addClass('active');
         let date = new Date();
-        this.initDataSourse();
         this.initDate(date);
+        this.initDataSourse();
     }
 })

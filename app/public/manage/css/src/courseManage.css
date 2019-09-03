@@ -116,6 +116,10 @@
     color: #999999;
 }
 .right .courseContainer .weekTime .time{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
     color: #CBCBCB;
 }
 

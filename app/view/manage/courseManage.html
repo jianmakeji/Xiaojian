@@ -64,8 +64,12 @@
 
                     <div class="Mon" v-for="(item,index) in dateData">
                         <label class="title" v-text="dateData[index]"></label>
-                        <label v-if="dayData[aWeekDateArr[2] + index] <= monthHasDays" class="time" v-text="aWeekDateArr[1] + '/' + dayData[aWeekDateArr[2] + index]"></label>
-                        <label v-else class="time" v-text="aWeekDateArr[1] + 1 + '/' + bothMonthDayArr[index]"></label>
+                        <div class="time">
+                            <span class="111" v-text="thisWeekMonthArray[index]"></span>
+                            /
+                            <span v-text="thisWeekDayArray[index]"></span>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -97,34 +101,22 @@
                     <div class="weekDay" v-for="(weekItem,weekIndex) in [0,1,2,3,4,5,6]">
                         <!-- 一到四节课 -->
                         <div class="courseTime" v-for="(timeItem,timeIndex) in [1,2,3,4]">
-                            <!-- <div v-text=""></div> -->
                             <div class="courseImgs">
                                 <!-- 基础课程图片 -->
-                                <!-- <img v-if="dayData[aWeekDateArr[2] + weekItem] <= monthHasDays" class="mainCourseImg" :src="timeItem.courseThumbA?timeItem.courseThumbA:'../public/images/1.png'" @click="changeMainCourse(year,month,dayData[aWeekDateArr[2] + weekItem],timeItem)" title="编辑基础课程">
-                                <img v-else class="mainCourseImg" :src="timeItem.courseThumbA?timeItem.courseThumbA:'../public/images/1.png'" @click="changeMainCourse(year,(aWeekDateArr[1] + 1),bothMonthDayArr[weekItem],timeItem)" title="编辑基础课程"> -->
-
-                                <img v-if="dayData[aWeekDateArr[2] + weekItem] <= monthHasDays" class="mainCourseImg" :src="dataSourse[weekIndex][timeIndex].courseThumbA?dataSourse[weekIndex][timeIndex].courseThumbA:'../public/images/1.png'" @click="changeMainCourse(weekIndex,timeIndex,year,month,dayData[aWeekDateArr[2] + weekItem],timeItem)" title="编辑基础课程">
-                                <img v-else class="mainCourseImg" :src="dataSourse[weekIndex][timeIndex].courseThumbA?dataSourse[weekIndex][timeIndex].courseThumbA:'../public/images/1.png'" @click="changeMainCourse(weekIndex,timeIndex,year,(aWeekDateArr[1] + 1),bothMonthDayArr[weekItem],timeItem)" title="编辑基础课程">
+                                <img class="mainCourseImg" :src="dataSourse[weekIndex][timeIndex].courseThumbA?dataSourse[weekIndex][timeIndex].courseThumbA:'../public/images/1.png'" @click="changeMainCourse(weekIndex,timeIndex,year,thisWeekMonthArray[weekIndex],thisWeekDayArray[weekIndex],timeItem)" title="编辑基础课程">
 
                                 <!-- 运动课程图片 -->
-                                <img v-if="dayData[aWeekDateArr[2] + weekItem] <= monthHasDays" class="mainCourseImg" :src="dataSourse[weekIndex][timeIndex].courseThumbB?dataSourse[weekIndex][timeIndex].courseThumbB:'../public/images/2.png'" @click="changeSportCourse(weekIndex,timeIndex,year,month,dayData[aWeekDateArr[2] + weekItem],timeItem)" title="编辑运动课程">
-                                <img v-else class="mainCourseImg" :src="dataSourse[weekIndex][timeIndex].courseThumbB?dataSourse[weekIndex][timeIndex].courseThumbB:'../public/images/2.png'" @click="changeSportCourse(weekIndex,timeIndex,year,(aWeekDateArr[1] + 1),bothMonthDayArr[weekItem],timeItem)" title="编辑运动课程">
-                                <!-- <img class="otherCourseImg" src="../public/images/2.png" @click="changeSportCourse(1)"title="编辑运动课程"> -->
+                                <img class="mainCourseImg" :src="dataSourse[weekIndex][timeIndex].courseThumbB?dataSourse[weekIndex][timeIndex].courseThumbB:'../public/images/2.png'" @click="changeSportCourse(weekIndex,timeIndex,year,thisWeekMonthArray[weekIndex],thisWeekDayArray[weekIndex],timeItem)" title="编辑运动课程">
                             </div>
                             <div class="courseNames">
-                                <span v-if="dayData[aWeekDateArr[2] + weekItem] <= monthHasDays" class="mainCourseName" @click="changeMainCourse(weekIndex,timeIndex,year,month,dayData[aWeekDateArr[2] + weekItem],timeItem)" title="编辑基础课程" v-text="dataSourse[weekIndex][timeIndex].courseTitleA"></span>
-                                <span v-else class="mainCourseName" @click="changeMainCourse(weekIndex,timeIndex,year,(aWeekDateArr[1] + 1),bothMonthDayArr[weekItem],timeItem)" title="编辑基础课程" v-text="dataSourse[weekIndex][timeIndex].courseTitleA"></span>
+                                <!-- 基础课程名称 -->
+                                <span class="mainCourseName" @click="changeMainCourse(weekIndex,timeIndex,year,thisWeekMonthArray[weekIndex],thisWeekDayArray[weekIndex],timeItem)" title="编辑基础课程" v-text="dataSourse[weekIndex][timeIndex].courseTitleA"></span>
 
-
-
-
-                                <!-- <span class="otherCourseName" @click="changeSportCourse(1)" title="编辑运动课程">《篮球》</span> -->
-                                <span v-if="dayData[aWeekDateArr[2] + weekItem] <= monthHasDays" class="otherCourseName" @click="changeSportCourse(weekIndex,timeIndex,year,month,dayData[aWeekDateArr[2] + weekItem],timeItem)" title="编辑运动课程" v-text="dataSourse[weekIndex][timeIndex].courseTitleB"></span>
-                                <span v-else class="otherCourseName" @click="changeSportCourse(weekIndex,timeIndex,year,(aWeekDateArr[1] + 1),bothMonthDayArr[weekItem],timeItem)" title="编辑运动课程" v-text="dataSourse[weekIndex][timeIndex].courseTitleB"></span>
+                                <!-- 运动课程名称 -->
+                                <span class="otherCourseName" @click="changeSportCourse(weekIndex,timeIndex,year,thisWeekMonthArray[weekIndex],thisWeekDayArray[weekIndex],timeItem)" title="编辑运动课程" v-text="dataSourse[weekIndex][timeIndex].courseTitleB"></span>
                             </div>
                             <!-- 老师名称 -->
-                            <div v-if="dayData[aWeekDateArr[2] + weekItem] <= monthHasDays" class="teacherName" @click="changeTeacher(weekIndex,timeIndex,year,month,dayData[aWeekDateArr[2] + weekItem],timeItem)" title="编辑老师" v-text="dataSourse[weekIndex][timeIndex].teacherName"></div>
-                            <div v-else class="teacherName" @click="changeTeacher(weekIndex,timeIndex,year,(aWeekDateArr[1] + 1),bothMonthDayArr[weekItem],timeItem)" title="编辑老师" v-text="dataSourse[weekIndex][timeIndex].teacherName"></div>
+                            <div class="teacherName" @click="changeTeacher(weekIndex,timeIndex,year,thisWeekMonthArray[weekIndex],thisWeekDayArray[weekIndex],timeItem)" title="编辑老师" v-text="dataSourse[weekIndex][timeIndex].teacherName"></div>
                             <div class="students">
                                 <i-button class="studentListBtn" @click="">学生名单</i-button>
                             </div>
