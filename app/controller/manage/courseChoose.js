@@ -99,8 +99,8 @@ class CourseChooseController extends BaseController{
     const ctx = this.ctx;
     const ctx = this.ctx;
     try{
-      let courseChooseArray = ctx.request.body;
-      const result = await ctx.service.courseChoose.createCourseChoose(courseChooseArray);
+      let updateCourseChooseData = ctx.request.body;
+      const result = await ctx.service.courseChoose.updateCourseByDate(updateCourseChooseData);
       super.success(ctx.__('createdSuccess'));
 
     }
