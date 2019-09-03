@@ -100,7 +100,7 @@ module.exports = app => {
       where:{
         shopId:shopId,
         courseDate:{
-          [Op.between]: [courseDate, endTime.toLocalDateString()],
+          [app.Sequelize.Op.between]: [courseDate, endTime.toLocaleDateString()],
         }
       },
       include:[

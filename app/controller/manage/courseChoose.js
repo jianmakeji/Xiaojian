@@ -87,8 +87,8 @@ class CourseChooseController extends BaseController{
       courseDate: ctx.query.courseDate,
     };
     try{
-      await ctx.service.courseChoose.listCourseByDate(query);
-      super.success(ctx.__('deletedSuccessful'));
+      let result = await ctx.service.courseChoose.listCourseByDate(query);
+      super.success(result);
     }
     catch(e){
       ctx.logger.error(e.message);
