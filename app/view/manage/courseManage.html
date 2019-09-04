@@ -27,19 +27,19 @@
         <div class="filtrLeft">
             <div class="storeInfo">
                 <label>店铺选择:</label>
-                <i-select v-model="shopId" style="width:200px;" @on-change="stopChange" placeholder="店铺">
+                <i-select v-model="shopId" style="width:200px;" @on-change="stopChange" @on-open-change="closeModel" placeholder="店铺">
                     <i-option v-for="item in stopData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
                 </i-select>
             </div>
             <div class="dateInfo">
                 <label>课程时间选择:</label>
-                <i-select v-model="year" style="width:100px;margin-left:10px;" @on-change="yearChange" placeholder="年份">
+                <i-select v-model="year" style="width:100px;margin-left:10px;" @on-change="yearChange" @on-open-change="closeModel" placeholder="年份">
                     <i-option v-for="item in yearData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
                 </i-select>
-                <i-select v-model="month" style="width:100px;margin-left:10px;" @on-change="monthChange"  placeholder="月份">
+                <i-select v-model="month" style="width:100px;margin-left:10px;" @on-change="monthChange" @on-open-change="closeModel"  placeholder="月份">
                     <i-option v-for="item in monthData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
                 </i-select>
-                <i-select v-model="week" style="width:100px;margin-left:10px;" @on-change="weekChange" placeholder="星期">
+                <i-select v-model="week" style="width:100px;margin-left:10px;" @on-change="weekChange" @on-open-change="closeModel" placeholder="星期">
                     <i-option v-for="item in weekData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
                 </i-select>
             </div>
@@ -134,6 +134,7 @@
 {% block models %}
     <!-- 基础选课右侧弹出框 -->
     <div class="mainCourseModel" :class="{active:mainModelActive}">
+        <icon class="closeIcon" size="20" type="md-close-circle" @click="closeModel"></icon>
         <p class="mianCourseTitle">基础课程选课中心</p>
         <i-input class="mainCourseSearch" v-model="searchMainCourseValue" placeholder="搜索" search @on-search="searchMainCourseEvent"></i-input>
         <div class="mianCourseTypes">
@@ -156,10 +157,13 @@
 
     <!-- 辅助选课右侧弹出框 -->
     <div class="sportCourseModel" :class="{active:sportModelActive}">
+        <icon class="closeIcon" size="20" type="md-close-circle" @click="closeModel"></icon>
         <p class="sportCourseTitle">运动课程选课中心</p>
         <i-input class="sportCourseSearch" v-model="searchSportCourseValue" placeholder="搜索" search @on-search="searchSportCourseEvent"></i-input>
         <div class="sportCourseTypes">
             <div class="all" :class="{active:subTypeSportAllIsActive}" @click="sportCourseSubTypeChange(0)">全部</div>
+            <div class="commonsense" :class="{active:subTypeCommonsenseIsActive}" @click="sportCourseSubTypeChange(3)">常识</div>
+            <div class="art" :class="{active:subTypeArtIsActive}" @click="sportCourseSubTypeChange(4)">美术</div>
             <div class="basketball" :class="{active:subTypeBasketballIsActive}" @click="sportCourseSubTypeChange(5)">篮球</div>
         </div>
         <div class="sportCourseResultList">
@@ -177,6 +181,7 @@
 
     <!-- 教师选择中心右侧弹出框 -->
     <div class="teacherCourseModel" :class="{active:teacherModelActive}">
+        <icon class="closeIcon" size="20" type="md-close-circle" @click="closeModel"></icon>
         <p class="tearcherCourseTitle">教师选择中心</p>
         <i-input class="teacherCourseSearch" v-model="searchTeacherourseValue" placeholder="搜索" search @on-search="searchTeacherCourseEvent"></i-input>
         <div class="teacherCourseTypes">

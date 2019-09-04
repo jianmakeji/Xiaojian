@@ -8,6 +8,13 @@ class HomeController extends Controller {
     ctx.body = 'hi, egg';
   }
 
+  async home(){
+      const ctx = this.ctx;
+      await ctx.render('home.html', {
+        user : ctx.user
+      });
+  }
+
   async login(){
       const ctx = this.ctx;
       await ctx.render('login.html', {
