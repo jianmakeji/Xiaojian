@@ -82,8 +82,14 @@ class UsersController extends BaseController{
     const ctx = this.ctx;
     const id = ctx.params.id;
     const updates = {
-      mobile: ctx.request.body.mobile,
-      email: ctx.request.body.email,
+      username: ctx.request.body.username,
+      realname: ctx.request.body.realname,
+      shopId: ctx.request.body.shopId,
+      age: ctx.request.body.age,
+      gender: ctx.request.body.gender,
+      idNum: ctx.request.body.idNum,
+      jobTitle: ctx.request.body.jobTitle,
+      headicon: ctx.request.body.headicon,
     };
 
     try{
