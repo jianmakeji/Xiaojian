@@ -98,12 +98,15 @@ module.exports = app => {
         [app.Sequelize.Op.like]: '%'+courseName+'%',
       };
     }
-    let courseTypeArray = courseType.split(',');
 
-    if (courseTypeArray.length > 0){
-      condition.where.courseSubType =  {
-        [app.Sequelize.Op.in]: courseTypeArray,
-      };
+    if (courseType != null && courseName != ''){
+      let courseTypeArray = courseType.split(',');
+
+      if (courseTypeArray.length > 0){
+        condition.where.courseSubType =  {
+          [app.Sequelize.Op.in]: courseTypeArray,
+        };
+      }
     }
 
     if (courseSubType > 0){
