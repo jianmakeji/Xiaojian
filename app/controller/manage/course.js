@@ -100,7 +100,8 @@ class CourseController extends BaseController{
   async listAllCourseByType() {
     const ctx = this.ctx;
     const query = {
-      courseType: ctx.helper.parseInt(ctx.query.courseType),
+      courseName:ctx.query.courseName,
+      courseType: ctx.query.courseType,
       courseSubType: ctx.helper.parseInt(ctx.query.courseSubType)
     };
 

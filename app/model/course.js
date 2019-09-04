@@ -85,7 +85,7 @@ module.exports = app => {
     return this.findAndCountAll(condition);
   }
 
-  Course.listAllCourseByType = async function ({ courseType = 0, courseSubType = 0 }) {
+  Course.listAllCourseByType = async function ({courseName="", courseType = "", courseSubType = 0 }) {
     let condition = {
       order: [[ 'createAt', 'desc' ], [ 'Id', 'desc' ]],
       where:{
@@ -93,12 +93,21 @@ module.exports = app => {
       }
     };
 
-    if (courseSubType > 0){
-      condition.where.courseSubType = courseSubType;
+    if (courseName != null && courseName != ''){
+      condition.where.courseName = {
+        [app.Sequelize.Op.like]: '%'+courseName+'%',
+      };
+    }
+    let courseTypeArray = courseType.split(',');
+
+    if (courseTypeArray.length > 0){
+      condition.where.courseSubType =  {
+        [app.Sequelize.Op.in]: courseTypeArray,
+      };
     }
 
-    if (courseType > 0){
-      condition.where.courseType = courseType;
+    if (courseSubType > 0){
+      condition.where.courseSubType = courseSubType;
     }
 
     return this.findAndCountAll(condition);
@@ -153,5 +162,5 @@ module.exports = app => {
     return this.findAndCountAll(condition);
   }
 
-  return Course;
+
 };

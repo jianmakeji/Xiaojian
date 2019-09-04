@@ -52,10 +52,12 @@ class Course extends Service {
   }
 
   async listAllCourseByType({
-    courseType = 0,
+    courseName = "",
+    courseType = "",
     courseSubType = 0,
   }) {
     return this.ctx.model.Course.listAllCourseByType({
+      courseName,
       courseType,
       courseSubType,
     });
