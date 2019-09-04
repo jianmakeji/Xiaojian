@@ -34,7 +34,7 @@ class HomeController extends Controller {
     if(ctx.isAuthenticated()){
       if(ctx.user.roles && ctx.user.roles.length > 0){
         if (ctx.user.roles[0].rolename == 'manage'){
-          ctx.redirect('/manage');
+          ctx.redirect('/courseManage');
         }
         else if (ctx.user.roles[0].rolename == 'teacher'){
           if (ctx.user.password == 2){
@@ -47,7 +47,7 @@ class HomeController extends Controller {
           }
         }
         else if (ctx.user.roles[0].rolename == 'supermanage'){
-          ctx.redirect('/manage');
+          ctx.redirect('/courseManage');
         }
         else{
           ctx.redirect('/student');
