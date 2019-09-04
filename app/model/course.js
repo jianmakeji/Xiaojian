@@ -99,11 +99,11 @@ module.exports = app => {
       };
     }
 
-    if (courseType != null && courseName != ''){
+    if (courseType != null && courseType != ''){
       let courseTypeArray = courseType.split(',');
 
       if (courseTypeArray.length > 0){
-        condition.where.courseSubType =  {
+        condition.where.courseType =  {
           [app.Sequelize.Op.in]: courseTypeArray,
         };
       }
@@ -113,7 +113,7 @@ module.exports = app => {
       condition.where.courseSubType = courseSubType;
     }
 
-    return this.findAndCountAll(condition);
+    return this.findAll(condition);
   }
 
   Course.findCourseById = async function (id) {
@@ -165,5 +165,5 @@ module.exports = app => {
     return this.findAndCountAll(condition);
   }
 
-
+  return Course;
 };
