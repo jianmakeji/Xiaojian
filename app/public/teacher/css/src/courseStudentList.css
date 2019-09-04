@@ -1,0 +1,65 @@
+/* 店铺筛选 */
+.right .filtrMenu{
+    width: 90%;
+    margin: 0 5%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft .ivu-select-selection{
+    border: 1px solid #FFC837;
+}
+.right .filtrMenu .filtrLeft .storeInfo{
+    /* margin-left: 50px; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft .storeInfo label{
+    font-size: 15px;
+    margin-right: 10px;
+    letter-spacing: 1px;
+}
+/* 时间筛选 */
+.right .filtrMenu .filtrLeft .dateInfo{
+    margin-left: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft .dateInfo label{
+    font-size: 15px;
+    margin-right: 10px;
+    letter-spacing: 1px;
+}
+.right .filtrMenu .filtrRight{
+
+}
+.right .filtrMenu .filtrRight .editBtn,
+.right .filtrMenu .filtrRight .saveBtn,
+.right .filtrMenu .filtrRight .uploadBtn{
+    color: #fff;
+    background:  #FFC837;
+}
+
+/* **********table数据列表************** */
+.right .studentList{
+    width: 90%;
+    margin: 0 5%;
+    margin-top: 20px;
+}
+.right .page{
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+}

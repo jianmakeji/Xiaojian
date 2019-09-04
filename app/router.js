@@ -46,4 +46,9 @@ module.exports = app => {
   router.get('/manage/studentManage', controller.manage.manage.studentManage);
   router.get('/manage/courseContentManage', controller.manage.manage.courseContentManage);
   router.get('/manage/addCourse', controller.manage.manage.addCourse);
+
+
+  router.get('/teacher/courseCheck', controller.teacher.teacher.courseCheck);
+  router.get('/teacher/courseStudentList', controller.teacher.teacher.courseStudentList);
+  router.get('/teacher/personalManage', controller.teacher.teacher.personalManage);
 };

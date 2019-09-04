@@ -1,0 +1,25 @@
+/* ************子菜单选项:用户记录。现存用户。店铺监控**************** */
+.right .subMenu{
+    width: 400px;
+    margin-left: 5%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .subMenu .subMenuBtn{
+    background: #CCCCCC;
+    color: #fff;
+    letter-spacing: 2px;
+}
+.right .subMenu .subMenuBtn.active{
+    background: #FFC837;
+    border-color: #FFC837;
+    letter-spacing: 2px;
+}
+.right .subMenu .line{
+    width: 4px;
+    height: 20px;
+    background: #FFC837;
+}
