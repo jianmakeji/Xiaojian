@@ -27,6 +27,8 @@ module.exports = app => {
   router.post('/manage/courseChoose/createCourseChoose', controller.manage.courseChoose.createCourseChoose);
   router.put('/manage/courseChoose/updateCourseByDate', controller.manage.courseChoose.updateCourseByDate);
 
+  router.get('/teacher/courseChoose/getCourseDataByTeacherId', controller.teacher.courseChoose.getCourseDataByTeacherId);
+  
   router.resources('/manage/user',  controller.manage.user);
   router.resources('/manage/course',  controller.manage.course);
   router.resources('/manage/courseChoose',  controller.manage.courseChoose);

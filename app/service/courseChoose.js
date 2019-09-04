@@ -78,6 +78,10 @@ class CourseChoose extends Service {
     }
 
   }
+
+  async getCourseDataByTeacherId(teacherId){
+    return this.ctx.model.CourseChoose.getCourseDataByTeacherId(teacherId);
+  }
 }
 
 module.exports = CourseChoose;

@@ -171,5 +171,30 @@ module.exports = app => {
       },
     });
   }
+
+  CourseChoose.getCourseDataByTeacherId = async function(teacherId){
+    let date = new Date();
+    let formatDate = date.format("yyyy-MM-dd");;
+
+    return this.findAll({
+      order: [[ 'createAt', 'desc' ], [ 'Id', 'desc' ]],
+      where:{
+        teacherId:teacherId,
+        courseDate:formatDate
+      },
+      include:[
+        {
+          model:app.model.Course,as:'courseA'
+        },
+        {
+          model:app.model.Course,as:'courseB'
+        },
+        {
+          model:app.model.Xclass,as:'xclass'
+        },
+      ]
+    });
+  }
+  
   return CourseChoose;
 };
