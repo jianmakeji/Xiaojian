@@ -8,7 +8,6 @@
     background:linear-gradient(to right, #FF8009, #FFC837) !important;
     color:red;
 }
-
 .login{
     display: flex;
     flex-direction: column;
@@ -22,19 +21,56 @@
 }
 
 .login .username{
+    width: 400px;
     margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    border-radius: 5px;
+    border: solid 2px #E5E5E5;
 }
 .login .username .ivu-icon-ios-contact{
-    font-size: 26px;
+    font-size: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
     color:#FFC837;
 }
-
+.login .username .usernameInput{
+    width: 350px;
+    height: 34px;
+    font-size: medium;
+    color: #918B88;
+    border: none;
+}
+.login .username .usernameInput:focus{
+    outline: none;
+}
 .login .password{
+    width: 400px;
     margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    border: solid 2px #E5E5E5;
+    border-radius: 5px;
 }
 .login .password .ivu-icon-ios-lock{
-    font-size: 26px;
+    font-size: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
     color:#FFC837;
+}
+.login .password .passwordInput{
+    width: 350px;
+    height: 34px;
+    font-size: medium;
+    color: #918B88;
+    border: none;
+}
+.login .password .passwordInput:focus{
+    outline: none;
 }
 
 .login .opts{
@@ -55,7 +91,9 @@
 
 .login .opts .forgetPwd{
     font-size: 16px;
+    cursor: pointer;
 }
+
 
 .login .submitBtn{
     margin-top: 20px;
@@ -64,8 +102,11 @@
 
 .login .submitBtn .submit{
     width: 200px;
+    height: 34px;
     font-size: 16px;
+    border-radius: 32px;
     color: #fff;
     border: solid 1px #FFC837;
     background: #FFC837;
+    cursor: pointer;
 }

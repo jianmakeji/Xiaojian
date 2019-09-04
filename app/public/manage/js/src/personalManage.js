@@ -2,11 +2,8 @@ var index = new Vue({
     el:".index",
     data(){
         return{
-            storeId:"",
-            storeData:[
-                {value: '1',label: '店铺A'},
-                {value: '2',label: '店铺B'}
-            ],
+            storeId:"1",
+            storeData:config.globalData.storeData,
 
             searchPersonalValue:""
         }

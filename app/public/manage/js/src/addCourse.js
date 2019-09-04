@@ -21,11 +21,11 @@ var index = new Vue({
                 {value: '3',label: '运动课程'}
             ],
             courseSubTypeData:[
-                {value: '1',label: '成语故事'},
-                {value: '2',label: '儿童诗歌'},
-                {value: '3',label: '常识'},
-                {value: '4',label: '美术'},
-                {value: '5',label: '篮球'}
+                // {value: '1',label: '成语故事'},
+                // {value: '2',label: '儿童诗歌'},
+                // {value: '3',label: '常识'},
+                // {value: '4',label: '美术'},
+                // {value: '5',label: '篮球'}
             ],
 
             // 缩略图和h5临时变量
@@ -159,7 +159,28 @@ var index = new Vue({
             })
         },
         courseTypeChange(courseTypeId){
+            let that = this;
             this.formItem.courseType = courseTypeId;
+            switch (courseTypeId) {
+                case "1":
+                    that.courseSubTypeData = [
+                        {value: '1',label: '成语故事'},
+                        {value: '2',label: '儿童诗歌'},
+                    ];
+                    break;
+                case "2":
+                    that.courseSubTypeData = [
+                        {value: '3',label: '常识'},
+                        {value: '4',label: '美术'},
+                    ];
+                    break;
+                case "3":
+                    that.courseSubTypeData = [
+                        {value: '5',label: '篮球'}
+                    ];
+                    break;
+                default:
+            }
         },
         courseSubTypeChange(courseSubTypeId){
             this.formItem.courseSubType = courseSubTypeId;

@@ -253,6 +253,12 @@
     transition: right 1s;
     overflow: auto;
 }
+.mainCourseModel .closeIcon{
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    cursor: pointer;
+}
 .mainCourseModel .mianCourseTitle{
     height: 40px;
     line-height: 40px;
@@ -372,6 +378,12 @@
     transition: right 1s;
     overflow: auto;
 }
+.sportCourseModel .closeIcon{
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    cursor: pointer;
+}
 .sportCourseModel .sportCourseTitle{
     height: 40px;
     line-height: 40px;
@@ -490,6 +502,12 @@
     align-items: center;
     transition: right 1s;
     overflow: auto;
+}
+.teacherCourseModel .closeIcon{
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    cursor: pointer;
 }
 .teacherCourseModel .tearcherCourseTitle{
     height: 40px;

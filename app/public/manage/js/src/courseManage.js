@@ -50,6 +50,14 @@ String.prototype.weekInMonthCount = function () {
     var hasWeek = Math.ceil(monthHasDays/7); // 计算本月有几周
     return hasWeek;
 };
+function parserDate(date) {
+    var t = Date.parse(date);
+    if (!isNaN(t)) {
+        return new Date(Date.parse(date.replace(/-/g, "/")));
+    } else {
+        return new Date();
+    }
+};
 
 var index = new Vue({
     el:".index",
@@ -82,6 +90,7 @@ var index = new Vue({
             bothMonthDayArr:[],
 
             // 主要课程数据
+            mainSubTypeId:"",
             searchMainCourseValue:"",
             mainModelActive:false,
             subTypeMainAllIsActive:true,
@@ -91,9 +100,12 @@ var index = new Vue({
             dateInfo:"",            //记录是那个课程点击的选课弹出层
             // 次要课程数据
             // 运动课程数据
+            sportSubTypeId:"",
             sportCourseDate:[],
             subTypeSportAllIsActive:true,
             subTypeBasketballIsActive:false,
+            subTypeCommonsenseIsActive : false,
+            subTypeArtIsActive : false,
             searchSportCourseValue:"",
             sportModelActive:false,
 
@@ -246,7 +258,11 @@ var index = new Vue({
             this.initDate(parserDate(virtualDate));
             this.initDataSourse();
         },
-
+        closeModel(){
+            this.mainModelActive = false;
+            this.sportModelActive = false;
+            this.teacherModelActive = false;
+        },
         // 课程时间选择
         yearChange(yearValue){
             this.year = yearValue;
@@ -271,21 +287,23 @@ var index = new Vue({
         // ******************************************************************
         // 基础课程事件
         // ******************************************************************
-        getMainCourseData(courseSubTypeId){
+        getMainCourseData(courseSubTypeId,courseName){
             let that = this;
             this.$Loading.start();
             $.ajax({
                 url: config.ajaxUrls.listAllCourseByType,
                 type: 'GET',
                 data: {
-                    courseType:1,
+                    courseName:courseName,
+                    courseType:"1",
                     courseSubType:courseSubTypeId
                 }
             })
             .done(function(res) {
+                console.log(res);
                 if (res.status == 200) {
                     that.$Loading.finish();
-                    that.mainCourseDate = res.data.rows;
+                    that.mainCourseDate = res.data;
                 } else {
                     that.$Loading.error();
                     that.$Message.error(res.data);
@@ -318,11 +336,12 @@ var index = new Vue({
             }
             this.dateInfo = year + "-" + month + "-" + day + "#" + time;
             // 获取基础课程数据
-            this.getMainCourseData(0);
+            this.getMainCourseData(0,this.searchMainCourseValue);
         },
 
         // 筛选基础课程的子类别
         mainCourseSubTypeChange(courseSubTypeId){
+            this.mainSubTypeId = courseSubTypeId;
             switch (courseSubTypeId) {
                 case 0:
                     this.subTypeMainAllIsActive = true;
@@ -343,7 +362,7 @@ var index = new Vue({
                     return
             }
             // 获取基础课程数据
-            this.getMainCourseData(courseSubTypeId);
+            this.getMainCourseData(this.mainSubTypeId,this.searchMainCourseValue);
         },
         // 点击确认基础课程选择
         chooseTheMainCourse(index){
@@ -363,7 +382,10 @@ var index = new Vue({
         },
         // 搜索基础课程筛选
         searchMainCourseEvent(){
-            console.log("点击了主要课程搜索");
+            let that = this;
+
+            this.getMainCourseData(this.mainSubTypeId,this.searchMainCourseValue);
+
         },
 
         // ******************************************************************
@@ -374,21 +396,22 @@ var index = new Vue({
         // 运动课程事件
         // ******************************************************************
 
-        getSportCourseData(courseSubTypeId){
+        getSportCourseData(courseSubTypeId,courseName){
             let that = this;
             this.$Loading.start();
             $.ajax({
                 url: config.ajaxUrls.listAllCourseByType,
                 type: 'GET',
                 data: {
-                    courseType:3,
+                    courseName:courseName,
+                    courseType:"2,3",
                     courseSubType:courseSubTypeId
                 }
             })
             .done(function(res) {
                 if (res.status == 200) {
                     that.$Loading.finish();
-                    that.sportCourseDate = res.data.rows;
+                    that.sportCourseDate = res.data;
                 } else {
                     that.$Loading.error();
                     that.$Message.error(res.data);
@@ -416,27 +439,44 @@ var index = new Vue({
             }
             this.dateInfo = year + "-" + month + "-" + day + "#" + time;
             // 获取基础课程数据
-            this.getSportCourseData(0);
+            this.getSportCourseData(this.sportSubTypeId,this.searchSportCourseValue);
         },
         searchSportCourseEvent(){
-            console.log("点击了主要课程搜索");
+            this.getSportCourseData(this.sportSubTypeId,this.searchSportCourseValue);
         },
         // 筛选基础课程的子类别
         sportCourseSubTypeChange(courseSubTypeId){
+            this.sportSubTypeId = courseSubTypeId;
             switch (courseSubTypeId) {
                 case 0:
                     this.subTypeSportAllIsActive = true;
+                    this.subTypeCommonsenseIsActive = false;
+                    this.subTypeArtIsActive = false;
+                    this.subTypeBasketballIsActive = false;
+                    break;
+                case 3:
+                    this.subTypeSportAllIsActive = false;
+                    this.subTypeCommonsenseIsActive = true;
+                    this.subTypeArtIsActive = false;
+                    this.subTypeBasketballIsActive = false;
+                    break;
+                case 4:
+                    this.subTypeSportAllIsActive = false;
+                    this.subTypeCommonsenseIsActive = false;
+                    this.subTypeArtIsActive = true;
                     this.subTypeBasketballIsActive = false;
                     break;
                 case 5:
                     this.subTypeSportAllIsActive = false;
+                    this.subTypeCommonsenseIsActive = false;
+                    this.subTypeArtIsActive = false;
                     this.subTypeBasketballIsActive = true;
                     break;
                 default:
                     return
             }
             // 获取基础课程数据
-            this.getSportCourseData(courseSubTypeId);
+            this.getSportCourseData(this.sportSubTypeId,this.searchSportCourseValue);
         },
         chooseTheSportCourse(index){
             let indexData = this.sportCourseDate[index];
