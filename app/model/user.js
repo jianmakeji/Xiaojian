@@ -39,7 +39,7 @@ module.exports = app => {
       allowNull: true
     },
     gender: {
-      type: BOOLEAN,
+      type: INTEGER,
       allowNull: true
     },
     idNum: {
