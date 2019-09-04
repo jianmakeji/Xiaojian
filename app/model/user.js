@@ -51,6 +51,11 @@ module.exports = app => {
       type: INTEGER,
       allowNull: true
     },
+    headicon: {
+      type: STRING(60),
+      allowNull: false,
+      defaultValue: ''
+    },
     createAt: {
       type: DATE,
       allowNull: false,
@@ -89,15 +94,20 @@ module.exports = app => {
 
   User.listUsers = async function({
     offset = 0,
-    limit = 10
+    limit = 10,
+    shopId = 0,
+    realname = '',
   }) {
-    return this.findAndCountAll({
+    let condition = {
       offset,
       limit,
       order: [
         ['createAt', 'desc'],
         ['Id', 'desc']
       ],
+      where:{
+
+      },
       include: [{
           model: app.model.Role,
           as: 'roles'
@@ -107,7 +117,19 @@ module.exports = app => {
           as: 'shop'
         },
       ]
-    });
+    };
+
+    if (shopId != 0){
+      condition.where.shopId = shopId;
+    }
+
+    if (realname != null && realname != ''){
+      condition.where.realname = {
+        [app.Sequelize.Op.like]: '%'+realname+'%',
+      };
+    }
+
+    return this.findAndCountAll(condition);
   }
 
   User.findUserById = async function(id) {

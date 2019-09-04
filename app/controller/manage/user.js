@@ -10,6 +10,8 @@ class UsersController extends BaseController{
     const query = {
       limit: ctx.helper.parseInt(ctx.query.limit),
       offset: ctx.helper.parseInt(ctx.query.offset),
+      shopId: ctx.helper.parseInt(ctx.query.shopId),
+      realname: ctx.query.realname,
     };
 
     try{

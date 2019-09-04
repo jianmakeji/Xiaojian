@@ -9,11 +9,15 @@ class User extends Service {
 
   async list({
     offset = 0,
-    limit = 10
+    limit = 10,
+    shopId = 0,
+    realname = '',
   }) {
     return this.ctx.model.User.listUsers({
       offset,
-      limit
+      limit,
+      shopId,
+      realname
     });
   }
 
