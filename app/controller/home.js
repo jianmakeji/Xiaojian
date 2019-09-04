@@ -37,7 +37,17 @@ class HomeController extends Controller {
           ctx.redirect('/manage');
         }
         else if (ctx.user.roles[0].rolename == 'teacher'){
-          ctx.redirect('/teacher');
+          if (ctx.user.password == 2){
+            //教师管理
+            ctx.redirect('/teacherManager');
+          }
+          else{
+            //教师上课
+            ctx.redirect('/teacherClass');
+          }
+        }
+        else if (ctx.user.roles[0].rolename == 'supermanage'){
+          ctx.redirect('/manage');
         }
         else{
           ctx.redirect('/student');

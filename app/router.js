@@ -8,10 +8,11 @@ module.exports = app => {
   router.get('/', controller.home.index);
 
   router.get('/login', controller.home.login);
+  router.get('/relogin', controller.home.relogin);
   router.get('/home', controller.home.home);
   router.get('/roleIndex', controller.home.roleIndex);
 
-  router.post('/login',app.passport.authenticate('local', {
+  router.post('/login/:role',app.passport.authenticate('local', {
        successReturnToOrRedirect : '/roleIndex',successFlash: true,
        failureRedirect: '/relogin',failureFlash: true }));
 
@@ -28,7 +29,7 @@ module.exports = app => {
   router.put('/manage/courseChoose/updateCourseByDate', controller.manage.courseChoose.updateCourseByDate);
 
   router.get('/teacher/courseChoose/getCourseDataByTeacherId', controller.teacher.courseChoose.getCourseDataByTeacherId);
-  
+
   router.resources('/manage/user',  controller.manage.user);
   router.resources('/manage/course',  controller.manage.course);
   router.resources('/manage/courseChoose',  controller.manage.courseChoose);

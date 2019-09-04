@@ -12,6 +12,7 @@ module.exports = app => {
       success: false,
       username,
       password,
+      selectRole:req.url.replace('/login/','')
     };
     app.passport.doVerify(req, user, done);
 
@@ -21,11 +22,11 @@ module.exports = app => {
 
   app.passport.verify(async (ctx, user) => {
     let existsUser = await ctx.service.user.loginFindUserByUserName(user.username);
-
+    
     if (existsUser) {
 
       if (ctx.helper.cryptoPwd(ctx.helper.cryptoPwd(user.password)) == existsUser.password){
-        existsUser.password = '';
+        existsUser.password = user.selectRole;
         return existsUser;
       }
       else{
