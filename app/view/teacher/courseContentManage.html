@@ -1,0 +1,70 @@
+{% extends "teacher/parent.html" %}
+
+{% block cssfolder %}
+<link rel="stylesheet" href="../public/teacher/css/lib/iview.css">
+<link rel="stylesheet" href="../public/teacher/css/src/basic.css">
+<link rel="stylesheet" href="../public/teacher/css/src/courseContentManage.css">
+{% endblock %}
+
+
+{% block right %}
+<div class="right">
+    {% block headMenu %}
+        <div class="headMenu">
+            <div class="leftTabs">
+
+            </div>
+            <div class="rightUserInfo">
+                <img class="headImg" src="../public/images/user.png">
+                <span class="username">skhdbsb</span>
+            </div>
+        </div>
+    {% endblock %}
+
+    <!-- 店铺筛选 -->
+    <div class="filtrMenu">
+        <div class="filtrLeft">
+            <div class="storeInfo">
+                <label>课程类型:</label>
+                <i-select v-model="formItem.courseSubType" style="width:200px;" @on-change="courseSubTypeChange" placeholder="课程类型">
+                    <i-option v-for="item in courseSubTypeData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
+                </i-select>
+            </div>
+            <div class="userSearch">
+                <i-input class="userSearchInput" v-model="searchItem.courseName" placeholder="输入搜索内容" search @on-search="searchCourseSubTypeEvent"></i-input>
+            </div>
+        </div>
+        <div class="filtrRight">
+
+        </div>
+    </div>
+    <!-- 店铺筛选 end -->
+
+    <!-- course数据列表 -->
+    <div class="courseList">
+        <ul>
+            <row>
+                <i-col :xs="24" :sm="8" :md="6" :lg="6" v-for="(item,index) in courseData">
+                    <li class="courseItem">
+                        <img class="courseImg" :src="item.courseThumbB">
+                        <p class="courseName" v-text="'课程名称:' + item.courseName"></p>
+                        <div class="opts">
+                            <i-button class="editCourse" type="warning" @click="editCourse(item.Id)">查看</i-button>
+                        </div>
+                    </li>
+                <i-col>
+            </row>
+        </ul>
+        <page class="page" page-size=12 :total="totalCourseNum" @on-change="pageChange" show-total show-elevator></page>
+    </div>
+    <!-- course数据列表 end -->
+</div>
+{% endblock %}
+
+{% block jsfolder %}
+	<script type="text/javascript" src="../public/teacher/js/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="../public/teacher/js/lib/vue.min.js"></script>
+	<script type="text/javascript" src="../public/teacher/js/lib/iview.min.js"></script>
+	<script type="text/javascript" src="../public/teacher/js/src/config.js"></script>
+	<script type="text/javascript" src="../public/teacher/js/src/courseContentManage.js"></script>
+{% endblock %}

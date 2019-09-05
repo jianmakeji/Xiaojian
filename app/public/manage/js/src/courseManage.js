@@ -191,7 +191,6 @@ var index = new Vue({
                             }
                         }
                     }
-                    console.log(that.dataSourse);
                     that.$forceUpdate();
                 } else {
                     that.$Message.error(res.data);
@@ -300,7 +299,6 @@ var index = new Vue({
                 }
             })
             .done(function(res) {
-                console.log(res);
                 if (res.status == 200) {
                     that.$Loading.finish();
                     that.mainCourseDate = res.data;
@@ -317,7 +315,6 @@ var index = new Vue({
         // 点击弹出基础课程选择框
         // 输入的日期数据有可能存在number类型    0 0 "2019" "09" "02" 1
         changeMainCourse(weekIndex,timeIndex,year,month,day,time){
-            console.log(weekIndex,timeIndex,year,month,day,time);
             this.mainModelActive = true;
             this.sportModelActive = false;
             this.teacherModelActive = false;

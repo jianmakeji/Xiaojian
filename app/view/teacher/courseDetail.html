@@ -1,0 +1,59 @@
+{% extends "teacher/parent.html" %}
+
+{% block cssfolder %}
+<link rel="stylesheet" href="../public/teacher/css/lib/iview.css">
+<link rel="stylesheet" href="../public/teacher/css/src/basic.css">
+<link rel="stylesheet" href="../public/teacher/css/src/courseDetail.css">
+{% endblock %}
+
+
+{% block right %}
+<div class="right">
+    {% block headMenu %}
+        <div class="headMenu">
+            <div class="leftTabs">
+
+            </div>
+            <div class="rightUserInfo">
+                <img class="headImg" src="../public/images/user.png">
+                <span class="username">skhdbsb</span>
+            </div>
+        </div>
+    {% endblock %}
+
+    <!-- 店铺筛选 -->
+    <div class="filtrMenu">
+        <div class="filtrLeft">
+
+        </div>
+        <div class="filtrRight">
+
+        </div>
+    </div>
+    <!-- 店铺筛选 end -->
+
+    <!-- 课程视频详情 -->
+    <div class="courseDetail">
+        <div class="leftVideoDetail">
+            <p class="title">课程名称：《咏鹅》</p>
+            <img class="video" src="../public/images/camera3.jpg" alt="">
+        </div>
+        <div class="rightInfoDetail">
+            <p class="title">课程名称： 《咏鹅》</p>
+            <div class="courseInfoDetial">
+                <p class="desTitle">课程简介：</p>
+                <span class="des">于七岁时写的一首五言古诗。这首诗开篇先声夺人，“鹅！鹅！鹅！”写出鹅的声美，又通过“曲项”与“向天”、“白毛”与“绿水”、“红掌”与“清波”的对比写“歌”、“浮”、“拨”等字又写出鹅出鹅的线条美与色彩美，同时，的动态美，听觉与视觉、静态与动态、音声与色彩完美于七岁时写的一首五言古</span>
+            </div>
+        </div>
+    </div>
+    <!-- 课程视频详情 end -->
+</div>
+{% endblock %}
+
+{% block jsfolder %}
+	<script type="text/javascript" src="../public/teacher/js/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="../public/teacher/js/lib/vue.min.js"></script>
+	<script type="text/javascript" src="../public/teacher/js/lib/iview.min.js"></script>
+	<script type="text/javascript" src="../public/teacher/js/src/config.js"></script>
+	<script type="text/javascript" src="../public/teacher/js/src/courseDetail.js"></script>
+{% endblock %}

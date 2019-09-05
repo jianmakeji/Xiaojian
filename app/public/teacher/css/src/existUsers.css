@@ -1,0 +1,39 @@
+/* ************子菜单选项:用户记录。现存用户。店铺监控**************** */
+.right .subMenu{
+    width: 500px;
+    margin-left: 5%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .subMenu .subMenuBtn{
+    background: #CCCCCC;
+    color: #fff;
+    letter-spacing: 2px;
+}
+.right .subMenu .subMenuBtn.active{
+    background: #FFC837;
+    border-color: #FFC837;
+    letter-spacing: 2px;
+}
+.right .subMenu .line{
+    width: 4px;
+    height: 20px;
+    background: #FFC837;
+}
+.right .subMenu .userSearchInput{
+    width: 200px;
+}
+/* **********table数据列表************** */
+.right .tableList{
+    width: 90%;
+    margin: 0 5%;
+    margin-top: 20px;
+}
+.right .page{
+    width: 100%;
+    margin-top: 20px;
+    text-align: right;
+}

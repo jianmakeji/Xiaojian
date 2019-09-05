@@ -295,9 +295,6 @@ var index = new Vue({
                 that.$Loading.error();
                 that.$Message.error(err);
             })
-
-        } else {                                //新建
-
         }
     }
 })

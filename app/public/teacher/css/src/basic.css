@@ -1,7 +1,6 @@
 [v-cloak]{
     display: none;
 }
-
 .index{
     width: 1920px;
     margin: 0 auto;
@@ -69,7 +68,7 @@
     margin-top: 0px;
 }
 .right .headMenu .leftTabs{
-    width: 400px;
+    width: 270px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

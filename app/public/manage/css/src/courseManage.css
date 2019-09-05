@@ -17,7 +17,7 @@
     justify-content: space-between;
 }
 .right .filtrMenu .filtrLeft .ivu-select-selection{
-    border: 2px solid #FFC837;
+    border: 1px solid #FFC837;
 }
 .right .filtrMenu .filtrLeft .storeInfo{
     /* margin-left: 50px; */

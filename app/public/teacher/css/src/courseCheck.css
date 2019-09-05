@@ -1,0 +1,225 @@
+/* 店铺筛选 */
+.right .filtrMenu{
+    width: 90%;
+    margin: 0 5%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft .ivu-select-selection{
+    border: 1px solid #FFC837;
+}
+.right .filtrMenu .filtrLeft .storeInfo{
+    /* margin-left: 50px; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft .storeInfo label{
+    font-size: 15px;
+    margin-right: 10px;
+    letter-spacing: 1px;
+}
+/* 时间筛选 */
+.right .filtrMenu .filtrLeft .dateInfo{
+    margin-left: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft .dateInfo label{
+    font-size: 15px;
+    margin-right: 10px;
+    letter-spacing: 1px;
+}
+.right .filtrMenu .filtrRight{
+
+}
+.right .filtrMenu .filtrRight .editBtn,
+.right .filtrMenu .filtrRight .saveBtn,
+.right .filtrMenu .filtrRight .uploadBtn{
+    color: #fff;
+    background:  #FFC837;
+}
+
+
+/* *************** 课程详情 **************** */
+.right .box{
+    width: 90%;
+    height: 700px;
+    margin: 0 5%;
+    margin-top: 20px;
+}
+.right .courseContainer{
+    width: 100%;
+    height: 800px;
+    border-radius: 15px;
+    border:solid 2px #F3F3F3;
+}
+
+.right .courseContainer .headView{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+/* 八月 */
+.right .courseContainer .monthImg{
+    width: 10%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.right .courseContainer .monthImg .text{
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    color:#fff;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    background: #FFC837;
+}
+/* 周一至周五 */
+.right .courseContainer .weekTime{
+    width: 90%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: space-around;
+}
+.right .courseContainer .weekTime div{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+}
+.right .courseContainer .weekTime .title{
+    font-size: 16px;
+    font-weight: bold;
+    color: #999999;
+}
+.right .courseContainer .weekTime .time{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    color: #CBCBCB;
+}
+
+/* 课程内容显示 */
+.right .courseContainer .contentView{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .courseContainer .timeView{
+    width: 10%;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.right .courseContainer .timeView div{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+}
+.right .courseContainer .timeView .title{
+    font-size: 16px;
+    font-weight: bold;
+    color: #999999;
+}
+.right .courseContainer .timeView .time{
+    color: #CBCBCB;
+}
+/* 课程表 */
+.right .courseContainer .courseView{
+    width: 90%;
+    height: 700px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.right .courseContainer .courseView .weekDay{
+    width: 14%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.right .courseContainer .courseView .weekDay .courseTime{
+    width: 100%;
+    height: 160px;
+    border: solid 1px #E6E6E6;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.right .courseContainer .courseView .weekDay .courseTime .courseImgs{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.right .courseContainer .courseView .weekDay .courseTime .courseImgs img{
+    width: 45%;
+    height: 60px;
+    cursor: pointer;
+}
+.right .courseContainer .courseView .weekDay .courseTime .courseNames{
+    width: 100%;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.right .courseContainer .courseView .weekDay .courseTime .courseNames span{
+    width: 50%;
+    height: 20px;
+    font-size: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+.right .courseContainer .courseView .weekDay .courseTime .teacherName{
+    width: 100%;
+    height: 20px;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    color: #999999;
+    cursor: pointer;
+}
+.right .courseContainer .courseView .weekDay .courseTime .students{
+    width: 100%;
+    text-align: center;
+}
+.right .courseContainer .courseView .weekDay .courseTime .students .studentListBtn{
+    height: 32px;
+    margin: 0 auto;
+    color: #fff;
+    background: #FFC837;
+}

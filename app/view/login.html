@@ -8,7 +8,7 @@
     </head>
     <body>
         <div class="login" v-cloak>
-            <form id="myform" method="post" action="/login" onsubmit="return check(this)">
+            <form id="myform" method="post" :action="requestUrl" onsubmit="return check(this)">
 				<div class="username">
                     <icon type="ios-contact"></icon>
 					<input class="usernameInput" type="text" name="username" v-model="username" placeholder="请输入用户名">
@@ -26,6 +26,7 @@
 					<input class="submit" type="submit" @click="localStorage" name="submit" value="登录">
 				</div>
 			</form>
+            <p style="color:#ed4014;text-align:center;margin-top:20px;">{{message}}</p>
         </div>
 
     	<script type="text/javascript" src="../public/manage/js/lib/jquery.min.js"></script>

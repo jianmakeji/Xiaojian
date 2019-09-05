@@ -1,0 +1,139 @@
+<!-- 课程查看页面 -->
+{% extends "teacher/parent.html" %}
+
+{% block cssfolder %}
+<link rel="stylesheet" href="../public/teacher/css/lib/iview.css">
+<link rel="stylesheet" href="../public/teacher/css/src/basic.css">
+<link rel="stylesheet" href="../public/teacher/css/src/courseCheck.css">
+{% endblock %}
+
+
+{% block right %}
+<div class="right">
+    {% block headMenu %}
+        <div class="headMenu">
+            <div class="leftTabs">
+
+            </div>
+            <div class="rightUserInfo">
+                <img class="headImg" src="../public/images/user.png">
+                <span class="username">skhdbsb</span>
+            </div>
+        </div>
+    {% endblock %}
+    <!-- 课程查看选项 -->
+    <div class="filtrMenu">
+        <div class="filtrLeft">
+            <div class="storeInfo">
+                <label>店铺选择:</label>
+                <i-select v-model="shopId" style="width:200px;" @on-change="stopChange" placeholder="店铺">
+                    <i-option v-for="item in stopData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
+                </i-select>
+            </div>
+            <div class="dateInfo">
+                <label>课程时间选择:</label>
+                <i-select v-model="year" style="width:100px;margin-left:10px;" @on-change="yearChange" placeholder="年份">
+                    <i-option v-for="item in yearData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
+                </i-select>
+                <i-select v-model="month" style="width:100px;margin-left:10px;" @on-change="monthChange" placeholder="月份">
+                    <i-option v-for="item in monthData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
+                </i-select>
+                <i-select v-model="week" style="width:100px;margin-left:10px;" @on-change="weekChange" placeholder="星期">
+                    <i-option v-for="item in weekData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
+                </i-select>
+            </div>
+        </div>
+        <div class="filtrRight">
+            <!-- <i-button class="editBtn">编辑</i-button>
+            <i-button class="saveBtn">保存</i-button> -->
+            <!-- <i-button class="uploadBtn" @click="submitCourseChoose">上传</i-button> -->
+        </div>
+    </div>
+    <!-- 课程管理选项 -->
+
+    <!-- 课程详情 -->
+    <div class="box">
+        <div class="courseContainer">
+            <div class="headView">
+                <div class="monthImg">
+                    <div class="text" v-text="month + '月'"></div>
+                </div>
+                <!-- 一周日期标题 -->
+                <div class="weekTime">
+
+                    <div class="Mon" v-for="(item,index) in dateData">
+                        <label class="title" v-text="dateData[index]"></label>
+                        <div class="time">
+                            <span class="111" v-text="thisWeekMonthArray[index]"></span>
+                            /
+                            <span v-text="thisWeekDayArray[index]"></span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="contentView">
+                <!-- 每天课程时间表 -->
+                <div class="timeView">
+                    <div class="firstTime">
+                        <label class="title">第一节</label>
+                        <label class="time">09:00—10:00</label>
+                    </div>
+                    <div class="secondTime">
+                        <label class="title">第二节</label>
+                        <label class="time">13:00—14:00</label>
+                    </div>
+                    <div class="thirdTime">
+                        <label class="title">第三节</label>
+                        <label class="time">16:00—17:00</label>
+
+                    </div>
+                    <div class="fourthTime">
+                        <label class="title">第四节</label>
+                        <label class="time">19:00—20:00</label>
+
+                    </div>
+                </div>
+                <div class="courseView">
+                    <!-- 周一至周日 -->
+                    <div class="weekDay" v-for="(weekItem,weekIndex) in [0,1,2,3,4,5,6]">
+                        <!-- 一到四节课 -->
+                        <div class="courseTime" v-for="(timeItem,timeIndex) in [1,2,3,4]">
+                            <div class="courseImgs">
+                                <!-- 基础课程图片 -->
+                                <img class="mainCourseImg" :src="dataSourse[weekIndex][timeIndex].courseThumbA?dataSourse[weekIndex][timeIndex].courseThumbA:'../public/images/1.png'" title="编辑基础课程">
+
+                                <!-- 运动课程图片 -->
+                                <img class="mainCourseImg" :src="dataSourse[weekIndex][timeIndex].courseThumbB?dataSourse[weekIndex][timeIndex].courseThumbB:'../public/images/2.png'" title="编辑运动课程">
+                            </div>
+                            <div class="courseNames">
+                                <!-- 基础课程名称 -->
+                                <span class="mainCourseName" title="编辑基础课程" v-text="dataSourse[weekIndex][timeIndex].courseTitleA"></span>
+
+                                <!-- 运动课程名称 -->
+                                <span class="otherCourseName" title="编辑运动课程" v-text="dataSourse[weekIndex][timeIndex].courseTitleB"></span>
+                            </div>
+                            <!-- 老师名称 -->
+                            <div class="teacherName" title="编辑老师" v-text="dataSourse[weekIndex][timeIndex].teacherName"></div>
+                            <div class="students">
+                                <i-button class="studentListBtn" @click="studentListCheck(weekIndex,timeIndex)">学生名单</i-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- 课程详情 end -->
+</div>
+{% endblock %}
+
+{% block jsfolder %}
+	<script type="text/javascript" src="../public/teacher/js/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="../public/teacher/js/lib/vue.min.js"></script>
+	<script type="text/javascript" src="../public/teacher/js/lib/iview.min.js"></script>
+	<script type="text/javascript" src="../public/teacher/js/src/config.js"></script>
+	<script type="text/javascript" src="../public/teacher/js/src/courseCheck.js"></script>
+{% endblock %}

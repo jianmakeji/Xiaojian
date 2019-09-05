@@ -16,7 +16,7 @@
     justify-content: space-between;
 }
 .right .filtrMenu .filtrLeft .ivu-select-selection{
-    border: 2px solid #FFC837;
+    border: 1px solid #FFC837;
 }
 .right .filtrMenu .filtrLeft .storeInfo{
     display: flex;
@@ -36,7 +36,10 @@
 .right .filtrMenu .filtrLeft .userSearchInput .ivu-input{
     border: 1px solid #FFC837;
 }
-
+.right .filtrMenu .filtrRight .addBtn{
+    color: #fff;
+    background:  #FFC837;
+}
 /* ****************人员管理内容*************** */
 .right .personalList{
     width: 90%;
@@ -59,6 +62,7 @@
     border-radius: 10px;
 }
 .right .personalList .personalItem .teacherInfoView{
+    width: 140px;
     height: 240px;
     display: flex;
     flex-direction: column;
@@ -76,6 +80,13 @@
     color: #999999;
     font-size: 14px;
 }
-.right .personalList .personalItem .teacherInfoView .ivu-btn{
-    border-color: #FFC837;
+.right .personalList .personalItem .teacherInfoView .opts{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }
+/* .right .personalList .personalItem .teacherInfoView .ivu-btn{
+    border-color: none;
+} */
