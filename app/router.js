@@ -51,4 +51,10 @@ module.exports = app => {
   router.get('/teacher/courseCheck', controller.teacher.teacher.courseCheck);
   router.get('/teacher/courseStudentList', controller.teacher.teacher.courseStudentList);
   router.get('/teacher/personalManage', controller.teacher.teacher.personalManage);
+  router.get('/teacher/existUsers', controller.teacher.teacher.existUsers);
+  router.get('/teacher/storeMonitor', controller.teacher.teacher.storeMonitor);
+  router.get('/teacher/monitorDetail', controller.teacher.teacher.monitorDetail);
+  router.get('/teacher/monitorHistory', controller.teacher.teacher.monitorHistory);
+  router.get('/teacher/courseContentManage', controller.teacher.teacher.courseContentManage);
+  router.get('/teacher/courseDetail', controller.teacher.teacher.courseDetail);
 };

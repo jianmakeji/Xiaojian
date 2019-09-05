@@ -90,9 +90,6 @@ var index = new Vue({
             $(".menuBtns").children('.active').removeClass('active');
             $(".menuBtns").children().eq(value).addClass('active');
             switch (value) {
-                case 0:
-                    window.location.href = "/teacher/courseCheck";
-                    break;
                 case 1:
                     window.location.href = "/teacher/personalManage";
                     break;

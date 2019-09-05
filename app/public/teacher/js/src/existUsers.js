@@ -54,6 +54,9 @@ var index = new Vue({
                 case 0:
                     window.location.href = "/teacher/courseCheck";
                     break;
+                case 1:
+                    window.location.href = "/teacher/personalManage";
+                    break;
                 case 2:
                     window.location.href = "/teacher/courseContentManage";
                     break;

@@ -1,0 +1,96 @@
+.right .headMenu .leftTabs {
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+    margin-left: 0px;
+}
+.right .headMenu .leftTabs p{
+    font-size: 17px;
+    color: #FFC837;
+    border-bottom: solid 2px #FFC837;
+    cursor: pointer;
+}
+/* 店铺筛选 */
+.right .filtrMenu{
+    width: 90%;
+    margin: 0 5%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft .ivu-select-selection{
+    border: 1px solid #FFC837;
+}
+.right .filtrMenu .filtrLeft .storeInfo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft .storeInfo label{
+    font-size: 15px;
+    margin-right: 10px;
+    letter-spacing: 1px;
+}
+/* 人员查找 */
+.right .filtrMenu .filtrLeft .userSearch{
+    margin-left: 20px;
+}
+.right .filtrMenu .filtrLeft .userSearchInput .ivu-input{
+    border: 1px solid #FFC837;
+}
+.right .filtrMenu .filtrRight .addStudent{
+    background: #FFC837;
+    border-color: #FFC837;
+}
+
+/* **********table数据列表************** */
+.right .courseList{
+    width: 90%;
+    margin-top: 20px;
+    margin-left: 5%;
+}
+.right .courseList .courseItem{
+    height: 250px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.right .courseList .courseItem .courseImg{
+    width: 240px;
+    height: 150px;
+    border-radius: 10px;
+    border: solid 1px #FFC837;
+}
+.right .courseList .courseItem .courseName{
+    font-size: 17px;
+    color: #999999;
+    margin-top: 10px;
+}
+.right .courseList .courseItem .opts{
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.right .courseList .courseItem .opts .editCourse{
+    margin-right: 20px;
+    background: #FFC837;
+    border-color: #FFC837;
+}
+.right .courseList .page{
+    margin-top: 10px;
+    text-align: center;
+}

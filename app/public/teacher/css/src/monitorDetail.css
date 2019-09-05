@@ -1,0 +1,97 @@
+
+/* ************子菜单选项:用户记录。现存用户。店铺监控**************** */
+.right .subMenu{
+    width: 270px;
+    margin-left: 5%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .subMenu .subMenuBtn{
+    background: #CCCCCC;
+    color: #fff;
+    letter-spacing: 2px;
+}
+.right .subMenu .subMenuBtn.active{
+    background: #FFC837;
+    border-color: #FFC837;
+    letter-spacing: 2px;
+}
+.right .subMenu .line{
+    width: 4px;
+    height: 20px;
+    background: #FFC837;
+}
+/* 店铺筛选 */
+.right .filtrMenu{
+    width: 90%;
+    margin: 0 5%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft .ivu-select-selection{
+    border: 1px solid #FFC837;
+}
+.right .filtrMenu .filtrLeft .storeInfo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft .storeInfo label{
+    font-size: 15px;
+    margin-right: 10px;
+    letter-spacing: 1px;
+}
+/* 人员查找 */
+.right .filtrMenu .filtrLeft .userSearch{
+    margin-left: 20px;
+}
+.right .filtrMenu .filtrLeft .userSearchInput .ivu-input{
+    border: 1px solid #FFC837;
+}
+
+/* ****************店铺监控详情****************** */
+.right .monitorDetailView{
+    width: 90%;
+    margin-top: 20px;
+    margin-left: 5%;
+}
+.right .monitorDetailView .opts{
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .monitorDetailView .opts .time{
+    color: #FFC837;
+    font-size: 20px;
+}
+.right .monitorDetailView .opts .checkHistoryBtn{
+    background: #FFC837;
+    border-color: #FFC837;
+    letter-spacing: 2px;
+}
+.right .monitorDetailView .monitorDetail{
+    width: 100%;
+    height: auto;
+    text-align: center;
+    margin-top: 60px;
+}
+.right .monitorDetailView .monitorDetail img{
+    width: 1000px;
+    height: 600px;
+    border-radius: 40px;
+}
