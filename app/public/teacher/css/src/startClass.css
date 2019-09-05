@@ -1,0 +1,107 @@
+[v-cloak]{
+    display: none;
+}
+.index{
+    width: 1920px;
+    height: 100vh;
+    margin: 0 auto;
+    border: solid 2px black;
+}
+.container {
+    width: 90%;
+    margin:0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+}
+/* *****************顶部菜单栏：课程管理  人员管理  信息查看****************** */
+.container .headMenu{
+    width: 100%;
+    height: 60px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0px;
+}
+.container .headMenu .leftTabs{
+    width: 270px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 80px;
+}
+.container .headMenu .leftTabs .tabsBtn{
+    font-size: 17px;
+    color: #656565;
+    border-bottom: none;
+}
+.container .headMenu .leftTabs .tabsBtn.active{
+    font-size: 17px;
+    color: #FFC837;
+    border-bottom: solid;
+}
+.container .headMenu .rightUserInfo{
+    margin-right: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.container .headMenu .rightUserInfo .headImg{
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+}
+.container .headMenu .rightUserInfo .username{
+    font-size: 16px;
+    color: #656565;
+    letter-spacing: 1px;
+}
+/* 当天课程列表 */
+.container .courseList{
+    width: 80%;
+    height: 600px;
+    margin: 0 auto;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.container .courseList .mainCourse,
+.container .courseList .otherCourse{
+    width: 600px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.container .courseList .mainCourse img,
+.container .courseList .otherCourse img{
+    width: 600px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+}
+.container .courseList .mainCourse p,
+.container .courseList .otherCourse p{
+    height: 35px;
+    font-size: 20px;
+    color: #FFC837;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+.tabsBtn{
+    width: 100px;
+    background: #fff;
+    border-color: #FFC837;
+    color: #FFC837;
+}

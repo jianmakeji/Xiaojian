@@ -57,4 +57,6 @@ module.exports = app => {
   router.get('/teacher/monitorHistory', controller.teacher.teacher.monitorHistory);
   router.get('/teacher/courseContentManage', controller.teacher.teacher.courseContentManage);
   router.get('/teacher/courseDetail', controller.teacher.teacher.courseDetail);
+  router.get('/teacher/scheduleToday', controller.teacher.teacher.scheduleToday);
+  router.get('/teacher/startClass', controller.teacher.teacher.startClass);
 };

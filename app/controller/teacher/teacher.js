@@ -62,6 +62,19 @@ class TeacherController extends Controller {
       });
   }
 
+  async scheduleToday(){
+      const ctx = this.ctx;
+      await ctx.render('teacher/scheduleToday.html', {
+        user : ctx.user
+      });
+  }
+  async startClass(){
+      const ctx = this.ctx;
+      await ctx.render('teacher/startClass.html', {
+        user : ctx.user
+      });
+  }
+
 }
 
 module.exports = TeacherController;
