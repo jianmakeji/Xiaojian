@@ -1,6 +1,6 @@
 /* jshint indent: 2 */
 let moment = require('moment');
-
+let dateFormat = require('../utils/DateFormat');
 module.exports = app => {
 
   const { STRING, INTEGER, DATE } = app.Sequelize;
@@ -174,8 +174,8 @@ module.exports = app => {
 
   CourseChoose.getCourseDataByTeacherId = async function(teacherId){
     let date = new Date();
-    let formatDate = date.format("yyyy-MM-dd");;
-
+    let formatDate = dateFormat.dateFormat("YYYY-mm-dd", date);
+    
     return this.findAll({
       order: [[ 'createAt', 'desc' ], [ 'Id', 'desc' ]],
       where:{
@@ -195,6 +195,6 @@ module.exports = app => {
       ]
     });
   }
-  
+
   return CourseChoose;
 };
