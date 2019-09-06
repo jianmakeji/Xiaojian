@@ -54,6 +54,13 @@ var config = {
             {value: '5',label: '第五周'},
             {value: '6',label: '第六周'}
         ],
+        // 星期
+        courseNumberData:[
+            {value: '09:00 - 10:00',label: '第一节'},
+            {value: '13:00 - 14:00',label: '第二节'},
+            {value: '16:00 - 17:00',label: '第三节'},
+            {value: '19:00 - 20:00',label: '第四节'}
+        ],
         // 周几
         dateData:["周一","周二",'周三','周四','周五','周六','周日'],
         dayData:["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21",'22',"23","24","25","26","27","28","29","30","31"],
@@ -81,5 +88,8 @@ var config = {
         createCourse:"/manage/course/createCourse",
         uploadFile:'/manage/file/uploadFile/:fileType',
         uploadZipFile:'/manage/file/uploadZipFile',
+
+        // scheduleToday
+        getCourseDataByTeacherId:'/teacher/courseChoose/getCourseDataByTeacherId'
     },
 }

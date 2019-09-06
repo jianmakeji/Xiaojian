@@ -294,7 +294,7 @@ var index = new Vue({
             .fail(function() {
                 that.$Loading.error();
                 that.$Message.error(err);
-            })
+            });
         }
     }
 })
