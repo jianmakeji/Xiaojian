@@ -53,10 +53,17 @@
                 </form-item>
                 <form-item label="课程文件">
                     <label>请上传zip格式压缩文件</label><br/>
-                    <i-button icon="ios-book" id="h5_upload_ZIP_btn">h5(ZIP)</i-button>
+                    <i-button icon="ios-book" id="h5_upload_ZIP_btn">h5课程文件(ZIP)</i-button>
                     <input type="file" @change="h5_upload_ZIP_change" id="h5_upload_ZIP_input" accept="application/x-zip-compressed" style="display:none;"/>
                     <p v-text="attachFileName"></p>
                     <i-progress :percent="attachFilePercent" /><span v-text="attachFilePercent + '%'"></span>
+                </form-item>
+                <form-item label="视频文件">
+                    <label>请上传mp4格式压缩文件</label><br/>
+                    <i-button icon="ios-videocam" id="mp4_upload_btn">课程预览视频(MP4)</i-button>
+                    <input type="file" @change="mp4_upload_change" id="mp4_upload_input" accept="audio/mp4,video/mp4" style="display:none;"/>
+                    <p v-text="videoFileName"></p>
+                    <i-progress :percent="videoFilePercent" /><span v-text="videoFilePercent + '%'"></span>
                 </form-item>
                 <form-item label="课程标签">
                     <i-select v-model="formItem.courseType" style="width:200px;" @on-change="courseTypeChange" placeholder="课程标签">

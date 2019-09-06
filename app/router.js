@@ -36,14 +36,17 @@ module.exports = app => {
   router.resources('/manage/student',  controller.manage.student);
 
   router.get('/manage/courseManage', controller.manage.manage.courseManage);
-
+  router.get('/manage/courseStudentList', controller.manage.manage.courseStudentList);
+  router.get('/manage/studentInfo', controller.manage.manage.studentInfo);
   router.get('/manage/personalManage', controller.manage.manage.personalManage);
   router.get('/manage/editStoreUser', controller.manage.manage.editStoreUser);
   router.get('/manage/userRecord', controller.manage.manage.userRecord);
+  router.get('/manage/userClassHistory', controller.manage.manage.userClassHistory);
   router.get('/manage/existUsers', controller.manage.manage.existUsers);
   router.get('/manage/storeMonitor', controller.manage.manage.storeMonitor);
   router.get('/manage/monitorDetail', controller.manage.manage.monitorDetail);
   router.get('/manage/studentManage', controller.manage.manage.studentManage);
+  router.get('/manage/addStudent', controller.manage.manage.addStudent);
   router.get('/manage/courseContentManage', controller.manage.manage.courseContentManage);
   router.get('/manage/addCourse', controller.manage.manage.addCourse);
 

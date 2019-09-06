@@ -30,11 +30,11 @@
             </div>
             <!-- 主次课选择框 -->
             <div class="courseList">
-                <div class="mainCourse">
+                <div class="mainCourse" @click="">
                     <img :src="mainCourseInfo.courseThumbB">
                     <p v-text="mainCourseInfo.courseName"></p>
                 </div>
-                <div class="otherCourse">
+                <div class="otherCourse" @click="">
                     <img :src="otherCourseInfo.courseThumbB" alt="">
                     <p v-text="otherCourseInfo.courseName"></p>
                 </div>

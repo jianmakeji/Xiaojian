@@ -525,6 +525,10 @@ var index = new Vue({
             this.teacherModelActive = false;
         },
 
+        // 查看学生名单
+        checkStudentList(Id){
+            window.location.href = "/manage/courseStudentList?id=" + Id;
+        },
         // 上传所有课程选择
         submitCourseChoose(){
             // 预留 xclassId

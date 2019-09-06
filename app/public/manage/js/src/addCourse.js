@@ -10,6 +10,7 @@ var index = new Vue({
                 courseThumbA:"",
                 courseThumbB:"",
                 h5Address:"",
+                videoAddress:"",
                 courseType:"",
                 courseSubType:""
             },
@@ -37,6 +38,8 @@ var index = new Vue({
 			progressPercent_2:0,
             attachFileName:"",
             attachFilePercent:0,
+            videoFileName:"",
+            videoFilePercent:0
         }
     },
     methods:{
@@ -158,6 +161,41 @@ var index = new Vue({
                 }
             })
         },
+        mp4_upload_change(files){
+            this.videoFilePercent = 0;
+            let that = this;
+            let file = files.target.files[0];
+            let fileTrueName = files.target.files[0].name;
+            this.$Message.loading("上传中···");
+
+            let formdata = new FormData();
+            formdata.append('head', file);
+            $.ajax({
+                url: config.ajaxUrls.uploadFile.replace(":fileType",3),
+                type: 'POST',
+                cache: false,
+                processData: false,
+                contentType: false,
+                data: formdata,
+                xhr(){
+                    var xhr = new window.XMLHttpRequest();
+                    xhr.upload.addEventListener("progress", function(evt){
+                        var percentComplete = event.loaded / event.total;
+                        that.videoFilePercent = percentComplete * 100;
+                    }, false);
+                    return xhr;
+                },
+                success(res){
+                    if(res.status == 200){
+                        that.$Message.success("上传成功！");
+                        that.formItem.videoAddress = res.url;
+                        that.videoFileName = files.target.files[0].name;
+                    }else{
+                        that.$Message.error(res.data);
+                    }
+                }
+            })
+        },
         courseTypeChange(courseTypeId){
             let that = this;
             this.formItem.courseType = courseTypeId;
@@ -192,6 +230,7 @@ var index = new Vue({
             for (var key in this.formItem) {
                 if (this.formItem[key] == "" ) {
                     notNullData = false;
+                    break;
                 }
             }
             if (notNullData) {
@@ -280,11 +319,13 @@ var index = new Vue({
                     that.$Loading.finish();
                     that.formItem = res.data;
                     that.imgUrl_1 = res.data.courseThumbA;
-                    that.progressPercent_1 = 100;
+                    that.progressPercent_1 = res.data.courseThumbA ? 100 : 0;
                     that.imgUrl_2 = res.data.courseThumbB;
-                    that.progressPercent_2 = 100;
-                    that.attachFilePercent = 100;
+                    that.progressPercent_2 = res.data.courseThumbB ? 100 : 0;
+                    that.attachFilePercent = res.data.h5Address ? 100 : 0;
+                    that.videoFilePercent = res.data.videoAddress ?  100 : 0;
                     that.formItem.courseType = res.data.courseType.toString();
+                    that.courseTypeChange(res.data.courseType.toString());
                     that.formItem.courseSubType = res.data.courseSubType.toString();
                 } else {
                     that.$Loading.error();
@@ -308,5 +349,8 @@ $(document).ready(function() {
     });
     $('#h5_upload_ZIP_btn').click(function(){
         $('#h5_upload_ZIP_input').click();
+    });
+    $('#mp4_upload_btn').click(function(){
+        $('#mp4_upload_input').click();
     });
 });

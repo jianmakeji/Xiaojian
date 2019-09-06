@@ -61,8 +61,9 @@
         <!-- 当天课程列表 end -->
 
         <!-- 学生点名弹框 -->
-        <modal v-model="studentListModal" footer-hide :mask-closable="false" :closable="false" width="932">
-            <div class="studentListView">
+        <modal v-model="studentListModal" footer-hide :mask-closable="false" :closable="false" :mask="false" width="932">
+			<icon class="closeIcon" size="20" type="md-close-circle" @click="closeModel"></icon>
+			<div class="studentListView">
                 <p class="title">学生名单</p>
                 <checkbox-group v-model="aa">
                     <row>

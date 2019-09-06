@@ -13,8 +13,10 @@ var index = new Vue({
         openStudentListModal(){
             this.studentListModal = true;
         },
+        closeModel(){
+            this.studentListModal = false;
+        },
         startClass(courseAId,courseBId){
-            console.log(courseAId,courseBId);
             if (courseAId != "0" && courseBId != "0") {
                 window.location.href = "/teacher/startClass?courseAId=" + courseAId + "&courseBId=" + courseBId;
             } else {
@@ -38,7 +40,6 @@ var index = new Vue({
                 for (let i = 0; i < 4; i++) {
                     for (let j = 0; j < arr.length; j++) {
                         if (arr[j].courseNumber == i + 1) {
-                            console.log(i,j,arr[j].courseNumber);
                             that.dataSourse[i] = arr[j];
                             break;
                         }else{
@@ -46,7 +47,6 @@ var index = new Vue({
                         }
                     }
                 }
-                console.log(that.dataSourse);
                 that.$forceUpdate();
             } else {
                 that.$Message.error(res.data);

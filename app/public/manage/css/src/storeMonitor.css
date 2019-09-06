@@ -98,3 +98,7 @@
     color: #999999;
     letter-spacing: 2px;
 }
+.right .monitorView .monitorItem .monitorInfo .checkBtn{
+    background: #FFC837;
+    border-color: #FFC837;
+}

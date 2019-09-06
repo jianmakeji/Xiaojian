@@ -3,7 +3,7 @@
 {% block cssfolder %}
 <link rel="stylesheet" href="../public/manage/css/lib/iview.css">
 <link rel="stylesheet" href="../public/manage/css/src/basic.css">
-<link rel="stylesheet" href="../public/manage/css/src/studentManage.css">
+<link rel="stylesheet" href="../public/manage/css/src/courseStudentList.css">
 {% endblock %}
 
 
@@ -12,7 +12,7 @@
     {% block headMenu %}
         <div class="headMenu">
             <div class="leftTabs">
-                <i-button class="tabsBtn active" type="text" to="/manage/studentManage">用户管理</i-button>
+
             </div>
             <div class="rightUserInfo">
                 <img class="headImg" src="../public/images/user.png">
@@ -24,18 +24,10 @@
     <!-- 店铺筛选 -->
     <div class="filtrMenu">
         <div class="filtrLeft">
-            <div class="storeInfo">
-                <label>店铺选择:</label>
-                <i-select v-model="storeId" style="width:200px;" @on-change="storeChange" placeholder="店铺">
-                    <i-option v-for="item in storeData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
-                </i-select>
-            </div>
-            <div class="userSearch">
-                <i-input class="userSearchInput" v-model="searchPersonalValue" placeholder="输入搜索内容" search @on-search="searchPersonalEvent"></i-input>
-            </div>
+
         </div>
         <div class="filtrRight">
-            <i-button class="addStudent" type="warning" to="/manage/addStudent">新增</i-button>
+            <i-button class="addStudent" type="warning" @click="back">返回</i-button>
         </div>
     </div>
     <!-- 店铺筛选 end -->
@@ -53,5 +45,5 @@
 	<script type="text/javascript" src="../public/manage/js/lib/jquery.min.js"></script>
     <script type="text/javascript" src="../public/manage/js/lib/vue.min.js"></script>
 	<script type="text/javascript" src="../public/manage/js/lib/iview.min.js"></script>
-	<script type="text/javascript" src="../public/manage/js/src/studentManage.js"></script>
+	<script type="text/javascript" src="../public/manage/js/src/courseStudentList.js"></script>
 {% endblock %}

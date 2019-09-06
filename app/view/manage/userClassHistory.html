@@ -3,7 +3,7 @@
 {% block cssfolder %}
 <link rel="stylesheet" href="../public/manage/css/lib/iview.css">
 <link rel="stylesheet" href="../public/manage/css/src/basic.css">
-<link rel="stylesheet" href="../public/manage/css/src/studentManage.css">
+<link rel="stylesheet" href="../public/manage/css/src/userClassHistory.css">
 {% endblock %}
 
 
@@ -12,7 +12,7 @@
     {% block headMenu %}
         <div class="headMenu">
             <div class="leftTabs">
-                <i-button class="tabsBtn active" type="text" to="/manage/studentManage">用户管理</i-button>
+
             </div>
             <div class="rightUserInfo">
                 <img class="headImg" src="../public/images/user.png">
@@ -24,21 +24,31 @@
     <!-- 店铺筛选 -->
     <div class="filtrMenu">
         <div class="filtrLeft">
-            <div class="storeInfo">
-                <label>店铺选择:</label>
-                <i-select v-model="storeId" style="width:200px;" @on-change="storeChange" placeholder="店铺">
-                    <i-option v-for="item in storeData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
-                </i-select>
-            </div>
-            <div class="userSearch">
-                <i-input class="userSearchInput" v-model="searchPersonalValue" placeholder="输入搜索内容" search @on-search="searchPersonalEvent"></i-input>
-            </div>
+
         </div>
         <div class="filtrRight">
-            <i-button class="addStudent" type="warning" to="/manage/addStudent">新增</i-button>
+            <i-button class="addStudent" type="warning" @click="back">返回</i-button>
         </div>
     </div>
     <!-- 店铺筛选 end -->
+
+    <!-- 顶部用户基本信息 -->
+    <div class="userInfoView">
+        <img class="userImg" src="../public/images/3.png" alt="">
+        <div class="userInfo">
+            <div class="info1">
+                <p>用户姓名：陆睿诚</p>
+                <p>用户性别：男</p>
+                <p>用户9：陆睿诚</p>
+            </div>
+            <div class="info2   ">
+                <p>健康状况：健康</p>
+                <p>用户年龄：9</p>
+                <p>家长联系方式：18888888888</p>
+            </div>
+        </div>
+    </div>
+    <!-- 顶部用户基本信息 end -->
 
     <!-- table数据列表 -->
     <div class="tableView">
@@ -53,5 +63,5 @@
 	<script type="text/javascript" src="../public/manage/js/lib/jquery.min.js"></script>
     <script type="text/javascript" src="../public/manage/js/lib/vue.min.js"></script>
 	<script type="text/javascript" src="../public/manage/js/lib/iview.min.js"></script>
-	<script type="text/javascript" src="../public/manage/js/src/studentManage.js"></script>
+	<script type="text/javascript" src="../public/manage/js/src/userClassHistory.js"></script>
 {% endblock %}

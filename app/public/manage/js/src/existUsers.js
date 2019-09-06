@@ -83,8 +83,8 @@ var index = new Vue({
 
         },
         // table数据列表事件
-        check(){
-
+        check(userId){
+            window.location.href = "/manage/userClassHistory?id=" + userId;
         },
         remove(){
 

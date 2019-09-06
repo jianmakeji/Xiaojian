@@ -1,0 +1,106 @@
+/* 店铺筛选 */
+.right .filtrMenu{
+    width: 90%;
+    margin: 0 5%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft .ivu-select-selection{
+    border: 1px solid #FFC837;
+}
+.right .filtrMenu .filtrLeft .storeInfo{
+    /* margin-left: 50px; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft .storeInfo label{
+    font-size: 15px;
+    margin-right: 10px;
+    letter-spacing: 1px;
+}
+/* 时间筛选 */
+.right .filtrMenu .filtrLeft .dateInfo{
+    margin-left: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft .dateInfo label{
+    font-size: 15px;
+    margin-right: 10px;
+    letter-spacing: 1px;
+}
+.right .filtrMenu .filtrRight{
+
+}
+.right .filtrMenu .filtrRight .editBtn,
+.right .filtrMenu .filtrRight .saveBtn,
+.right .filtrMenu .filtrRight .uploadBtn{
+    color: #fff;
+    background:  #FFC837;
+}
+
+/* 顶部用户基本信息 */
+.userInfoView{
+    width: 90%;
+    height: 150px;
+    margin: 0 5%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+}
+.userInfoView .userImg{
+    width: 150px;
+    height: 150px;
+    border-radius: 20px;
+}
+.userInfoView .userInfo{
+    width: 500px;
+    height: 150px;
+    margin-left: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.userInfoView .userInfo .info1,
+.userInfoView .userInfo .info2{
+    width: 250px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.userInfoView .userInfo .info1 p,
+.userInfoView .userInfo .info2 p{
+    width: 100%;
+    font-size: 16px;
+    color: #666;
+    text-align: left;
+}
+
+/* 用户上课记录 */
+.tableView{
+    width: 90%;
+    margin: 0 5%;
+    margin-top: 30px;
+}
+.tableView .page{
+    text-align: right;
+    margin-top: 10px;
+}

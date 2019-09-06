@@ -61,7 +61,10 @@
 .right .filtrMenu .filtrLeft .userSearchInput .ivu-input{
     border: 1px solid #FFC837;
 }
-
+.right .filtrMenu .filtrRight .addStudent{
+    background: #FFC837;
+    border-color: #FFC837;
+}
 /* ****************店铺监控详情****************** */
 .right .monitorDetailView{
     width: 90%;

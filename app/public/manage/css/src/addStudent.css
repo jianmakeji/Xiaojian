@@ -1,0 +1,95 @@
+.right .headMenu .leftTabs {
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+    margin-left: 0px;
+}
+.right .headMenu .leftTabs p{
+    font-size: 17px;
+    color: #FFC837;
+    border-bottom: solid 2px #FFC837;
+    cursor: pointer;
+}
+/* *********编辑用户信息******** */
+.editStoreUserView{
+    width: 90%;
+    margin: 60px 5% 0px;
+    height: 600px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.editStoreUserView .title{
+    text-align: center;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: #666666;
+    font-weight: bold;
+}
+/* 用户信息头像 */
+.editStoreUserView .storeUserInfoView{
+    width: 600px;
+    height: 500px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.editStoreUserView .storeUserInfoView .imgOpt{
+    width: 200px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-right:60px;
+}
+.editStoreUserView .storeUserInfoView .imgOpt img{
+    width: 200px;
+    height: 280px;
+    border-radius: 10px;
+    border: solid 2px #999999;
+}
+/* 用户基础信息 */
+.editStoreUserView .storeUserInfoView .userInfo{
+    width: 300px;
+    height: 370px;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: space-between;
+}
+.editStoreUserView .storeUserInfoView .userInfo .userInfoItem{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: space-between;
+}
+.editStoreUserView .storeUserInfoView .userInfo .userInfoItem .infoTitle{
+    width: 90px;
+    text-align: right;
+    color: #999999;
+    margin-right: 10px;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+.editStoreUserView .storeUserInfoView .userInfo .userInfoItem .name,
+.editStoreUserView .storeUserInfoView .userInfo .userInfoItem .age,
+.editStoreUserView .storeUserInfoView .userInfo .userInfoItem .jobNum,
+.editStoreUserView .storeUserInfoView .userInfo .userInfoItem .genderRadio,
+.editStoreUserView .storeUserInfoView .userInfo .userInfoItem .dutyRadio{
+    width: 200px;
+}
+.editStoreUserView .opts{
+    width: 150px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.editStoreUserView .opts button{
+    border-color: #FFC837;
+}

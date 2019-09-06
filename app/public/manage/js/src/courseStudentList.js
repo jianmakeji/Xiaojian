@@ -43,15 +43,7 @@ var index = new Vue({
                                        this.check(params.index)
                                    }
                                }
-                            }, '查看'),
-                            h('Button', {
-                               props: { type: 'error', size: 'small' },
-                               on: {
-                                   click: () => {
-                                       this.remove(params.index)
-                                   }
-                               }
-                            }, '删除')
+                            }, '查看')
                        ]);
                     }
                 },
@@ -60,9 +52,6 @@ var index = new Vue({
     },
     methods:{
         menuChange(value){
-            console.log(typeof value);
-            $(".menuBtns").children('.active').removeClass('active');
-            $(".menuBtns").children().eq(value).addClass('active');
             switch (value) {
                 case 0:
                     window.location.href = "/manage/courseManage";
@@ -76,23 +65,16 @@ var index = new Vue({
                 default:
             }
         },
-        storeChange(){
-
-        },
-        searchPersonalEvent(){
-
-        },
-        // 查看用户的上课记录
+        // table数据列表事件
         check(userId){
-            window.location.href = "/manage/userClassHistory?id=" + userId;
+            // window.location.href = "/manage/studentInfo?id=" + userId;
         },
-        remove(){
-
+        back(){
+            window.location = document.referrer;
         }
     },
     created(){
-
-            $(".menuBtns").children('.active').removeClass('active');
-            $(".menuBtns").children().eq(0).addClass('active');
+        $(".menuBtns").children('.active').removeClass('active');
+        $(".menuBtns").children().eq(0).addClass('active');
     }
 })

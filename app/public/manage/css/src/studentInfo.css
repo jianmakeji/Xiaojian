@@ -1,0 +1,132 @@
+/* 店铺筛选 */
+.right .filtrMenu{
+    width: 90%;
+    margin: 0 5%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft .ivu-select-selection{
+    border: 1px solid #FFC837;
+}
+.right .filtrMenu .filtrLeft .storeInfo{
+    /* margin-left: 50px; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft .storeInfo label{
+    font-size: 15px;
+    margin-right: 10px;
+    letter-spacing: 1px;
+}
+/* 时间筛选 */
+.right .filtrMenu .filtrLeft .dateInfo{
+    margin-left: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrLeft .dateInfo label{
+    font-size: 15px;
+    margin-right: 10px;
+    letter-spacing: 1px;
+}
+.right .filtrMenu .filtrRight{
+
+}
+.right .filtrMenu .filtrRight .editBtn,
+.right .filtrMenu .filtrRight .saveBtn,
+.right .filtrMenu .filtrRight .uploadBtn{
+    color: #fff;
+    background:  #FFC837;
+}
+/* *********编辑用户信息******** */
+.editStoreUserView{
+    width: 90%;
+    margin: 60px 5% 0px;
+    height: 600px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.editStoreUserView .title{
+    text-align: center;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: #666666;
+    font-weight: bold;
+}
+/* 用户信息头像 */
+.editStoreUserView .storeUserInfoView{
+    width: 600px;
+    height: 500px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.editStoreUserView .storeUserInfoView .imgOpt{
+    width: 200px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-right:60px;
+}
+.editStoreUserView .storeUserInfoView .imgOpt img{
+    width: 200px;
+    height: 280px;
+    border-radius: 10px;
+    border: solid 2px #999999;
+}
+.editStoreUserView .storeUserInfoView .imgOpt p{
+    text-align: center;
+    font-size: 16px;
+    color:#666666;
+}
+/* 用户基础信息 */
+.editStoreUserView .storeUserInfoView .userInfo{
+    width: 200px;
+    height: 370px;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: space-between;
+}
+.editStoreUserView .storeUserInfoView .userInfo .userInfoItem{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: space-between;
+}
+.editStoreUserView .storeUserInfoView .userInfo .userInfoItem .infoTitle{
+    width: 160px;
+    text-align: left;
+    color: #666666;
+    margin-right: 10px;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+.editStoreUserView .storeUserInfoView .userInfo .userInfoItem .name,
+.editStoreUserView .storeUserInfoView .userInfo .userInfoItem .age,
+.editStoreUserView .storeUserInfoView .userInfo .userInfoItem .jobNum,
+.editStoreUserView .storeUserInfoView .userInfo .userInfoItem .genderRadio,
+.editStoreUserView .storeUserInfoView .userInfo .userInfoItem .totalScore{
+    width: 80px;
+    text-align: center;
+}

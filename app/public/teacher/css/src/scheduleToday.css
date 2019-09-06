@@ -86,12 +86,15 @@
 .container .scheduleView .scheduleList .scheduleItem{
     width: 250px;
     height: 600px;
-    border: solid 2px #FFC837;
+    border: solid 2px #E4E4E4;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+}
+.container .scheduleView .scheduleList .scheduleItem:hover{
+    border: solid 2px #FFC837;
 }
 .container .scheduleView .scheduleList .scheduleItem .time{
     width: 100%;
@@ -170,4 +173,10 @@
 .studentListView .studentName .ivu-checkbox-checked .ivu-checkbox-inner{
     border-color: #FFC837;
     background-color: #FFC837;
+}
+
+.closeIcon{
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
 }
