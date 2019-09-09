@@ -6,7 +6,9 @@ var index = new Vue({
             courseNumberData:config.globalData.courseNumberData,
 
             studentListModal:false,
-            aa:""
+            aa:"",
+
+            CheckIsOk:false,
         }
     },
     methods:{
@@ -22,6 +24,13 @@ var index = new Vue({
             } else {
                 this.$Message.error("未上传该时段课程！");
             }
+        },
+        submit(){
+            this.CheckIsOk = true;
+            let that = this;
+            setTimeout(function(){
+                that.studentListModal = false;
+            },2000);
         }
     },
     created(){

@@ -65,6 +65,9 @@ var index = new Vue({
         },
         searchPersonalEvent (){
 
+        },
+        check(){
+            window.location.href = '/teacher/studentInfo';
         }
     },
     created(){

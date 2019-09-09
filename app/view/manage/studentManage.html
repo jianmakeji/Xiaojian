@@ -17,6 +17,7 @@
             <div class="rightUserInfo">
                 <img class="headImg" src="../public/images/user.png">
                 <span class="username">skhdbsb</span>
+                <i-button class="loginOut" type="error" icon="md-log-out" shape="circle" to="/logout"></i-button>
             </div>
         </div>
     {% endblock %}
@@ -42,7 +43,7 @@
 
     <!-- table数据列表 -->
     <div class="tableView">
-        <i-table border :columns="columns" :data="tableData"></i-table>
+        <i-table border :columns="columns" :data="tableData" stripe></i-table>
         <page class="page" :total="100" show-total show-elevator></page>
     </div>
     <!-- table数据列表 end -->

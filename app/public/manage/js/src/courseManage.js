@@ -138,7 +138,7 @@ var index = new Vue({
                         courseTitleB:"",
                         shopId:"",
                         courseNumber:"",
-                        teacherName:"点击选择",
+                        teacherName:"授课老师",
                         teacherId:"",
                         courseAId:"",
                         courseBId:"",

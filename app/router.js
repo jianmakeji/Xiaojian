@@ -9,6 +9,7 @@ module.exports = app => {
 
   router.get('/login', controller.home.login);
   router.get('/relogin', controller.home.relogin);
+  router.get('/logout', controller.home.logout);
   router.get('/home', controller.home.home);
   router.get('/roleIndex', controller.home.roleIndex);
 
@@ -45,6 +46,7 @@ module.exports = app => {
   router.get('/manage/existUsers', controller.manage.manage.existUsers);
   router.get('/manage/storeMonitor', controller.manage.manage.storeMonitor);
   router.get('/manage/monitorDetail', controller.manage.manage.monitorDetail);
+  router.get('/manage/monitorHistory', controller.manage.manage.monitorHistory);
   router.get('/manage/studentManage', controller.manage.manage.studentManage);
   router.get('/manage/addStudent', controller.manage.manage.addStudent);
   router.get('/manage/courseContentManage', controller.manage.manage.courseContentManage);
@@ -53,6 +55,7 @@ module.exports = app => {
 
   router.get('/teacher/courseCheck', controller.teacher.teacher.courseCheck);
   router.get('/teacher/courseStudentList', controller.teacher.teacher.courseStudentList);
+  router.get('/teacher/studentInfo', controller.teacher.teacher.studentInfo);
   router.get('/teacher/personalManage', controller.teacher.teacher.personalManage);
   router.get('/teacher/existUsers', controller.teacher.teacher.existUsers);
   router.get('/teacher/storeMonitor', controller.teacher.teacher.storeMonitor);

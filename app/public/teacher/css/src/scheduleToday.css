@@ -5,7 +5,7 @@
     width: 1920px;
     margin: 0 auto;
     height: 100vh;
-    border: solid 2px black;
+    /* border: solid 2px black; */
 }
 .container {
     display: flex;
@@ -57,6 +57,11 @@
     font-size: 16px;
     color: #656565;
     letter-spacing: 1px;
+}
+.container .headMenu .rightUserInfo .loginOut{
+    margin-left: 20px;
+    cursor: pointer;
+    font-size: 20px;
 }
 
 /* 当天课程列表 */
@@ -174,7 +179,36 @@
     border-color: #FFC837;
     background-color: #FFC837;
 }
-
+.studentListView .opts{
+    width: 100%;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.studentListView .opts .cancelBtn,
+.studentListView .opts .submitBtn{
+    border-color: #FFC837;
+    background: #FFC837;
+}
+.studentListView .opts .cancelBtn{
+    margin-left: 40px;
+}
+.checkOkView{
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.checkOkView .checkOkText{
+    width: 100%;
+    font-size: 24px;
+    color: #FFC837;
+    text-align: center;
+    letter-spacing: 3px;
+}
 .closeIcon{
     position: absolute;
     right: 20px;

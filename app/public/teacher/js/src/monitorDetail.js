@@ -2,12 +2,18 @@ var index = new Vue({
     el:".index",
     data(){
         return{
-            storeId:"",
-            storeData:[
+            shopId:"",
+            shopData:[
                 {value: '1',label: '店铺A'},
                 {value: '2',label: '店铺B'}
             ],
             searchValue:"",
+            year:"",
+            month:"",
+            week:"",
+            yearData:config.globalData.yearData,
+            monthData:config.globalData.monthData,
+            weekData:config.globalData.weekData
         }
     },
     methods:{
@@ -32,6 +38,18 @@ var index = new Vue({
         },
         searchEvent(){
 
+        },
+        yearChange(){
+
+        },
+        monthChange(){
+
+        },
+        weekChange(){
+
+        },
+        back(){
+            window.location.href = "/teacher/storeMonitor";
         }
     },
     created(){

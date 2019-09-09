@@ -19,6 +19,7 @@
             <div class="rightUserInfo">
                 <img class="headImg" src="../public/images/user.png">
                 <span class="username">skhdbsb</span>
+                <i-button class="loginOut" type="error" icon="md-log-out" shape="circle" to="/logout"></i-button>
             </div>
         </div>
     {% endblock %}
@@ -103,10 +104,10 @@
                         <div class="courseTime" v-for="(timeItem,timeIndex) in [1,2,3,4]">
                             <div class="courseImgs">
                                 <!-- 基础课程图片 -->
-                                <img class="mainCourseImg" :src="dataSourse[weekIndex][timeIndex].courseThumbA?dataSourse[weekIndex][timeIndex].courseThumbA:'../public/images/1.png'" @click="changeMainCourse(weekIndex,timeIndex,year,thisWeekMonthArray[weekIndex],thisWeekDayArray[weekIndex],timeItem)" title="编辑基础课程">
+                                <img class="mainCourseImg" :src="dataSourse[weekIndex][timeIndex].courseThumbA?dataSourse[weekIndex][timeIndex].courseThumbA:'../public/images/course_default.png'" @click="changeMainCourse(weekIndex,timeIndex,year,thisWeekMonthArray[weekIndex],thisWeekDayArray[weekIndex],timeItem)" title="编辑基础课程">
 
                                 <!-- 运动课程图片 -->
-                                <img class="mainCourseImg" :src="dataSourse[weekIndex][timeIndex].courseThumbB?dataSourse[weekIndex][timeIndex].courseThumbB:'../public/images/2.png'" @click="changeSportCourse(weekIndex,timeIndex,year,thisWeekMonthArray[weekIndex],thisWeekDayArray[weekIndex],timeItem)" title="编辑运动课程">
+                                <img class="mainCourseImg" :src="dataSourse[weekIndex][timeIndex].courseThumbB?dataSourse[weekIndex][timeIndex].courseThumbB:'../public/images/course_default.png'" @click="changeSportCourse(weekIndex,timeIndex,year,thisWeekMonthArray[weekIndex],thisWeekDayArray[weekIndex],timeItem)" title="编辑运动课程">
                             </div>
                             <div class="courseNames">
                                 <!-- 基础课程名称 -->
@@ -189,7 +190,7 @@
         </div>
         <div class="teacherCourseResultList">
             <div class="teacherCourseItem" v-for="(item,index) in teacherCourseDate">
-                <img class="teacherCourseImg" src="../public/images/3.png" alt="">
+                <img class="teacherCourseImg" src="../public/images/user_default.png" alt="">
                 <div class="teacherCourseInfo">
                     <p class="title">教师名称：李小华</p>
                     <div class="des">

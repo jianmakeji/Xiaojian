@@ -1,13 +1,32 @@
-var login = new Vue({
-    el:".login",
+var index = new Vue({
+    el:".index",
     data(){
         return{
             username:"adminadmin",
             password:"111111",
-
             rememberPwd:true,
+            protocol:true,
+            requestUrl:"",
 
-            requestUrl:""
+            showBuffer:false,
+        }
+    },
+    methods:{
+        delaySubmit(){
+            if(this.protocol){
+                this.showBuffer = true;
+                var myform = document.getElementById('myform');
+                setTimeout(function(){
+                    this.showBuffer = true;
+                    myform.submit();
+                },2000)
+            }else{
+                this.$Message.error({
+                    content: "请阅读《小尖公司免责声明》并勾选！",
+                    duration: 2
+                });
+            }
+
         }
     },
     created(){
@@ -33,5 +52,5 @@ function check(form) {
         form.password.focus();
         return false
     }
-    return true;
+    return true
 }

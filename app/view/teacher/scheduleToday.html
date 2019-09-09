@@ -7,7 +7,7 @@
 
 		<!-- css文件引用 -->
         <link rel="stylesheet" href="../public/teacher/css/lib/iview.css">
-        <!-- <link rel="stylesheet" href="../public/teacher/css/src/basic.css"> -->
+        <link rel="stylesheet" href="../public/teacher/css/src/basic.css">
         <link rel="stylesheet" href="../public/teacher/css/src/scheduleToday.css">
         <!-- 百度统计 -->
 		<script>
@@ -27,6 +27,7 @@
                 <div class="rightUserInfo">
                     <img class="headImg" src="../public/images/user.png">
                     <span class="username">skhdbsb</span>
+	                <i-button class="loginOut" type="error" icon="md-log-out" shape="circle" to="/logout"></i-button>
                 </div>
             </div>
             <div class="scheduleView">
@@ -38,14 +39,14 @@
                             <p class="date" v-text="courseNumberData[index].value"></p>
                         </div>
                         <div class="courseDetail">
-                            <img v-if="item" :src="item.courseA.courseThumbB?item.courseA.courseThumbB:'../public/images/3.png'">
-                            <img v-else src="../public/images/3.png">
+                            <img v-if="item" :src="item.courseA.courseThumbB?item.courseA.courseThumbB:'../public/images/course_default.png'">
+                            <img v-else src="../public/images/course_default.png">
 
                             <p v-if="item" v-text="item.courseA.courseName?item.courseA.courseName:'——'"></p>
                             <p v-else style="color:red;" v-text="'——'"></p>
 
-                            <img v-if="item" :src="item.courseB.courseThumbB?item.courseB.courseThumbB:'../public/images/3.png'">
-                            <img v-else src="../public/images/3.png">
+                            <img v-if="item" :src="item.courseB.courseThumbB?item.courseB.courseThumbB:'../public/images/course_default.png'">
+                            <img v-else src="../public/images/course_default.png">
 
                             <p v-if="item" v-text="item.courseB.courseName?item.courseB.courseName:'——'"></p>
                             <p v-else style="color:red;" v-text="'——'"></p>
@@ -63,7 +64,7 @@
         <!-- 学生点名弹框 -->
         <modal v-model="studentListModal" footer-hide :mask-closable="false" :closable="false" :mask="false" width="932">
 			<icon class="closeIcon" size="20" type="md-close-circle" @click="closeModel"></icon>
-			<div class="studentListView">
+			<div class="studentListView" v-if="!CheckIsOk">
                 <p class="title">学生名单</p>
                 <checkbox-group v-model="aa">
                     <row>
@@ -72,7 +73,14 @@
                         </i-col>
                     </row>
             	</checkbox-group>
+				<div class="opts">
+					<i-button class="submitBtn" type="warning" @click="submit">完成点名</i-button>
+					<i-button class="cancelBtn" type="warning" @click="closeModel">取消</i-button>
+				</div>
             </div>
+			<div v-else class="checkOkView" style="min-height:600px;">
+				<p class="checkOkText">本课程应到25人，实到23人</p>
+			</div>
         </modal>
         <!-- 学生点名弹框 end -->
 

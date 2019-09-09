@@ -102,3 +102,16 @@
     color: #656565;
     letter-spacing: 1px;
 }
+.right .headMenu .rightUserInfo .loginOut{
+    margin-left: 20px;
+    cursor: pointer;
+        font-size: 20px;
+}
+/* 尾部商标 */
+.footerImg{
+    position: absolute;
+    width: auto;
+    height: 13px;
+    margin-left: 15%;
+    bottom: 10px;
+}

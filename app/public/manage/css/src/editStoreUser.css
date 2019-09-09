@@ -80,3 +80,6 @@
 .editStoreUserView .opts button{
     border-color: #FFC837;
 }
+.editStoreUserView .opts .submitBtn{
+    background: #FFC837;
+}

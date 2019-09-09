@@ -28,7 +28,11 @@ class HomeController extends Controller {
       message:ctx.__('usernameOrPwdError')
     });
   }
-
+  async logout(){
+    const ctx = this.ctx;
+    ctx.logout();
+    await ctx.render('home.html');
+  }
   async roleIndex(){
     const ctx = this.ctx;
     if(ctx.isAuthenticated()){
@@ -39,11 +43,11 @@ class HomeController extends Controller {
         else if (ctx.user.roles[0].rolename == 'teacher'){
           if (ctx.user.password == 2){
             //教师管理
-            ctx.redirect('/teacherManager');
+            ctx.redirect('/teacher/courseCheck');
           }
           else{
             //教师上课
-            ctx.redirect('/teacherClass');
+            ctx.redirect('/teacher/scheduleToday');
           }
         }
         else if (ctx.user.roles[0].rolename == 'supermanage'){

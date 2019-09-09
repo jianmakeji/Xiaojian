@@ -1,9 +1,9 @@
-{% extends "manage/parent.html" %}
+{% extends "teacher/parent.html" %}
 
 {% block cssfolder %}
-<link rel="stylesheet" href="../public/manage/css/lib/iview.css">
-<link rel="stylesheet" href="../public/manage/css/src/basic.css">
-<link rel="stylesheet" href="../public/manage/css/src/studentInfo.css">
+<link rel="stylesheet" href="../public/teacher/css/lib/iview.css">
+<link rel="stylesheet" href="../public/teacher/css/src/basic.css">
+<link rel="stylesheet" href="../public/teacher/css/src/studentInfo.css">
 {% endblock %}
 
 
@@ -39,7 +39,7 @@
         <div class="storeUserInfoView">
             <div class="imgOpt">
                 <div class="">
-                    <img :src="formItem.headicon?formItem.headicon:'../public/images/user_default.png'">
+                    <img :src="formItem.headicon?formItem.headicon:'../public/images/3.png'">
                     <p>用户头像</p>
                 </div>
                 <!-- <p>更换图片</p> -->
@@ -54,7 +54,7 @@
                         <p>陆睿诚</p>
                     </div>
                 </div>
-                <div class="userInfoItem" v-if="!isEdit">
+                <div class="userInfoItem">
                     <div class="infoTitle">用户性别</div>
                     <div class="name">
                         <p>男</p>
@@ -99,9 +99,9 @@
 {% endblock %}
 
 {% block jsfolder %}
-	<script type="text/javascript" src="../public/manage/js/lib/jquery.min.js"></script>
-    <script type="text/javascript" src="../public/manage/js/lib/vue.min.js"></script>
-	<script type="text/javascript" src="../public/manage/js/lib/iview.min.js"></script>
-	<script type="text/javascript" src="../public/manage/js/src/config.js"></script>
-	<script type="text/javascript" src="../public/manage/js/src/studentInfo.js"></script>
+	<script type="text/javascript" src="../public/teacher/js/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="../public/teacher/js/lib/vue.min.js"></script>
+	<script type="text/javascript" src="../public/teacher/js/lib/iview.min.js"></script>
+	<script type="text/javascript" src="../public/teacher/js/src/config.js"></script>
+	<script type="text/javascript" src="../public/teacher/js/src/studentInfo.js"></script>
 {% endblock %}

@@ -5,7 +5,7 @@
     width: 1920px;
     height: 100vh;
     margin: 0 auto;
-    border: solid 2px black;
+    /* border: solid 2px black; */
 }
 .container {
     width: 90%;
@@ -60,6 +60,12 @@
     color: #656565;
     letter-spacing: 1px;
 }
+.container .headMenu .rightUserInfo .loginOut{
+    margin-left: 20px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
 /* 当天课程列表 */
 .container .courseList{
     width: 80%;

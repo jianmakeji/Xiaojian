@@ -5,16 +5,16 @@ var index = new Vue({
         return{
             // 列表数据
             tableData:[
-                {id:1,name:"王小我",age:10,gender:"男",status:"健康",isJoin:"是",inTime:"15:00",outTime:"16:34",totalCode:"2"},
-                {id:2,name:"王小我",age:10,gender:"男",status:"健康",isJoin:"是",inTime:"15:00",outTime:"16:34",totalCode:"2"},
-                {id:3,name:"王小我",age:10,gender:"男",status:"健康",isJoin:"是",inTime:"15:00",outTime:"16:34",totalCode:"2"},
-                {id:4,name:"王小我",age:10,gender:"男",status:"健康",isJoin:"是",inTime:"15:00",outTime:"16:34",totalCode:"2"},
-                {id:5,name:"王小我",age:10,gender:"男",status:"健康",isJoin:"是",inTime:"15:00",outTime:"16:34",totalCode:"2"},
-                {id:6,name:"王小我",age:10,gender:"男",status:"健康",isJoin:"是",inTime:"15:00",outTime:"16:34",totalCode:"2"},
-                {id:7,name:"王小我",age:10,gender:"男",status:"健康",isJoin:"是",inTime:"15:00",outTime:"16:34",totalCode:"2"},
-                {id:8,name:"王小我",age:10,gender:"男",status:"健康",isJoin:"是",inTime:"15:00",outTime:"16:34",totalCode:"2"},
-                {id:9,name:"王小我",age:10,gender:"男",status:"健康",isJoin:"是",inTime:"15:00",outTime:"16:34",totalCode:"2"},
-                {id:10,name:"王小我",age:10,gender:"男",status:"健康",isJoin:"是",inTime:"15:00",outTime:"16:34",totalCode:"2"},
+                {id:1,name:"王小我",age:10,gender:"男",status:"健康",isJoin:"是",inTime:"188888888888",outTime:"8"},
+                {id:1,name:"王小我",age:10,gender:"男",status:"健康",isJoin:"是",inTime:"188888888888",outTime:"8"},
+                {id:1,name:"王小我",age:10,gender:"男",status:"健康",isJoin:"是",inTime:"188888888888",outTime:"8"},
+                {id:1,name:"王小我",age:10,gender:"男",status:"健康",isJoin:"是",inTime:"188888888888",outTime:"8"},
+                {id:1,name:"王小我",age:10,gender:"男",status:"健康",isJoin:"是",inTime:"188888888888",outTime:"8"},
+                {id:1,name:"王小我",age:10,gender:"男",status:"健康",isJoin:"是",inTime:"188888888888",outTime:"8"},
+                {id:1,name:"王小我",age:10,gender:"男",status:"健康",isJoin:"是",inTime:"188888888888",outTime:"8"},
+                {id:1,name:"王小我",age:10,gender:"男",status:"健康",isJoin:"是",inTime:"188888888888",outTime:"8"},
+                {id:1,name:"王小我",age:10,gender:"男",status:"健康",isJoin:"是",inTime:"188888888888",outTime:"8"},
+                {id:1,name:"王小我",age:10,gender:"男",status:"健康",isJoin:"是",inTime:"188888888888",outTime:"8"}
             ],
             columns:[
                 {title:"用户ID",key:"id",align:"center",width:100},
@@ -23,9 +23,8 @@ var index = new Vue({
                 {title:"性别",key:"gender",align:"center"},
                 {title:"健康状况",key:"status",align:"center"},
                 {title:"是否参与交互课程",key:"isJoin",align:"center"},
-                {title:"进入时间",key:"inTime",align:"center"},
-                {title:"出去时间",key:"outTime",align:"center"},
-                {title:"总消费积分",key:"totalCode",align:"center"},
+                {title:"家长联系方式",key:"inTime",align:"center"},
+                {title:"剩余积分",key:"outTime",align:"center"},
                 {title:"操作",key:"opt",align:"center",
                     render:(h,params) => {
                         return h('div', [
@@ -63,6 +62,9 @@ var index = new Vue({
         },
         backToCourseCheck(){
             window.location.href = '/teacher/courseCheck';
+        },
+        check(index){
+            window.location.href = '/teacher/studentInfo';
         }
     },
     created(){

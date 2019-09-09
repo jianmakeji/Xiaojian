@@ -19,6 +19,12 @@ class TeacherController extends Controller {
         user : ctx.user
       });
   }
+  async studentInfo(){
+      const ctx = this.ctx;
+      await ctx.render('teacher/studentInfo.html', {
+        user : ctx.user
+      });
+  }
   async personalManage(){
       const ctx = this.ctx;
       await ctx.render('teacher/personalManage.html', {

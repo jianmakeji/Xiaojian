@@ -18,17 +18,34 @@
             <div class="rightUserInfo">
                 <img class="headImg" src="../public/images/user.png">
                 <span class="username">skhdbsb</span>
+                <i-button class="loginOut" type="error" icon="md-log-out" shape="circle" to="/logout"></i-button>
             </div>
         </div>
     {% endblock %}
 
-    <!-- 子菜单选项 -->
-    <div class="subMenu">
-        <i-button class="subMenuBtn active" type="warning" to="/teacher/storeMonitor">实时监控</i-button>
-        <span class="line"></span>
-        <i-button class="subMenuBtn" type="default" to="/teacher/monitorHistory">历史监控</i-button>
+    <!-- 课程查看选项 -->
+    <div class="filtrMenu">
+        <div class="filtrLeft">
+            <div class="storeInfo">
+
+            </div>
+            <div class="dateInfo">
+                <label>课程时间选择:</label>
+                <i-select v-model="year" style="width:100px;margin-left:10px;" @on-change="yearChange" placeholder="年份">
+                    <i-option v-for="item in yearData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
+                </i-select>
+                <i-select v-model="month" style="width:100px;margin-left:10px;" @on-change="monthChange" placeholder="月份">
+                    <i-option v-for="item in monthData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
+                </i-select>
+                <i-select v-model="week" style="width:100px;margin-left:10px;" @on-change="weekChange" placeholder="星期">
+                    <i-option v-for="item in weekData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
+                </i-select>
+            </div>
+        </div>
+        <div class="filtrRight">
+            <i-button class="saveBtn" type="warning" @click="back">返回</i-button>
+        </div>
     </div>
-    <!-- 子菜单选项 end -->
 
     <!-- 店铺监控详情 -->
     <div class="monitorDetailView">
@@ -48,5 +65,6 @@
 	<script type="text/javascript" src="../public/teacher/js/lib/jquery.min.js"></script>
     <script type="text/javascript" src="../public/teacher/js/lib/vue.min.js"></script>
 	<script type="text/javascript" src="../public/teacher/js/lib/iview.min.js"></script>
+	<script type="text/javascript" src="../public/teacher/js/src/config.js"></script>
 	<script type="text/javascript" src="../public/teacher/js/src/monitorDetail.js"></script>
 {% endblock %}

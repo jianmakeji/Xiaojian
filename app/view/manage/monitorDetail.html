@@ -19,6 +19,7 @@
             <div class="rightUserInfo">
                 <img class="headImg" src="../public/images/user.png">
                 <span class="username">skhdbsb</span>
+                <i-button class="loginOut" type="error" icon="md-log-out" shape="circle" to="/logout"></i-button>
             </div>
         </div>
     {% endblock %}
@@ -29,7 +30,7 @@
         <span class="line"></span>
         <i-button class="subMenuBtn" type="default" to="/manage/existUsers">现存用户</i-button>
         <span class="line"></span>
-        <i-button class="subMenuBtn active" type="warning">店铺监控</i-button>
+        <i-button class="subMenuBtn active" type="warning"  to="/manage/storeMonitor">店铺监控</i-button>
     </div>
     <!-- 子菜单选项 end -->
 
@@ -56,7 +57,7 @@
     <div class="monitorDetailView">
         <div class="opts">
             <p class="time">2019.08.12 15:55</p>
-            <i-button class="checkHistoryBtn" type="warning">查看历史监控</i-button>
+            <!-- <i-button class="checkHistoryBtn" type="warning">查看历史监控</i-button> -->
         </div>
         <div class="monitorDetail">
             <img src="../public/images/camera1.jpg" alt="">

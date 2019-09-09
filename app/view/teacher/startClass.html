@@ -26,17 +26,18 @@
                 <div class="rightUserInfo">
                     <img class="headImg" src="../public/images/user.png">
                     <span class="username">skhdbsb</span>
+	                <i-button class="loginOut" type="error" icon="md-log-out" shape="circle" to="/logout"></i-button>
                 </div>
             </div>
             <!-- 主次课选择框 -->
             <div class="courseList">
                 <div class="mainCourse" @click="">
-                    <img :src="mainCourseInfo.courseThumbB">
-                    <p v-text="mainCourseInfo.courseName"></p>
+                    <img :src="mainCourseInfo.courseThumbB" @click="tapCourseA">
+                    <p v-text="mainCourseInfo.courseName" @click="tapCourseA"></p>
                 </div>
                 <div class="otherCourse" @click="">
-                    <img :src="otherCourseInfo.courseThumbB" alt="">
-                    <p v-text="otherCourseInfo.courseName"></p>
+                    <img :src="otherCourseInfo.courseThumbB"  @click="tapCourseB">
+                    <p v-text="otherCourseInfo.courseName"  @click="tapCourseB"></p>
                 </div>
             </div>
             <div style="text-align:right;width: 80%;">

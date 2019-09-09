@@ -2,34 +2,25 @@ var index = new Vue({
     el:".index",
     data(){
         return{
-            courseId:"",
-
-            courseName:"",
-            videoAddress:"",
-            courseThumbB:"",
-            courseAbstract:""
+            formItem:{
+                shopId:"",
+                username:"",
+                password:"",
+                headicon:"",
+                realname:"",
+                age:"",
+                idNum:"",
+                gender:"",
+                jobTitle:""
+            },
+            progressPercent:0,
+            storeData:config.globalData.storeData,
+            userId:"0",
         }
     },
     methods:{
         initData(){
-            let that = this;
-            $.ajax({
-                url: config.ajaxUrls.getCourseByCourseId.replace(":courseId",this.courseId),
-                type: 'GET',
-            })
-            .done(function(res) {
-                if (res.status == 200) {
-                    that.courseName = res.data.courseName;
-                    that.videoAddress = res.data.videoAddress;
-                    that.courseThumbB = res.data.courseThumbB;
-                    that.courseAbstract = res.data.courseAbstract;
-                } else {
-                    that.$Message.error(res.data);
-                }
-            })
-            .fail(function() {
-                that.$Message.error(err);
-            });
+
         },
         menuChange(value){
             $(".menuBtns").children('.active').removeClass('active');
@@ -53,14 +44,12 @@ var index = new Vue({
     },
     created(){
         let comeStr = document.referrer.split("teacher/")[1];
-        if (comeStr == "courseContentManage") {
+        if (comeStr == "personalManage" || comeStr == "existUsers") {
             $(".menuBtns").children('.active').removeClass('active');
-            $(".menuBtns").children().eq(2).addClass('active');
+            $(".menuBtns").children().eq(1).addClass('active');
         } else {
             $(".menuBtns").children('.active').removeClass('active');
             $(".menuBtns").children().eq(0).addClass('active');
         }
-        this.courseId = window.location.search.split("courseId=")[1];
-        this.initData();
     }
 })

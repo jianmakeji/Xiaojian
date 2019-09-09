@@ -87,6 +87,8 @@
     align-items: center;
     justify-content: space-around;
 }
-/* .right .personalList .personalItem .teacherInfoView .ivu-btn{
-    border-color: none;
-} */
+.right .personalList .personalItem .teacherInfoView .editBtn,
+.right .personalList .personalItem .teacherInfoView .deleteBtn{
+    border-color: #FFC837;
+    background: #FFC837;
+}

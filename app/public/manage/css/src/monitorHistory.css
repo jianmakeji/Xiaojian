@@ -59,43 +59,39 @@
     margin-left: 10px;
     letter-spacing: 1px;
 }
-/* ***************店铺监控列表******************* */
-.right .monitorView{
+.right .filtrMenu .filtrRight .backBtn{
+    background: #FFC837;
+    border-color: #FFC837;
+}
+/* ****************店铺监控详情****************** */
+.right .monitorDetailView{
     width: 90%;
-    margin-top: 20px;
+    margin-top: 100px;
     margin-left: 5%;
-}
-.right .monitorView .time{
-    color: #FFC837;
-    font-size: 20px;
-}
-.right .monitorView .monitorItem{
-    height: 400px;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-.right .monitorView .monitorItem .monitorImg{
-    width: 500px;
-    height: 300px;
-    border-radius: 20px;
-}
-.right .monitorView .monitorItem .monitorInfo{
-    width: 500px;
-    margin-top: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-evenly;
+}
+.right .monitorDetailView .leftMonitorView{
+    width: 700px;
+    height: 500px;
+}
+.right .monitorDetailView .leftMonitorView img{
+    width: 700px;
+    height: 500px;
+    border-radius: 20px;
+}
+.right .monitorDetailView .rightMonitorView{
+    width: 300px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: space-between;
 }
-.right .monitorView .monitorItem .monitorInfo .area{
-    font-size: 18px;
-    color: #999999;
-    letter-spacing: 2px;
-}
-.right .monitorView .monitorItem .monitorInfo .checkBtn{
-    background: #FFC837;
-    border-color: #FFC837;
+.right .monitorDetailView .rightMonitorView img{
+    width: 300px;
+    height: 200px;
+    border-radius: 20px;
 }

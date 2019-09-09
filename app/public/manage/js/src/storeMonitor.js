@@ -8,6 +8,13 @@ var index = new Vue({
                 {value: '2',label: '店铺B'}
             ],
             searchValue:"",
+
+            year:"",
+            month:"",
+            week:"",
+            yearData:config.globalData.yearData,
+            monthData:config.globalData.monthData,
+            weekData:config.globalData.weekData,
         }
     },
     methods:{
@@ -36,6 +43,21 @@ var index = new Vue({
         },
         checkMonitorEvent(){
             window.location.href = "/manage/monitorDetail";
+        },
+
+        yearChange(){
+            window.location.href = "/manage/monitorHistory";
+        },
+        monthChange(){
+            window.location.href = "/manage/monitorHistory";
+
+        },
+        weekChange(){
+            window.location.href = "/manage/monitorHistory";
+
+        },
+        closeModel(){
+
         }
     },
     created(){

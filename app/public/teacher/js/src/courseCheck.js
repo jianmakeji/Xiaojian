@@ -242,6 +242,15 @@ var index = new Vue({
             this.initDataSourse();
         },
 
+        mainCourseCheck(weekIndex,timeIndex){
+            let courseId = this.dataSourse[weekIndex][timeIndex].courseAId;
+            window.location.href = "/teacher/courseDetail?courseId=" + courseId;
+        },
+        otherCourseCheck(weekIndex,timeIndex){
+            let courseId = this.dataSourse[weekIndex][timeIndex].courseBId;
+            window.location.href = "/teacher/courseDetail?courseId=" + courseId;
+        },
+
         // 课程列表
         studentListCheck(day,time){
             let classsId = this.dataSourse[day][time].xclasssId;

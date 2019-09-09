@@ -43,15 +43,7 @@ var index = new Vue({
                                        this.check(params.index)
                                    }
                                }
-                            }, '查看'),
-                            h('Button', {
-                               props: { type: 'error', size: 'small' },
-                               on: {
-                                   click: () => {
-                                       this.remove(params.index)
-                                   }
-                               }
-                            }, '删除')
+                            }, '查看')
                        ]);
                     }
                 },

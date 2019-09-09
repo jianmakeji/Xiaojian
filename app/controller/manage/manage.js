@@ -71,6 +71,12 @@ class ManageController extends Controller {
         user : ctx.user
       });
   }
+  async monitorHistory(){
+      const ctx = this.ctx;
+      await ctx.render('manage/monitorHistory.html', {
+        user : ctx.user
+      });
+  }
   async studentManage(){
       const ctx = this.ctx;
       await ctx.render('manage/studentManage.html', {

@@ -45,11 +45,10 @@
 .right .filtrMenu .filtrRight{
 
 }
-.right .filtrMenu .filtrRight .editBtn,
-.right .filtrMenu .filtrRight .saveBtn,
-.right .filtrMenu .filtrRight .uploadBtn{
+.right .filtrMenu .filtrRight .addStudent{
     color: #fff;
     background:  #FFC837;
+    border-color: #FFC837;
 }
 
 /* 顶部用户基本信息 */

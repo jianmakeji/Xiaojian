@@ -54,12 +54,12 @@
     margin-right: 10px;
     letter-spacing: 1px;
 }
-/* 人员查找 */
-.right .filtrMenu .filtrLeft .userSearch{
-    margin-left: 20px;
-}
-.right .filtrMenu .filtrLeft .userSearchInput .ivu-input{
-    border: 1px solid #FFC837;
+
+/*  */
+.right .filtrMenu .filtrLeft .dateInfo label{
+    font-size: 15px;
+    margin-left: 10px;
+    letter-spacing: 1px;
 }
 
 /* ****************店铺监控详情****************** */

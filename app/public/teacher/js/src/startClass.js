@@ -11,6 +11,12 @@ var index = new Vue({
     methods:{
         back(){
             window.location.href = "/teacher/scheduleToday";
+        },
+        tapCourseA(){
+            window.open(this.mainCourseInfo.h5Address);
+        },
+        tapCourseB(){
+            window.open(this.otherCourseInfo.h5Address);
         }
     },
     created(){
@@ -24,6 +30,7 @@ var index = new Vue({
         })
         .done(function(res) {
             if (res.status == 200) {
+                console.log(res);
                 that.mainCourseInfo = res.data;
             } else {
                 that.$Message.error(res.data);

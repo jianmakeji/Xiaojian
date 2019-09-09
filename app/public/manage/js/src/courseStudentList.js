@@ -67,7 +67,7 @@ var index = new Vue({
         },
         // table数据列表事件
         check(userId){
-            // window.location.href = "/manage/studentInfo?id=" + userId;
+            // window.location.href = "/manage/studentInfo?id=  " + userId;
         },
         back(){
             window.location = document.referrer;

@@ -18,6 +18,7 @@
             <div class="rightUserInfo">
                 <img class="headImg" src="../public/images/user.png">
                 <span class="username">skhdbsb</span>
+                <i-button class="loginOut" type="error" icon="md-log-out" shape="circle" to="/logout"></i-button>
             </div>
         </div>
     {% endblock %}
@@ -36,7 +37,7 @@
 
     <!-- 学生名单列表 -->
     <div class="studentList">
-        <i-table border :columns="columns" :data="tableData"></i-table>
+        <i-table border :columns="columns" :data="tableData" stripe></i-table>
         <page class="page" :total="100" show-total show-elevator></page>
     </div>
     <!-- 课程详情 end -->

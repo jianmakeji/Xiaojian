@@ -18,3 +18,12 @@
     flex-direction: row;
     align-items: center;
 }
+
+.footerImg{
+    display: none;
+}
+.footerSubImg{
+    height: 13px;
+    width: auto;
+    margin-left: 3%;
+}

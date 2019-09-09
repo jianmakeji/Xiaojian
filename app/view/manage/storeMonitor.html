@@ -19,6 +19,7 @@
             <div class="rightUserInfo">
                 <img class="headImg" src="../public/images/user.png">
                 <span class="username">skhdbsb</span>
+                <i-button class="loginOut" type="error" icon="md-log-out" shape="circle" to="/logout"></i-button>
             </div>
         </div>
     {% endblock %}
@@ -42,8 +43,17 @@
                     <i-option v-for="item in storeData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
                 </i-select>
             </div>
-            <div class="userSearch">
-                <i-input class="userSearchInput" v-model="searchValue" placeholder="输入搜索内容" search @on-search="searchEvent"></i-input>
+            <div class="dateInfo">
+                <label>监控时间选择:</label>
+                <i-select v-model="year" style="width:100px;margin-left:10px;" @on-change="yearChange" @on-open-change="closeModel" placeholder="年份">
+                    <i-option v-for="item in yearData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
+                </i-select>
+                <i-select v-model="month" style="width:100px;margin-left:10px;" @on-change="monthChange" @on-open-change="closeModel"  placeholder="月份">
+                    <i-option v-for="item in monthData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
+                </i-select>
+                <i-select v-model="week" style="width:100px;margin-left:10px;" @on-change="weekChange" @on-open-change="closeModel" placeholder="星期">
+                    <i-option v-for="item in weekData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
+                </i-select>
             </div>
         </div>
     </div>
@@ -74,5 +84,6 @@
 	<script type="text/javascript" src="../public/manage/js/lib/jquery.min.js"></script>
     <script type="text/javascript" src="../public/manage/js/lib/vue.min.js"></script>
 	<script type="text/javascript" src="../public/manage/js/lib/iview.min.js"></script>
+	<script type="text/javascript" src="../public/manage/js/src/config.js"></script>
 	<script type="text/javascript" src="../public/manage/js/src/storeMonitor.js"></script>
 {% endblock %}

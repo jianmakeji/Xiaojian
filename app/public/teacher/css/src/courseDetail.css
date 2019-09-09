@@ -53,3 +53,24 @@
     color: #928B89;
     text-indent: 2em;
 }
+
+/* 店铺筛选 */
+.right .filtrMenu{
+    width: 90%;
+    margin: 0 5%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrRight{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrRight .backBtn{
+    background: #FFC837;
+    border-color: #FFC837;
+}

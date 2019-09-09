@@ -6,9 +6,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 100vw;
+    width: 1920px;
     height: 100vh;
-    background: pink
+    margin: 0 auto;
+    background: url(/public/images/home_bg.png)no-repeat bottom center;
 }
 
 .home .entranceView{
@@ -24,14 +25,13 @@
 .home .entranceView .manageEntranceBox,
 .home .entranceView .shopEntranceBox,
 .home .entranceView .teacherEntranceBox{
-    width: 350px;
-    height: 300px;
+    width: 310px;
+    height: 310px;
     line-height: 300px;
     font-size: 30px;
     font-weight: bold;
     color: #fff;
     text-align: center;
     cursor: pointer;
-
-    background:gray
+    background:url(/public/images/home_bg_img.png)no-repeat center center;
 }
