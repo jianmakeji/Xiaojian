@@ -207,7 +207,7 @@ module.exports = app => {
     });
   }
 
-  User.getUserByRole = async function(shopId,roleId){
+  User.getUserByRole = async function(shopId,realname,roleId){
     let condition = {
       order: [
         ['createAt', 'desc'],
@@ -229,6 +229,12 @@ module.exports = app => {
 
     if (shopId != 0){
       condition.where.shopId = shopId;
+    }
+
+    if (realname != null && realname != ''){
+      condition.where.realname = {
+        [app.Sequelize.Op.like]: '%'+realname+'%',
+      };
     }
 
     return this.findAndCountAll(condition);

@@ -154,8 +154,8 @@ class User extends Service {
     }
   }
 
-  async getUserByRole(shopId,roleId){
-    return await this.ctx.model.User.getUserByRole(shopId,roleId);
+  async getUserByRole(shopId, realname, roleId){
+    return await this.ctx.model.User.getUserByRole(shopId, realname, roleId);
   }
 }
 

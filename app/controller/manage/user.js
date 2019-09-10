@@ -230,9 +230,10 @@ class UsersController extends BaseController{
     async getTeacherByShopId(){
       const ctx = this.ctx;
       const shopId = ctx.query.shopId;
-
+      const realname = ctx.query.realname;
+      
       try{
-        let data = await ctx.service.user.getUserByRole(shopId,2);
+        let data = await ctx.service.user.getUserByRole(shopId,realname,2);
         super.success(data);
       }
       catch(e){
