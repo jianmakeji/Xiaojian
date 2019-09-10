@@ -30,7 +30,6 @@ var index = new Vue({
         })
         .done(function(res) {
             if (res.status == 200) {
-                console.log(res);
                 that.mainCourseInfo = res.data;
             } else {
                 that.$Message.error(res.data);

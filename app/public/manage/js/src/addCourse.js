@@ -214,7 +214,7 @@ var index = new Vue({
                     break;
                 case "3":
                     that.courseSubTypeData = [
-                        {value: '5',label: '篮球'}
+                        {value: '5',label: '篮球'},
                     ];
                     break;
                 default:

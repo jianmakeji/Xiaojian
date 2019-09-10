@@ -67,6 +67,7 @@ var config = {
         deleteUserById:"/manage/user/:userId",
         // courseManage
         listAllCourseByType:'/manage/course/listAllCourseByType',
+        getTeacherByShopId:"/manage/user/getTeacherByShopId",
         listCourseByDate:'/manage/courseChoose/listCourseByDate',
         createCourseChoose:'/manage/courseChoose/createCourseChoose',
         updateCourseByDate:'/manage/courseChoose/updateCourseByDate',

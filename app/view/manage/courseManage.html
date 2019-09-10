@@ -190,18 +190,18 @@
         </div>
         <div class="teacherCourseResultList">
             <div class="teacherCourseItem" v-for="(item,index) in teacherCourseDate">
-                <img class="teacherCourseImg" src="../public/images/user_default.png" alt="">
+                <img class="teacherCourseImg" :src="item.headicon ? item.headicon : '../public/images/user_default.png'" alt="">
                 <div class="teacherCourseInfo">
-                    <p class="title">教师名称：李小华</p>
+                    <p class="title" v-text="'教师名称：' + item.realname"></p>
                     <div class="des">
-                        <span class="age">年龄：20岁</span>
-                        <span class="jobNum">工号：10086</span>
-                        <span class="gender">性别：男</span>
+                        <span class="age" v-text="'年龄：' + item.age + '岁'"></span>
+                        <span class="jobNum" v-text="'工号：' + item.jobTitle"></span>
+                        <span class="gender" v-text="item.realname == 1 ? '性别：男' : '性别：女'"></span>
                     </div>
                     <div class="selectNum">
                         已选次数：20次
                     </div>
-                    <i-button class="submit" @click="chooseTheTeacherCourse(index)">确认选择</i-button>
+                    <i-button class="submit" @click="chooseTheTeacherCourse(item.Id,item.realname)">确认选择</i-button>
                 </div>
             </div>
         </div>

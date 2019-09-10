@@ -28,7 +28,6 @@ var index = new Vue({
             })
             .done(function(res) {
                 if(res.status == 200){
-                    console.log(res);
                     that.$Loading.finish();
                     that.formItem.shopId = res.data.shopId.toString();
                     that.formItem.username = res.data.username;
@@ -79,7 +78,6 @@ var index = new Vue({
                     data: this.formItem
                 })
                 .done(function(res) {
-                    console.log(res);
                     if(res.status == 200){
                         that.$Loading.finish();
                         that.$Message.success({

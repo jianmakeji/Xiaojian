@@ -110,7 +110,7 @@ var index = new Vue({
             sportModelActive:false,
 
             // 教师选择中心数据
-            teacherCourseDate:[1,2],
+            teacherCourseDate:[],
             searchTeacherourseValue:"",
             teacherModelActive:false,
             bigMap:new Map(),
@@ -492,8 +492,30 @@ var index = new Vue({
         // ***************************************
         // 教师选择中心事件
         // **************************************
-        getTeacherData(index){
-
+        getTeacherData(teacherName){
+            let that = this;
+            this.$Loading.start();
+            $.ajax({
+                url: config.ajaxUrls.getTeacherByShopId,
+                type: 'GET',
+                data: {
+                    realname:teacherName,
+                    shopId:this.shopId,
+                }
+            })
+            .done(function(res) {
+                if (res.status == 200) {
+                    that.$Loading.finish();
+                    that.teacherCourseDate = res.data.rows;
+                } else {
+                    that.$Loading.error();
+                    that.$Message.error(res.data);
+                }
+            })
+            .fail(function(err) {
+                that.$Loading.error();
+                that.$Message.error(err);
+            });
         },
         changeTeacher(weekIndex,timeIndex,year,month,day,time){
             this.mainModelActive = false;
@@ -512,15 +534,15 @@ var index = new Vue({
             }
             this.dateInfo = year + "-" + month + "-" + day + "#" + time;
             // 获取基础课程数据
-            this.getTeacherData(0);
+            this.getTeacherData("");
         },
         searchTeacherCourseEvent(){
-            console.log("点击了教师搜索");
+            // 获取基础课程数据
+            this.getTeacherData(this.searchTeacherourseValue);
         },
-        chooseTheTeacherCourse(index){
-
-            this.dataSourse[this.weekIndex][this.timeIndex].teacherId = index + 1;
-            this.dataSourse[this.weekIndex][this.timeIndex].teacherName = "李少华";
+        chooseTheTeacherCourse(teacherId,teacherName){
+            this.dataSourse[this.weekIndex][this.timeIndex].teacherId = teacherId;
+            this.dataSourse[this.weekIndex][this.timeIndex].teacherName = teacherName;
 
             this.teacherModelActive = false;
         },

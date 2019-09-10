@@ -165,7 +165,6 @@ var index = new Vue({
                         }
                     }
                     that.$forceUpdate();
-                    console.log(that.dataSourse);
                 } else {
                     that.$Message.error(res.data);
                 }
