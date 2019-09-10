@@ -224,7 +224,7 @@ module.exports = app => {
           }
         }
       ],
-      attributes: ['Id', 'username', 'shopId','age','gender','realname','jobTitle']
+      attributes: ['Id', 'username', 'shopId','age','headicon','gender','realname','jobTitle']
     };
 
     if (shopId != 0){
