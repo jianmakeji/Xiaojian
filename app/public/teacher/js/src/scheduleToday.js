@@ -3,6 +3,9 @@ var index = new Vue({
     data(){
         return{
             dataSourse:[],
+            studentData:[
+                "陆睿诚","叶米兰","邱叶丹","贾阳夏","卢子石","韩嘉志","万苏","梁天宇","梁丁","姜和","白语儿","郑鸿煊","汪浩"
+            ],
             courseNumberData:config.globalData.courseNumberData,
 
             studentListModal:false,
@@ -14,9 +17,11 @@ var index = new Vue({
     methods:{
         openStudentListModal(){
             this.studentListModal = true;
+            this.CheckIsOk = false;
         },
         closeModel(){
             this.studentListModal = false;
+            this.CheckIsOk = false;
         },
         startClass(courseAId,courseBId){
             if (courseAId != "0" && courseBId != "0") {

@@ -31,7 +31,7 @@
                 </div>
             </div>
             <div class="scheduleView">
-                <p class="welcome">欢迎您，教师李小华！这是今日的课表！</p>
+                <p class="welcome" v-text="'欢迎您，教师' + '{{user.realname}}' + '！这是今日的课表！'"></p>
                 <div class="scheduleList">
                     <div class="scheduleItem" v-for="(item,index) in dataSourse">
                         <div class="time">
@@ -68,7 +68,7 @@
                 <p class="title">学生名单</p>
                 <checkbox-group v-model="aa">
                     <row>
-                        <i-col :xs="24" :sm="12" :md="4" :lg="4" v-for="(item,index) in [1,2,3,4,5,6,7,8,9,0,11,1,1,1,1,1,11,1,1,1,1,]">
+                        <i-col :xs="24" :sm="12" :md="4" :lg="4" v-for="(item,index) in studentData">
             				<checkbox class="studentName" size="large" :label="item"></checkbox>
                         </i-col>
                     </row>

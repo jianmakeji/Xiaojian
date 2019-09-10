@@ -13,11 +13,11 @@ var index = new Vue({
     },
     methods:{
         delaySubmit(){
+            let that = this;
             if(this.protocol){
                 this.showBuffer = true;
                 var myform = document.getElementById('myform');
                 setTimeout(function(){
-                    this.showBuffer = true;
                     myform.submit();
                 },2000)
             }else{
@@ -30,6 +30,7 @@ var index = new Vue({
         }
     },
     created(){
+        this.showBuffer = false;
         let roleId =  window.location.search.split("role=")[1];
         this.requestUrl = "/login/" + roleId;
     }

@@ -143,7 +143,7 @@ var index = new Vue({
                         courseAId:"",
                         courseBId:"",
                         courseDate:"",
-                        xclasssId:"",
+                        xclassId:"",
                     };
                 }
             }
@@ -185,7 +185,7 @@ var index = new Vue({
                                         that.dataSourse[dayItem][courseItem].teacherName = data[i].teacher.realname;
                                         that.dataSourse[dayItem][courseItem].teacherId = data[i].teacher.Id;
                                         that.dataSourse[dayItem][courseItem].courseDate = data[i].courseDate;
-                                        that.dataSourse[dayItem][courseItem].xclasssId = data[i].xclassId;
+                                        that.dataSourse[dayItem][courseItem].xclassId = data[i].xclassId;
                                     }
                                 }
                             }
@@ -373,7 +373,7 @@ var index = new Vue({
             this.dataSourse[this.weekIndex][this.timeIndex].courseDate = this.dateInfo.split("#")[0];
             this.dataSourse[this.weekIndex][this.timeIndex].courseNumber = this.dateInfo.split("#")[1];
 
-            this.dataSourse[this.weekIndex][this.timeIndex].xclasssId = "1";
+            this.dataSourse[this.weekIndex][this.timeIndex].xclassId = "1";
             this.mainModelActive = false;
 
         },
@@ -566,7 +566,7 @@ var index = new Vue({
             for (let i = 0; i < copyDataSourse.length; i++) {
                 for (let j = 0; j < copyDataSourse[i].length; j++) {
                     let dataSourseItem = copyDataSourse[i][j];
-                    if (dataSourseItem.shopId == "" && dataSourseItem.courseNumber == "" && dataSourseItem.teacherId == "" && dataSourseItem.courseAId == "" && dataSourseItem.courseBId == "" && dataSourseItem.courseDate == "" && dataSourseItem.xclasssId == "") {
+                    if (dataSourseItem.shopId == "" && dataSourseItem.courseNumber == "" && dataSourseItem.teacherId == "" && dataSourseItem.courseAId == "" && dataSourseItem.courseBId == "" && dataSourseItem.courseDate == "" && dataSourseItem.xclassId == "") {
                         copyDataSourse[i][j] = "";
                     }
                 }
@@ -585,7 +585,6 @@ var index = new Vue({
                     }
                 }
             }
-
             let that = this;
             this.$Loading.start();
             if (canSubmit) {
