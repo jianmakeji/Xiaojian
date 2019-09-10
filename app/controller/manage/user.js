@@ -227,6 +227,19 @@ class UsersController extends BaseController{
     }
   }
 
+    async getTeacherByShopId(){
+      const ctx = this.ctx;
+      const shopId = ctx.query.shopId;
+
+      try{
+        let data = await ctx.service.user.getUserByRole(shopId,2);
+        super.success(data);
+      }
+      catch(e){
+        ctx.logger.error(e.message);
+        super.failure(e.message);
+      }
+    }
 }
 
 module.exports = UsersController;

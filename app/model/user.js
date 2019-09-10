@@ -207,5 +207,32 @@ module.exports = app => {
     });
   }
 
+  User.getUserByRole = async function(shopId,roleId){
+    let condition = {
+      order: [
+        ['createAt', 'desc'],
+        ['Id', 'desc']
+      ],
+      where:{
+
+      },
+      include: [{
+          model: app.model.Role,
+          as: 'roles',
+          where:{
+            Id:roleId
+          }
+        }
+      ],
+      attributes: ['Id', 'username', 'shopId','age','gender','realname','jobTitle']
+    };
+
+    if (shopId != 0){
+      condition.where.shopId = shopId;
+    }
+
+    return this.findAndCountAll(condition);
+  }
+
   return User;
 };

@@ -154,7 +154,9 @@ class User extends Service {
     }
   }
 
-
+  async getUserByRole(shopId,roleId){
+    return await this.ctx.model.User.getUserByRole(shopId,roleId);
+  }
 }
 
 module.exports = User;
