@@ -9,12 +9,23 @@ var index = new Vue({
             courseNumberData:config.globalData.courseNumberData,
 
             studentListModal:false,
-            aa:"",
+            studentGroup:[],
 
             CheckIsOk:false,
+
+            courseVideoModal:false,
+            videoAddress:"",
         }
     },
     methods:{
+        clickCourse(videoAddress){
+            this.courseVideoModal = true;
+            this.videoAddress = videoAddress;
+        },
+        closeVideoModel(){
+            this.courseVideoModal = false;
+            this.videoAddress = "";
+        },
         openStudentListModal(){
             this.studentListModal = true;
             this.CheckIsOk = false;
@@ -50,7 +61,7 @@ var index = new Vue({
         .done(function(res) {
             if (res.status == 200) {
                 let arr = new Array();
-                arr = res.data;
+                arr = res.data.length ? res.data : ["","","",""];
                 for (let i = 0; i < 4; i++) {
                     for (let j = 0; j < arr.length; j++) {
                         if (arr[j].courseNumber == i + 1) {

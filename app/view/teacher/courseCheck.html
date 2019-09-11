@@ -16,8 +16,13 @@
 
             </div>
             <div class="rightUserInfo">
-                <img class="headImg" src="../public/images/user.png">
-                <span class="username">skhdbsb</span>
+                {% if user.headicon %}
+                    <img class="headImg" src="{{user.headicon}}">
+                    <span class="username" v-text="'{{user.realname}}'"></span>
+                {% else %}
+                    <img class="headImg" src="../public/images/user.png">
+                    <span class="username">游客</span>
+                {% endif %}
                 <i-button class="loginOut" type="error" icon="md-log-out" shape="circle" to="/logout"></i-button>
             </div>
         </div>
@@ -26,10 +31,10 @@
     <div class="filtrMenu">
         <div class="filtrLeft">
             <div class="storeInfo">
-                <label>店铺选择:</label>
+                <!-- <label>店铺选择:</label>
                 <i-select v-model="shopId" style="width:200px;" @on-change="stopChange" placeholder="店铺">
                     <i-option v-for="item in stopData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
-                </i-select>
+                </i-select> -->
             </div>
             <div class="dateInfo">
                 <label>课程时间选择:</label>
@@ -116,7 +121,7 @@
                                 <span class="otherCourseName" title="查看运动课程" v-text="dataSourse[weekIndex][timeIndex].courseTitleB" @click="otherCourseCheck(weekIndex,timeIndex)"></span>
                             </div>
                             <!-- 老师名称 -->
-                            <div class="teacherName" v-text="dataSourse[weekIndex][timeIndex].teacherName"></div>
+                            <div class="teacherName" v-text="'授课老师：' + dataSourse[weekIndex][timeIndex].teacherName"></div>
                             <div class="students">
                                 <i-button class="studentListBtn" @click="studentListCheck(weekIndex,timeIndex)">学生名单</i-button>
                             </div>

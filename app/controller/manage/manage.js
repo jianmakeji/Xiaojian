@@ -102,6 +102,13 @@ class ManageController extends Controller {
         user : ctx.user
       });
   }
+  async courseDetail(){
+      const ctx = this.ctx;
+
+      await ctx.render('manage/courseDetail.html', {
+        user : ctx.user
+      });
+  }
 }
 
 module.exports = ManageController;

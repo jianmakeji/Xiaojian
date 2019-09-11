@@ -111,7 +111,7 @@ var index = new Vue({
                         courseTitleB:"",
                         shopId:"",
                         courseNumber:"",
-                        teacherName:"点击选择",
+                        teacherName:"无",
                         teacherId:"",
                         courseAId:"",
                         courseBId:"",
@@ -124,7 +124,7 @@ var index = new Vue({
                 url: config.ajaxUrls.listCourseByDate,
                 type: 'GET',
                 data: {
-                    shopId: this.shopId,
+                    // shopId: this.shopId,
                     courseDate:this.year+ "-" + this.thisWeekMonthArray[0] + "-" + this.thisWeekDayArray[0]
                 }
             })

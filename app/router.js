@@ -53,6 +53,7 @@ module.exports = app => {
   router.get('/manage/addStudent', controller.manage.manage.addStudent);
   router.get('/manage/courseContentManage', controller.manage.manage.courseContentManage);
   router.get('/manage/addCourse', controller.manage.manage.addCourse);
+  router.get('/manage/courseDetail', controller.manage.manage.courseDetail);
 
 
   router.get('/teacher/courseCheck', controller.teacher.teacher.courseCheck);

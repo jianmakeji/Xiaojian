@@ -52,6 +52,7 @@
     width: 35px;
     height: 35px;
     margin-right: 10px;
+    border-radius: 50%;
 }
 .container .headMenu .rightUserInfo .username{
     font-size: 16px;
@@ -132,6 +133,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    cursor: pointer;
 }
 .container .scheduleView .scheduleList .scheduleItem .courseDetail p{
     font-size: 18px;
@@ -213,4 +215,9 @@
     position: absolute;
     right: 20px;
     cursor: pointer;
+}
+
+.courseVideo{
+    margin-top: 30px;
+    width: 100%;
 }

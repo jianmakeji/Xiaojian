@@ -25,8 +25,13 @@
 
                 </div>
                 <div class="rightUserInfo">
-                    <img class="headImg" src="../public/images/user.png">
-                    <span class="username">skhdbsb</span>
+	                {% if user.headicon %}
+	                    <img class="headImg" src="{{user.headicon}}">
+	                    <span class="username" v-text="'{{user.realname}}'"></span>
+	                {% else %}
+	                    <img class="headImg" src="../public/images/user.png">
+	                    <span class="username">游客</span>
+	                {% endif %}
 	                <i-button class="loginOut" type="error" icon="md-log-out" shape="circle" to="/logout"></i-button>
                 </div>
             </div>
@@ -39,13 +44,13 @@
                             <p class="date" v-text="courseNumberData[index].value"></p>
                         </div>
                         <div class="courseDetail">
-                            <img v-if="item" :src="item.courseA.courseThumbB?item.courseA.courseThumbB:'../public/images/course_default.png'">
+                            <img v-if="item" :src="item.courseA.courseThumbB?item.courseA.courseThumbB:'../public/images/course_default.png'" @click="clickCourse(item.courseA.videoAddress)">
                             <img v-else src="../public/images/course_default.png">
 
                             <p v-if="item" v-text="item.courseA.courseName?item.courseA.courseName:'——'"></p>
                             <p v-else style="color:red;" v-text="'——'"></p>
 
-                            <img v-if="item" :src="item.courseB.courseThumbB?item.courseB.courseThumbB:'../public/images/course_default.png'">
+                            <img v-if="item" :src="item.courseB.courseThumbB?item.courseB.courseThumbB:'../public/images/course_default.png'" @click="clickCourse(item.courseB.videoAddress)">
                             <img v-else src="../public/images/course_default.png">
 
                             <p v-if="item" v-text="item.courseB.courseName?item.courseB.courseName:'——'"></p>
@@ -62,11 +67,11 @@
         <!-- 当天课程列表 end -->
 
         <!-- 学生点名弹框 -->
-        <modal v-model="studentListModal" footer-hide :mask-closable="false" :closable="false" :mask="false" width="932">
+        <modal v-model="studentListModal" footer-hide :mask-closable="false" :closable="false" width="932">
 			<icon class="closeIcon" size="20" type="md-close-circle" @click="closeModel"></icon>
 			<div class="studentListView" v-if="!CheckIsOk">
                 <p class="title">学生名单</p>
-                <checkbox-group v-model="aa">
+                <checkbox-group v-model="studentGroup">
                     <row>
                         <i-col :xs="24" :sm="12" :md="4" :lg="4" v-for="(item,index) in studentData">
             				<checkbox class="studentName" size="large" :label="item"></checkbox>
@@ -79,11 +84,17 @@
 				</div>
             </div>
 			<div v-else class="checkOkView" style="min-height:600px;">
-				<p class="checkOkText">本课程应到25人，实到23人</p>
+				<p class="checkOkText" v-text="'本课程应到13人，实到'+ studentGroup.length +'人'"></p>
 			</div>
         </modal>
         <!-- 学生点名弹框 end -->
 
+		<!-- 课程视频弹框 -->
+        <modal v-model="courseVideoModal" footer-hide :closable="false" :width="932">
+			<icon class="closeIcon" size="20" type="md-close-circle" @click="closeVideoModel"></icon>
+			<video class="courseVideo" :src="videoAddress" autoplay></video>
+        </modal>
+        <!-- 学生点名弹框 end -->
 	</div>
 	<!-- js文件引用 -->
     	<script type="text/javascript" src="../public/teacher/js/lib/jquery.min.js"></script>

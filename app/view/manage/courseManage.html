@@ -17,8 +17,13 @@
                 <i-button class="tabsBtn" type="text" to="/manage/userRecord">信息查看</i-button>
             </div>
             <div class="rightUserInfo">
-                <img class="headImg" src="../public/images/user.png">
-                <span class="username">skhdbsb</span>
+                {% if user.headicon %}
+                    <img class="headImg" src="{{user.headicon}}">
+                    <span class="username" v-text="'{{user.realname}}'"></span>
+                {% else %}
+                    <img class="headImg" src="../public/images/user.png">
+                    <span class="username">游客</span>
+                {% endif %}
                 <i-button class="loginOut" type="error" icon="md-log-out" shape="circle" to="/logout"></i-button>
             </div>
         </div>
@@ -117,7 +122,7 @@
                                 <span class="otherCourseName" @click="changeSportCourse(weekIndex,timeIndex,year,thisWeekMonthArray[weekIndex],thisWeekDayArray[weekIndex],timeItem)" title="编辑运动课程" v-text="dataSourse[weekIndex][timeIndex].courseTitleB"></span>
                             </div>
                             <!-- 老师名称 -->
-                            <div class="teacherName" @click="changeTeacher(weekIndex,timeIndex,year,thisWeekMonthArray[weekIndex],thisWeekDayArray[weekIndex],timeItem)" title="编辑老师" v-text="dataSourse[weekIndex][timeIndex].teacherName"></div>
+                            <div class="teacherName" @click="changeTeacher(weekIndex,timeIndex,year,thisWeekMonthArray[weekIndex],thisWeekDayArray[weekIndex],timeItem)" title="编辑老师" v-text="'授课老师：' + dataSourse[weekIndex][timeIndex].teacherName"></div>
                             <div class="students">
                                 <i-button class="studentListBtn" @click="checkStudentList(1)">学生名单</i-button>
                             </div>

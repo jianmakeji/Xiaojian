@@ -7,6 +7,7 @@ var index = new Vue({
                 offset:0,
                 courseSubType:"0",
             },
+            courseTypeData:["全部","基础课程","辅导课程","运动课程"],
             courseSubTypeData:config.globalData.courseSubTypeData,
 
             searchItem:{
@@ -110,6 +111,9 @@ var index = new Vue({
         },
         addCourseEvent(){
             window.location.href = "/manage/addCourse?courseId=0";
+        },
+        couserDetail(courseId){
+            window.location.href = "/manage/courseDetail?courseId=" + courseId;
         },
         editCourse(courseId){
             window.location.href = "/manage/addCourse?courseId=" + courseId;

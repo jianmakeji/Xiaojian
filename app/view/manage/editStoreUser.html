@@ -17,8 +17,13 @@
                 <i-button class="tabsBtn" type="text" to="/manage/userRecord">信息查看</i-button>
             </div>
             <div class="rightUserInfo">
-                <img class="headImg" src="../public/images/user.png">
-                <span class="username">skhdbsb</span>
+                {% if user.headicon %}
+                    <img class="headImg" src="{{user.headicon}}">
+                    <span class="username" v-text="'{{user.realname}}'"></span>
+                {% else %}
+                    <img class="headImg" src="../public/images/user.png">
+                    <span class="username">游客</span>
+                {% endif %}
                 <i-button class="loginOut" type="error" icon="md-log-out" shape="circle" to="/logout"></i-button>
             </div>
         </div>

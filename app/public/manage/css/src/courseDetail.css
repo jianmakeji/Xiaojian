@@ -1,0 +1,76 @@
+/* 课程视频详情 */
+.right .courseDetail{
+    width: 90%;
+    margin: 0 5%;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.right .courseDetail .leftVideoDetail{
+    width: 60%;
+    height: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.right .courseDetail .leftVideoDetail .title{
+    font-size: 18px;
+    color: #928B89;
+}
+.right .courseDetail .leftVideoDetail .video{
+    width: 100%;
+    height: 600px;
+}
+.right .courseDetail .rightInfoDetail{
+    width: 220px;
+    height: 600px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.right .courseDetail .rightInfoDetail .title{
+    font-size: 18px;
+    color: #928B89;
+}
+.right .courseDetail .rightInfoDetail .courseInfoDetial{
+    width: 100%;
+    height: auto;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+.right .courseDetail .rightInfoDetail .courseInfoDetial .desTitle{
+    font-size: 18px;
+    color: #928B89;
+}
+.right .courseDetail .rightInfoDetail .courseInfoDetial .des{
+    font-size: 16px;
+    color: #928B89;
+    text-indent: 2em;
+}
+
+/* 店铺筛选 */
+.right .filtrMenu{
+    width: 90%;
+    margin: 0 5%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrRight{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .filtrMenu .filtrRight .backBtn{
+    background: #FFC837;
+    border-color: #FFC837;
+}

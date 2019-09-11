@@ -89,6 +89,9 @@ var config = {
         uploadFile:'/manage/file/uploadFile/:fileType',
         uploadZipFile:'/manage/file/uploadZipFile',
 
+        // courseCheck
+        listCourseByDate:'/teacher/courseChoose/listCourseByDate',
+
         // scheduleToday
         getCourseDataByTeacherId:'/teacher/courseChoose/getCourseDataByTeacherId'
     },
