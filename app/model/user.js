@@ -192,7 +192,7 @@ module.exports = app => {
           as: 'shop'
         }
       ],
-      attributes: ['Id', 'username', 'password','shopId','age','gender','realname','jobTitle']
+      attributes: ['Id', 'username', 'password','shopId','age','headicon','gender','realname','jobTitle']
     });
   }
 
