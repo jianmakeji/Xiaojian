@@ -54,11 +54,9 @@
     margin-right: 10px;
     letter-spacing: 1px;
 }
-/*  */
-.right .filtrMenu .filtrLeft .dateInfo label{
-    font-size: 15px;
-    margin-left: 10px;
-    letter-spacing: 1px;
+.right .filtrMenu .filtrRight .saveBtn{
+    border-color: #FFC837;
+    background: #FFC837;
 }
 
 /* ***************店铺监控列表******************* */
@@ -83,6 +81,7 @@
     width: 500px;
     height: 300px;
     border-radius: 20px;
+    cursor: pointer;
 }
 .right .monitorView .monitorItem .monitorInfo{
     width: 500px;
@@ -96,4 +95,8 @@
     font-size: 18px;
     color: #999999;
     letter-spacing: 2px;
+}
+.right .monitorView .monitorItem .monitorInfo .checkBtn{
+    border-color: #FFC837;
+    background: #FFC837;
 }

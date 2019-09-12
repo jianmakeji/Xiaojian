@@ -80,6 +80,12 @@ class TeacherController extends Controller {
         user : ctx.user
       });
   }
+  async h5cabinet(){
+      const ctx = this.ctx;
+      await ctx.render('teacher/h5cabinet.html', {
+        user : ctx.user
+      });
+  }
 
 }
 

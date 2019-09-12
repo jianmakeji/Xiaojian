@@ -243,11 +243,20 @@ var index = new Vue({
 
         mainCourseCheck(weekIndex,timeIndex){
             let courseId = this.dataSourse[weekIndex][timeIndex].courseAId;
-            window.location.href = "/teacher/courseDetail?courseId=" + courseId;
+            if (courseId) {
+                window.location.href = "/teacher/courseDetail?courseId=" + courseId;
+            } else {
+                this.$Message.error("该时段未选课！");
+            }
+
         },
         otherCourseCheck(weekIndex,timeIndex){
             let courseId = this.dataSourse[weekIndex][timeIndex].courseBId;
-            window.location.href = "/teacher/courseDetail?courseId=" + courseId;
+            if (courseId) {
+                window.location.href = "/teacher/courseDetail?courseId=" + courseId;
+            } else {
+                this.$Message.error("该时段未选课！");
+            }
         },
 
         // 课程列表

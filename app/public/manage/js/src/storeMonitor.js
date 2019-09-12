@@ -3,10 +3,7 @@ var index = new Vue({
     data(){
         return{
             storeId:"",
-            storeData:[
-                {value: '1',label: '店铺A'},
-                {value: '2',label: '店铺B'}
-            ],
+            storeData:config.globalData.storeData,
             searchValue:"",
 
             year:"",
@@ -44,7 +41,7 @@ var index = new Vue({
             window.location.href = "/manage/monitorDetail";
         },
 
-        yearChange(){
+        dateChange(date){
             window.location.href = "/manage/monitorHistory";
         },
         monthChange(){
@@ -53,9 +50,6 @@ var index = new Vue({
         },
         weekChange(){
             window.location.href = "/manage/monitorHistory";
-
-        },
-        closeModel(){
 
         }
     },

@@ -13,10 +13,12 @@ var index = new Vue({
             window.location.href = "/teacher/scheduleToday";
         },
         tapCourseA(){
-            window.open(this.mainCourseInfo.h5Address);
+            window.open("/teacher/h5cabinet?courseId=" + this.courseAId);
+            // window.location.href = "/teacher/h5cabinet?courseId=" + this.courseAId;
         },
         tapCourseB(){
-            window.open(this.otherCourseInfo.h5Address);
+            window.open("/teacher/h5cabinet?courseId=" + this.courseBId);
+            // window.location.href = "/teacher/h5cabinet?courseId=" + this.courseBId;
         }
     },
     created(){

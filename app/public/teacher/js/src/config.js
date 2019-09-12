@@ -18,9 +18,11 @@ var config = {
         ],
         // 店铺数据
         storeData:[
-            {value: '1',label: '店铺A'},
-            {value: '2',label: '店铺B'},
-            {value: '3',label: '店铺C'}
+            {value: '1',label: '长沙市岳麓店'},
+            {value: '2',label: '长沙市望城店'},
+            {value: '3',label: '长沙市五一店'},
+            {value: '4',label: '长沙市芙蓉店'},
+            {value: '4',label: '长沙市雨花店'}
         ],
         // 年份
         yearData:[

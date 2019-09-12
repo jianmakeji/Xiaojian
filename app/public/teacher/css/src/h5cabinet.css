@@ -1,0 +1,10 @@
+.index{
+    width: 100vw;
+    height: 100vh;
+    background: pink;
+}
+.container{
+    width: 1920px;
+    height: 100%;
+    margin: 0 auto;
+}

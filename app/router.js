@@ -68,4 +68,5 @@ module.exports = app => {
   router.get('/teacher/courseDetail', controller.teacher.teacher.courseDetail);
   router.get('/teacher/scheduleToday', controller.teacher.teacher.scheduleToday);
   router.get('/teacher/startClass', controller.teacher.teacher.startClass);
+  router.get('/teacher/h5cabinet', controller.teacher.teacher.h5cabinet);
 };

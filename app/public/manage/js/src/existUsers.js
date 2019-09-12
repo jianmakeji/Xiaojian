@@ -3,10 +3,7 @@ var index = new Vue({
     data(){
         return{
             storeId:"",
-            storeData:[
-                {value: '1',label: '店铺A'},
-                {value: '2',label: '店铺B'}
-            ],
+            storeData:config.globalData.storeData,
             searchPersonalValue:"",
 
             // 列表数据

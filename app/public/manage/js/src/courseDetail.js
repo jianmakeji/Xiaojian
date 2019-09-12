@@ -50,6 +50,8 @@ var index = new Vue({
         }
     },
     created(){
+        $(".menuBtns").children('.active').removeClass('active');
+        $(".menuBtns").children().eq(2).addClass('active');
         this.courseId = window.location.search.split("courseId=")[1];
         this.initData();
     }

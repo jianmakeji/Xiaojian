@@ -49,17 +49,16 @@
     align-items: center;
     justify-content: space-between;
 }
-.right .filtrMenu .filtrLeft .storeInfo label{
+.right .filtrMenu .filtrLeft .storeInfo label,
+.right .filtrMenu .filtrLeft .dateInfo label{
     font-size: 15px;
     margin-right: 10px;
     letter-spacing: 1px;
 }
 
-/*  */
-.right .filtrMenu .filtrLeft .dateInfo label{
-    font-size: 15px;
-    margin-left: 10px;
-    letter-spacing: 1px;
+.right .filtrMenu .filtrRight .backBtn{
+    border-color: #FFC837;
+    background: #FFC837;
 }
 
 /* ****************店铺监控详情****************** */
