@@ -33,7 +33,6 @@ var index = new Vue({
             })
             .done(function(res) {
                 if (res.status == 200) {
-                    console.log(res);
                     that.$Loading.finish();
                     that.courseData = res.data.rows;
                     that.totalCourseNum = res.data.count;

@@ -42,7 +42,7 @@ var index = new Vue({
                                }
                            }, '查看'),
                            h('Button', {
-                              props: { type: 'error', size: 'small' },
+                              props: { type: 'primary', size: 'small' },
                               style: { marginRight: '5px' },
                               on: {
                                   click: () => {

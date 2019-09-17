@@ -673,18 +673,18 @@
 
 
 /* 设置滚动条的样式 */
-::-webkit-scrollbar {
+.courseContainer::-webkit-scrollbar {
 width:6px;
 background-color: #fff;
 }
 
 /* 滚动槽 */
-::-webkit-scrollbar-track {
+.courseContainer::-webkit-scrollbar-track {
 border-radius:10px;
 }
 
 /* 滚动条滑块 */
-::-webkit-scrollbar-thumb {
+.courseContainer::-webkit-scrollbar-thumb {
 border-radius:5px;
 background:#FFC837;
 }
