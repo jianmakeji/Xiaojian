@@ -13,6 +13,28 @@
     margin-top: 20px;
     margin-left: 5%;
 }
+.mainCourseH5Upload{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+}
+.mainCourseH5Upload .h5_1,
+.mainCourseH5Upload .h5_2{
+    width: 295px;
+    height: 130px;
+}
+.otherCourseH5Upload{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+}
+.otherCourseH5Upload .h5_3,
+.otherCourseH5Upload .h5_4{
+    width: 295px;
+    height: 130px;
+}
 .right .formView .progressView .ivu-progress-show-info .ivu-progress-outer{
     display: flex;
     flex-direction: row;

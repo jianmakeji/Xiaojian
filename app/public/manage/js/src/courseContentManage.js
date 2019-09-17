@@ -5,10 +5,10 @@ var index = new Vue({
             formItem:{
                 limit:12,
                 offset:0,
-                courseSubType:"0",
+                courseType:"0",
             },
-            courseTypeData:["全部","基础课程","辅导课程","运动课程"],
-            courseSubTypeData:config.globalData.courseSubTypeData,
+            courseTypeArr:["全部","基础课程","辅导课程","运动课程"],
+            courseTypeData:config.globalData.courseTypeData,
 
             searchItem:{
                 limit:12,
@@ -27,12 +27,13 @@ var index = new Vue({
             let that = this;
             this.$Loading.start();
             $.ajax({
-                url: config.ajaxUrls.getCourseByCourseSubType,
+                url: config.ajaxUrls.listCourseByCourseType,
                 type: 'GET',
                 data: this.formItem
             })
             .done(function(res) {
                 if (res.status == 200) {
+                    console.log(res);
                     that.$Loading.finish();
                     that.courseData = res.data.rows;
                     that.totalCourseNum = res.data.count;
@@ -57,13 +58,13 @@ var index = new Vue({
                 default:
             }
         },
-        courseSubTypeChange(courseSubTypeId){
+        courseTypeChange(courseTypeId){
             let that = this;
             this.searchItem.courseName = "";
             this.$Loading.start();
-            this.formItem.courseSubType = courseSubTypeId;
+            this.formItem.courseType = courseTypeId;
             $.ajax({
-                url: config.ajaxUrls.getCourseByCourseSubType,
+                url: config.ajaxUrls.listCourseByCourseType,
                 type: 'GET',
                 data: this.formItem
             })
@@ -86,7 +87,7 @@ var index = new Vue({
         },
         searchCourseSubTypeEvent(){
             let that = this;
-            this.formItem.courseSubType = "0";
+            this.formItem.courseType = "0";
             this.$Loading.start();
             $.ajax({
                 url: config.ajaxUrls.searchByCourseName,
@@ -151,7 +152,7 @@ var index = new Vue({
             if (this.searchItem.courseName == "") {
                 this.formItem.offset = (pageNum - 1) * 12;
                 $.ajax({
-                    url: config.ajaxUrls.getCourseByCourseSubType,
+                    url: config.ajaxUrls.listCourseByCourseType,
                     type: 'GET',
                     data: this.formItem
                 })

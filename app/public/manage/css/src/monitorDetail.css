@@ -40,25 +40,18 @@
     align-items: center;
     justify-content: space-between;
 }
-.right .filtrMenu .filtrLeft .ivu-select-selection{
-    border: 1px solid #FFC837;
-}
-.right .filtrMenu .filtrLeft .storeInfo{
+.right .filtrMenu .filtrLeft .dateInfo{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
-.right .filtrMenu .filtrLeft .storeInfo label{
+.right .filtrMenu .filtrLeft .dateInfo label{
     font-size: 15px;
     margin-right: 10px;
     letter-spacing: 1px;
 }
-/* 人员查找 */
-.right .filtrMenu .filtrLeft .userSearchInput .ivu-input{
-    border: 1px solid #FFC837;
-}
-.right .filtrMenu .filtrRight .addStudent{
+.right .filtrMenu .filtrRight .back{
     background: #FFC837;
     border-color: #FFC837;
 }

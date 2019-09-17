@@ -7,7 +7,7 @@ var index = new Vue({
             formItem:{
                 courseName:"",
                 courseAbstract:"",
-                courseThumbA:"",
+                // courseThumbA:"",
                 courseThumbB:"",
                 h5Address:"",
                 videoAddress:"",
@@ -16,33 +16,80 @@ var index = new Vue({
             },
 
             // 课程类别和标签数据
-            courseTypeData:[
-                {value: '1',label: '基础课程'},
-                {value: '2',label: '辅导课程'},
-                {value: '3',label: '运动课程'}
-            ],
-            courseSubTypeData:[
-                // {value: '1',label: '成语故事'},
-                // {value: '2',label: '儿童诗歌'},
-                // {value: '3',label: '常识'},
-                // {value: '4',label: '美术'},
-                // {value: '5',label: '篮球'}
+            isMainCourseFlag:false,
+            cascader:[],
+            cascaderData:[
+                {
+                    value:"1",
+                    label:"基础课程",
+                    children: [
+                        {
+                            value: '1',
+                            label: '铛铛趣味成语'
+                        },
+                        {
+                            value: '2',
+                            label: '铛铛诗歌王国'
+                        }
+                    ]
+                },
+                {
+                    value:"2",
+                    label:"辅导课程",
+                    children: [
+                        {
+                            value: '3',
+                            label: '铛铛带你学常识'
+                        },
+                        {
+                            value: '4',
+                            label: '铛铛美术世界'
+                        }
+                    ]
+                },
+                {
+                    value:"3",
+                    label:"运动课程",
+                    children: [
+                        {
+                            value: '5',
+                            label: '铛铛带你一起运动'
+                        }
+                    ]
+                }
             ],
 
             // 缩略图和h5临时变量
-            fileName_1:"",
-			imgUrl_1:"",
-			progressPercent_1:0,
+            // fileName_1:"",
+			// imgUrl_1:"",
+			// progressPercent_1:0,
 			fileName_2:"",
 			imgUrl_2:"",
 			progressPercent_2:0,
-            attachFileName:"",
-            attachFilePercent:0,
+            h5UploadArr:["","","",""],
+            attachFileName_1:"",
+            attachFilePercent_1:0,
+            attachFileName_2:"",
+            attachFilePercent_2:0,
+            attachFileName_3:"",
+            attachFilePercent_3:0,
+            attachFileName_4:"",
+            attachFilePercent_4:0,
             videoFileName:"",
             videoFilePercent:0
         }
     },
     methods:{
+        cascaderChange(value, selectedData){
+            console.log(value);
+            if (value[0] == "1") {
+                this.isMainCourseFlag = true;
+            } else {
+                this.isMainCourseFlag = false;
+            }
+            this.formItem.courseType = value[0];
+            this.formItem.courseSubType = value[1];
+        },
         menuChange(value){
             switch (value) {
                 case 0:
@@ -58,40 +105,40 @@ var index = new Vue({
             }
         },
         // 上传缩略图
-        doUpload_1(files){
-            this.progressPercent_1 = 0;
-            let that = this;
-            let file = files.target.files[0];
-            this.$Message.loading('上传中···');
-            let formdata = new FormData();
-            formdata.append('head', file);
-            $.ajax({
-                url: config.ajaxUrls.uploadFile.replace(":fileType",1),
-                type: 'POST',
-                cache: false,
-                processData: false,
-                contentType: false,
-                data: formdata,
-                xhr(){
-                    var xhr = new window.XMLHttpRequest();
-                    xhr.upload.addEventListener("progress", function(evt){
-                        var percentComplete = event.loaded / event.total;
-                        that.progressPercent_1 = (percentComplete * 100);
-                    }, false);
-                    return xhr;
-                },
-                success(res){
-                    if(res.status == 200){
-                        that.$Message.success("上传成功！");
-                        that.imgUrl_1 = res.url;
-                        that.formItem.courseThumbA = res.url;
-                        that.fileName_1 = files.target.files[0].name;
-                    }else{
-                        that.$Message.error(res.data.message);
-                    }
-                }
-            })
-        },
+        // doUpload_1(files){
+        //     this.progressPercent_1 = 0;
+        //     let that = this;
+        //     let file = files.target.files[0];
+        //     this.$Message.loading('上传中···');
+        //     let formdata = new FormData();
+        //     formdata.append('head', file);
+        //     $.ajax({
+        //         url: config.ajaxUrls.uploadFile.replace(":fileType",1),
+        //         type: 'POST',
+        //         cache: false,
+        //         processData: false,
+        //         contentType: false,
+        //         data: formdata,
+        //         xhr(){
+        //             var xhr = new window.XMLHttpRequest();
+        //             xhr.upload.addEventListener("progress", function(evt){
+        //                 var percentComplete = event.loaded / event.total;
+        //                 that.progressPercent_1 = (percentComplete * 100);
+        //             }, false);
+        //             return xhr;
+        //         },
+        //         success(res){
+        //             if(res.status == 200){
+        //                 that.$Message.success("上传成功！");
+        //                 that.imgUrl_1 = res.url;
+        //                 that.formItem.courseThumbA = res.url;
+        //                 that.fileName_1 = files.target.files[0].name;
+        //             }else{
+        //                 that.$Message.error(res.data.message);
+        //             }
+        //         }
+        //     })
+        // },
         doUpload_2(files){
             this.progressPercent_2 = 0;
             let that = this;
@@ -126,8 +173,9 @@ var index = new Vue({
                 }
             })
         },
-        h5_upload_ZIP_change(files){
-            this.attachFilePercent = 0;
+        // 第一小节h5上传
+        h5_upload_ZIP_1_change(files){
+            this.attachFilePercent_1 = 0;
             let that = this;
             let file = files.target.files[0];
             let fileTrueName = files.target.files[0].name;
@@ -146,15 +194,127 @@ var index = new Vue({
                     var xhr = new window.XMLHttpRequest();
                     xhr.upload.addEventListener("progress", function(evt){
                         var percentComplete = event.loaded / event.total;
-                        that.attachFilePercent = percentComplete * 100;
+                        that.attachFilePercent_1 = percentComplete * 100;
                     }, false);
                     return xhr;
                 },
                 success(res){
                     if(res.status == 200){
                         that.$Message.success("上传成功！");
-                        that.formItem.h5Address = res.url;
-                        that.attachFileName = files.target.files[0].name;
+                        that.h5UploadArr[0] = res.url;
+                        that.attachFileName_1 = files.target.files[0].name;
+                        console.log(that.h5UploadArr);
+                    }else{
+                        that.$Message.error(res.data.message);
+                    }
+                }
+            })
+        },
+        // 第二小节h5上传
+        h5_upload_ZIP_2_change(files){
+            this.attachFilePercent_2 = 0;
+            let that = this;
+            let file = files.target.files[0];
+            let fileTrueName = files.target.files[0].name;
+            this.$Message.loading("上传中···");
+
+            let formdata = new FormData();
+            formdata.append('head', file);
+            $.ajax({
+                url: config.ajaxUrls.uploadZipFile,
+                type: 'POST',
+                cache: false,
+                processData: false,
+                contentType: false,
+                data: formdata,
+                xhr(){
+                    var xhr = new window.XMLHttpRequest();
+                    xhr.upload.addEventListener("progress", function(evt){
+                        var percentComplete = event.loaded / event.total;
+                        that.attachFilePercent_2 = percentComplete * 100;
+                    }, false);
+                    return xhr;
+                },
+                success(res){
+                    if(res.status == 200){
+                        that.$Message.success("上传成功！");
+                        that.h5UploadArr[1] = res.url;
+                        that.attachFileName_2 = files.target.files[0].name;
+                        console.log(that.h5UploadArr);
+                    }else{
+                        that.$Message.error(res.data.message);
+                    }
+                }
+            })
+        },
+        // 第三小节h5上传
+        h5_upload_ZIP_3_change(files){
+            this.attachFilePercent_3 = 0;
+            let that = this;
+            let file = files.target.files[0];
+            let fileTrueName = files.target.files[0].name;
+            this.$Message.loading("上传中···");
+
+            let formdata = new FormData();
+            formdata.append('head', file);
+            $.ajax({
+                url: config.ajaxUrls.uploadZipFile,
+                type: 'POST',
+                cache: false,
+                processData: false,
+                contentType: false,
+                data: formdata,
+                xhr(){
+                    var xhr = new window.XMLHttpRequest();
+                    xhr.upload.addEventListener("progress", function(evt){
+                        var percentComplete = event.loaded / event.total;
+                        that.attachFilePercent_3 = percentComplete * 100;
+                    }, false);
+                    return xhr;
+                },
+                success(res){
+                    if(res.status == 200){
+                        that.$Message.success("上传成功！");
+                        that.h5UploadArr[2] = res.url;
+                        that.attachFileName_3 = files.target.files[0].name;
+                        console.log(that.h5UploadArr);
+                    }else{
+                        that.$Message.error(res.data.message);
+                    }
+                }
+            })
+        },
+        // 第四小节h5上传
+        h5_upload_ZIP_4_change(files){
+            this.attachFilePercent_4 = 0;
+            let that = this;
+            let file = files.target.files[0];
+            let fileTrueName = files.target.files[0].name;
+            this.$Message.loading("上传中···");
+
+            let formdata = new FormData();
+            formdata.append('head', file);
+            $.ajax({
+                url: config.ajaxUrls.uploadZipFile,
+                type: 'POST',
+                cache: false,
+                processData: false,
+                contentType: false,
+                data: formdata,
+                xhr(){
+                    var xhr = new window.XMLHttpRequest();
+                    xhr.upload.addEventListener("progress", function(evt){
+                        var percentComplete = event.loaded / event.total;
+                        that.attachFilePercent_4 = percentComplete * 100;
+                    }, false);
+                    return xhr;
+                },
+                success(res){
+                    if(res.status == 200){
+                        that.$Message.success("上传成功！");
+                        that.h5UploadArr[3] = res.url;
+                        that.attachFileName_4 = files.target.files[0].name;
+                        console.log(that.h5UploadArr);
                     }else{
                         that.$Message.error(res.data.message);
                     }
@@ -196,34 +356,9 @@ var index = new Vue({
                 }
             })
         },
-        courseTypeChange(courseTypeId){
-            let that = this;
-            this.formItem.courseType = courseTypeId;
-            switch (courseTypeId) {
-                case "1":
-                    that.courseSubTypeData = [
-                        {value: '1',label: '成语故事'},
-                        {value: '2',label: '儿童诗歌'},
-                    ];
-                    break;
-                case "2":
-                    that.courseSubTypeData = [
-                        {value: '3',label: '常识'},
-                        {value: '4',label: '美术'},
-                    ];
-                    break;
-                case "3":
-                    that.courseSubTypeData = [
-                        {value: '5',label: '篮球'},
-                    ];
-                    break;
-                default:
-            }
-        },
-        courseSubTypeChange(courseSubTypeId){
-            this.formItem.courseSubType = courseSubTypeId;
-        },
         submitCourse(){
+            this.formItem.h5Address = this.h5UploadArr.join(",");
+            console.log(this.formItem);
             let that = this;
             this.$Loading.start();
             let notNullData = true;
@@ -315,18 +450,42 @@ var index = new Vue({
                 type: 'GET',
             })
             .done(function(res) {
+                console.log(res.data);
                 if (res.status == 200) {
+                    if (res.data.h5Address.indexOf(",")) {
+                        that.h5UploadArr = res.data.h5Address.split(",");
+                    } else {
+                        that.h5UploadArr[0] = res.data.h5Address;
+                    }
+                    console.log(that.h5UploadArr);
+                    for (let i = 0; i < that.h5UploadArr.length; i++) {
+                        switch (i) {
+                            case 0:
+                                that.attachFilePercent_1 = that.h5UploadArr[i] != "" ? 100 : 0;
+                                break;
+                            case 1:
+                                that.attachFilePercent_2 = that.h5UploadArr[i] != "" ? 100 : 0;
+                                break;
+                            case 2:
+                                that.attachFilePercent_3 = that.h5UploadArr[i] != "" ? 100 : 0;
+                                break;
+                            case 3:
+                                that.attachFilePercent_4 = that.h5UploadArr[i] != "" ? 100 : 0;
+                                break;
+                        }
+                    }
                     that.$Loading.finish();
                     that.formItem = res.data;
-                    that.imgUrl_1 = res.data.courseThumbA;
-                    that.progressPercent_1 = res.data.courseThumbA ? 100 : 0;
+                    // that.imgUrl_1 = res.data.courseThumbA;
+                    // that.progressPercent_1 = res.data.courseThumbA ? 100 : 0;
                     that.imgUrl_2 = res.data.courseThumbB;
                     that.progressPercent_2 = res.data.courseThumbB ? 100 : 0;
-                    that.attachFilePercent = res.data.h5Address ? 100 : 0;
+
                     that.videoFilePercent = res.data.videoAddress ?  100 : 0;
                     that.formItem.courseType = res.data.courseType.toString();
-                    that.courseTypeChange(res.data.courseType.toString());
                     that.formItem.courseSubType = res.data.courseSubType.toString();
+                    that.cascader = [res.data.courseType.toString(),res.data.courseSubType.toString()];
+                    that.cascaderChange([res.data.courseType.toString(),res.data.courseSubType.toString()]);
                 } else {
                     that.$Loading.error();
                     that.$Message.error(res.data);
@@ -341,14 +500,23 @@ var index = new Vue({
 })
 
 $(document).ready(function() {
-    $('#thumba_upload_btn').click(function(){
-        $('#thumba_upload_input').click();
-    });
+    // $('#thumba_upload_btn').click(function(){
+    //     $('#thumba_upload_input').click();
+    // });
     $('#thumbb_upload_btn').click(function(){
         $('#thumbb_upload_input').click();
     });
-    $('#h5_upload_ZIP_btn').click(function(){
-        $('#h5_upload_ZIP_input').click();
+    $('#h5_upload_ZIP_1_btn').click(function(){
+        $('#h5_upload_ZIP_1_input').click();
+    });
+    $('#h5_upload_ZIP_2_btn').click(function(){
+        $('#h5_upload_ZIP_2_input').click();
+    });
+    $('#h5_upload_ZIP_3_btn').click(function(){
+        $('#h5_upload_ZIP_3_input').click();
+    });
+    $('#h5_upload_ZIP_4_btn').click(function(){
+        $('#h5_upload_ZIP_4_input').click();
     });
     $('#mp4_upload_btn').click(function(){
         $('#mp4_upload_input').click();

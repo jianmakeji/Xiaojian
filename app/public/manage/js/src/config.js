@@ -10,11 +10,11 @@ var config = {
         // 课程类别
         courseSubTypeData:[
             {value: '0',label: '全部'},
-            {value: '1',label: '成语故事'},
-            {value: '2',label: '儿童诗歌'},
-            {value: '3',label: '常识'},
-            {value: '4',label: '美术'},
-            {value: '5',label: '篮球'}
+            {value: '1',label: '铛铛趣味成语'},
+            {value: '2',label: '铛铛诗歌王国'},
+            {value: '3',label: '铛铛带你学常识'},
+            {value: '4',label: '铛铛美术世界'},
+            {value: '5',label: '铛铛带你一起运动'}
         ],
         // 店铺数据
         storeData:[
@@ -76,6 +76,7 @@ var config = {
 
         // courseContentManage
         getCourseByCourseSubType:"/manage/course",
+        listCourseByCourseType:"/manage/course/listCourseByCourseType",
         searchByCourseName:'/manage/course/searchByCourseName',
         // 课程上传
         getCourseByCourseId:"/manage/course/:courseId",

@@ -75,9 +75,6 @@
     align-items: center;
     justify-content: space-between;
 }
-.right .headMenu .leftTabs .ivu-select-selection{
-    border: 1px solid #FFC837;
-}
 .right .headMenu .leftTabs .tabsBtn{
     font-size: 17px;
     color: #656565;

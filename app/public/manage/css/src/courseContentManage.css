@@ -27,9 +27,9 @@
     align-items: center;
     justify-content: space-between;
 }
-.right .filtrMenu .filtrLeft .ivu-select-selection{
+/* .right .filtrMenu .filtrLeft .ivu-select-selection{
     border: 1px solid #FFC837;
-}
+} */
 .right .filtrMenu .filtrLeft .storeInfo{
     display: flex;
     flex-direction: row;
@@ -44,9 +44,6 @@
 /* 人员查找 */
 .right .filtrMenu .filtrLeft .userSearch{
     margin-left: 20px;
-}
-.right .filtrMenu .filtrLeft .userSearchInput .ivu-input{
-    border: 1px solid #FFC837;
 }
 .right .filtrMenu .filtrRight .addStudent{
     background: #FFC837;
@@ -71,7 +68,6 @@
     width: 240px;
     height: 150px;
     border-radius: 10px;
-    border: solid 1px #FFC837;
     cursor: pointer;
 }
 .right .courseList .courseItem .courseName{

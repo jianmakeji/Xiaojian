@@ -32,8 +32,8 @@
         <div class="filtrLeft">
             <div class="storeInfo">
                 <label>课程类型:</label>
-                <i-select v-model="formItem.courseSubType" style="width:200px;" @on-change="courseSubTypeChange" placeholder="课程类型">
-                    <i-option v-for="item in courseSubTypeData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
+                <i-select v-model="formItem.courseType" style="width:200px;" @on-change="courseTypeChange" placeholder="课程类型">
+                    <i-option v-for="item in courseTypeData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
                 </i-select>
             </div>
             <div class="userSearch">
@@ -53,7 +53,7 @@
                 <i-col :xs="24" :sm="8" :md="6" :lg="6" v-for="(item,index) in courseData">
                     <li class="courseItem">
                         <img class="courseImg" :src="item.courseThumbB" @click="couserDetail(item.Id)" title="查看课程视频">
-                        <p class="courseName" v-text="courseTypeData[item.courseType] + ':' + item.courseName"></p>
+                        <p class="courseName" v-text="courseTypeArr[item.courseType] + ':' + item.courseName"></p>
                         <div class="opts">
                             <i-button class="editCourse" type="warning" @click="editCourse(item.Id)">编辑</i-button>
                             <poptip

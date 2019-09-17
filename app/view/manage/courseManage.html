@@ -148,8 +148,8 @@
         <i-input class="mainCourseSearch" v-model="searchMainCourseValue" placeholder="搜索" search @on-search="searchMainCourseEvent"></i-input>
         <div class="mianCourseTypes">
             <div class="all" :class="{active:subTypeMainAllIsActive}" @click="mainCourseSubTypeChange(0)">全部</div>
-            <div class="idiomStory" :class="{active:subTypeStoryIsActive}" @click="mainCourseSubTypeChange(1)">成语故事</div>
-            <div class="childSong" :class="{active:subTypeSongIsActive}" @click="mainCourseSubTypeChange(2)">儿童诗歌</div>
+            <div class="idiomStory" :class="{active:subTypeStoryIsActive}" @click="mainCourseSubTypeChange(1)">铛铛趣味成语</div>
+            <div class="childSong" :class="{active:subTypeSongIsActive}" @click="mainCourseSubTypeChange(2)">铛铛诗歌王国</div>
         </div>
         <div class="mainCourseResultList">
             <div class="mainCourseItem" v-for="(item,index) in mainCourseDate">
@@ -171,9 +171,9 @@
         <i-input class="sportCourseSearch" v-model="searchSportCourseValue" placeholder="搜索" search @on-search="searchSportCourseEvent"></i-input>
         <div class="sportCourseTypes">
             <div class="all" :class="{active:subTypeSportAllIsActive}" @click="sportCourseSubTypeChange(0)">全部</div>
-            <div class="commonsense" :class="{active:subTypeCommonsenseIsActive}" @click="sportCourseSubTypeChange(3)">常识</div>
-            <div class="art" :class="{active:subTypeArtIsActive}" @click="sportCourseSubTypeChange(4)">美术</div>
-            <div class="basketball" :class="{active:subTypeBasketballIsActive}" @click="sportCourseSubTypeChange(5)">篮球</div>
+            <div class="commonsense" :class="{active:subTypeCommonsenseIsActive}" @click="sportCourseSubTypeChange(3)">铛铛带你学常识</div>
+            <div class="art" :class="{active:subTypeArtIsActive}" @click="sportCourseSubTypeChange(4)">铛铛美术世界</div>
+            <div class="basketball" :class="{active:subTypeBasketballIsActive}" @click="sportCourseSubTypeChange(5)">铛铛带你一起运动</div>
         </div>
         <div class="sportCourseResultList">
             <div class="sportCourseItem" v-for="(item,index) in sportCourseDate">
