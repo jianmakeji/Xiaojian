@@ -7,10 +7,22 @@ class Course extends Service {
     limit = 10,
     courseSubType = 0,
   }) {
-    return this.ctx.model.Course.listCourse({
+    return await this.ctx.model.Course.listCourse({
       offset,
       limit,
       courseSubType
+    });
+  }
+
+  async listCourseByCourseType({
+    offset = 0,
+    limit = 10,
+    courseType = 0,
+  }){
+    return await this.ctx.model.Course.listCourseByCourseType({
+      offset,
+      limit,
+      courseType
     });
   }
 
@@ -21,21 +33,21 @@ class Course extends Service {
   }
 
   async createCourse(course) {
-    return this.ctx.model.Course.createCourse(course);
+    return await this.ctx.model.Course.createCourse(course);
   }
 
   async update({
     id,
     updates
   }) {
-    return this.ctx.model.Course.updateCourse({
+    return await this.ctx.model.Course.updateCourse({
       id,
       updates
     });
   }
 
   async del(id) {
-    return this.ctx.model.Course.delCourseById(id);
+    return await this.ctx.model.Course.delCourseById(id);
 
   }
 
@@ -44,7 +56,7 @@ class Course extends Service {
     limit = 10,
     courseName = '',
   }) {
-    return this.ctx.model.Course.listByCourseName({
+    return await this.ctx.model.Course.listByCourseName({
       offset,
       limit,
       courseName
@@ -56,7 +68,7 @@ class Course extends Service {
     courseType = "",
     courseSubType = 0,
   }) {
-    return this.ctx.model.Course.listAllCourseByType({
+    return await this.ctx.model.Course.listAllCourseByType({
       courseName,
       courseType,
       courseSubType,
