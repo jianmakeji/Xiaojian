@@ -124,7 +124,7 @@ class CourseController extends BaseController{
     };
 
     try{
-      const result = await ctx.service.course.listAllCourseByType(query);
+      const result = await ctx.service.course.listCourseByCourseType(query);
       super.success(result);
     }
     catch(e){
