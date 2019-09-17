@@ -1,4 +1,4 @@
-.right .headMenu .leftTabs {
+/* .right .headMenu .leftTabs {
     width: 400px;
     display: flex;
     flex-direction: row;
@@ -10,7 +10,7 @@
     color: #FFC837;
     border-bottom: solid 2px #FFC837;
     cursor: pointer;
-}
+} */
 /* 店铺筛选 */
 .right .filtrMenu{
     width: 90%;

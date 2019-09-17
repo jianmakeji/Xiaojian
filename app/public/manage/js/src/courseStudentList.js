@@ -2,11 +2,8 @@ var index = new Vue({
     el:".index",
     data(){
         return{
-            storeId:"",
-            storeData:[
-                {value: '1',label: '店铺A'},
-                {value: '2',label: '店铺B'}
-            ],
+            shopId:"",
+            stopData:config.globalData.storeData,
             searchPersonalValue:"",
 
             // 列表数据
@@ -68,6 +65,10 @@ var index = new Vue({
                 default:
             }
         },
+        shopChange(shopId){
+            this.shopId = shopId;
+            localStorage.setItem("shopId",shopId);
+        },
         // table数据列表事件
         check(userId){
             // window.location.href = "/manage/studentInfo?id=  " + userId;
@@ -77,6 +78,7 @@ var index = new Vue({
         }
     },
     created(){
+        this.shopId = localStorage.getItem("shopId");
         $(".menuBtns").children('.active').removeClass('active');
         $(".menuBtns").children().eq(0).addClass('active');
     }

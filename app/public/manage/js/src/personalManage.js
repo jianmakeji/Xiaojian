@@ -2,8 +2,8 @@ var index = new Vue({
     el:".index",
     data(){
         return{
-            storeId:"1",
-            storeData:config.globalData.storeData,
+            shopId:"1",
+            stopData:config.globalData.storeData,
             userDataSourse:[],
             searchPersonalValue:""
         }
@@ -18,7 +18,7 @@ var index = new Vue({
                 data: {
                     limit:9,
                     offset:0,
-                    shopId:this.storeId,
+                    shopId:this.shopId,
                     realname:this.searchPersonalValue
                 }
             })
@@ -57,8 +57,9 @@ var index = new Vue({
                 default:
             }
         },
-        storeChange(storeId){
-            this.storeId = storeId;
+        shopChange(storeId){
+            this.shopId = shopId;
+            localStorage.setItem("shopId",shopId);
             this.initData();
         },
         searchPersonalEvent(){
@@ -100,6 +101,7 @@ var index = new Vue({
         }
     },
     created(){
+        this.shopId = localStorage.getItem("shopId");
         this.initData();
     }
 })

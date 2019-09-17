@@ -2,8 +2,6 @@ var index = new Vue({
     el:".index",
     data(){
         return{
-            storeId:"",
-            storeData:config.globalData.storeData,
             searchPersonalValue:"",
 
             // 列表数据
@@ -42,7 +40,16 @@ var index = new Vue({
                                        this.check(params.index)
                                    }
                                }
-                            }, '查看')
+                           }, '查看'),
+                           h('Button', {
+                              props: { type: 'error', size: 'small' },
+                              style: { marginRight: '5px' },
+                              on: {
+                                  click: () => {
+                                      this.remove(params.index)
+                                  }
+                              }
+                          }, '删除')
                        ]);
                     }
                 },
@@ -60,9 +67,6 @@ var index = new Vue({
                     break;
                 default:
             }
-        },
-        storeChange(){
-
         },
         searchPersonalEvent(){
 

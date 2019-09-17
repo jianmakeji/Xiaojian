@@ -2,11 +2,8 @@ var index = new Vue({
     el:".index",
     data(){
         return{
-            storeId:"",
-            storeData:[
-                {value: '1',label: '店铺A'},
-                {value: '2',label: '店铺B'}
-            ],
+            shopId:"",
+            shopData:config.globalData.storeData,
             searchValue:"",
         }
     },
@@ -27,10 +24,11 @@ var index = new Vue({
                 default:
             }
         },
-        storeChange(){
-
+        shopChange(shopId){
+            this.shopId = shopId;
+            localStorage.setItem("shopId",shopId);
         },
-        searchEvent(){
+        dateChange(){
 
         },
         back(){
@@ -38,6 +36,9 @@ var index = new Vue({
         }
     },
     created(){
+        this.shopId = localStorage.getItem("shopId");
+        $(".menuBtns").children('.active').removeClass('active');
+        $(".menuBtns").children().eq(0).addClass('active');
 
     }
 })

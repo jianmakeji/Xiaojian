@@ -115,7 +115,7 @@
 
 
 /* 缓冲图片框 */
-.bufferView{
+/* .bufferView{
     width: 1920px;
     height: 99vh;
     position: fixed;
@@ -125,7 +125,7 @@
 .bufferView img{
     width: 100%;
     height: auto;
-}
+} */
 
 .foot{
     width: 100%;

@@ -33,7 +33,7 @@
 }
 /* 时间筛选 */
 .right .filtrMenu .filtrLeft .dateInfo{
-    margin-left: 30px;
+    /* margin-left: 30px; */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -129,16 +129,21 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    overflow-y: auto;
 }
 .right .courseContainer .timeView{
     width: 10%;
     height: 700px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
-.right .courseContainer .timeView div{
+.right .courseContainer .timeView .firstTime,
+.right .courseContainer .timeView .secondTime,
+.right .courseContainer .timeView .thirdTime,
+.right .courseContainer .timeView .fourthTime{
+    height: 340px;
     display: flex;
     flex-direction: column;
     align-items:center;
@@ -162,13 +167,14 @@
 }
 .right .courseContainer .courseView .weekDay{
     width: 14%;
+    height: 1360px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 .right .courseContainer .courseView .weekDay .courseTime{
-    width: 100%;
-    height: 160px;
+    width: 93%;
+    height: 330px;
     border: solid 1px #E6E6E6;
     border-radius: 5px;
     display: flex;
@@ -176,29 +182,34 @@
     align-items: center;
     justify-content: space-around;
 }
-.right .courseContainer .courseView .weekDay .courseTime .courseImgs{
+.right .courseContainer .courseView .weekDay .courseTime .mainCourse,
+.right .courseContainer .courseView .weekDay .courseTime .otherCourse{
     width: 100%;
-    height: 60px;
+    height: 110px;
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row; */
+    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
-.right .courseContainer .courseView .weekDay .courseTime .courseImgs img{
-    width: 45%;
-    height: 60px;
+.right .courseContainer .courseView .weekDay .courseTime .mainCourse img,
+.right .courseContainer .courseView .weekDay .courseTime .otherCourse img{
+    width: 90%;
+    height: 80px;
+    border-radius: 3px;
     cursor: pointer;
 }
-.right .courseContainer .courseView .weekDay .courseTime .courseNames{
+/* .right .courseContainer .courseView .weekDay .courseTime .otherCourse{
     width: 100%;
     height: 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-}
-.right .courseContainer .courseView .weekDay .courseTime .courseNames span{
-    width: 50%;
+} */
+.right .courseContainer .courseView .weekDay .courseTime .mainCourse span,
+.right .courseContainer .courseView .weekDay .courseTime .otherCourse span{
+    width: 90%;
     height: 20px;
     font-size: 10px;
     text-align: center;
@@ -215,6 +226,15 @@
     color: #999999;
     cursor: pointer;
 }
+.right .courseContainer .courseView .weekDay .courseTime .teacherNameActive{
+    width: 100%;
+    height: 20px;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    color: #FFC837;
+    cursor: pointer;
+}
 .right .courseContainer .courseView .weekDay .courseTime .students{
     width: 100%;
     text-align: center;
@@ -229,11 +249,11 @@
 
 /* **************基础选课右侧弹出框*************** */
 .mainCourseModel{
-    width: 400px;
+    width: 500px;
     height: 93vh;
     position: fixed;
     bottom: 0;
-    right: -400px;
+    right: -500px;
     background: #fff;
     border: solid 2px #FFC837;
     display: flex;
@@ -243,7 +263,7 @@
     overflow: auto;
 }
 .mainCourseModel.active{
-    width: 400px;
+    width: 500px;
     height: 93vh;
     position: fixed;
     bottom: 0;
@@ -256,10 +276,27 @@
     overflow: auto;
 }
 .mainCourseModel .closeIcon{
-    position: absolute;
-    left: 5px;
-    top: 5px;
+    position: fixed;
+    right: -20px;
+    top: 50%;
     cursor: pointer;
+}
+.mainCourseModel .closeIcon.active{
+    position: fixed;
+    right: 498px;
+    top: 50%;
+    transition: right 1s;
+    background: #fff;
+    cursor: pointer;
+    width: 30px;
+    border-left: solid 2px #ffc837;
+    border-top: solid 2px #ffc837;
+    border-top-left-radius: 5px;
+    border-bottom: solid 2px #ffc837;
+    border-bottom-left-radius: 5px;
+    width: 20px;
+    height: 45px;
+    line-height: 45px;
 }
 .mainCourseModel .mianCourseTitle{
     height: 40px;
@@ -312,7 +349,7 @@
     justify-content:flex-start;
 }
 .mainCourseModel .mainCourseResultList .mainCourseItem{
-    width: 100%;
+    width: 97%;
     height: 220px;
     display: flex;
     flex-direction: row;
@@ -321,11 +358,11 @@
     border-bottom: solid 2px #FFC837;
 }
 .mainCourseModel .mainCourseResultList .mainCourseItem .mainCourseImg{
-    width: 130px;
-    height: 180px;
+    width: 230px;
+    height: 150px;
 }
 .mainCourseModel .mainCourseResultList .mainCourseItem .mainCourseInfo{
-    width: 150px;
+    width: 220px;
     height: 180px;
     display: flex;
     flex-direction: column;
@@ -347,18 +384,18 @@
     text-overflow: ellipsis;
 }
 .mainCourseModel .mainCourseResultList .mainCourseItem .mainCourseInfo .submit{
-    width:80%;
+    width:110px;
     background: #FFC837;
     color: #fff;
 }
 
 /* **************运动课程选课中心*************** */
 .sportCourseModel{
-    width: 400px;
+    width: 500px;
     height: 93vh;
     position: fixed;
     bottom: 0;
-    right: -400px;
+    right: -500px;
     background: #fff;
     border: solid 2px #FFC837;
     display: flex;
@@ -368,7 +405,7 @@
     overflow: auto;
 }
 .sportCourseModel.active{
-    width: 400px;
+    width: 500px;
     height: 93vh;
     position: fixed;
     bottom: 0;
@@ -381,10 +418,27 @@
     overflow: auto;
 }
 .sportCourseModel .closeIcon{
-    position: absolute;
-    left: 5px;
-    top: 5px;
+    position: fixed;
+    right: -20px;
+    top: 50%;
     cursor: pointer;
+}
+.sportCourseModel .closeIcon.active{
+    position: fixed;
+    right: 498px;
+    top: 50%;
+    transition: right 1s;
+    background: #fff;
+    cursor: pointer;
+    width: 30px;
+    border-left: solid 2px #ffc837;
+    border-top: solid 2px #ffc837;
+    border-top-left-radius: 5px;
+    border-bottom: solid 2px #ffc837;
+    border-bottom-left-radius: 5px;
+    width: 20px;
+    height: 45px;
+    line-height: 45px;
 }
 .sportCourseModel .sportCourseTitle{
     height: 40px;
@@ -437,7 +491,7 @@
     justify-content:flex-start;
 }
 .sportCourseModel .sportCourseResultList .sportCourseItem{
-    width: 100%;
+    width: 97%;
     height: 220px;
     display: flex;
     flex-direction: row;
@@ -446,11 +500,11 @@
     border-bottom: solid 2px #FFC837;
 }
 .sportCourseModel .sportCourseResultList .sportCourseItem .sportCourseImg{
-    width: 130px;
-    height: 180px;
+    width: 230px;
+    height: 150px;
 }
 .sportCourseModel .sportCourseResultList .sportCourseItem .sportCourseInfo{
-    width: 150px;
+    width: 220px;
     height: 180px;
     display: flex;
     flex-direction: column;
@@ -472,18 +526,18 @@
     text-overflow: ellipsis;
 }
 .sportCourseModel .sportCourseResultList .sportCourseItem .sportCourseInfo .submit{
-    width:80%;
+    width:110px;
     background: #FFC837;
     color: #fff;
 }
 
 /* **************教师选择中心*************** */
 .teacherCourseModel{
-    width: 400px;
+    width: 500px;
     height: 93vh;
     position: fixed;
     bottom: 0;
-    right: -400px;
+    right: -500px;
     background: #fff;
     border: solid 2px #FFC837;
     display: flex;
@@ -493,7 +547,7 @@
     overflow: auto;
 }
 .teacherCourseModel.active{
-    width: 400px;
+    width: 500px;
     height: 93vh;
     position: fixed;
     bottom: 0;
@@ -506,10 +560,27 @@
     overflow: auto;
 }
 .teacherCourseModel .closeIcon{
-    position: absolute;
-    left: 5px;
-    top: 5px;
+    position: fixed;
+    right: -20px;
+    top: 50%;
     cursor: pointer;
+}
+.teacherCourseModel .closeIcon.active{
+    position: fixed;
+    right: 498px;
+    top: 50%;
+    transition: right 1s;
+    background: #fff;
+    cursor: pointer;
+    width: 30px;
+    border-left: solid 2px #ffc837;
+    border-top: solid 2px #ffc837;
+    border-top-left-radius: 5px;
+    border-bottom: solid 2px #ffc837;
+    border-bottom-left-radius: 5px;
+    width: 20px;
+    height: 45px;
+    line-height: 45px;
 }
 .teacherCourseModel .tearcherCourseTitle{
     height: 40px;
@@ -562,7 +633,7 @@
     justify-content:flex-start;
 }
 .teacherCourseModel .teacherCourseResultList .teacherCourseItem{
-    width: 100%;
+    width: 97%;
     height: 220px;
     display: flex;
     flex-direction: row;
@@ -576,7 +647,7 @@
     border-radius: 8px;
 }
 .teacherCourseModel .teacherCourseResultList .teacherCourseItem .teacherCourseInfo{
-    width: 150px;
+    width: 220px;
     height: 180px;
     display: flex;
     flex-direction: column;
@@ -601,7 +672,25 @@
     color: #999999;
 }
 .teacherCourseModel .teacherCourseResultList .teacherCourseItem .teacherCourseInfo .submit{
-    width:80%;
+    width:110px;
     background: #FFC837;
     color: #fff;
+}
+
+
+/* 设置滚动条的样式 */
+::-webkit-scrollbar {
+width:6px;
+background-color: #fff;
+}
+
+/* 滚动槽 */
+::-webkit-scrollbar-track {
+border-radius:10px;
+}
+
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+border-radius:5px;
+background:#FFC837;
 }

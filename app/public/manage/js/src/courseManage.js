@@ -63,7 +63,7 @@ var index = new Vue({
     el:".index",
     data(){
         return{
-            shopId:"1",
+            shopId:"",
             stopData:config.globalData.storeData,
 
             dateData:config.globalData.dateData,          // 每个星期的星期数
@@ -90,6 +90,7 @@ var index = new Vue({
             bothMonthDayArr:[],
 
             // 主要课程数据
+            mainCourseFocus:"",
             mainSubTypeId:"",
             searchMainCourseValue:"",
             mainModelActive:false,
@@ -100,6 +101,7 @@ var index = new Vue({
             dateInfo:"",            //记录是那个课程点击的选课弹出层
             // 次要课程数据
             // 运动课程数据
+            sportCourseFocus:"",
             sportSubTypeId:"",
             sportCourseDate:[],
             subTypeSportAllIsActive:true,
@@ -110,6 +112,7 @@ var index = new Vue({
             sportModelActive:false,
 
             // 教师选择中心数据
+            teacherFocus:"",
             teacherCourseDate:[],
             searchTeacherourseValue:"",
             teacherModelActive:false,
@@ -251,13 +254,18 @@ var index = new Vue({
                 default:
             }
         },
-        stopChange(shopId){
+        shopChange(shopId){
             this.shopId = shopId;
+            localStorage.setItem("shopId",shopId);
             let virtualDate = (this.year + "-" +  this.month + "-1").toString();
             this.initDate(parserDate(virtualDate));
             this.initDataSourse();
         },
         closeModel(){
+            // 清除基础课程，辅助课程active状态
+            this.mainCourseFocus = "";
+            this.sportCourseFocus = "";
+
             this.mainModelActive = false;
             this.sportModelActive = false;
             this.teacherModelActive = false;
@@ -315,6 +323,10 @@ var index = new Vue({
         // 点击弹出基础课程选择框
         // 输入的日期数据有可能存在number类型    0 0 "2019" "09" "02" 1
         changeMainCourse(weekIndex,timeIndex,year,month,day,time){
+            this.mainCourseFocus = weekIndex + "-" + timeIndex;
+            this.sportCourseFocus = "";
+            this.teacherFocus = "";
+
             this.mainModelActive = true;
             this.sportModelActive = false;
             this.teacherModelActive = false;
@@ -420,6 +432,10 @@ var index = new Vue({
             })
         },
         changeSportCourse(weekIndex,timeIndex,year,month,day,time){
+            this.mainCourseFocus = "";
+            this.sportCourseFocus = weekIndex + "-" + timeIndex;
+            this.teacherFocus = "";
+
             this.mainModelActive = false;
             this.sportModelActive = true;
             this.teacherModelActive = false;
@@ -518,6 +534,10 @@ var index = new Vue({
             });
         },
         changeTeacher(weekIndex,timeIndex,year,month,day,time){
+            this.mainCourseFocus = "";
+            this.sportCourseFocus = "";
+            this.teacherFocus = weekIndex + "-" + timeIndex;
+
             this.mainModelActive = false;
             this.sportModelActive = false;
             this.teacherModelActive = true;
@@ -647,6 +667,12 @@ var index = new Vue({
         }
     },
     created(){
+        if (localStorage.getItem("shopId")) {
+            this.shopId = localStorage.getItem("shopId");
+        } else {
+            this.shopId = "1";
+            localStorage.setItem("shopId","1");
+        }
         $(".menuBtns").children('.active').removeClass('active');
         $(".menuBtns").children().eq(0).addClass('active');
         let date = new Date();

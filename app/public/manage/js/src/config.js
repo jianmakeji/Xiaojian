@@ -26,11 +26,11 @@ var config = {
         ],
         // 年份
         yearData:[
-            {value: '2019',label: '2019'},
-            {value: '2020',label: '2020'},
-            {value: '2021',label: '2021'},
-            {value: '2022',label: '2022'},
-            {value: '2023',label: '2023'}
+            {value: '2019',label: '2019年'},
+            {value: '2020',label: '2020年'},
+            {value: '2021',label: '2021年'},
+            {value: '2022',label: '2022年'},
+            {value: '2023',label: '2023年'}
         ],
         // 月份
         monthData:[

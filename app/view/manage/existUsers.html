@@ -12,9 +12,15 @@
     {% block headMenu %}
         <div class="headMenu">
             <div class="leftTabs">
+                <div class="storeInfo">
+                    <i-select v-model="shopId" style="width:150px;" @on-change="shopChange" placeholder="店铺">
+                        <i-option v-for="item in stopData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
+                    </i-select>
+                </div>
                 <i-button class="tabsBtn" type="text" to="/manage/courseManage">课程管理</i-button>
                 <i-button class="tabsBtn" type="text" to="/manage/personalManage">人员管理</i-button>
                 <i-button class="tabsBtn active" type="text">信息查看</i-button>
+                <i-button class="tabsBtn" type="text" to="/manage/storeMonitor">店铺监控</i-button>
             </div>
             <div class="rightUserInfo">
                 {% if user.headicon %}
@@ -29,24 +35,13 @@
         </div>
     {% endblock %}
 
-    <!-- 子菜单选项 -->
-    <div class="subMenu">
-        <i-button class="subMenuBtn" type="default" to="/manage/userRecord">用户记录</i-button>
-        <span class="line"></span>
-        <i-button class="subMenuBtn active" type="warning">现存用户</i-button>
-        <span class="line"></span>
-        <i-button class="subMenuBtn" type="default" to="/manage/storeMonitor">店铺监控</i-button>
-    </div>
-    <!-- 子菜单选项 end -->
-
     <!-- 店铺筛选 -->
     <div class="filtrMenu">
         <div class="filtrLeft">
-            <div class="storeInfo">
-                <label>店铺选择:</label>
-                <i-select v-model="storeId" style="width:200px;" @on-change="storeChange" placeholder="店铺">
-                    <i-option v-for="item in storeData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
-                </i-select>
+            <div class="subMenu">
+                <i-button class="subMenuBtn" type="default" to="/manage/userRecord">用户记录</i-button>
+                <span class="line"></span>
+                <i-button class="subMenuBtn active" type="warning">现存用户</i-button>
             </div>
             <div class="userSearch">
                 <i-input class="userSearchInput" v-model="searchPersonalValue" placeholder="输入搜索内容" search @on-search="searchPersonalEvent"></i-input>

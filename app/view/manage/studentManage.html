@@ -30,12 +30,6 @@
     <!-- 店铺筛选 -->
     <div class="filtrMenu">
         <div class="filtrLeft">
-            <div class="storeInfo">
-                <label>店铺选择:</label>
-                <i-select v-model="storeId" style="width:200px;" @on-change="storeChange" placeholder="店铺">
-                    <i-option v-for="item in storeData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
-                </i-select>
-            </div>
             <div class="userSearch">
                 <i-input class="userSearchInput" v-model="searchPersonalValue" placeholder="输入搜索内容" search @on-search="searchPersonalEvent"></i-input>
             </div>

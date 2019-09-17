@@ -2,8 +2,8 @@ var index = new Vue({
     el:".index",
     data(){
         return{
-            storeId:"",
-            storeData:config.globalData.storeData,
+            shopId:"",
+            stopData:config.globalData.storeData,
             searchPersonalValue:"",
 
             // 列表数据
@@ -53,7 +53,6 @@ var index = new Vue({
     },
     methods:{
         menuChange(value){
-            console.log(typeof value);
             $(".menuBtns").children('.active').removeClass('active');
             $(".menuBtns").children().eq(value).addClass('active');
             switch (value) {
@@ -69,8 +68,9 @@ var index = new Vue({
                 default:
             }
         },
-        storeChange(){
-
+        shopChange(shopId){
+            this.shopId = shopId;
+            localStorage.setItem("shopId",shopId);
         },
         searchPersonalEvent(){
 
@@ -84,8 +84,8 @@ var index = new Vue({
         }
     },
     created(){
-
-            $(".menuBtns").children('.active').removeClass('active');
-            $(".menuBtns").children().eq(0).addClass('active');
+        this.shopId = localStorage.getItem("shopId");
+        $(".menuBtns").children('.active').removeClass('active');
+        $(".menuBtns").children().eq(0).addClass('active');
     }
 })

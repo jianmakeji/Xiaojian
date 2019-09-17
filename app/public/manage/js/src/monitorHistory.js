@@ -3,10 +3,7 @@ var index = new Vue({
     data(){
         return{
             shopId:"",
-            stopData:[
-                {value: '1',label: '店铺A'},
-                {value: '2',label: '店铺B'}
-            ],
+            shopData:config.globalData.storeData,
             searchValue:"",
 
             year:"",
@@ -34,8 +31,9 @@ var index = new Vue({
                 default:
             }
         },
-        storeChange(){
-
+        shopChange(shopId){
+            this.shopId = shopId;
+            localStorage.setItem("shopId",shopId);
         },
         searchEvent(){
 
@@ -46,6 +44,7 @@ var index = new Vue({
         }
     },
     created(){
+        this.shopId = localStorage.getItem("shopId");
         $(".menuBtns").children('.active').removeClass('active');
         $(".menuBtns").children().eq(1).addClass('active');
     }

@@ -8,7 +8,7 @@
     </head>
     <body>
         <div class="index" v-cloak>
-            <div class="login" v-show="!showBuffer">
+            <div class="login">
                 <form id="myform" method="post" :action="requestUrl" onsubmit="return check(this)">
     				<div class="username">
                         <icon type="ios-contact"></icon>
@@ -33,10 +33,6 @@
     				</div>
     			</form>
                 <p style="color:#ed4014;text-align:center;margin-top:20px;">{{message}}</p>
-            </div>
-
-            <div class="bufferView" v-show="showBuffer">
-                <img style="width:auto;height:100%;margin:0 auto;" src="../public/images/bufferImg.png" alt="">
             </div>
         </div>
         <div class="foot">

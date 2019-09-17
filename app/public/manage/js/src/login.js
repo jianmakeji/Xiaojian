@@ -7,19 +7,14 @@ var index = new Vue({
             rememberPwd:true,
             protocol:true,
             requestUrl:"",
-
-            showBuffer:false,
         }
     },
     methods:{
         delaySubmit(){
             let that = this;
             if(this.protocol){
-                this.showBuffer = true;
                 var myform = document.getElementById('myform');
-                setTimeout(function(){
-                    myform.submit();
-                },2000)
+                myform.submit();
             }else{
                 this.$Message.error({
                     content: "请阅读《小尖公司免责声明》并勾选！",
@@ -30,7 +25,6 @@ var index = new Vue({
         }
     },
     created(){
-        this.showBuffer = false;
         let roleId =  window.location.search.split("role=")[1];
         this.requestUrl = "/login/" + roleId;
     }
