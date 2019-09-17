@@ -116,3 +116,60 @@
     margin-left: 16%;
     bottom: 10px;
 }
+
+
+/* **********table数据列表************** */
+.right .tableView{
+    width: 90%;
+    margin: 0 5%;
+    margin-top: 20px;
+}
+.right .page{
+    width: 100%;
+    margin-top: 20px;
+    text-align: right;
+}
+
+
+.ivu-table-header th{
+  background-color: rgba(253, 198, 55, 0.3);
+}
+
+.ivu-table table td{
+  background-color: rgba(253, 198, 55, 0.1);
+}
+
+.ivu-table-row-hover td {
+  background-color: rgba(253, 198, 55, 0.1)!important;
+}
+
+.ivu-btn{
+  border: 0px solid transparent;
+}
+
+.ivu-btn:hover{
+  background-color: #C8C8C8;
+}
+
+.ivu-btn-primary {
+    color: #959595;
+    background-color: rgba(255,255,255,0);
+}
+
+.ivu-page-item:hover a {
+    color:rgba(253, 198, 55, 1);
+    border-color: #C8C8C8;
+}
+
+.ivu-page-item:hover{
+    border-color: #C8C8C8;
+}
+
+.ivu-page-item a {
+    color: #C8C8C8;
+    border-color: #C8C8C8;
+}
+
+.ivu-page-item-active {
+    border-color: #FDC637;
+}
