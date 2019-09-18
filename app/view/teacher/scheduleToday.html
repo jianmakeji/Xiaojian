@@ -32,7 +32,7 @@
 	                    <img class="headImg" src="../public/images/user.png">
 	                    <span class="username">游客</span>
 	                {% endif %}
-	                <i-button class="loginOut" type="error" icon="md-log-out" shape="circle" to="/logout"></i-button>
+
                 </div>
             </div>
             <div class="scheduleView">
@@ -67,8 +67,9 @@
         <!-- 当天课程列表 end -->
 
         <!-- 学生点名弹框 -->
-        <modal v-model="studentListModal" footer-hide :mask-closable="false" :closable="false" width="1395">
+        <modal class="studentModal" v-model="studentListModal" footer-hide :mask-closable="false" :closable="false" :mask="false" width="1300">
 			<icon class="closeIcon" size="20" type="md-close-circle" @click="closeModel"></icon>
+			<img src="../public/images/popLayer.png" style="position: absolute;width: 1260px;height: 600px;">
 			<div class="studentListView" v-if="!CheckIsOk">
                 <p class="title">学生名单</p>
                 <checkbox-group v-model="studentGroup">

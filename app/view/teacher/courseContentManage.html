@@ -22,7 +22,7 @@
                     <img class="headImg" src="../public/images/user.png">
                     <span class="username">游客</span>
                 {% endif %}
-                <i-button class="loginOut" type="error" icon="md-log-out" shape="circle" to="/logout"></i-button>
+
             </div>
         </div>
     {% endblock %}
@@ -48,7 +48,7 @@
 
     <!-- course数据列表 -->
     <div class="courseList">
-        <ul>
+        <ul style="min-height: 700px;">
             <row>
                 <i-col :xs="24" :sm="8" :md="6" :lg="6" v-for="(item,index) in courseData">
                     <li class="courseItem">

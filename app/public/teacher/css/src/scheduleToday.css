@@ -159,9 +159,9 @@
     display: none;
 }
 .studentListView{
-    width: 1395px;
-    height: 970px;
-    background: url(../../../images/popLayer.png)no-repeat center center;
+    width: 1030px;
+    height: 530px;
+    margin: 0 auto;
 }
 .studentListView .title{
     font-size: 28px;
@@ -170,6 +170,8 @@
     margin: 20px auto;
     letter-spacing: 5px;
     font-weight: bold;
+    position: relative;
+    margin-top: 70px;;
 }
 
 .studentListView .studentName{
@@ -178,13 +180,22 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: end;
 }
 .studentListView .studentName .ivu-checkbox-checked .ivu-checkbox-inner{
     border-color: #FFC837;
     background-color: #FFC837;
 }
+.studentListView .studentName .ivu-checkbox{
+    margin-right: 15px;
+}
+.studentModal .ivu-modal-content{
+    background: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
 .studentListView .opts{
+    position: relative;
     width: 100%;
     margin-top: 80px;
     display: flex;
@@ -201,6 +212,7 @@
     margin-left: 40px;
 }
 .checkOkView{
+    position: relative;
     min-height: 400px;
     display: flex;
     flex-direction: column;
@@ -213,11 +225,13 @@
     color: #FFC837;
     text-align: center;
     letter-spacing: 3px;
+    margin-top: -130px;
 }
 .closeIcon{
     position: absolute;
     right: 20px;
     cursor: pointer;
+    z-index: 2;
 }
 
 .courseVideo{

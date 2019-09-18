@@ -20,7 +20,44 @@
 
         <!-- h5播放 -->
         <div class="container">
-			<iframe :src="h5Address" width="1920px" height="100%;" frameborder="0"></iframe>
+			<div class="optsView">
+				<div class="opts">
+					<div class="numH5" @click="clickNumH5(0)">
+						<div :class="{active:isActiveNum == '0'}"></div>
+						<span> 1 </span>
+					</div>
+					<div class="numH5" @click="clickNumH5(1)">
+						<div :class="{active:isActiveNum == '1'}"></div>
+						<span> 2 </span>
+					</div>
+					<div class="numH5" @click="clickNumH5(2)" v-show="courseType == 1">
+						<div :class="{active:isActiveNum == '2'}"></div>
+						<span> 3 </span>
+					</div>
+					<div class="numH5" @click="clickNumH5(3)"  v-show="courseType == 1">
+						<div :class="{active:isActiveNum == '3'}"></div>
+						<span> 4 </span>
+					</div>
+					<div class="prevH5" @click="clickPrevH5">
+						<div></div>
+						<img src="../public/images/btn_arrow_up.png">
+					</div>
+					<div class="nextH5" @click="clickNextH5">
+						<div></div>
+						<img src="../public/images/btn_arrow_down.png">
+					</div>
+					<div class="playH5" @click="clickPlayH5">
+						<div></div>
+						<img src="../public/images/btn_left.png">
+					</div>
+					<div class="backH5" @click="clickBackH5">
+						<div></div>
+						<img src="../public/images/btn_back.png">
+					</div>
+				</div>
+
+			</div>
+			<iframe :src="playH5Address" width="1920px" height="100%;" frameborder="0"></iframe>
         </div>
         <!-- h5播放 end -->
 

@@ -1,10 +1,112 @@
 .index{
     width: 100vw;
     height: 100vh;
-    background: pink;
 }
 .container{
     width: 1920px;
     height: 100%;
     margin: 0 auto;
+}
+
+.container .optsView{
+    width: 100px;
+    height: 100vh;
+    position: fixed;
+    right: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.container .opts{
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.container .opts .playH5,
+.container .opts .prevH5,
+.container .opts .nextH5,
+.container .opts .backH5,
+.container .opts .numH5{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+.container .opts .numH5 div{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    margin-left: 0px;
+    margin-top: 0px;
+    background:url(../../../images/btn_bg_normal.png)no-repeat;
+    background-size: cover;
+    z-index: 2;
+    /* cursor: pointer; */
+}
+.container .opts .numH5 div:hover,
+.container .opts .numH5 div.active{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    margin-left: 0px;
+    margin-top: 0px;
+    background:url(../../../images/btn_bg_select.png)no-repeat;
+    background-size: cover;
+    z-index: 2;
+}
+.container .opts .numH5 span{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color:#fff;
+    position: absolute;
+    margin-left: 0px;
+    margin-top: 0px;
+    z-index: 2;
+}
+.container .opts .prevH5 div,
+.container .opts .nextH5 div,
+.container .opts .playH5 div,
+.container .opts .backH5 div{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    margin-left: 0px;
+    margin-top: 0px;
+    background:url(../../../images/btn_bg_select.png)no-repeat;
+    background-size: cover;
+    z-index: 2;
+    /* cursor: pointer; */
+}
+.container .opts .prevH5 img,
+.container .opts .nextH5 img{
+    width: 19px;
+    height: 11px;
+    position: absolute;
+    margin-left: 11px;
+    margin-top: 15px;
+    z-index: 2;
+    /* cursor: pointer; */
+}
+.container .opts .playH5 img{
+    width: 16px;
+    height: 22px;
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 8px;
+    z-index: 2;
+    /* cursor: pointer; */
+}
+.container .opts .backH5 img{
+    width: 31px;
+    height: 22px;
+    position: absolute;
+    margin-left: 4px;
+    margin-top: 8px;
+    z-index: 2;
+    /* cursor: pointer; */
 }

@@ -31,26 +31,27 @@
 	                    <img class="headImg" src="../public/images/user.png">
 	                    <span class="username">游客</span>
 	                {% endif %}
-	                <i-button class="loginOut" type="error" icon="md-log-out" shape="circle" to="/logout"></i-button>
+
                 </div>
             </div>
             <!-- 主次课选择框 -->
             <div class="courseList">
                 <div class="mainCourse">
                     <img :src="mainCourseInfo.courseThumbB" @click="tapCourseA">
-                    <p v-text="mainCourseInfo.courseName" @click="tapCourseA"></p>
+                    <p v-text="'《' + mainCourseInfo.courseName + '》'" @click="tapCourseA"></p>
                 </div>
                 <div class="otherCourse">
                     <img :src="otherCourseInfo.courseThumbB"  @click="tapCourseB">
-                    <p v-text="otherCourseInfo.courseName"  @click="tapCourseB"></p>
+                    <p v-text="'《' + otherCourseInfo.courseName + '》'"  @click="tapCourseB"></p>
                 </div>
             </div>
-            <div style="text-align:right;width: 80%;">
+            <div style="text-align:right;width: 80%;z-index: 2;">
                 <i-button class="tabsBtn" type="warning" @click="back">返回首页</i-button>
             </div>
         </div>
         <!-- 当天课程列表 end -->
 
+		<img class="bottomImg" src="../public/images/home_bg.png" alt="">
 	</div>
 	<!-- js文件引用 -->
     	<script type="text/javascript" src="../public/teacher/js/lib/jquery.min.js"></script>

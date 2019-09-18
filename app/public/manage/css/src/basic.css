@@ -193,3 +193,14 @@
 .ivu-page-item-active a, .ivu-page-item-active:hover a{
     border-color: #FDC637;
 }
+
+.ivu-select-item:hover{
+  background-color: #FFC837;
+}
+
+.ivu-select-item-selected, .ivu-select-item-selected:hover {
+    color: #999999;
+}
+.ivu-select-item-focus {
+    background: #FFC837;
+}
