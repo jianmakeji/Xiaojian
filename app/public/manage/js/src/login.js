@@ -2,7 +2,7 @@ var index = new Vue({
     el:".index",
     data(){
         return{
-            username:"adminadmin",
+            username:"",
             password:"111111",
             rememberPwd:true,
             protocol:true,
@@ -27,6 +27,19 @@ var index = new Vue({
     created(){
         let roleId =  window.location.search.split("role=")[1];
         this.requestUrl = "/login/" + roleId;
+        switch (roleId) {
+            case "1":
+                this.username = '超级管理员';
+                break;
+            case "2":
+                this.username = '邓颖';
+                break;
+            case "3":
+                this.username = '沈明霞';
+                break;
+            default:
+
+        }
     }
 })
 
