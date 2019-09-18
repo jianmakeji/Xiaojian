@@ -12,6 +12,7 @@ var index = new Vue({
             yearData:config.globalData.yearData,
             monthData:config.globalData.monthData,
             weekData:config.globalData.weekData,
+            monitorArea:config.globalData.monitorArea
         }
     },
     methods:{

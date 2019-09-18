@@ -82,23 +82,25 @@
             <div class="contentView">
                 <!-- 每天课程时间表 -->
                 <div class="timeView">
-                    <div class="firstTime">
-                        <label class="title">第一节</label>
-                        <label class="time">09:00—10:00</label>
-                    </div>
-                    <div class="secondTime">
-                        <label class="title">第二节</label>
-                        <label class="time">13:00—14:00</label>
-                    </div>
-                    <div class="thirdTime">
-                        <label class="title">第三节</label>
-                        <label class="time">16:00—17:00</label>
+                    <div class="" style="height:1200px;">
+                        <div class="firstTime">
+                            <label class="title">第一节</label>
+                            <label class="time">09:00—10:00</label>
+                        </div>
+                        <div class="secondTime">
+                            <label class="title">第二节</label>
+                            <label class="time">13:00—14:00</label>
+                        </div>
+                        <div class="thirdTime">
+                            <label class="title">第三节</label>
+                            <label class="time">16:00—17:00</label>
 
-                    </div>
-                    <div class="fourthTime">
-                        <label class="title">第四节</label>
-                        <label class="time">19:00—20:00</label>
+                        </div>
+                        <div class="fourthTime">
+                            <label class="title">第四节</label>
+                            <label class="time">19:00—20:00</label>
 
+                        </div>
                     </div>
                 </div>
                 <div class="courseView">
@@ -106,29 +108,28 @@
                     <div class="weekDay" v-for="(weekItem,weekIndex) in [0,1,2,3,4,5,6]">
                         <!-- 一到四节课 -->
                         <div class="courseTime" v-for="(timeItem,timeIndex) in [1,2,3,4]">
-                            <div class="courseImgs">
+                            <div class="mainCourse">
                                 <!-- 基础课程图片 -->
-                                <img class="mainCourseImg" :src="dataSourse[weekIndex][timeIndex].courseThumbA?dataSourse[weekIndex][timeIndex].courseThumbA:'../public/images/course_default.png'" @click="mainCourseCheck(weekIndex,timeIndex)" title="查看基础课程">
+                                <img class="mainCourseImg" :src="dataSourse[weekIndex][timeIndex].courseThumbA?dataSourse[weekIndex][timeIndex].courseThumbA : '../public/images/course_default.jpg'" @click="mainCourseCheck(weekIndex,timeIndex)" title="编辑基础课程">
 
-                                <!-- 运动课程图片 -->
-                                <img class="mainCourseImg" :src="dataSourse[weekIndex][timeIndex].courseThumbB?dataSourse[weekIndex][timeIndex].courseThumbB:'../public/images/course_default.png'" @click="otherCourseCheck(weekIndex,timeIndex)" title="编辑运动课程">
-                            </div>
-                            <div class="courseNames">
                                 <!-- 基础课程名称 -->
-                                <span class="mainCourseName" title="查看基础课程" v-text="dataSourse[weekIndex][timeIndex].courseTitleA"  @click="mainCourseCheck(weekIndex,timeIndex)"></span>
+                                <span class="mainCourseName" @click="mainCourseCheck(weekIndex,timeIndex)" title="编辑基础课程" v-text="dataSourse[weekIndex][timeIndex].courseTitleA"></span>
+                            </div>
+                            <div class="otherCourse">
+                                <!-- 运动课程图片 -->
+                                <img class="otherCourseImg" :src="dataSourse[weekIndex][timeIndex].courseThumbB?dataSourse[weekIndex][timeIndex].courseThumbB : '../public/images/course_default.jpg'" @click="otherCourseCheck(weekIndex,timeIndex)" title="编辑运动课程">
 
                                 <!-- 运动课程名称 -->
-                                <span class="otherCourseName" title="查看运动课程" v-text="dataSourse[weekIndex][timeIndex].courseTitleB" @click="otherCourseCheck(weekIndex,timeIndex)"></span>
+                                <span class="otherCourseCheck" @click="otherCourseCheck(weekIndex,timeIndex)" title="编辑运动课程" v-text="dataSourse[weekIndex][timeIndex].courseTitleB"></span>
                             </div>
                             <!-- 老师名称 -->
-                            <div class="teacherName" v-text="'授课老师：' + dataSourse[weekIndex][timeIndex].teacherName"></div>
+                            <div class="teacherName" title="编辑老师" v-text="'授课老师：' + dataSourse[weekIndex][timeIndex].teacherName"></div>
                             <div class="students">
                                 <i-button class="studentListBtn" @click="studentListCheck(weekIndex,timeIndex)">学生名单</i-button>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
         </div>
     </div>

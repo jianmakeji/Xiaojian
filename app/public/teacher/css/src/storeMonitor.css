@@ -64,13 +64,24 @@
     width: 90%;
     margin-top: 20px;
     margin-left: 5%;
+    display: flex;
+    flex-direction: row;
+}
+.right .monitorView .monitorListUL{
+    width: 80%;
 }
 .right .monitorView .time{
+    width: 20%;
     color: #FFC837;
     font-size: 20px;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items:start;
+    justify-content: flex-end;
 }
 .right .monitorView .monitorItem{
-    height: 400px;
+    height: 380px;
     list-style: none;
     display: flex;
     flex-direction: column;
@@ -97,6 +108,5 @@
     letter-spacing: 2px;
 }
 .right .monitorView .monitorItem .monitorInfo .checkBtn{
-    border-color: #FFC837;
-    background: #FFC837;
+    border: solid 1px #FFC837;
 }

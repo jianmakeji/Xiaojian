@@ -27,9 +27,6 @@
     align-items: center;
     justify-content: space-between;
 }
-.right .filtrMenu .filtrLeft .ivu-select-selection{
-    border: 1px solid #FFC837;
-}
 .right .filtrMenu .filtrLeft .storeInfo{
     display: flex;
     flex-direction: row;
@@ -45,9 +42,6 @@
 .right .filtrMenu .filtrLeft .userSearch{
     margin-left: 20px;
 }
-.right .filtrMenu .filtrLeft .userSearchInput .ivu-input{
-    border: 1px solid #FFC837;
-}
 .right .filtrMenu .filtrRight .addStudent{
     background: #FFC837;
     border-color: #FFC837;
@@ -60,7 +54,7 @@
     margin-left: 5%;
 }
 .right .courseList .courseItem{
-    height: 250px;
+    height: 240px;
     list-style: none;
     display: flex;
     flex-direction: column;
@@ -72,6 +66,7 @@
     height: 150px;
     border-radius: 10px;
     border: solid 1px #FFC837;
+    cursor: pointer;
 }
 .right .courseList .courseItem .courseName{
     font-size: 17px;
@@ -92,5 +87,5 @@
 }
 .right .courseList .page{
     margin-top: 10px;
-    text-align: center;
+    text-align: right;
 }

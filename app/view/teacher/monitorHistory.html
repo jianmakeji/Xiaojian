@@ -36,15 +36,8 @@
             </div>
             <div class="dateInfo">
                 <label>课程时间选择:</label>
-                <i-select v-model="year" style="width:100px;margin-left:10px;" @on-change="yearChange" placeholder="年份">
-                    <i-option v-for="item in yearData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
-                </i-select>
-                <i-select v-model="month" style="width:100px;margin-left:10px;" @on-change="monthChange" placeholder="月份">
-                    <i-option v-for="item in monthData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
-                </i-select>
-                <i-select v-model="week" style="width:100px;margin-left:10px;" @on-change="weekChange" placeholder="星期">
-                    <i-option v-for="item in weekData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
-                </i-select>
+                <date-picker type="date" placeholder="选择日期" style="width: 200px"></date-picker>
+                <time-picker type="time" placeholder="选择时间" style="width: 168px"></time-picker>
             </div>
         </div>
         <div class="filtrRight">

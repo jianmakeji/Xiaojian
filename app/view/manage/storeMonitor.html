@@ -68,20 +68,20 @@
 
     <!-- 店铺监控列表 -->
     <div class="monitorView">
-        <p class="time">2019.08.12 15:55</p>
         <ul class="monitorListUL">
             <row>
                 <i-col :xs="24" :sm="12" :md="12" :lg="12" v-for="(item,index) in [1,2,3,4]">
                     <li class="monitorItem">
                         <img class="monitorImg" :src="'../public/images/camera'+ item +'.jpg'" @click="checkMonitorEvent">
                         <div class="monitorInfo">
-                            <div class="area">A区</div>
-                            <i-button class="checkBtn" type="warning" @click="checkMonitorEvent">查看</i-button>
+                            <div class="area" v-text="monitorArea[index]"></div>
+                            <i-button class="checkBtn" type="primary" @click="checkMonitorEvent">查看</i-button>
                         </div>
                     </li>
                 <i-col>
             </row>
         </ul>
+        <p class="time">2019.08.12 15:55</p>
     </div>
     <!-- 店铺监控列表 end -->
 </div>

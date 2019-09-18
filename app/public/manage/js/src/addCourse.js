@@ -2,6 +2,9 @@ var index = new Vue({
     el:".index",
     data(){
         return{
+            formStyle:{
+                minHeight:""
+            },
             courseId:0,
             // 上传参数对象
             formItem:{
@@ -81,7 +84,6 @@ var index = new Vue({
     },
     methods:{
         cascaderChange(value, selectedData){
-            console.log(value);
             if (value[0] == "1") {
                 this.isMainCourseFlag = true;
             } else {
@@ -203,7 +205,6 @@ var index = new Vue({
                         that.$Message.success("上传成功！");
                         that.h5UploadArr[0] = res.url;
                         that.attachFileName_1 = files.target.files[0].name;
-                        console.log(that.h5UploadArr);
                     }else{
                         that.$Message.error(res.data.message);
                     }
@@ -240,7 +241,6 @@ var index = new Vue({
                         that.$Message.success("上传成功！");
                         that.h5UploadArr[1] = res.url;
                         that.attachFileName_2 = files.target.files[0].name;
-                        console.log(that.h5UploadArr);
                     }else{
                         that.$Message.error(res.data.message);
                     }
@@ -277,7 +277,6 @@ var index = new Vue({
                         that.$Message.success("上传成功！");
                         that.h5UploadArr[2] = res.url;
                         that.attachFileName_3 = files.target.files[0].name;
-                        console.log(that.h5UploadArr);
                     }else{
                         that.$Message.error(res.data.message);
                     }
@@ -314,7 +313,6 @@ var index = new Vue({
                         that.$Message.success("上传成功！");
                         that.h5UploadArr[3] = res.url;
                         that.attachFileName_4 = files.target.files[0].name;
-                        console.log(that.h5UploadArr);
                     }else{
                         that.$Message.error(res.data.message);
                     }
@@ -358,7 +356,6 @@ var index = new Vue({
         },
         submitCourse(){
             this.formItem.h5Address = this.h5UploadArr.join(",");
-            console.log(this.formItem);
             let that = this;
             this.$Loading.start();
             let notNullData = true;
@@ -441,6 +438,8 @@ var index = new Vue({
         $(".menuBtns").children('.active').removeClass('active');
         $(".menuBtns").children().eq(2).addClass('active');
 
+        this.formStyle.minHeight = document.documentElement.clientHeight - 195 + "px";
+
         this.courseId = window.location.search.split("courseId=")[1];
 
         if (parseInt(this.courseId)) {          //修改
@@ -450,14 +449,12 @@ var index = new Vue({
                 type: 'GET',
             })
             .done(function(res) {
-                console.log(res.data);
                 if (res.status == 200) {
                     if (res.data.h5Address.indexOf(",")) {
                         that.h5UploadArr = res.data.h5Address.split(",");
                     } else {
                         that.h5UploadArr[0] = res.data.h5Address;
                     }
-                    console.log(that.h5UploadArr);
                     for (let i = 0; i < that.h5UploadArr.length; i++) {
                         switch (i) {
                             case 0:

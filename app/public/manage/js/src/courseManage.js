@@ -63,6 +63,7 @@ var index = new Vue({
     el:".index",
     data(){
         return{
+            hasShopId:false,
             shopId:"",
             stopData:config.globalData.storeData,
 
@@ -255,6 +256,7 @@ var index = new Vue({
             }
         },
         shopChange(shopId){
+            this.hasShopId = true;
             this.shopId = shopId;
             localStorage.setItem("shopId",shopId);
             let virtualDate = (this.year + "-" +  this.month + "-1").toString();
@@ -378,7 +380,7 @@ var index = new Vue({
             let indexData = this.mainCourseDate[index];
             let mapKeyText = this.dateInfo.split("#")[0].split("-").join("");
 
-            this.dataSourse[this.weekIndex][this.timeIndex].courseThumbA = indexData.courseThumbA;
+            this.dataSourse[this.weekIndex][this.timeIndex].courseThumbA = indexData.courseThumbB;
             this.dataSourse[this.weekIndex][this.timeIndex].courseTitleA = indexData.courseName;
             this.dataSourse[this.weekIndex][this.timeIndex].shopId = this.shopId;
             this.dataSourse[this.weekIndex][this.timeIndex].courseAId = indexData.Id;
@@ -495,7 +497,7 @@ var index = new Vue({
             let indexData = this.sportCourseDate[index];
             let mapKeyText = this.dateInfo.split("#")[0].split("-").join("");
 
-            this.dataSourse[this.weekIndex][this.timeIndex].courseThumbB = indexData.courseThumbA;
+            this.dataSourse[this.weekIndex][this.timeIndex].courseThumbB = indexData.courseThumbB;
             this.dataSourse[this.weekIndex][this.timeIndex].courseTitleB = indexData.courseName;
             this.dataSourse[this.weekIndex][this.timeIndex].shopId = this.shopId;
             this.dataSourse[this.weekIndex][this.timeIndex].courseBId = indexData.Id;
@@ -668,10 +670,11 @@ var index = new Vue({
     },
     created(){
         if (localStorage.getItem("shopId")) {
+            this.hasShopId = true;
             this.shopId = localStorage.getItem("shopId");
         } else {
-            this.shopId = "1";
-            localStorage.setItem("shopId","1");
+            this.shopId = "";
+            localStorage.setItem("shopId","");
         }
         $(".menuBtns").children('.active').removeClass('active');
         $(".menuBtns").children().eq(0).addClass('active');

@@ -31,7 +31,6 @@
 }
 /* 时间筛选 */
 .right .filtrMenu .filtrLeft .dateInfo{
-    margin-left: 30px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -52,23 +51,23 @@
     background:  #FFC837;
 }
 
-
 /* *************** 课程详情 **************** */
 .right .box{
     width: 90%;
-    height: 700px;
+    height: 740px;
     margin: 0 5%;
     margin-top: 20px;
 }
 .right .courseContainer{
     width: 100%;
-    height: 800px;
+    height: 740px;
     border-radius: 15px;
     border:solid 2px #F3F3F3;
 }
 
 .right .courseContainer .headView{
     width: 100%;
+    height: 80px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -121,54 +120,63 @@
     align-items: center;
     justify-content: space-around;
     color: #CBCBCB;
+    letter-spacing: 2px;
 }
 
 /* 课程内容显示 */
 .right .courseContainer .contentView{
+    height: 660px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    overflow-y: auto;
 }
-.right .courseContainer .timeView{
+.right .courseContainer .contentView .timeView{
     width: 10%;
-    height: 700px;
+    height: 660px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
-.right .courseContainer .timeView div{
+.right .courseContainer .contentView .timeView .firstTime,
+.right .courseContainer .contentView .timeView .secondTime,
+.right .courseContainer .contentView .timeView .thirdTime,
+.right .courseContainer .contentView .timeView .fourthTime{
+    height: 325px;
     display: flex;
     flex-direction: column;
     align-items:center;
     justify-content: center;
 }
 .right .courseContainer .timeView .title{
-    font-size: 16px;
+    font-size: 17px;
     font-weight: bold;
     color: #999999;
 }
 .right .courseContainer .timeView .time{
     color: #CBCBCB;
+    letter-spacing: 2px;
 }
 /* 课程表 */
 .right .courseContainer .courseView{
     width: 90%;
-    height: 700px;
+    height: 660px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 .right .courseContainer .courseView .weekDay{
     width: 14%;
+    height: 1300px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 .right .courseContainer .courseView .weekDay .courseTime{
-    width: 100%;
-    height: 160px;
+    width: 93%;
+    height: 300px;
     border: solid 1px #E6E6E6;
     border-radius: 5px;
     display: flex;
@@ -176,29 +184,34 @@
     align-items: center;
     justify-content: space-around;
 }
-.right .courseContainer .courseView .weekDay .courseTime .courseImgs{
+.right .courseContainer .courseView .weekDay .courseTime .mainCourse,
+.right .courseContainer .courseView .weekDay .courseTime .otherCourse{
     width: 100%;
-    height: 60px;
+    height: 110px;
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row; */
+    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
-.right .courseContainer .courseView .weekDay .courseTime .courseImgs img{
-    width: 45%;
-    height: 60px;
+.right .courseContainer .courseView .weekDay .courseTime .mainCourse img,
+.right .courseContainer .courseView .weekDay .courseTime .otherCourse img{
+    width: 90%;
+    height: 80px;
+    border-radius: 3px;
     cursor: pointer;
 }
-.right .courseContainer .courseView .weekDay .courseTime .courseNames{
+/* .right .courseContainer .courseView .weekDay .courseTime .otherCourse{
     width: 100%;
     height: 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-}
-.right .courseContainer .courseView .weekDay .courseTime .courseNames span{
-    width: 50%;
+} */
+.right .courseContainer .courseView .weekDay .courseTime .mainCourse span,
+.right .courseContainer .courseView .weekDay .courseTime .otherCourse span{
+    width: 90%;
     height: 20px;
     font-size: 10px;
     text-align: center;
@@ -221,6 +234,28 @@
 .right .courseContainer .courseView .weekDay .courseTime .students .studentListBtn{
     height: 32px;
     margin: 0 auto;
-    color: #fff;
-    background: #FFC837;
+    border: solid 2px #ffc837;
+}
+.footerImg{
+    position: absolute;
+    width: auto;
+    height: 13px;
+    margin-left: 86px;
+    bottom: 10px;
+}
+/* 设置滚动条的样式 */
+.contentView::-webkit-scrollbar {
+    width:6px;
+    background-color: #fff;
+}
+
+/* 滚动槽 */
+.contentView::-webkit-scrollbar-track {
+    border-radius:10px;
+}
+
+/* 滚动条滑块 */
+.contentView::-webkit-scrollbar-thumb {
+    border-radius:5px;
+    background:#FFC837;
 }

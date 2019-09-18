@@ -23,10 +23,11 @@
     justify-content: center;
 }
 .editStoreUserView .title{
-    text-align: center;
+    width: 96%;
+    text-align: left;
     font-size: 22px;
     letter-spacing: 2px;
-    color: #666666;
+    color: #FFC837;
     font-weight: bold;
 }
 /* 用户信息头像 */
@@ -56,7 +57,8 @@
 /* 用户基础信息 */
 .editStoreUserView .storeUserInfoView .userInfo{
     width: 300px;
-    height: 370px;
+    height: 280px;
+    margin-top: -50px;
     display: flex;
     flex-direction: column;
     align-items:center;
@@ -91,5 +93,6 @@
     justify-content: space-between;
 }
 .editStoreUserView .opts button{
+    background: #FFC837;
     border-color: #FFC837;
 }

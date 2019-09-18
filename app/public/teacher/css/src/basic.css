@@ -1,6 +1,7 @@
 [v-cloak]{
     display: none;
 }
+
 .index{
     width: 1920px;
     margin: 0 auto;
@@ -19,15 +20,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     background: linear-gradient(to bottom, #FFC837, #FF8009) !important;
 }
+.left .leftTop{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .left .logo{
-    width: 80%;
+    width: 70%;
     height: auto;
+    margin-top: 10px;
 }
 .left .menuBtns{
     width: 100%;
-    height: 170px;
+    height: 200px;
     margin-top: 100px;
     display: flex;
     flex-direction: column;
@@ -35,27 +43,36 @@
     justify-content: space-between;
 }
 .left .menuBtn{
-    width: 250px;
-    color:#fff;
-    font-size: 18px;
+    width: 94%;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
     border: solid 1px #fff;
     background: none;
 }
 .left .menuBtn.active{
-    width: 250px;
+    width: 94%;
     color:#FFC837;
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
     border: solid 1px #fff;
     background: #fff;
 }
 
+.left .backHomePage{
+    width: 220px;
+    height: auto;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
 /* *****************顶部菜单栏：课程管理  人员管理  信息查看****************** */
 .right{
     width: 85%;
     height: 100vh;
     max-height: 100vh;
     background: #fff;
-    overflow-y: auto;
 }
 .right .headMenu{
     width: 90%;
@@ -68,11 +85,11 @@
     margin-top: 0px;
 }
 .right .headMenu .leftTabs{
-    width: 270px;
+    width: 300px;
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
-    margin-left: 80px;
 }
 .right .headMenu .leftTabs .tabsBtn{
     font-size: 17px;
@@ -83,6 +100,7 @@
     font-size: 17px;
     color: #FFC837;
     border-bottom: solid;
+    border-radius: 0px;
 }
 .right .headMenu .rightUserInfo{
     margin-right: 10px;
@@ -105,13 +123,73 @@
 .right .headMenu .rightUserInfo .loginOut{
     margin-left: 20px;
     cursor: pointer;
-    font-size: 20px;
+        font-size: 20px;
 }
 /* 尾部商标 */
 .footerImg{
     position: absolute;
     width: auto;
     height: 13px;
-    margin-left: 16%;
+    margin-left: 366px;
     bottom: 10px;
+}
+
+
+/* **********table数据列表************** */
+.right .tableView{
+    width: 90%;
+    margin: 0 5%;
+    margin-top: 20px;
+}
+.right .page{
+    width: 100%;
+    margin-top: 20px;
+    text-align: right;
+}
+
+
+.ivu-table-header th{
+  background-color: rgba(253, 198, 55, 0.3);
+}
+
+.ivu-table table td{
+  background-color: rgba(253, 198, 55, 0.1);
+}
+
+.ivu-table-row-hover td {
+  background-color: rgba(253, 198, 55, 0.1)!important;
+}
+
+.ivu-btn{
+  border: 0px solid transparent;
+}
+
+/* .ivu-btn:hover{
+  background-color: #C8C8C8;
+} */
+
+.ivu-btn-primary {
+    color: #959595;
+    background-color: rgba(255,255,255,0);
+}
+
+.ivu-page-item:hover a {
+    color:rgba(253, 198, 55, 1);
+    border-color: #C8C8C8;
+}
+
+.ivu-page-item:hover{
+    border-color: #C8C8C8;
+}
+
+/* .ivu-page-item a {
+    color: #C8C8C8;
+    border-color: #C8C8C8;
+} */
+
+.ivu-page-item-active {
+    border-color: #FDC637;
+}
+.ivu-page-item-active a, .ivu-page-item-active:hover a{
+    border-color: #FDC637;
 }

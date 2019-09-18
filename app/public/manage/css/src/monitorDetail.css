@@ -60,13 +60,15 @@
     width: 90%;
     margin-top: 20px;
     margin-left: 5%;
-}
-.right .monitorDetailView .opts{
-    width: 400px;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+}
+.right .monitorDetailView .opts{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content:flex-end;
 }
 .right .monitorDetailView .opts .time{
     color: #FFC837;
@@ -78,13 +80,13 @@
     letter-spacing: 2px;
 }
 .right .monitorDetailView .monitorDetail{
-    width: 100%;
+    width: 80%;
     height: auto;
     text-align: center;
     margin-top: 60px;
 }
 .right .monitorDetailView .monitorDetail img{
-    width: 1000px;
+    width: 90%;
     height: 600px;
     border-radius: 40px;
 }

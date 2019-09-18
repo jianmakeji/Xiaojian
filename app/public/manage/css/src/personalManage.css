@@ -34,9 +34,10 @@
 /* ****************人员管理内容*************** */
 .right .personalList{
     width: 90%;
-    height: auto;
+    height: 600px;
     margin: 0 5%;
     margin-top: 30px;
+    overflow-y: auto;
 }
 .right .personalList .personalItem{
     height: 300px;
@@ -82,4 +83,21 @@
 .right .personalList .personalItem .teacherInfoView .deleteBtn{
     border-color: #FFC837;
     background: #FFC837;
+}
+
+/* 设置滚动条的样式 */
+.personalList::-webkit-scrollbar {
+width:6px;
+background-color: #fff;
+}
+
+/* 滚动槽 */
+.personalList::-webkit-scrollbar-track {
+border-radius:10px;
+}
+
+/* 滚动条滑块 */
+.personalList::-webkit-scrollbar-thumb {
+border-radius:5px;
+background:#FFC837;
 }

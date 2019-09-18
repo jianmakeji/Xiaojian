@@ -52,7 +52,7 @@
             <row>
                 <i-col :xs="24" :sm="8" :md="6" :lg="6" v-for="(item,index) in courseData">
                     <li class="courseItem">
-                        <img class="courseImg" :src="item.courseThumbB">
+                        <img class="courseImg" :src="item.courseThumbB" @click="editCourse(item.Id)">
                         <p class="courseName" v-text="'课程名称:' + item.courseName"></p>
                         <div class="opts">
                             <i-button class="editCourse" type="warning" @click="editCourse(item.Id)">查看</i-button>

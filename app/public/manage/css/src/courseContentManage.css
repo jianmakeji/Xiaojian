@@ -57,7 +57,7 @@
     margin-left: 5%;
 }
 .right .courseList .courseItem{
-    height: 250px;
+    height: 240px;
     list-style: none;
     display: flex;
     flex-direction: column;

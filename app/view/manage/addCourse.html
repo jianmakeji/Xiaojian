@@ -30,7 +30,7 @@
     <!-- 添加课程 -->
     <p class="title">添加课程</p>
 
-    <div class="formView">
+    <div class="formView" :style="formStyle">
         <i-form :label-width="130" ref="formItem" :model="formItem">
             <p v-text="{{course.Id}}"></p>
                 <form-item label="课程名称">
