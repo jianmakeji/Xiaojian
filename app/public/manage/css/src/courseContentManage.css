@@ -96,3 +96,14 @@
     margin-top: 10px;
     text-align: right;
 }
+
+.ivu-select-item:hover{
+  background-color: #FFC837;
+}
+
+.ivu-select-item-selected, .ivu-select-item-selected:hover {
+    color: #999999;
+}
+.ivu-select-item-focus {
+    background: #FFC837;
+}
