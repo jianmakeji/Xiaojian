@@ -173,6 +173,10 @@
     background-color: rgba(255,255,255,0);
 }
 
+.ivu-select-item:hover{
+  background-color: #FFC837;
+}
+
 .ivu-page-item:hover a {
     color:rgba(253, 198, 55, 1);
     border-color: #C8C8C8;
@@ -192,4 +196,11 @@
 }
 .ivu-page-item-active a, .ivu-page-item-active:hover a{
     border-color: #FDC637;
+}
+
+.ivu-select-item-selected, .ivu-select-item-selected:hover {
+    color: #999999;
+}
+.ivu-select-item-focus {
+    background: #FFC837;
 }
