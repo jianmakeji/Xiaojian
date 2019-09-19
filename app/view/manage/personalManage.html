@@ -55,9 +55,9 @@
 
     <!-- 人员管理内容 -->
     <div class="personalList">
-        <ul class="personalListUL">
+        <ul class="personalListUL" v-show="manageUserDataSourse.length">
             <row>
-                <i-col :xs="24" :sm="12" :md="8" :lg="8" v-for="(item,index) in userDataSourse">
+                <i-col :xs="24" :sm="12" :md="8" :lg="8" v-for="(item,index) in manageUserDataSourse">
                     <li class="personalItem">
                         <img class="teacherImg" :src="item.headicon ? item.headicon : '../public/images/user_default.png'" alt="">
                         <div class="teacherInfoView">
@@ -67,8 +67,68 @@
                                 <label class="name" v-text="'工号：' + item.idNum"></label>
                                 <label class="name" v-if="item.gender == 1" v-text="'性别：男'"></label>
                                 <label class="name" v-else v-text="'性别：女'"></label>
-                                <label class="name" v-if="item.jobTitle == 1" v-text="'职务：店长'"></label>
-                                <label class="name" v-else v-text="'职务：老师'"></label>
+                                <div class="manageJobView">
+                                    <label class="name" v-text="'职务：店长'"></label>
+                                    <img src="../public/images/royal.png" alt="">
+                                </div>
+                            </div>
+                            <div class="opts">
+                                <i-button class="editBtn" @click="editStoreUser(item.Id)" type="warning">编辑</i-button>
+                                <!-- <i-button>查看</i-button> -->
+                                <poptip
+                                    confirm
+                                    title="确定删除该用户?"
+                                    @on-ok="deleteStoreUser(item.Id)">
+                                    <i-button class="deleteBtn" type="warning">删除</i-button>
+                                </poptip>
+                            </div>
+                        </div>
+                    </li>
+                <i-col>
+            </row>
+        </ul>
+        <ul class="personalListUL" v-show="teacherUserDataSourse.length">
+            <row>
+                <i-col :xs="24" :sm="12" :md="8" :lg="8" v-for="(item,index) in teacherUserDataSourse">
+                    <li class="personalItem">
+                        <img class="teacherImg" :src="item.headicon ? item.headicon : '../public/images/user_default.png'" alt="">
+                        <div class="teacherInfoView">
+                            <div class="teacherInfo">
+                                <label class="name" v-text="'姓名：' + item.realname"></label>
+                                <label class="name" v-text="'年龄：' + item.age"></label>
+                                <label class="name" v-text="'工号：' + item.idNum"></label>
+                                <label class="name" v-if="item.gender == 1" v-text="'性别：男'"></label>
+                                <label class="name" v-else v-text="'性别：女'"></label>
+                                <label class="name" v-text="'职务：老师'"></label>
+                            </div>
+                            <div class="opts">
+                                <i-button class="editBtn" @click="editStoreUser(item.Id)" type="warning">编辑</i-button>
+                                <!-- <i-button>查看</i-button> -->
+                                <poptip
+                                    confirm
+                                    title="确定删除该用户?"
+                                    @on-ok="deleteStoreUser(item.Id)">
+                                    <i-button class="deleteBtn" type="warning">删除</i-button>
+                                </poptip>
+                            </div>
+                        </div>
+                    </li>
+                <i-col>
+            </row>
+        </ul>
+        <ul class="personalListUL" v-show="nurseryUserDataSourse.length">
+            <row>
+                <i-col :xs="24" :sm="12" :md="8" :lg="8" v-for="(item,index) in nurseryUserDataSourse">
+                    <li class="personalItem">
+                        <img class="teacherImg" :src="item.headicon ? item.headicon : '../public/images/user_default.png'" alt="">
+                        <div class="teacherInfoView">
+                            <div class="teacherInfo">
+                                <label class="name" v-text="'姓名：' + item.realname"></label>
+                                <label class="name" v-text="'年龄：' + item.age"></label>
+                                <label class="name" v-text="'工号：' + item.idNum"></label>
+                                <label class="name" v-if="item.gender == 1" v-text="'性别：男'"></label>
+                                <label class="name" v-else v-text="'性别：女'"></label>
+                                <label class="name" v-text="'职务：保育员'"></label>
                             </div>
                             <div class="opts">
                                 <i-button class="editBtn" @click="editStoreUser(item.Id)" type="warning">编辑</i-button>

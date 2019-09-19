@@ -98,7 +98,8 @@
 /* 用户基础信息 */
 .editStoreUserView .storeUserInfoView .userInfo{
     width: 250px;
-    height: 370px;
+    height: 312px;
+    margin-top: -17px;
     display: flex;
     flex-direction: column;
     align-items:center;

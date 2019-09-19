@@ -68,7 +68,7 @@
 /* 当天课程列表 */
 .container .scheduleView{
     width: 90%;
-    margin: 40px auto;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -237,4 +237,23 @@
 .courseVideo{
     margin-top: 30px;
     width: 100%;
+}
+/*
+.footerView{
+    width: 100%;
+    height: 13px;
+    text-align: center;
+}
+.footerView .footerImg{
+    width: auto;
+    height: 13px;
+    position: relative;
+    margin-left: 0px;
+} */
+.footerImg{
+    position: absolute;
+    width: auto;
+    height: 13px;
+    margin-left: 366px;
+    bottom: 10px;
 }

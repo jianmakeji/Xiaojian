@@ -8,6 +8,7 @@ var index = new Vue({
                 courseType:"0",
             },
             courseTypeArr:["全部","基础课程","辅导课程","运动课程"],
+            courseTypeNum:0,
             courseTypeData:config.globalData.courseTypeData,
 
             searchItem:{
@@ -59,7 +60,9 @@ var index = new Vue({
         },
         courseTypeChange(courseTypeId){
             let that = this;
+            this.courseTypeNum = courseTypeId;
             this.searchItem.courseName = "";
+            this.formItem.offset = 0;
             this.$Loading.start();
             this.formItem.courseType = courseTypeId;
             $.ajax({

@@ -66,7 +66,7 @@ var config = {
         // 周几
         dateData:["周一","周二",'周三','周四','周五','周六','周日'],
         dayData:["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21",'22',"23","24","25","26","27","28","29","30","31"],
-        
+
         // 监控区域
         monitorArea:["A区","B区","C区","D区"],
     },
@@ -79,11 +79,12 @@ var config = {
         deleteUserById:"/manage/user/:userId",
         // courseManage
         listAllCourseByType:'/manage/course/listAllCourseByType',
-        listCourseByDate:'/manage/courseChoose/listCourseByDate',
+        // listCourseByDate:'/manage/courseChoose/listCourseByDate',
         createCourseChoose:'/manage/courseChoose/createCourseChoose',
         updateCourseByDate:'/manage/courseChoose/updateCourseByDate',
 
         // courseContentManage
+        listCourseByCourseType:"/manage/course/listCourseByCourseType",
         getCourseByCourseSubType:"/manage/course",
         searchByCourseName:'/manage/course/searchByCourseName',
         // 课程上传

@@ -267,6 +267,7 @@ var index = new Vue({
             // 清除基础课程，辅助课程active状态
             this.mainCourseFocus = "";
             this.sportCourseFocus = "";
+            this.teacherFocus = "";
 
             this.mainModelActive = false;
             this.sportModelActive = false;

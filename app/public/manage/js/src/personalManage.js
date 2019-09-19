@@ -2,9 +2,12 @@ var index = new Vue({
     el:".index",
     data(){
         return{
-            shopId:"1",
+            shopId:"",
             stopData:config.globalData.storeData,
             userDataSourse:[],
+            manageUserDataSourse:[],
+            teacherUserDataSourse:[],
+            nurseryUserDataSourse:[],
             searchPersonalValue:""
         }
     },
@@ -16,7 +19,7 @@ var index = new Vue({
                 url: config.ajaxUrls.getUserByShopIdOrRealname,
                 type: 'GET',
                 data: {
-                    limit:9,
+                    limit:100,
                     offset:0,
                     shopId:this.shopId,
                     realname:this.searchPersonalValue
@@ -26,10 +29,21 @@ var index = new Vue({
                 if(res.status == 200){
                     that.$Loading.finish();
                     if (res.data.rows.length) {
-                        that.userDataSourse = res.data.rows;
+                        for (let i = 0; i < res.data.rows.length; i++) {
+                            switch (res.data.rows[i].jobTitle) {
+                                case 1:
+                                    that.manageUserDataSourse.push(res.data.rows[i]);
+                                    break;
+                                case 2:
+                                    that.teacherUserDataSourse.push(res.data.rows[i]);
+                                    break;
+                                case 5:
+                                    that.nurseryUserDataSourse.push(res.data.rows[i]);
+                                    break;
+                            }
+                        }
                     } else {
                         that.$Message.warning("无更多数据");
-                        that.userDataSourse = res.data.rows;
                     }
                 }else{
                     that.$Loading.error();
