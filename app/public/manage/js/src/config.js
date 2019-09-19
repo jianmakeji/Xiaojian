@@ -22,7 +22,7 @@ var config = {
             {value: '2',label: '长沙市望城店'},
             {value: '3',label: '长沙市五一店'},
             {value: '4',label: '长沙市芙蓉店'},
-            {value: '4',label: '长沙市雨花店'}
+            {value: '5',label: '长沙市雨花店'}
         ],
         // 年份
         yearData:[
