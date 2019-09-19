@@ -167,13 +167,16 @@
     <!-- 辅助选课右侧弹出框 -->
     <div class="sportCourseModel" :class="{active:sportModelActive}">
         <icon class="closeIcon" size="30" type="ios-arrow-forward" @click="closeModel" :class="{active:sportModelActive}"></icon>
-        <p class="sportCourseTitle">运动课程选课中心</p>
+        <div class="otherCourseTitle">
+            <p class="sportCourseTitle" :class="{active:otherOrSportId == 2 ? true : false}" @click="otherCourseChange(2)">辅助课程选课中心</p>
+            <p class="sportCourseTitle" :class="{active:otherOrSportId == 3 ? true : false}" @click="otherCourseChange(3)">运动课程选课中心</p>
+        </div>
         <i-input class="sportCourseSearch" v-model="searchSportCourseValue" placeholder="搜索" search @on-search="searchSportCourseEvent"></i-input>
         <div class="sportCourseTypes">
             <div class="all" :class="{active:subTypeSportAllIsActive}" @click="sportCourseSubTypeChange(0)">全部</div>
-            <div class="commonsense" :class="{active:subTypeCommonsenseIsActive}" @click="sportCourseSubTypeChange(3)">铛铛带你学常识</div>
-            <div class="art" :class="{active:subTypeArtIsActive}" @click="sportCourseSubTypeChange(4)">铛铛美术世界</div>
-            <div class="basketball" :class="{active:subTypeBasketballIsActive}" @click="sportCourseSubTypeChange(5)">铛铛带你一起运动</div>
+            <div class="commonsense" :class="{active:subTypeCommonsenseIsActive}" v-show="otherOrSportId == 2" @click="sportCourseSubTypeChange(3)">铛铛带你学常识</div>
+            <div class="art" :class="{active:subTypeArtIsActive}" v-show="otherOrSportId == 2" @click="sportCourseSubTypeChange(4)">铛铛美术世界</div>
+            <div class="basketball" :class="{active:subTypeBasketballIsActive}" v-show="otherOrSportId == 3" @click="sportCourseSubTypeChange(5)">铛铛带你一起运动</div>
         </div>
         <div class="sportCourseResultList">
             <div class="sportCourseItem" v-for="(item,index) in sportCourseDate">

@@ -4,7 +4,7 @@ var config = {
         courseTypeData:[
             {value: '0',label: '全部'},
             {value: '1',label: '基础课程'},
-            {value: '2',label: '辅导课程'},
+            {value: '2',label: '辅助课程'},
             {value: '3',label: '运动课程'}
         ],
         // 课程类别

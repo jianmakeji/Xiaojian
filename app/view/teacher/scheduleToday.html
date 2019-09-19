@@ -85,7 +85,11 @@
 				</div>
             </div>
 			<div v-else class="checkOkView" style="min-height:600px;">
-				<p class="checkOkText" v-text="'本课程应到13人，实到'+ studentGroup.length +'人'"></p>
+				<p class="checkOkText">本课程应到</p>
+				<p class="peopleNum" v-text="studentData.length"></p>
+				<p class="checkOkText">人，实到</p>
+				<p class="peopleNum" v-text="studentGroup.length"></p>
+				<p class="checkOkText">人</p>
 			</div>
         </modal>
         <!-- 学生点名弹框 end -->

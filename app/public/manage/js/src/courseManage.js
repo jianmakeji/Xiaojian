@@ -101,6 +101,8 @@ var index = new Vue({
             mainCourseDate:[],
             dateInfo:"",            //记录是那个课程点击的选课弹出层
             // 次要课程数据
+            otherOrSportFlag:true,
+            otherOrSportId:2,
             // 运动课程数据
             sportCourseFocus:"",
             sportSubTypeId:"",
@@ -402,13 +404,10 @@ var index = new Vue({
 
         // ******************************************************************
         // 次要课程事件
-        // ******************************************************************
-
-        // ******************************************************************
         // 运动课程事件
         // ******************************************************************
 
-        getSportCourseData(courseSubTypeId,courseName){
+        getSportCourseData(courseType,courseSubTypeId,courseName){
             let that = this;
             this.$Loading.start();
             $.ajax({
@@ -416,7 +415,7 @@ var index = new Vue({
                 type: 'GET',
                 data: {
                     courseName:courseName,
-                    courseType:"2,3",
+                    courseType:courseType,
                     courseSubType:courseSubTypeId
                 }
             })
@@ -454,11 +453,15 @@ var index = new Vue({
                 day = "0" + day.toString();
             }
             this.dateInfo = year + "-" + month + "-" + day + "#" + time;
-            // 获取基础课程数据
-            this.getSportCourseData(this.sportSubTypeId,this.searchSportCourseValue);
+            // 获取辅助课程数据
+            this.getSportCourseData(this.otherOrSportId,this.sportSubTypeId,this.searchSportCourseValue);
         },
         searchSportCourseEvent(){
-            this.getSportCourseData(this.sportSubTypeId,this.searchSportCourseValue);
+            this.getSportCourseData(this.otherOrSportId,this.sportSubTypeId,this.searchSportCourseValue);
+        },
+        otherCourseChange(courseTypeId){
+            this.otherOrSportId = courseTypeId;
+            this.sportCourseSubTypeChange(0);
         },
         // 筛选基础课程的子类别
         sportCourseSubTypeChange(courseSubTypeId){
@@ -492,7 +495,7 @@ var index = new Vue({
                     return
             }
             // 获取基础课程数据
-            this.getSportCourseData(this.sportSubTypeId,this.searchSportCourseValue);
+            this.getSportCourseData(this.otherOrSportId,this.sportSubTypeId,this.searchSportCourseValue);
         },
         chooseTheSportCourse(index){
             let indexData = this.sportCourseDate[index];

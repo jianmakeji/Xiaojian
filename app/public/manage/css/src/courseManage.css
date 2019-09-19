@@ -404,6 +404,7 @@
     transition: right 1s;
     overflow: auto;
 }
+
 .sportCourseModel.active{
     width: 500px;
     height: 93vh;
@@ -440,16 +441,38 @@
     height: 45px;
     line-height: 45px;
 }
+.sportCourseModel .otherCourseTitle{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 .sportCourseModel .sportCourseTitle{
+    width: 50%;
+    text-align: center;
     height: 40px;
     line-height: 40px;
     font-size: 20px;
     font-weight: bold;
     color: #656565;
     letter-spacing: 1px;
+    cursor: pointer;
+}
+.sportCourseModel .sportCourseTitle.active{
+    width: 50%;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    background: #ffc837;
+    letter-spacing: 1px;
+    cursor: pointer;
 }
 .sportCourseModel .sportCourseSearch{
     width: 80%;
+    margin-top: 10px;
 }
 .sportCourseModel .sportCourseTypes{
     width: 100%;
@@ -677,18 +700,27 @@
 
 
 /* 设置滚动条的样式 */
-.courseContainer ::-webkit-scrollbar {
+.courseContainer ::-webkit-scrollbar,
+.teacherCourseModel::-webkit-scrollbar,
+.mainCourseModel::-webkit-scrollbar,
+.sportCourseModel::-webkit-scrollbar {
     width:6px;
     background-color: #fff;
 }
 
 /* 滚动槽 */
-.courseContainer ::-webkit-scrollbar-track {
+.courseContainer ::-webkit-scrollbar-track,
+.teacherCourseModel::-webkit-scrollbar-track,
+.mainCourseModel::-webkit-scrollbar-track,
+.sportCourseModel::-webkit-scrollbar-track {
     border-radius:10px;
 }
 
 /* 滚动条滑块 */
-.courseContainer ::-webkit-scrollbar-thumb {
+.courseContainer ::-webkit-scrollbar-thumb,
+.teacherCourseModel::-webkit-scrollbar-thumb,
+.mainCourseModel::-webkit-scrollbar-thumb,
+.sportCourseModel::-webkit-scrollbar-thumb  {
     border-radius:5px;
     background:#FFC837;
 }

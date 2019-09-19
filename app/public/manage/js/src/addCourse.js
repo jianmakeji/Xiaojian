@@ -38,7 +38,7 @@ var index = new Vue({
                 },
                 {
                     value:"2",
-                    label:"辅导课程",
+                    label:"辅助课程",
                     children: [
                         {
                             value: '3',

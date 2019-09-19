@@ -7,7 +7,7 @@ var index = new Vue({
                 offset:0,
                 courseType:0,
             },
-            courseTypeArr:["全部","基础课程","辅导课程","运动课程"],
+            courseTypeArr:["全部","基础课程","辅助课程","运动课程"],
             courseTypeNum:0,
             courseTypeData:config.globalData.courseTypeData,
 
