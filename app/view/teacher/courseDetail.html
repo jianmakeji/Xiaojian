@@ -41,13 +41,13 @@
     <!-- 课程视频详情 -->
     <div class="courseDetail">
         <div class="leftVideoDetail">
-            <p class="title" v-text="'课程名称：《' + courseName + '》'"></p>
+            <p class="title" v-text="'课程名称：' + courseName + ''"></p>
             <video class="video" :src="videoAddress?videoAddress:''" controls autoplay >
 
             </video>
         </div>
         <div class="rightInfoDetail">
-            <p class="title" v-text="'课程名称：《' + courseName + '》'"></p>
+            <p class="title" v-text="'课程名称：' + courseName + ''"></p>
             <div class="courseInfoDetial">
                 <p class="desTitle">课程简介：</p>
                 <span class="des" v-text="courseAbstract"></span>
