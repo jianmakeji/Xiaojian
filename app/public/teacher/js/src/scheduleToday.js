@@ -46,7 +46,7 @@ var index = new Vue({
             let that = this;
             setTimeout(function(){
                 that.studentListModal = false;
-            },200000);
+            },2000);
         }
     },
     created(){
