@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 .right .courseDetail .leftVideoDetail{
     width: 70%;
@@ -24,7 +24,7 @@
     height: 600px;
 }
 .right .courseDetail .rightInfoDetail{
-    width: 30%;
+    width: 20%;
     height: 600px;
     margin-top: 50px;
     display: flex;
