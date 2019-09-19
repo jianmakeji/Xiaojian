@@ -39,6 +39,9 @@
     margin-top: 30px;
     overflow-y: auto;
 }
+.right .personalList .personalListUL{
+    border-bottom: dashed 1px #e8eaec;
+}
 .right .personalList .personalItem{
     height: 300px;
     list-style: none;
@@ -67,6 +70,17 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
+}
+.right .personalList .personalItem .teacherInfo .manageJobView{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right .personalList .personalItem .teacherInfo .manageJobView img{
+    width: 20px;
+    height: 16px;
+    margin-left: 5px;
 }
 .right .personalList .personalItem .teacherInfo label{
     color: #999999;

@@ -14,7 +14,8 @@ var index = new Vue({
                 jobTitle:""
             },
             progressPercent:0,
-            storeData:config.globalData.storeData,
+            shopId:"",
+            shopData:config.globalData.storeData,
             userId:"0",
             isEdit:false
         }
@@ -28,6 +29,7 @@ var index = new Vue({
             })
             .done(function(res) {
                 if(res.status == 200){
+                    console.log(res);
                     that.$Loading.finish();
                     that.formItem.shopId = res.data.shopId.toString();
                     that.formItem.username = res.data.username;
@@ -37,7 +39,7 @@ var index = new Vue({
                     that.formItem.age = res.data.age;
                     that.formItem.idNum = res.data.idNum;
                     that.formItem.gender = res.data.gender.toString();
-                    that.formItem.jobTitle = res.data.roles[0].Id.toString();
+                    that.formItem.jobTitle = res.data.jobTitle.toString();
                 }else{
                     that.$Loading.error();
                     that.$Message.error(res.data.message);
@@ -67,6 +69,10 @@ var index = new Vue({
         },
         storeChange(){
 
+        },
+        shopChange(shopId){
+            this.shopId = shopId;
+            localStorage.setItem("shopId",shopId);
         },
         submitEditStoreUserInfo(){
             let that = this;
@@ -161,6 +167,7 @@ var index = new Vue({
         }
     },
     created(){
+        this.shopId = localStorage.getItem("shopId");
         this.userId = window.location.search.split("userId=")[1];
         if (this.userId != "0") {
             this.isEdit = true;

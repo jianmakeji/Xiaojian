@@ -205,3 +205,13 @@
 .ivu-select-item-focus {
     background: #FFC837;
 }
+
+.ivu-radio-checked .ivu-radio-inner{
+    border-color:#FFC837;
+}
+.ivu-radio-checked:hover .ivu-radio-inner {
+    border-color:#FFC837;
+}
+.ivu-radio-inner:after{
+    background-color:#FFC837;
+}

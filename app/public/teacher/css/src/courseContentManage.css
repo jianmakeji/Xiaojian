@@ -27,16 +27,22 @@
     align-items: center;
     justify-content: space-between;
 }
-.right .filtrMenu .filtrLeft .storeInfo{
+.right .filtrMenu .filtrLeft .courseType{
+    width: 350px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
-.right .filtrMenu .filtrLeft .storeInfo label{
-    font-size: 15px;
-    margin-right: 10px;
-    letter-spacing: 1px;
+.right .filtrMenu .filtrLeft .courseType .courseTypeBtn.active{
+    color: #fff;
+    border: solid 1px #ffc837;
+    background: #FFC837;
+}
+.right .filtrMenu .filtrLeft .courseType .courseTypeBtn{
+    color: #989898;
+    background: #fff;
+    border: solid 1px #ffc837;
 }
 /* 人员查找 */
 .right .filtrMenu .filtrLeft .userSearch{
@@ -65,7 +71,6 @@
     width: 240px;
     height: 150px;
     border-radius: 10px;
-    border: solid 1px #FFC837;
     cursor: pointer;
 }
 .right .courseList .courseItem .courseName{
