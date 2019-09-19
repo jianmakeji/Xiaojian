@@ -29,7 +29,6 @@ var index = new Vue({
             })
             .done(function(res) {
                 if(res.status == 200){
-                    console.log(res);
                     that.$Loading.finish();
                     that.formItem.shopId = res.data.shopId.toString();
                     that.formItem.username = res.data.username;
@@ -77,59 +76,62 @@ var index = new Vue({
         submitEditStoreUserInfo(){
             let that = this;
             this.$Loading.start();
-            if (this.userId != "0") {  //修改
-                $.ajax({
-                    url: config.ajaxUrls.updateUserInfoById.replace(":userId",this.userId),
-                    type: 'PUT',
-                    data: this.formItem
-                })
-                .done(function(res) {
-                    if(res.status == 200){
-                        that.$Loading.finish();
-                        that.$Message.success({
-                            content:res.data,
-                            duration:2,
-                            onClose(){
-                                window.location.href = "/manage/personalManage";
-                            }
-                        });
-                    }else{
-                        that.$Loading.error();
-                        that.$Message.error(res.data);
-                    }
-                })
-                .fail(function(err) {
-                    that.$Loading.error();
-                    that.$Message.error(err.data);
-                });
+            if (this.formItem.username == "" || this.formItem.headicon == "" || this.formItem.realname == "" || this.formItem.age == "" || this.formItem.idNum == "" || this.formItem.gender == "" || this.formItem.jobTitle == "" ) {
+                this.$Message.error("请填写完整信息！");
+                this.$Loading.error();
             } else {
-                $.ajax({
-                    url: config.ajaxUrls.createTeacher,
-                    type: 'POST',
-                    data: this.formItem
-                })
-                .done(function(res) {
-                    if(res.status == 200){
-                        that.$Loading.finish();
-                        that.$Message.success({
-                            content:res.data,
-                            duration:2,
-                            onClose(){
-                                window.location.href = "/manage/personalManage";
-                            }
-                        });
-                    }else{
+                if (this.userId != "0") {  //修改
+                    $.ajax({
+                        url: config.ajaxUrls.updateUserInfoById.replace(":userId",this.userId),
+                        type: 'PUT',
+                        data: this.formItem
+                    })
+                    .done(function(res) {
+                        if(res.status == 200){
+                            that.$Loading.finish();
+                            that.$Message.success({
+                                content:res.data,
+                                duration:2,
+                                onClose(){
+                                    window.location.href = "/manage/personalManage";
+                                }
+                            });
+                        }else{
+                            that.$Loading.error();
+                            that.$Message.error(res.data);
+                        }
+                    })
+                    .fail(function(err) {
                         that.$Loading.error();
-                        that.$Message.error(res.data);
-                    }
-                })
-                .fail(function(err) {
-                    that.$Loading.error();
-                    that.$Message.error(err.data);
-                });
+                        that.$Message.error(err.data);
+                    });
+                } else {
+                    $.ajax({
+                        url: config.ajaxUrls.createTeacher,
+                        type: 'POST',
+                        data: this.formItem
+                    })
+                    .done(function(res) {
+                        if(res.status == 200){
+                            that.$Loading.finish();
+                            that.$Message.success({
+                                content:res.data,
+                                duration:2,
+                                onClose(){
+                                    window.location.href = "/manage/personalManage";
+                                }
+                            });
+                        }else{
+                            that.$Loading.error();
+                            that.$Message.error(res.data);
+                        }
+                    })
+                    .fail(function(err) {
+                        that.$Loading.error();
+                        that.$Message.error(err.data);
+                    });
+                }
             }
-
-
         },
         cancelEditStoreUserInfo(){
             window.location = document.referrer;
