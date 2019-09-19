@@ -69,7 +69,7 @@
         <!-- 学生点名弹框 -->
         <modal class="studentModal" v-model="studentListModal" footer-hide :mask-closable="false" :closable="false" :mask="false" width="1300">
 			<icon class="closeIcon" size="20" type="md-close-circle" @click="closeModel"></icon>
-			<img src="../public/images/popLayer.png" style="position: absolute;width: 1260px;height: 600px;">
+			<img src="../public/images/popLayer.png" style="position: absolute;width: 1260px;height: 700px;">
 			<div class="studentListView" v-if="!CheckIsOk">
                 <p class="title">学生名单</p>
                 <checkbox-group v-model="studentGroup">
