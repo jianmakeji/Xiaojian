@@ -231,9 +231,9 @@ class UsersController extends BaseController{
       const ctx = this.ctx;
       const shopId = ctx.query.shopId;
       const realname = ctx.query.realname;
-      
+
       try{
-        let data = await ctx.service.user.getUserByRole(shopId,realname,2);
+        let data = await ctx.service.user.getUserByRole(shopId,realname,"1,2");
         super.success(data);
       }
       catch(e){
