@@ -35,7 +35,7 @@ var index = new Vue({
                 this.username = '邓颖';
                 break;
             case "3":
-                this.username = '沈明霞';
+                this.username = '陆超';
                 break;
             default:
 
