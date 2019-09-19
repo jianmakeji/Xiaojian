@@ -220,8 +220,8 @@ module.exports = app => {
           model: app.model.Role,
           as: 'roles',
           where:{
-            Id = {
-              [app.Sequelize.Op.in]:roleId.split(',')
+            Id : {
+              [app.Sequelize.Op.in]: roleId.split(',')
             }
           }
         }
