@@ -31,11 +31,6 @@ module.exports = app => {
       allowNull: false,
       defaultValue: ''
     },
-    courseThumbA: {
-      type: STRING(64),
-      allowNull: false,
-      defaultValue: ''
-    },
     courseThumbB: {
       type: STRING(64),
       allowNull: false,
