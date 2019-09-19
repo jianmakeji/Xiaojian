@@ -38,11 +38,11 @@
             <div class="courseList">
                 <div class="mainCourse">
                     <img :src="mainCourseInfo.courseThumbB" @click="tapCourseA">
-                    <p v-text="'《' + mainCourseInfo.courseName + '》'" @click="tapCourseA"></p>
+                    <p v-text="mainCourseInfo.courseName" @click="tapCourseA"></p>
                 </div>
                 <div class="otherCourse">
                     <img :src="otherCourseInfo.courseThumbB"  @click="tapCourseB">
-                    <p v-text="'《' + otherCourseInfo.courseName + '》'"  @click="tapCourseB"></p>
+                    <p v-text="otherCourseInfo.courseName"  @click="tapCourseB"></p>
                 </div>
             </div>
             <div style="text-align:right;width: 80%;z-index: 2;">

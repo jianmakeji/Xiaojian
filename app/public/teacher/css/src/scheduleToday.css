@@ -32,14 +32,8 @@
     margin-left: 80px;
 }
 .container .headMenu .leftTabs .tabsBtn{
-    font-size: 17px;
-    color: #656565;
-    border-bottom: none;
-}
-.container .headMenu .leftTabs .tabsBtn.active{
-    font-size: 17px;
-    color: #FFC837;
-    border-bottom: solid;
+    border:solid 1px #FFC837;
+    background: #FFC837;
 }
 .container .headMenu .rightUserInfo{
     margin-right: 10px;
