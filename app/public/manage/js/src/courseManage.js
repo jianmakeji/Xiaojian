@@ -399,7 +399,6 @@ var index = new Vue({
             this.dataSourse[weekIndex][timeIndex].courseThumbA = "";
             this.dataSourse[weekIndex][timeIndex].courseTitleA = "";
             this.$forceUpdate();
-            console.log(this.dataSourse[weekIndex][timeIndex]);
         },
         // 搜索基础课程筛选
         searchMainCourseEvent(){
