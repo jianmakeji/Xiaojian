@@ -47,8 +47,9 @@
 .right .filtrMenu .filtrRight .editBtn,
 .right .filtrMenu .filtrRight .saveBtn,
 .right .filtrMenu .filtrRight .uploadBtn{
-    color: #fff;
-    background:  #FFC837;
+    color: #989898;
+    border: solid 1px #FFC837;
+    background: #fff;
 }
 /* *************** 课程详情 **************** */
 .right .box{
@@ -182,6 +183,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    position: relative;
+}
+.right .courseContainer .courseView .weekDay .courseTime:hover,
+.right .courseContainer .courseView .weekDay .courseTime.active{
+    border: solid 1px #ffc837;
 }
 .right .courseContainer .courseView .weekDay .courseTime .mainCourse,
 .right .courseContainer .courseView .weekDay .courseTime .otherCourse{
@@ -192,6 +198,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    position: relative;
 }
 .right .courseContainer .courseView .weekDay .courseTime .mainCourse img,
 .right .courseContainer .courseView .weekDay .courseTime .otherCourse img{
@@ -200,14 +207,13 @@
     border-radius: 3px;
     cursor: pointer;
 }
-/* .right .courseContainer .courseView .weekDay .courseTime .otherCourse{
-    width: 100%;
-    height: 20px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-} */
+.right .courseContainer .courseView .weekDay .courseTime .mainCourse .courseCloseIcon,
+.right .courseContainer .courseView .weekDay .courseTime .otherCourse .courseCloseIcon{
+    position: absolute;
+    margin-top: 0px;
+    margin-left: 65px;
+    cursor: pointer;
+}
 .right .courseContainer .courseView .weekDay .courseTime .mainCourse span,
 .right .courseContainer .courseView .weekDay .courseTime .otherCourse span{
     width: 90%;
@@ -219,22 +225,34 @@
     cursor: pointer;
 }
 .right .courseContainer .courseView .weekDay .courseTime .teacherName{
-    width: 100%;
+    width: 80%;
     height: 20px;
+    margin-left: -12%;
     font-size: 10px;
     font-weight: bold;
     text-align: center;
     color: #999999;
     cursor: pointer;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.right .courseContainer .courseView .weekDay .courseTime .teacherCloseIcon{
+    position: absolute;
+    margin-top: 95px;
+    margin-left: 65px;
+    cursor: pointer;
 }
 .right .courseContainer .courseView .weekDay .courseTime .teacherNameActive{
-    width: 100%;
+    width: 80%;
     height: 20px;
+    margin-left: -12%;
     font-size: 10px;
     font-weight: bold;
     text-align: center;
     color: #FFC837;
     cursor: pointer;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .right .courseContainer .courseView .weekDay .courseTime .students{
     width: 100%;
@@ -243,8 +261,9 @@
 .right .courseContainer .courseView .weekDay .courseTime .students .studentListBtn{
     height: 32px;
     margin: 0 auto;
-    color: #fff;
-    background: #FFC837;
+    color: #989898;
+    border: solid 1px #FFC837;
+    background: #fff;
 }
 
 

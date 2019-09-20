@@ -42,10 +42,10 @@
 .right .filtrMenu .filtrRight{
 
 }
-.right .filtrMenu .filtrRight .addStudent{
-    color: #fff;
-    background:  #FFC837;
-    border-color: #FFC837;
+.right .filtrMenu .filtrRight .backBtn{
+    color: #989898;
+    border: solid 1px #FFC837;
+    background: #fff;
 }
 
 /* 顶部用户基本信息 */

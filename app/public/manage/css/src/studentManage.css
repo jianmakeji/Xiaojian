@@ -39,8 +39,9 @@
     letter-spacing: 1px;
 }
 .right .filtrMenu .filtrRight .addStudent{
-    background: #FFC837;
-    border-color: #FFC837;
+    color: #989898;
+    border: solid 1px #FFC837;
+    background: #fff;
 }
 
 /* **********table数据列表************** */

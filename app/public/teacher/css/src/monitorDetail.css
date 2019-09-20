@@ -57,8 +57,9 @@
 }
 
 .right .filtrMenu .filtrRight .backBtn{
-    border-color: #FFC837;
-    background: #FFC837;
+    color: #989898;
+    border: solid 1px #FFC837;
+    background: #fff;
 }
 
 /* ****************店铺监控详情****************** */

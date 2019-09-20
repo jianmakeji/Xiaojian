@@ -5,6 +5,7 @@ var index = new Vue({
             shopId:"",
             shopData:config.globalData.storeData,
             searchValue:"",
+            nowTime:""
         }
     },
     methods:{
@@ -40,5 +41,12 @@ var index = new Vue({
         $(".menuBtns").children('.active').removeClass('active');
         $(".menuBtns").children().eq(0).addClass('active');
 
-    }
+    },
+    mounted() {
+        let that = this;
+        this.timer = setInterval(() => {
+            let date = new Date();
+            that.nowTime = date.getFullYear() + "-" + (date.getMonth() + 1) + "-"  + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+        }, 1000)
+    },
 })

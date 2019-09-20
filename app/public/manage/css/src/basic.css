@@ -64,7 +64,7 @@
 .left .backHomePage{
     width: 220px;
     height: auto;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     cursor: pointer;
 }
 /* *****************顶部菜单栏：课程管理  人员管理  信息查看****************** */
@@ -173,6 +173,10 @@
     background-color: rgba(255,255,255,0);
 }
 
+.ivu-select-item:hover{
+  background-color: #FFC837;
+}
+
 .ivu-page-item:hover a {
     color:rgba(253, 198, 55, 1);
     border-color: #C8C8C8;
@@ -181,7 +185,6 @@
 .ivu-page-item:hover{
     border-color: #C8C8C8;
 }
-
 
 /* .ivu-page-item a {
     color: #C8C8C8;
@@ -194,18 +197,12 @@
 .ivu-page-item-active a, .ivu-page-item-active:hover a{
     border-color: #FDC637;
 }
-
-.ivu-select-item:hover{
-  background-color: #FFC837;
-}
-
 .ivu-select-item-selected, .ivu-select-item-selected:hover {
     color: #999999;
 }
 .ivu-select-item-focus {
     background: #FFC837;
 }
-
 .ivu-radio-checked .ivu-radio-inner{
     border-color:#FFC837;
 }

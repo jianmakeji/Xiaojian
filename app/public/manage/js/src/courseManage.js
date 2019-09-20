@@ -394,6 +394,13 @@ var index = new Vue({
             this.mainModelActive = false;
 
         },
+        deleteMainCourse(weekIndex,timeIndex){
+            this.dataSourse[weekIndex][timeIndex].courseAId = "";
+            this.dataSourse[weekIndex][timeIndex].courseThumbA = "";
+            this.dataSourse[weekIndex][timeIndex].courseTitleA = "";
+            this.$forceUpdate();
+            console.log(this.dataSourse[weekIndex][timeIndex]);
+        },
         // 搜索基础课程筛选
         searchMainCourseEvent(){
             let that = this;
@@ -497,6 +504,12 @@ var index = new Vue({
             // 获取基础课程数据
             this.getSportCourseData(this.otherOrSportId,this.sportSubTypeId,this.searchSportCourseValue);
         },
+        deleteSportCourse(weekIndex,timeIndex){
+            this.dataSourse[weekIndex][timeIndex].courseBId = "";
+            this.dataSourse[weekIndex][timeIndex].courseThumbB = "";
+            this.dataSourse[weekIndex][timeIndex].courseTitleB = "";
+            this.$forceUpdate();
+        },
         chooseTheSportCourse(index){
             let indexData = this.sportCourseDate[index];
             let mapKeyText = this.dateInfo.split("#")[0].split("-").join("");
@@ -572,7 +585,11 @@ var index = new Vue({
 
             this.teacherModelActive = false;
         },
-
+        deleteTeacherCourse(weekIndex,timeIndex){
+            this.dataSourse[weekIndex][timeIndex].teacherId = "";
+            this.dataSourse[weekIndex][timeIndex].teacherName = "无";
+            this.$forceUpdate();
+        },
         // 查看学生名单
         checkStudentList(Id){
             window.location.href = "/manage/courseStudentList?id=" + Id;
@@ -592,7 +609,7 @@ var index = new Vue({
             for (let i = 0; i < copyDataSourse.length; i++) {
                 for (let j = 0; j < copyDataSourse[i].length; j++) {
                     let dataSourseItem = copyDataSourse[i][j];
-                    if (dataSourseItem.shopId == "" && dataSourseItem.courseNumber == "" && dataSourseItem.teacherId == "" && dataSourseItem.courseAId == "" && dataSourseItem.courseBId == "" && dataSourseItem.courseDate == "" && dataSourseItem.xclassId == "") {
+                    if (dataSourseItem.teacherId == "" && dataSourseItem.courseAId == "" && dataSourseItem.courseBId == "") {
                         copyDataSourse[i][j] = "";
                     }
                 }

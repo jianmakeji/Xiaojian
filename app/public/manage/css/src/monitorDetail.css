@@ -52,8 +52,9 @@
     letter-spacing: 1px;
 }
 .right .filtrMenu .filtrRight .back{
-    background: #FFC837;
-    border-color: #FFC837;
+    color: #989898;
+    border: solid 1px #FFC837;
+    background: #fff;
 }
 /* ****************店铺监控详情****************** */
 .right .monitorDetailView{
