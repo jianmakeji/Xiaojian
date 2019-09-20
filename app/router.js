@@ -30,7 +30,8 @@ module.exports = app => {
   router.post('/manage/courseChoose/createCourseChoose', controller.manage.courseChoose.createCourseChoose);
   router.put('/manage/courseChoose/updateCourseByDate', controller.manage.courseChoose.updateCourseByDate);
   router.get('/manage/course/listCourseByCourseType', controller.manage.course.listCourseByCourseType);
-  
+  router.get('/manage/course/listCourseByCourseSubType', controller.manage.course.listCourseByCourseSubType);
+
   router.get('/teacher/courseChoose/getCourseDataByTeacherId', controller.teacher.courseChoose.getCourseDataByTeacherId);
   router.get('/teacher/courseChoose/listCourseByDate', controller.teacher.courseChoose.listCourseByDate);
 

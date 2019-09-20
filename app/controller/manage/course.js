@@ -115,6 +115,25 @@ class CourseController extends BaseController{
     }
   }
 
+  async listCourseByCourseSubType() {
+    const ctx = this.ctx;
+    const query = {
+      limit: ctx.helper.parseInt(ctx.query.limit),
+      offset: ctx.helper.parseInt(ctx.query.offset),
+      courseName:ctx.query.courseName,
+      courseSubType:ctx.helper.parseInt(ctx.query.courseSubType),
+    };
+
+    try{
+      const result = await ctx.service.course.listCourseByCourseSubType(query);
+      super.success(result);
+    }
+    catch(e){
+      ctx.logger.error(e.message);
+      super.failure(e.message);
+    }
+  }
+
   async listCourseByCourseType() {
     const ctx = this.ctx;
     const query = {

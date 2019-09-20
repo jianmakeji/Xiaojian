@@ -74,6 +74,20 @@ class Course extends Service {
       courseSubType,
     });
   }
+
+  async listCourseByCourseSubType({
+    offset = 0,
+    limit = 10,
+    courseName = "",
+    courseSubType = 0,
+  }) {
+    return await this.ctx.model.Course.listCourseByCourseSubType({
+      offset,
+      limit,
+      courseName,
+      courseSubType,
+    });
+  }
 }
 
 module.exports = Course;
