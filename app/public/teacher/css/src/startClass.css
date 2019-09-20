@@ -83,7 +83,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
 .container .courseList .mainCourse,
 .container .courseList .otherCourse{
@@ -97,7 +97,7 @@
 }
 .container .courseList .mainCourse img,
 .container .courseList .otherCourse img{
-    width: 600px;
+    width: 450px;
     height: 350px;
     display: flex;
     flex-direction: column;
@@ -125,5 +125,5 @@
     position: absolute;
     bottom: 0px;
     width: 100%;
-    height: 260px;
+    height: auto;
 }
