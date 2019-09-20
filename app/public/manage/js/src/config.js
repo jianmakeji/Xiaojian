@@ -76,11 +76,11 @@ var config = {
         listCourseByDate:'/manage/courseChoose/listCourseByDate',
         createCourseChoose:'/manage/courseChoose/createCourseChoose',
         updateCourseByDate:'/manage/courseChoose/updateCourseByDate',
-
         // courseContentManage
         getCourseByCourseSubType:"/manage/course",
         listCourseByCourseType:"/manage/course/listCourseByCourseType",
         searchByCourseName:'/manage/course/searchByCourseName',
+        listCourseByCourseSubType:'/manage/course/listCourseByCourseSubType',
         // 课程上传
         getCourseByCourseId:"/manage/course/:courseId",
         updateCourseByCourseId:"/manage/course/:courseId",

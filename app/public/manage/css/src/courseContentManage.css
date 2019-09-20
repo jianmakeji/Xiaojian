@@ -27,22 +27,7 @@
     align-items: center;
     justify-content: space-between;
 }
-/* .right .filtrMenu .filtrLeft .ivu-select-selection{
-    border: 1px solid #FFC837;
-} */
-/* .right .filtrMenu .filtrLeft .storeInfo{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-.right .filtrMenu .filtrLeft .storeInfo label{
-    font-size: 15px;
-    margin-right: 10px;
-    letter-spacing: 1px;
-} */
 .right .filtrMenu .filtrLeft .courseType{
-    width: 350px;
     display: flex;
     flex-direction: row;
     align-items: center;

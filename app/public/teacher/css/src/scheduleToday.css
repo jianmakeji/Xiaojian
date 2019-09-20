@@ -1,6 +1,10 @@
 [v-cloak]{
     display: none;
 }
+@font-face {
+  font-family: "happyfont";
+  src: url("../lib/fonts/happyfont.ttf") format("truetype");
+}
 .index{
     width: 1920px;
     margin: 0 auto;
@@ -32,6 +36,7 @@
     margin-left: 80px;
 }
 .container .headMenu .leftTabs .tabsBtn{
+    font-family: "happyfont";
     color: #989898;
     border: solid 1px #FFC837;
     background: #fff;
@@ -50,6 +55,7 @@
     border-radius: 50%;
 }
 .container .headMenu .rightUserInfo .username{
+    font-family: "happyfont";
     font-size: 16px;
     color: #656565;
     letter-spacing: 1px;
@@ -70,6 +76,7 @@
     justify-content: center;
 }
 .container .scheduleView .welcome{
+    font-family: "happyfont";
     font-size: 32px;
     font-weight: bold;
     letter-spacing: 2px;
@@ -106,10 +113,12 @@
     justify-content: space-around;
 }
 .container .scheduleView .scheduleList .scheduleItem .time .courseNum{
+    font-family: "happyfont";
     font-size: 20px;
     color: #989898;
 }
 .container .scheduleView .scheduleList .scheduleItem .time .date{
+    font-family: "happyfont";
     font-size: 18px;
     color: #CBCBCB;
 }
@@ -131,6 +140,7 @@
     cursor: pointer;
 }
 .container .scheduleView .scheduleList .scheduleItem .courseDetail p{
+    font-family: "happyfont";
     font-size: 18px;
     color: #918B88;
 }
@@ -143,12 +153,19 @@
     justify-content: space-around;
 }
 .container .scheduleView .scheduleList .scheduleItem .opts .tabsBtn{
+    font-family: "happyfont";
     width: 60%;
     color:#989898;
     border: solid 1px #FFC837;
     background: #fff;
 }
-
+.container .scheduleView .scheduleList .scheduleItem .opts .tabsDisBtn{
+    font-family: "happyfont";
+    width: 60%;
+    /* color:#989898;
+    border: solid 1px #FFC837;
+    background: #fff; */
+}
 /* 学生点名弹框 */
 .ivu-modal-header{
     display: none;
@@ -159,6 +176,7 @@
     margin: 0 auto;
 }
 .studentListView .title{
+    font-family: "happyfont";
     font-size: 28px;
     color: #FFC837;
     text-align: center;
@@ -170,6 +188,7 @@
 }
 
 .studentListView .studentName{
+    font-family: "happyfont";
     height: 50px;
     font-size: 18px;
     display: flex;
@@ -180,9 +199,14 @@
 .studentListView .studentName .ivu-checkbox-checked .ivu-checkbox-inner{
     border-color: #FFC837;
     background-color: #FFC837;
+    border-radius: 50%;
 }
 .studentListView .studentName .ivu-checkbox{
     margin-right: 15px;
+}
+.studentListView .ivu-checkbox-large .ivu-checkbox-inner{
+
+    border-radius: 50%;
 }
 .studentModal .ivu-modal-content{
     background: none;
@@ -200,6 +224,7 @@
 }
 .studentListView .opts .cancelBtn,
 .studentListView .opts .submitBtn{
+    font-family: "happyfont";
     color: #989898;
     border: solid 1px #FFC837;
     background: #fff;
@@ -216,6 +241,7 @@
     align-items: center;
 }
 .checkOkView .checkOkText{
+    font-family: "happyfont";
     /* width: 100%; */
     font-size: 24px;
     color: #BDB9B7;
@@ -224,6 +250,7 @@
     margin-top: -130px;
 }
 .checkOkView .peopleNum{
+    font-family: "happyfont";
     font-size: 24px;
     color: #FFC837;
     text-align: center;

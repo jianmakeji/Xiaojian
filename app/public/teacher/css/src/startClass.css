@@ -1,6 +1,10 @@
 [v-cloak]{
     display: none;
 }
+@font-face {
+  font-family: "happyfont";
+  src: url("../lib/fonts/happyfont.ttf") format("truetype");
+}
 .index{
     width: 1920px;
     height: 100vh;
@@ -59,6 +63,7 @@
     border-radius: 50%;
 }
 .container .headMenu .rightUserInfo .username{
+    font-family: "happyfont";
     font-size: 16px;
     color: #656565;
     letter-spacing: 1px;
@@ -102,6 +107,7 @@
 }
 .container .courseList .mainCourse p,
 .container .courseList .otherCourse p{
+    font-family: "happyfont";
     height: 35px;
     font-size: 20px;
     color: #FFC837;
@@ -109,6 +115,7 @@
     font-weight: bold;
 }
 .opts .tabsBtn{
+    font-family: "happyfont";
     width: 100px;
     color: #989898;
     border: solid 1px #FFC837;

@@ -30,17 +30,9 @@
     <!-- 店铺筛选 -->
     <div class="filtrMenu">
         <div class="filtrLeft">
-            <!-- <div class="storeInfo">
-                <label>课程类型:</label>
-                <i-select v-model="formItem.courseType" style="width:200px;" @on-change="courseTypeChange" placeholder="课程类型">
-                    <i-option v-for="item in courseTypeData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
-                </i-select>
-            </div> -->
             <div class="courseType">
-                <i-button class="courseTypeBtn" :class="{active : courseTypeNum == 0 ? true : false}" type="warning" @click="courseTypeChange(0)">全部</i-button>
-                <i-button class="courseTypeBtn" :class="{active : courseTypeNum == 1 ? true : false}" type="warning" @click="courseTypeChange(1)">基础课程</i-button>
-                <i-button class="courseTypeBtn" :class="{active : courseTypeNum == 2 ? true : false}" type="warning" @click="courseTypeChange(2)">辅助课程</i-button>
-                <i-button class="courseTypeBtn" :class="{active : courseTypeNum == 3 ? true : false}" type="warning" @click="courseTypeChange(3)">运动课程</i-button>
+                <cascader v-model="cascader" :data="cascaderData" style="width:200px;" trigger="hover" @on-change="cascaderChange" placeholder="课程标签">
+                </cascader>
             </div>
             <div class="userSearch">
                 <i-input class="userSearchInput" v-model="searchItem.courseName" placeholder="输入搜索内容" search @on-search="searchCourseSubTypeEvent"></i-input>

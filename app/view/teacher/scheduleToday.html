@@ -57,8 +57,10 @@
                             <p v-else style="color:red;" v-text="'——'"></p>
                         </div>
                         <div class="opts">
-                            <i-button class="tabsBtn" type="warning" @click="openStudentListModal">开始点名</i-button>
-                            <i-button class="tabsBtn" type="warning" @click="startClass(item.courseA?item.courseA.Id:'0',item.courseB?item.courseB.Id:'0')">开始上课</i-button>
+							<i-button class="tabsBtn" v-if="item.courseA && item.courseB" type="warning" @click="openStudentListModal">开始点名</i-button>
+                            <i-button class="tabsDisBtn" v-else type="warning" disabled>开始点名</i-button>
+                            <i-button class="tabsBtn" v-if="item.courseA && item.courseB" type="warning" @click="startClass(item.courseA?item.courseA.Id:'0',item.courseB?item.courseB.Id:'0')">开始上课</i-button>
+                            <i-button class="tabsDisBtn" v-else type="warning" disabled>开始上课</i-button>
                         </div>
                     </div>
                 </div>

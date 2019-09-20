@@ -5,11 +5,50 @@ var index = new Vue({
             formItem:{
                 limit:12,
                 offset:0,
-                courseType:"0",
+                courseSubType:"0",
             },
             courseTypeArr:["全部","基础课程","辅助课程","运动课程"],
-            courseTypeNum:0,
-            courseTypeData:config.globalData.courseTypeData,
+            cascader:[],
+            cascaderData:[
+                {
+                    value:"1",
+                    label:"基础课程",
+                    children: [
+                        {
+                            value: '1',
+                            label: '铛铛趣味成语'
+                        },
+                        {
+                            value: '2',
+                            label: '铛铛诗歌王国'
+                        }
+                    ]
+                },
+                {
+                    value:"2",
+                    label:"辅助课程",
+                    children: [
+                        {
+                            value: '3',
+                            label: '铛铛带你学常识'
+                        },
+                        {
+                            value: '4',
+                            label: '铛铛美术世界'
+                        }
+                    ]
+                },
+                {
+                    value:"3",
+                    label:"运动课程",
+                    children: [
+                        {
+                            value: '5',
+                            label: '铛铛带你一起运动'
+                        }
+                    ]
+                }
+            ],
 
             searchItem:{
                 limit:12,
@@ -28,7 +67,7 @@ var index = new Vue({
             let that = this;
             this.$Loading.start();
             $.ajax({
-                url: config.ajaxUrls.listCourseByCourseType,
+                url: config.ajaxUrls.listCourseByCourseSubType,
                 type: 'GET',
                 data: this.formItem
             })
@@ -58,15 +97,14 @@ var index = new Vue({
                 default:
             }
         },
-        courseTypeChange(courseTypeId){
+        cascaderChange(value, selectedData){
             let that = this;
-            this.courseTypeNum = courseTypeId;
+            this.formItem.courseSubType = value[1];
             this.searchItem.courseName = "";
             this.formItem.offset = 0;
             this.$Loading.start();
-            this.formItem.courseType = courseTypeId;
             $.ajax({
-                url: config.ajaxUrls.listCourseByCourseType,
+                url: config.ajaxUrls.listCourseByCourseSubType,
                 type: 'GET',
                 data: this.formItem
             })
@@ -84,12 +122,11 @@ var index = new Vue({
                 that.$Loading.error();
                 that.$Message.error(err.data);
             })
-
-
         },
         searchCourseSubTypeEvent(){
             let that = this;
-            this.formItem.courseType = "0";
+            this.formItem.courseSubType = "0";
+            this.cascader = [];
             this.$Loading.start();
             $.ajax({
                 url: config.ajaxUrls.searchByCourseName,
@@ -154,7 +191,7 @@ var index = new Vue({
             if (this.searchItem.courseName == "") {
                 this.formItem.offset = (pageNum - 1) * 12;
                 $.ajax({
-                    url: config.ajaxUrls.listCourseByCourseType,
+                    url: config.ajaxUrls.listCourseByCourseSubType,
                     type: 'GET',
                     data: this.formItem
                 })

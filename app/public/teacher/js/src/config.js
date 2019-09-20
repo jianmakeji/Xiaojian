@@ -87,6 +87,7 @@ var config = {
         listCourseByCourseType:"/manage/course/listCourseByCourseType",
         getCourseByCourseSubType:"/manage/course",
         searchByCourseName:'/manage/course/searchByCourseName',
+        listCourseByCourseSubType:'/manage/course/listCourseByCourseSubType',
         // 课程上传
         getCourseByCourseId:"/manage/course/:courseId",
         updateCourseByCourseId:"/manage/course/:courseId",

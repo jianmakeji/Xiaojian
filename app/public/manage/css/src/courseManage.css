@@ -473,7 +473,8 @@
     line-height: 40px;
     font-size: 20px;
     font-weight: bold;
-    color: #656565;
+    color: #fff;
+    background: #ffc837;
     letter-spacing: 1px;
     cursor: pointer;
 }
@@ -484,8 +485,8 @@
     line-height: 40px;
     font-size: 20px;
     font-weight: bold;
-    color: #fff;
-    background: #ffc837;
+    color: #656565;
+    background: #fff;
     letter-spacing: 1px;
     cursor: pointer;
 }
