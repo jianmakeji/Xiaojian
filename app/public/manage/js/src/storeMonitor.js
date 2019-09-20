@@ -12,7 +12,8 @@ var index = new Vue({
             yearData:config.globalData.yearData,
             monthData:config.globalData.monthData,
             weekData:config.globalData.weekData,
-            monitorArea:config.globalData.monitorArea
+            monitorArea:config.globalData.monitorArea,
+            nowTime:""
         }
     },
     methods:{
@@ -36,28 +37,23 @@ var index = new Vue({
             this.shopId = shopId;
             localStorage.setItem("shopId",shopId);
         },
-        searchEvent(){
-
-        },
         checkMonitorEvent(){
             window.location.href = "/manage/monitorDetail";
         },
-
         dateChange(date){
             window.location.href = "/manage/monitorHistory";
         },
-        monthChange(){
-            window.location.href = "/manage/monitorHistory";
-
-        },
-        weekChange(){
-            window.location.href = "/manage/monitorHistory";
-
-        }
     },
     created(){
         this.shopId = localStorage.getItem("shopId");
         $(".menuBtns").children('.active').removeClass('active');
         $(".menuBtns").children().eq(0).addClass('active');
-    }
+    },
+    mounted() {
+        let that = this;
+        this.timer = setInterval(() => {
+            let date = new Date();
+            that.nowTime = date.getFullYear() + "-" + (date.getMonth() + 1) + "-"  + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+        }, 1000)
+    },
 })

@@ -104,7 +104,7 @@
     letter-spacing: 2px;
 }
 .right .monitorView .monitorItem .monitorInfo .checkBtn{
-    /* background: #FFC837;
-    border-color: #FFC837; */
+    color: #989898;
     border: solid 1px #FFC837;
+    background: #fff;
 }

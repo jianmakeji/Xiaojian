@@ -54,7 +54,7 @@
         <div class="filtrRight">
             <!-- <i-button class="editBtn">编辑</i-button>
             <i-button class="saveBtn">保存</i-button> -->
-            <i-button class="uploadBtn" @click="submitCourseChoose">上传</i-button>
+            <i-button class="uploadBtn" type="warning" @click="submitCourseChoose">上传</i-button>
         </div>
     </div>
     <!-- 课程管理选项 -->
@@ -109,25 +109,27 @@
                     <!-- 周一至周日 -->
                     <div class="weekDay" v-for="(weekItem,weekIndex) in [0,1,2,3,4,5,6]">
                         <!-- 一到四节课 -->
-                        <div class="courseTime" v-for="(timeItem,timeIndex) in [1,2,3,4]">
+                        <div class="courseTime" :class="{active : mainCourseFocus == weekItem + '-' + timeIndex || sportCourseFocus == weekItem + '-' + timeIndex || teacherFocus == weekItem + '-' + timeIndex ? true : false}" v-for="(timeItem,timeIndex) in [1,2,3,4]">
                             <div class="mainCourse">
                                 <!-- 基础课程图片 -->
+                                <icon class="courseCloseIcon" v-if="dataSourse[weekIndex][timeIndex].courseThumbA" size="20" color="#ffc837" type="md-close" @click="deleteMainCourse(weekIndex,timeIndex)"></icon>
                                 <img class="mainCourseImg" :src="dataSourse[weekIndex][timeIndex].courseThumbA?dataSourse[weekIndex][timeIndex].courseThumbA : mainCourseFocus == weekItem + '-' + timeIndex ? '../public/images/course_default_select.jpg' : '../public/images/course_default.jpg'" @click="changeMainCourse(weekIndex,timeIndex,year,thisWeekMonthArray[weekIndex],thisWeekDayArray[weekIndex],timeItem)" title="编辑基础课程">
-
                                 <!-- 基础课程名称 -->
                                 <span class="mainCourseName" @click="changeMainCourse(weekIndex,timeIndex,year,thisWeekMonthArray[weekIndex],thisWeekDayArray[weekIndex],timeItem)" title="编辑基础课程" v-text="dataSourse[weekIndex][timeIndex].courseTitleA"></span>
                             </div>
                             <div class="otherCourse">
                                 <!-- 运动课程图片 -->
-                                <img class="otherCourseImg" :src="dataSourse[weekIndex][timeIndex].courseThumbB?dataSourse[weekIndex][timeIndex].courseThumbB : sportCourseFocus == weekItem + '-' + timeIndex ? '../public/images/course_default_select.jpg' : '../public/images/course_default.jpg'" @click="changeSportCourse(weekIndex,timeIndex,year,thisWeekMonthArray[weekIndex],thisWeekDayArray[weekIndex],timeItem)" title="编辑运动课程">
-
+                                <icon class="courseCloseIcon" v-if="dataSourse[weekIndex][timeIndex].courseThumbB" size="20" color="#ffc837" type="md-close" @click="deleteSportCourse(weekIndex,timeIndex)"></icon>
+                                <img class="otherCourseImg" :src="dataSourse[weekIndex][timeIndex].courseThumbB?dataSourse[weekIndex][timeIndex].courseThumbB : sportCourseFocus == weekItem + '-' + timeIndex ? '../public/images/course_default_select.jpg' : '../public/images/course_default.jpg'" @click="changeSportCourse(weekIndex,timeIndex,year,thisWeekMonthArray[weekIndex],thisWeekDayArray[weekIndex],timeItem)" title="编辑辅助课程">
                                 <!-- 运动课程名称 -->
-                                <span class="otherCourseName" @click="changeSportCourse(weekIndex,timeIndex,year,thisWeekMonthArray[weekIndex],thisWeekDayArray[weekIndex],timeItem)" title="编辑运动课程" v-text="dataSourse[weekIndex][timeIndex].courseTitleB"></span>
+                                <span class="otherCourseName" @click="changeSportCourse(weekIndex,timeIndex,year,thisWeekMonthArray[weekIndex],thisWeekDayArray[weekIndex],timeItem)" title="编辑辅助课程" v-text="dataSourse[weekIndex][timeIndex].courseTitleB"></span>
                             </div>
                             <!-- 老师名称 -->
                             <div class="teacherName" :class="{teacherNameActive : teacherFocus == weekItem + '-' + timeIndex ? true : false}" @click="changeTeacher(weekIndex,timeIndex,year,thisWeekMonthArray[weekIndex],thisWeekDayArray[weekIndex],timeItem)" title="编辑老师" v-text="'授课老师：' + dataSourse[weekIndex][timeIndex].teacherName"></div>
+                            <icon class="teacherCloseIcon" v-if="dataSourse[weekIndex][timeIndex].teacherName != '无'" size="20" color="#ffc837" type="md-close" @click="deleteTeacherCourse(weekIndex,timeIndex)"></icon>
                             <div class="students">
-                                <i-button class="studentListBtn" @click="checkStudentList(1)">学生名单</i-button>
+                                <i-button class="studentListBtn" type="warning" v-if="dataSourse[weekIndex][timeIndex].teacherName && dataSourse[weekIndex][timeIndex].courseThumbA && dataSourse[weekIndex][timeIndex].courseThumbB" @click="checkStudentList(1)">学生名单</i-button>
+                                <i-button type="default" v-if="!dataSourse[weekIndex][timeIndex].teacherName || !dataSourse[weekIndex][timeIndex].courseThumbA || !dataSourse[weekIndex][timeIndex].courseThumbB" disabled>学生名单</i-button>
                             </div>
                         </div>
                     </div>

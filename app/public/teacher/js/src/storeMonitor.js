@@ -3,7 +3,8 @@ var index = new Vue({
     data(){
         return{
             searchValue:"",
-            monitorArea:config.globalData.monitorArea
+            monitorArea:config.globalData.monitorArea,
+            nowTime:""
         }
     },
     methods:{
@@ -33,5 +34,12 @@ var index = new Vue({
     created(){
         $(".menuBtns").children('.active').removeClass('active');
         $(".menuBtns").children().eq(1).addClass('active');
-    }
+    },
+    mounted() {
+        let that = this;
+        this.timer = setInterval(() => {
+            let date = new Date();
+            that.nowTime = date.getFullYear() + "-" + (date.getMonth() + 1) + "-"  + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+        }, 1000)
+    },
 })

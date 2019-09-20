@@ -108,11 +108,11 @@
     letter-spacing: 2px;
     font-weight: bold;
 }
-.tabsBtn{
+.opts .tabsBtn{
     width: 100px;
+    color: #989898;
+    border: solid 1px #FFC837;
     background: #fff;
-    border-color: #FFC837;
-    color: #FFC837;
 }
 .bottomImg{
     position: absolute;

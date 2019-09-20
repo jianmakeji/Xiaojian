@@ -42,9 +42,10 @@
 .right .filtrMenu .filtrLeft .userSearch{
     margin-left: 20px;
 }
-.right .filtrMenu .filtrRight .addStudent{
-    background: #FFC837;
-    border-color: #FFC837;
+.right .filtrMenu .filtrRight .backBtn{
+    color: #989898;
+    border: solid 1px #FFC837;
+    background: #fff;
 }
 
 /* **********table数据列表************** */

@@ -52,15 +52,6 @@
                 <label>监控时间选择:</label>
                 <date-picker type="date" placeholder="选择日期" style="width: 200px" @on-change="dateChange"></date-picker>
                 <time-picker type="time" placeholder="选择时间" style="width: 168px"></time-picker>
-                <!-- <i-select v-model="year" style="width:100px;margin-left:10px;" @on-change="yearChange" @on-open-change="closeModel" placeholder="年份">
-                    <i-option v-for="item in yearData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
-                </i-select>
-                <i-select v-model="month" style="width:100px;margin-left:10px;" @on-change="monthChange" @on-open-change="closeModel"  placeholder="月份">
-                    <i-option v-for="item in monthData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
-                </i-select>
-                <i-select v-model="week" style="width:100px;margin-left:10px;" @on-change="weekChange" @on-open-change="closeModel" placeholder="星期">
-                    <i-option v-for="item in weekData" :value="item.value" :key="item.value" :label="item.label" ></i-option>
-                </i-select> -->
             </div>
         </div>
     </div>
@@ -75,13 +66,13 @@
                         <img class="monitorImg" :src="'../public/images/camera'+ item +'.jpg'" @click="checkMonitorEvent">
                         <div class="monitorInfo">
                             <div class="area" v-text="monitorArea[index]"></div>
-                            <i-button class="checkBtn" type="primary" @click="checkMonitorEvent">查看</i-button>
+                            <i-button class="checkBtn" type="warning" @click="checkMonitorEvent">查看</i-button>
                         </div>
                     </li>
                 <i-col>
             </row>
         </ul>
-        <p class="time">2019.08.12 15:55</p>
+        <p class="time" v-text="nowTime"></p>
     </div>
     <!-- 店铺监控列表 end -->
 </div>

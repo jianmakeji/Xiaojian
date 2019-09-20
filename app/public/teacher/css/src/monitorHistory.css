@@ -61,9 +61,10 @@
 .right .filtrMenu .filtrLeft .userSearchInput .ivu-input{
     border: 1px solid #FFC837;
 }
-.right .filtrMenu .filtrRight .saveBtn{
-    border: 1px solid #FFC837;
-    background: #ffc837;
+.right .filtrMenu .filtrRight .backBtn{
+    color: #989898;
+    border: solid 1px #FFC837;
+    background: #fff;
 }
 /* ****************店铺监控详情****************** */
 .right .monitorDetailView{

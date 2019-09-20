@@ -181,6 +181,9 @@
     align-items: center;
     justify-content: space-around;
 }
+.right .courseContainer .courseView .weekDay .courseTime:hover{
+    border: solid 1px #ffc837;
+}
 .right .courseContainer .courseView .weekDay .courseTime .mainCourse,
 .right .courseContainer .courseView .weekDay .courseTime .otherCourse{
     width: 100%;
@@ -231,7 +234,9 @@
 .right .courseContainer .courseView .weekDay .courseTime .students .studentListBtn{
     height: 32px;
     margin: 0 auto;
-    border: solid 2px #ffc837;
+    color: #989898;
+    border: solid 1px #FFC837;
+    background: #fff;
 }
 .footerImg{
     position: absolute;

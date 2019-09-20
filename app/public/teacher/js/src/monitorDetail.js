@@ -13,7 +13,8 @@ var index = new Vue({
             week:"",
             yearData:config.globalData.yearData,
             monthData:config.globalData.monthData,
-            weekData:config.globalData.weekData
+            weekData:config.globalData.weekData,
+            nowTime:""
         }
     },
     methods:{
@@ -33,21 +34,6 @@ var index = new Vue({
                 default:
             }
         },
-        storeChange(){
-
-        },
-        searchEvent(){
-
-        },
-        yearChange(){
-
-        },
-        monthChange(){
-
-        },
-        weekChange(){
-
-        },
         back(){
             window.location.href = "/teacher/storeMonitor";
         }
@@ -55,5 +41,12 @@ var index = new Vue({
     created(){
         $(".menuBtns").children('.active').removeClass('active');
         $(".menuBtns").children().eq(1).addClass('active');
-    }
+    },
+    mounted() {
+        let that = this;
+        this.timer = setInterval(() => {
+            let date = new Date();
+            that.nowTime = date.getFullYear() + "-" + (date.getMonth() + 1) + "-"  + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+        }, 1000)
+    },
 })
