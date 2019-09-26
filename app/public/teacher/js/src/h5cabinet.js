@@ -5,6 +5,7 @@ var index = new Vue({
             h5Address:[],
             isActiveNum:0,
             playH5Address:"",
+            h5HasPlay:false,
             courseType:1
         }
     },
@@ -35,6 +36,21 @@ var index = new Vue({
         },
         // 播放h5
         clickPlayH5(){
+            if (this.playH5Address.indexOf("mp4") > 0) {
+                var iframe = document.getElementById("h5Iframe");
+                var iwindow = iframe.contentWindow;
+                var ibody = iwindow.document.body;
+                var ivideo = ibody.firstElementChild;
+                if (ivideo.paused) {
+                    // 视频暂停
+                    ivideo.play();
+                    this.h5HasPlay = true;
+                } else {
+                    // 视频播放
+                    ivideo.pause();
+                    this.h5HasPlay = false;
+                }
+            }
 
         },
         // 返回

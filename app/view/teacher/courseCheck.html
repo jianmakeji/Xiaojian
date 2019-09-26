@@ -110,14 +110,14 @@
                         <div class="courseTime" v-for="(timeItem,timeIndex) in [1,2,3,4]">
                             <div class="mainCourse">
                                 <!-- 基础课程图片 -->
-                                <img class="mainCourseImg" :src="dataSourse[weekIndex][timeIndex].courseThumbA?dataSourse[weekIndex][timeIndex].courseThumbA : '../public/images/course_default.jpg'" @click="mainCourseCheck(weekIndex,timeIndex)" title="编辑基础课程">
+                                <img class="mainCourseImg" :src="dataSourse[weekIndex][timeIndex].courseThumbA?dataSourse[weekIndex][timeIndex].courseThumbA : '../public/images/course_default.png'" @click="mainCourseCheck(weekIndex,timeIndex)" title="编辑基础课程">
 
                                 <!-- 基础课程名称 -->
                                 <span class="mainCourseName" @click="mainCourseCheck(weekIndex,timeIndex)" title="编辑基础课程" v-text="dataSourse[weekIndex][timeIndex].courseTitleA"></span>
                             </div>
                             <div class="otherCourse">
                                 <!-- 运动课程图片 -->
-                                <img class="otherCourseImg" :src="dataSourse[weekIndex][timeIndex].courseThumbB?dataSourse[weekIndex][timeIndex].courseThumbB : '../public/images/course_default.jpg'" @click="otherCourseCheck(weekIndex,timeIndex)" title="编辑运动课程">
+                                <img class="otherCourseImg" :src="dataSourse[weekIndex][timeIndex].courseThumbB?dataSourse[weekIndex][timeIndex].courseThumbB : '../public/images/course_default.png'" @click="otherCourseCheck(weekIndex,timeIndex)" title="编辑运动课程">
 
                                 <!-- 运动课程名称 -->
                                 <span class="otherCourseCheck" @click="otherCourseCheck(weekIndex,timeIndex)" title="编辑运动课程" v-text="dataSourse[weekIndex][timeIndex].courseTitleB"></span>
@@ -125,7 +125,8 @@
                             <!-- 老师名称 -->
                             <div class="teacherName" title="编辑老师" v-text="'授课老师：' + dataSourse[weekIndex][timeIndex].teacherName"></div>
                             <div class="students">
-                                <i-button class="studentListBtn" type="warning" @click="studentListCheck(weekIndex,timeIndex)">学生名单</i-button>
+                                <i-button class="studentListBtn" type="warning" v-if="dataSourse[weekIndex][timeIndex].teacherName && dataSourse[weekIndex][timeIndex].courseThumbA && dataSourse[weekIndex][timeIndex].courseThumbB" @click="checkStudentList(1)">学生名单</i-button>
+                                <i-button type="default" v-if="!dataSourse[weekIndex][timeIndex].teacherName || !dataSourse[weekIndex][timeIndex].courseThumbA || !dataSourse[weekIndex][timeIndex].courseThumbB" disabled>学生名单</i-button>
                             </div>
                         </div>
                     </div>

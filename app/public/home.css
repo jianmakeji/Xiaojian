@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 1920px;
+    width: 100%;
     height: 100vh;
     margin: 0 auto;
     background: url(/public/images/home_bg.png)no-repeat bottom center;
@@ -34,4 +34,19 @@
     text-align: center;
     cursor: pointer;
     background:url(/public/images/home_bg_img.png)no-repeat center center;
+}
+
+@media only screen and (min-width: 1920px) {
+    .home{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 1920px;
+        height: 100vh;
+        margin: 0 auto;
+        background: url(/public/images/home_bg.png)no-repeat bottom center;
+    }
+    .home .entranceView{
+        width: 1536px;
+    }
 }

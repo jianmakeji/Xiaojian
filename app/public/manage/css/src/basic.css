@@ -3,9 +3,8 @@
 }
 
 .index{
-    width: 1920px;
+    width: 100%;
     margin: 0 auto;
-    /* border: solid 2px black; */
 }
 .container{
     min-height:100vh;
@@ -123,7 +122,7 @@
 .right .headMenu .rightUserInfo .loginOut{
     margin-left: 20px;
     cursor: pointer;
-        font-size: 20px;
+    font-size: 20px;
 }
 /* 尾部商标 */
 .footerImg{
@@ -135,6 +134,17 @@
 }
 
 
+@media only screen and (min-width: 1920px) {
+    .index{
+        width: 1920px;
+        margin: 0 auto;
+    }
+}
+@media only screen and (max-width: 1600px) {
+    .left .backHomePage{
+        width: 94%;
+    }
+}
 /* **********table数据列表************** */
 .right .tableView{
     width: 90%;

@@ -89,13 +89,13 @@
     justify-content: center;
 }
 .right .monitorView .monitorItem .monitorImg{
-    width: 500px;
+    width: 90%;
     height: 300px;
     border-radius: 20px;
     cursor: pointer;
 }
 .right .monitorView .monitorItem .monitorInfo{
-    width: 500px;
+    width: 90%;
     margin-top: 10px;
     display: flex;
     flex-direction: row;

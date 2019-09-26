@@ -20,7 +20,7 @@
 
         <!-- h5播放 -->
         <div class="container">
-			<div class="optsView">
+			<div class="optsView" controls>
 				<div class="opts">
 					<div class="numH5" @click="clickNumH5(0)">
 						<div :class="{active:isActiveNum == '0'}"></div>
@@ -39,15 +39,15 @@
 						<span> 4 </span>
 					</div>
 					<div class="prevH5" @click="clickPrevH5">
-						<div></div>
+						<div :class="{active:isActiveNum == '0'}"></div>
 						<img src="../public/images/btn_arrow_up.png">
 					</div>
 					<div class="nextH5" @click="clickNextH5">
-						<div></div>
+						<div :class="{active: courseType == 1 ? isActiveNum == '3' : isActiveNum == '1' }"></div>
 						<img src="../public/images/btn_arrow_down.png">
 					</div>
 					<div class="playH5" @click="clickPlayH5">
-						<div></div>
+						<div :class="{active:h5HasPlay}"></div>
 						<img src="../public/images/btn_left.png">
 					</div>
 					<div class="backH5" @click="clickBackH5">
@@ -57,7 +57,7 @@
 				</div>
 
 			</div>
-			<iframe :src="playH5Address" width="1920px" height="100%;" frameborder="0"></iframe>
+			<iframe id="h5Iframe" :src="playH5Address" width="1920px" height="100%;" frameborder="0"></iframe>
         </div>
         <!-- h5播放 end -->
 

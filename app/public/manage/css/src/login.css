@@ -3,9 +3,8 @@
 }
 
 .index{
-    width: 1920px;
+    /* width: 1920px; */
     margin: 0 auto;
-    /* border: solid 2px black; */
 }
 .login{
     display: flex;

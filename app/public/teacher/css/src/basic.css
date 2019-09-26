@@ -3,7 +3,7 @@
 }
 
 .index{
-    width: 1920px;
+    width: 100%;
     margin: 0 auto;
     /* border: solid 2px black; */
 }
@@ -134,7 +134,17 @@
     bottom: 10px;
 }
 
-
+@media only screen and (min-width: 1920px) {
+    .index{
+        width: 1920px;
+        margin: 0 auto;
+    }
+}
+@media only screen and (max-width: 1600px) {
+    .left .backHomePage{
+        width: 94%;
+    }
+}
 /* **********table数据列表************** */
 .right .tableView{
     width: 90%;
