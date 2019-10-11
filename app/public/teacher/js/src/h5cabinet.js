@@ -5,7 +5,6 @@ var index = new Vue({
             h5Address:[],
             isActiveNum:0,
             playH5Address:"",
-            h5HasPlay:false,
             courseType:1
         }
     },
@@ -23,6 +22,7 @@ var index = new Vue({
         },
         // 下一个h5
         clickNextH5(){
+            let that = this;
             let h5Count = 3;
             if (this.courseType != 1) {
                 h5Count = 1;
@@ -34,29 +34,19 @@ var index = new Vue({
                 this.playH5Address = this.h5Address[this.isActiveNum];
             }
         },
-        // 播放h5
-        clickPlayH5(){
-            if (this.playH5Address.indexOf("mp4") > 0) {
-                var iframe = document.getElementById("h5Iframe");
-                var iwindow = iframe.contentWindow;
-                var ibody = iwindow.document.body;
-                var ivideo = ibody.firstElementChild;
-                if (ivideo.paused) {
-                    // 视频暂停
-                    ivideo.play();
-                    this.h5HasPlay = true;
-                } else {
-                    // 视频播放
-                    ivideo.pause();
-                    this.h5HasPlay = false;
-                }
-            }
-
-        },
         // 返回
         clickBackH5(){
-            window.close();
-        }
+            // window.close();
+            var userAgent = navigator.userAgent;
+        	if (userAgent.indexOf("Firefox") != -1 || userAgent.indexOf("Chrome") !=-1) {
+    			window.location.href="about:blank";
+    			window.close();
+        	} else {
+    			window.opener = null;
+    			window.open("", "_self");
+    			window.close();
+        	}
+        },
     },
     created(){
         let that = this;
