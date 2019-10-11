@@ -1,11 +1,8 @@
 /* ************添加课程************* */
-.right{
-    overflow: auto;
-}
 .right .title{
     width: 90%;
     margin-left: 5%;
-    /* margin-top: 30px; */
+    margin-top: 30px;
     font-size: 22px;
     font-weight: bold;
     color: #FFC837;
@@ -37,9 +34,6 @@
 .otherCourseH5Upload .h5_4{
     width: 295px;
     height: 130px;
-}
-.formView button{
-    border: solid 1px #FFC837;
 }
 .right .formView .progressView .ivu-progress-show-info .ivu-progress-outer{
     display: flex;

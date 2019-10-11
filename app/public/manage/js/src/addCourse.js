@@ -438,7 +438,7 @@ var index = new Vue({
         $(".menuBtns").children('.active').removeClass('active');
         $(".menuBtns").children().eq(2).addClass('active');
 
-        this.formStyle.minHeight = document.documentElement.clientHeight - 140 + "px";
+        this.formStyle.minHeight = document.documentElement.clientHeight - 195 + "px";
 
         this.courseId = window.location.search.split("courseId=")[1];
 
